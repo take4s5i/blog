@@ -28,15 +28,15 @@ jobs:
       # setup node.js
       - name: Setup Node.js environment
         uses: actions/setup-node@v2.5.0
-        
+
       # setup yarn
       - name: Setup Yarn
         run: npm install -g yarn
-      
+
       # install & build
       - name: Install node_modules
-        run: yarn & yarn build
-      
+        run: yarn && yarn build
+
       # gh pages
       - name: Construct gh pages deployment
         run: |
