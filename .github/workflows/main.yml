@@ -37,12 +37,12 @@ jobs:
       - name: Install node_modules
         run: yarn && yarn build
 
-      # gh pages
-      - name: Construct gh pages deployment
+      # commit 
+      - name: commit
         run: |
-          ls -1 | grep -v public | xargs -I {} rm -rf {}
-          mv public/* ./
-          rmdir public
+          git add .
+          git commit -m "update gh-pages"
+          
 
       # push
       - name: GitHub Push
