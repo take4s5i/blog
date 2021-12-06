@@ -25,16 +25,8 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
 
-      # commit 
       - name: switch branch to gh-pages
         run: git switch -C gh-pages
-
-      # Construct gh-pages Deployment
-      - name: Construct gh-pages Deployment
-        run: |
-          ls -1 | grep -v public | xargs -I {} rm -rf {}
-          mv public/* ./
-          rmdir public
 
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v2
@@ -44,6 +36,13 @@ jobs:
 
       - name: build
         run: hugo -D
+
+      # Construct gh-pages Deployment
+      - name: Construct gh-pages Deployment
+        run: |
+          ls -1 | grep -v public | xargs -I {} rm -rf {}
+          mv public/* ./
+          rmdir public
 
       # commit
       - name: commit
