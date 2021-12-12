@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>rust on 6 bits blog</title>
+    <link>https://blog.take4s5i.dev/tags/rust/</link>
+    <description>Recent content in rust on 6 bits blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja-jp</language>
+    <lastBuildDate>Tue, 07 Dec 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.take4s5i.dev/tags/rust/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>[Rust] panic を理解する</title>
+      <link>https://blog.take4s5i.dev/posts/2021/rust-understanding-panics/</link>
+      <pubDate>Tue, 07 Dec 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.take4s5i.dev/posts/2021/rust-understanding-panics/</guid>
+      <description>panicしたら異常終了するぐらいにしか理解していなかったので。 いろいろ調べたり実験したりしてみました。
+panic したときの挙動 #[derive(Debug)] struct Data(u32); impl Drop for Data { fn drop(&amp;amp;mut self){ println!(&amp;#34;drop {:?}&amp;#34;, self); } } fn call_recurse(n: u32) { if n == 0 { panic!(&amp;#34;panic!&amp;#34;); } let data = Data(n); call_recurse(n - 1); println!(&amp;#34;return: {:?}&amp;#34;, data); } fn main() { call_recurse(4); } 出力:
+ Compiling playground v0.0.1 (/playground) Finished dev [unoptimized + debuginfo] target(s) in 1.07s Running `target/debug/playground` thread &#39;main&#39; panicked at &#39;panic!&#39;, src/main.rs:12:9 note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace drop Data(1) drop Data(2) drop Data(3) drop Data(4) Drop トレイトを実装した構造体の生存中にpanicしたところ、ちゃんとdropされました。 この挙動はunwindingというようです。</description>
+    </item>
+    
+  </channel>
+</rss>
