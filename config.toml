@@ -2,6 +2,7 @@ baseURL = 'https://blog.take4s5i.dev/'
 languageCode = 'ja-jp'
 title = '6 bits blog'
 theme = 'cactus'
+googleAnalytics = 'G-EL27BW0FWC'
 
 [[menu.main]]
 name = "Home"
