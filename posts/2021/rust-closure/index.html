@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="ja-jp">
+<head>
+  <link rel="preload" href="/lib/font-awesome/webfonts/fa-brands-400.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" href="/lib/font-awesome/webfonts/fa-regular-400.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" href="/lib/font-awesome/webfonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" href="/lib/JetBrainsMono/web/woff2/JetBrainsMono-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+  <script type="text/javascript" src="https://latest.cactus.chat/cactus.js"></script>
+  <link rel="stylesheet" href="https://latest.cactus.chat/style.css" type="text/css">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title> Rustのクロージャを理解する | 6 bits blog</title>
+  <link rel = 'canonical' href = 'https://blog.take4s5i.dev/posts/2021/rust-closure/'>
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="all,follow">
+  <meta name="googlebot" content="index,follow,snippet,archive">
+  <meta property="og:title" content="Rustのクロージャを理解する" />
+<meta property="og:description" content="まずはRustのクロージャを見てみましょう。
+fn main() { let nums: Vec&lt;i32&gt; = vec![1,2,3,4,5]; let y: i32 = 2; let iter = nums .into_iter() .map(|x| x * y); for x in iter { println!(&#34;{}&#34;, x); } } 出力:
+2 4 6 8 10 |x| x * y の部分がクロージャですね。 パット見単純そうに見えますが、他の言語のクロージャと同じように使おうとするとRustのライフタイムや所有権で躓きます。
+例えば以下のコード。 クロージャの入門としてよく使われている？呼ばれた回数をカウントする関数ですが、これはコンパイルできません。
+fn counter () -&gt; Fn() -&gt; i32 { let mut x: i32 = 0; return || { x &#43;= 1; x } } fn main() { let c = counter(); println!" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://blog.take4s5i.dev/posts/2021/rust-closure/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-12-16T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-12-16T00:00:00+00:00" />
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Rustのクロージャを理解する"/>
+<meta name="twitter:description" content="まずはRustのクロージャを見てみましょう。
+fn main() { let nums: Vec&lt;i32&gt; = vec![1,2,3,4,5]; let y: i32 = 2; let iter = nums .into_iter() .map(|x| x * y); for x in iter { println!(&#34;{}&#34;, x); } } 出力:
+2 4 6 8 10 |x| x * y の部分がクロージャですね。 パット見単純そうに見えますが、他の言語のクロージャと同じように使おうとするとRustのライフタイムや所有権で躓きます。
+例えば以下のコード。 クロージャの入門としてよく使われている？呼ばれた回数をカウントする関数ですが、これはコンパイルできません。
+fn counter () -&gt; Fn() -&gt; i32 { let mut x: i32 = 0; return || { x &#43;= 1; x } } fn main() { let c = counter(); println!"/>
+
+  
+  
+  
+  <link rel="stylesheet" href="https://blog.take4s5i.dev/css/styles.94f653e9e151e28067a7c5dbbc4600cbd5a3c721e79faaf971e523c40f3b249b8e4f20bb57810dfffa8d559ca5c140fd56eb4cd9c0853113ad08e66afdb08bdd.css" integrity="sha512-lPZT6eFR4oBnp8XbvEYAy9WjxyHnn6r5ceUjxA87JJuOTyC7V4EN//qNVZylwUD9VutM2cCFMROtCOZq/bCL3Q=="> 
+
+  
+  
+  
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  
+
+  
+<link rel="icon" type="image/png" href="https://blog.take4s5i.dev/images/favicon.ico" />
+
+  
+  
+  
+    
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EL27BW0FWC"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-EL27BW0FWC', { 'anonymize_ip': false });
+}
+</script>
+
+  
+  
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+  <div class="content index py4">
+
+  <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;" aria-label="Top of Page"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+        <li><a href="/">Home</a></li>
+         
+        <li><a href="/posts">Posts</a></li>
+         
+        <li><a href="/tags">Tags</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li>
+          <a class="icon" href=" https://blog.take4s5i.dev/posts/2021/rust-understanding-panics/" aria-label="Previous">
+            <i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i>
+          </a>
+        </li>
+        
+        
+        <li>
+          <a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" aria-label="Top of Page">
+            <i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i>
+          </a>
+        </li>
+        <li>
+          <a class="icon" href="#" aria-label="Share">
+            <i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i>
+          </a>
+        </li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      
+      <ul>
+  
+  
+    
+  
+  
+  <li>
+    <a class="icon" href="http://www.facebook.com/sharer.php?u=https%3a%2f%2fblog.take4s5i.dev%2fposts%2f2021%2frust-closure%2f" aria-label="Facebook">
+      <i class="fab fa-facebook " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://twitter.com/share?url=https%3a%2f%2fblog.take4s5i.dev%2fposts%2f2021%2frust-closure%2f&text=Rust%e3%81%ae%e3%82%af%e3%83%ad%e3%83%bc%e3%82%b8%e3%83%a3%e3%82%92%e7%90%86%e8%a7%a3%e3%81%99%e3%82%8b" aria-label="Twitter">
+      <i class="fab fa-twitter " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://www.linkedin.com/shareArticle?url=https%3a%2f%2fblog.take4s5i.dev%2fposts%2f2021%2frust-closure%2f&title=Rust%e3%81%ae%e3%82%af%e3%83%ad%e3%83%bc%e3%82%b8%e3%83%a3%e3%82%92%e7%90%86%e8%a7%a3%e3%81%99%e3%82%8b" aria-label="Linkedin">
+      <i class="fab fa-linkedin " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https%3a%2f%2fblog.take4s5i.dev%2fposts%2f2021%2frust-closure%2f&is_video=false&description=Rust%e3%81%ae%e3%82%af%e3%83%ad%e3%83%bc%e3%82%b8%e3%83%a3%e3%82%92%e7%90%86%e8%a7%a3%e3%81%99%e3%82%8b" aria-label="Pinterest">
+      <i class="fab fa-pinterest " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="mailto:?subject=Rust%e3%81%ae%e3%82%af%e3%83%ad%e3%83%bc%e3%82%b8%e3%83%a3%e3%82%92%e7%90%86%e8%a7%a3%e3%81%99%e3%82%8b&body=Check out this article: https%3a%2f%2fblog.take4s5i.dev%2fposts%2f2021%2frust-closure%2f" aria-label="Email">
+      <i class="fas fa-envelope " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://getpocket.com/save?url=https%3a%2f%2fblog.take4s5i.dev%2fposts%2f2021%2frust-closure%2f&title=Rust%e3%81%ae%e3%82%af%e3%83%ad%e3%83%bc%e3%82%b8%e3%83%a3%e3%82%92%e7%90%86%e8%a7%a3%e3%81%99%e3%82%8b" aria-label="Pocket">
+      <i class="fab fa-get-pocket " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://reddit.com/submit?url=https%3a%2f%2fblog.take4s5i.dev%2fposts%2f2021%2frust-closure%2f&title=Rust%e3%81%ae%e3%82%af%e3%83%ad%e3%83%bc%e3%82%b8%e3%83%a3%e3%82%92%e7%90%86%e8%a7%a3%e3%81%99%e3%82%8b" aria-label="reddit">
+      <i class="fab fa-reddit " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://www.tumblr.com/share/link?url=https%3a%2f%2fblog.take4s5i.dev%2fposts%2f2021%2frust-closure%2f&name=Rust%e3%81%ae%e3%82%af%e3%83%ad%e3%83%bc%e3%82%b8%e3%83%a3%e3%82%92%e7%90%86%e8%a7%a3%e3%81%99%e3%82%8b&description=%e3%81%be%e3%81%9a%e3%81%afRust%e3%81%ae%e3%82%af%e3%83%ad%e3%83%bc%e3%82%b8%e3%83%a3%e3%82%92%e8%a6%8b%e3%81%a6%e3%81%bf%e3%81%be%e3%81%97%e3%82%87%e3%81%86%e3%80%82%0afn%20main%28%29%20%7b%20let%20nums%3a%20Vec%26lt%3bi32%26gt%3b%20%3d%20vec%21%5b1%2c2%2c3%2c4%2c5%5d%3b%20let%20y%3a%20i32%20%3d%202%3b%20let%20iter%20%3d%20nums%20.into_iter%28%29%20.map%28%7cx%7c%20x%20%2a%20y%29%3b%20for%20x%20in%20iter%20%7b%20println%21%28%26%2334%3b%7b%7d%26%2334%3b%2c%20x%29%3b%20%7d%20%7d%20%e5%87%ba%e5%8a%9b%3a%0a2%204%206%208%2010%20%7cx%7c%20x%20%2a%20y%20%e3%81%ae%e9%83%a8%e5%88%86%e3%81%8c%e3%82%af%e3%83%ad%e3%83%bc%e3%82%b8%e3%83%a3%e3%81%a7%e3%81%99%e3%81%ad%e3%80%82%20%e3%83%91%e3%83%83%e3%83%88%e8%a6%8b%e5%8d%98%e7%b4%94%e3%81%9d%e3%81%86%e3%81%ab%e8%a6%8b%e3%81%88%e3%81%be%e3%81%99%e3%81%8c%e3%80%81%e4%bb%96%e3%81%ae%e8%a8%80%e8%aa%9e%e3%81%ae%e3%82%af%e3%83%ad%e3%83%bc%e3%82%b8%e3%83%a3%e3%81%a8%e5%90%8c%e3%81%98%e3%82%88%e3%81%86%e3%81%ab%e4%bd%bf%e3%81%8a%e3%81%86%e3%81%a8%e3%81%99%e3%82%8b%e3%81%a8Rust%e3%81%ae%e3%83%a9%e3%82%a4%e3%83%95%e3%82%bf%e3%82%a4%e3%83%a0%e3%82%84%e6%89%80%e6%9c%89%e6%a8%a9%e3%81%a7%e8%ba%93%e3%81%8d%e3%81%be%e3%81%99%e3%80%82%0a%e4%be%8b%e3%81%88%e3%81%b0%e4%bb%a5%e4%b8%8b%e3%81%ae%e3%82%b3%e3%83%bc%e3%83%89%e3%80%82%20%e3%82%af%e3%83%ad%e3%83%bc%e3%82%b8%e3%83%a3%e3%81%ae%e5%85%a5%e9%96%80%e3%81%a8%e3%81%97%e3%81%a6%e3%82%88%e3%81%8f%e4%bd%bf%e3%82%8f%e3%82%8c%e3%81%a6%e3%81%84%e3%82%8b%ef%bc%9f%e5%91%bc%e3%81%b0%e3%82%8c%e3%81%9f%e5%9b%9e%e6%95%b0%e3%82%92%e3%82%ab%e3%82%a6%e3%83%b3%e3%83%88%e3%81%99%e3%82%8b%e9%96%a2%e6%95%b0%e3%81%a7%e3%81%99%e3%81%8c%e3%80%81%e3%81%93%e3%82%8c%e3%81%af%e3%82%b3%e3%83%b3%e3%83%91%e3%82%a4%e3%83%ab%e3%81%a7%e3%81%8d%e3%81%be%e3%81%9b%e3%82%93%e3%80%82%0afn%20counter%20%28%29%20-%26gt%3b%20Fn%28%29%20-%26gt%3b%20i32%20%7b%20let%20mut%20x%3a%20i32%20%3d%200%3b%20return%20%7c%7c%20%7b%20x%20%2b%3d%201%3b%20x%20%7d%20%7d%20fn%20main%28%29%20%7b%20let%20c%20%3d%20counter%28%29%3b%20println%21" aria-label="Tumblr">
+      <i class="fab fa-tumblr " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2fblog.take4s5i.dev%2fposts%2f2021%2frust-closure%2f&t=Rust%e3%81%ae%e3%82%af%e3%83%ad%e3%83%bc%e3%82%b8%e3%83%a3%e3%82%92%e7%90%86%e8%a7%a3%e3%81%99%e3%82%8b" aria-label="Hacker News">
+      <i class="fab fa-hacker-news " aria-hidden="true"></i>
+    </a>
+  </li>
+</ul>
+
+    </div>
+    
+    <div id="toc">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#rustのクロージャとは何なのか">Rustのクロージャとは何なのか</a></li>
+    <li><a href="#クロージャトレイト">クロージャトレイト</a></li>
+    <li><a href="#クロージャのcaptureと環境">クロージャのcaptureと環境</a></li>
+    <li><a href="#クロージャを引数に取る場合">クロージャを引数に取る場合</a></li>
+    <li><a href="#クロージャを返す場合">クロージャを返す場合</a></li>
+    <li><a href="#まとめ">まとめ</a></li>
+  </ul>
+</nav>
+    </div>
+    
+  </span>
+</div>
+
+
+  <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+    <header>
+      <h1 class="posttitle" itemprop="name headline">
+        Rustのクロージャを理解する
+      </h1>
+      <div class="meta">
+        
+        <div class="postdate">
+          
+          <time datetime="2021-12-16 00:00:00 &#43;0000 UTC" itemprop="datePublished">2021-12-16</time>
+          
+        </div>
+        
+        
+        
+        
+        <div class="article-tag">
+            <i class="fas fa-tag"></i>
+            
+            
+            <a class="tag-link" href="/tags/rust" rel="tag">rust</a>
+            
+        </div>
+        
+      </div>
+    </header>
+
+  
+    
+    <div class="content" itemprop="articleBody">
+      <p>まずはRustのクロージャを見てみましょう。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
+    <span style="color:#66d9ef">let</span> nums: Vec<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">i32</span><span style="color:#f92672">&gt;</span> <span style="color:#f92672">=</span> vec![<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">4</span>,<span style="color:#ae81ff">5</span>];
+    <span style="color:#66d9ef">let</span> y: <span style="color:#66d9ef">i32</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>;
+    <span style="color:#66d9ef">let</span> iter <span style="color:#f92672">=</span> nums
+        .into_iter()
+        .map(<span style="color:#f92672">|</span>x<span style="color:#f92672">|</span> x <span style="color:#f92672">*</span> y);
+
+    <span style="color:#66d9ef">for</span> x <span style="color:#66d9ef">in</span> iter {
+        println!(<span style="color:#e6db74">&#34;{}&#34;</span>, x);
+    }
+}
+</code></pre></div><p>出力:</p>
+<pre tabindex="0"><code>2
+4
+6
+8
+10
+</code></pre><p><code>|x| x * y</code> の部分がクロージャですね。
+パット見単純そうに見えますが、他の言語のクロージャと同じように使おうとするとRustのライフタイムや所有権で躓きます。</p>
+<p>例えば以下のコード。
+クロージャの入門としてよく使われている？呼ばれた回数をカウントする関数ですが、これはコンパイルできません。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">counter</span> () -&gt; Fn() -&gt; <span style="color:#66d9ef">i32</span> {
+    <span style="color:#66d9ef">let</span> <span style="color:#66d9ef">mut</span> x: <span style="color:#66d9ef">i32</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+    <span style="color:#66d9ef">return</span> <span style="color:#f92672">||</span> {
+        x <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>;
+        x
+    }
+}
+
+<span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
+    <span style="color:#66d9ef">let</span> c <span style="color:#f92672">=</span> counter();
+    println!(<span style="color:#e6db74">&#34;{}&#34;</span>, c());
+    println!(<span style="color:#e6db74">&#34;{}&#34;</span>, c());
+    println!(<span style="color:#e6db74">&#34;{}&#34;</span>, c());
+}
+</code></pre></div><h2 id="rustのクロージャとは何なのか">Rustのクロージャとは何なのか</h2>
+<p>Rustのクロージャとは<strong>特定のtraitを実装した構造体</strong>です。
+先ほどのコードは以下のような構造体がRustコンパイラによって生成されていると考えることができます（実際には動かないコードです)</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">MyClosure</span> {
+    x: <span style="color:#66d9ef">i32</span>
+}
+
+<span style="color:#66d9ef">impl</span> (Fn() -&gt; <span style="color:#66d9ef">i32</span>) <span style="color:#66d9ef">for</span> MyClosure {
+    call(<span style="color:#f92672">&amp;</span>self) -&gt; <span style="color:#66d9ef">i32</span> {
+        self.x <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>;
+        x
+    }
+}
+
+<span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">counter</span> () -&gt; <span style="color:#a6e22e">impl</span> Fn() -&gt; <span style="color:#66d9ef">i32</span> {
+    <span style="color:#66d9ef">let</span> <span style="color:#66d9ef">mut</span> x: <span style="color:#66d9ef">i32</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+    <span style="color:#66d9ef">return</span>  MyClosure { x };
+}
+
+<span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
+    <span style="color:#66d9ef">let</span> c <span style="color:#f92672">=</span> counter();
+    println!(<span style="color:#e6db74">&#34;{}&#34;</span>, c.call());
+    println!(<span style="color:#e6db74">&#34;{}&#34;</span>, c.call());
+    println!(<span style="color:#e6db74">&#34;{}&#34;</span>, c.call());
+}
+</code></pre></div><p>これで先ほどのコードがコンパイルできなかった理由がわかりやすくなりました。</p>
+<ul>
+<li><code>self.x += 1</code> としているが、<code>self</code>がミュータブルではない</li>
+<li><code>call</code>の型を<code>&amp;mut self</code>にするなら<code>c</code>も<code>let mut c</code>でなければならない。</li>
+</ul>
+<p>先ほどのコードを動くように直すとこのようになります。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">counter</span> () -&gt; <span style="color:#a6e22e">impl</span> FnMut() -&gt; <span style="color:#66d9ef">i32</span> {
+    <span style="color:#66d9ef">let</span> <span style="color:#66d9ef">mut</span> x: <span style="color:#66d9ef">i32</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">move</span> <span style="color:#f92672">||</span> {
+        x <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>;
+        x
+    }
+}
+
+<span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
+    <span style="color:#66d9ef">let</span> <span style="color:#66d9ef">mut</span> c <span style="color:#f92672">=</span> counter();
+    println!(<span style="color:#e6db74">&#34;{}&#34;</span>, c());
+    println!(<span style="color:#e6db74">&#34;{}&#34;</span>, c());
+    println!(<span style="color:#e6db74">&#34;{}&#34;</span>, c());
+}
+</code></pre></div><h2 id="クロージャトレイト">クロージャトレイト</h2>
+<p>Rustのクロージャは3種類あります。</p>
+<ul>
+<li><a href="https://doc.rust-lang.org/std/ops/trait.Fn.html">Fn</a></li>
+<li><a href="https://doc.rust-lang.org/std/ops/trait.FnMut.html">FnMut</a></li>
+<li><a href="https://doc.rust-lang.org/std/ops/trait.FnOnce.html">FnOnce</a></li>
+</ul>
+<p>トレイトの定義をこのようになっていますが、注目すべきは<code>self</code>の型です。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">pub</span> <span style="color:#66d9ef">trait</span> Fn<span style="color:#f92672">&lt;</span>Args<span style="color:#f92672">&gt;</span>: FnMut<span style="color:#f92672">&lt;</span>Args<span style="color:#f92672">&gt;</span> {
+    <span style="color:#66d9ef">extern</span> <span style="color:#e6db74">&#34;rust-call&#34;</span> <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">call</span>(<span style="color:#f92672">&amp;</span>self, args: <span style="color:#a6e22e">Args</span>) -&gt; <span style="color:#a6e22e">Self</span>::Output;
+}
+
+<span style="color:#66d9ef">pub</span> <span style="color:#66d9ef">trait</span> FnMut<span style="color:#f92672">&lt;</span>Args<span style="color:#f92672">&gt;</span>: FnOnce<span style="color:#f92672">&lt;</span>Args<span style="color:#f92672">&gt;</span> {
+    <span style="color:#66d9ef">extern</span> <span style="color:#e6db74">&#34;rust-call&#34;</span> <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">call_mut</span>(
+        <span style="color:#f92672">&amp;</span><span style="color:#66d9ef">mut</span> self,
+        args: <span style="color:#a6e22e">Args</span>
+    ) -&gt; <span style="color:#a6e22e">Self</span>::Output;
+}
+
+<span style="color:#66d9ef">pub</span> <span style="color:#66d9ef">trait</span> FnOnce<span style="color:#f92672">&lt;</span>Args<span style="color:#f92672">&gt;</span> {
+    <span style="color:#66d9ef">type</span> <span style="color:#a6e22e">Output</span>;
+    <span style="color:#66d9ef">extern</span> <span style="color:#e6db74">&#34;rust-call&#34;</span> <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">call_once</span>(self, args: <span style="color:#a6e22e">Args</span>) -&gt; <span style="color:#a6e22e">Self</span>::Output;
+}
+</code></pre></div><ul>
+<li><code>Fn</code>がイミュータブル参照<code>&amp;self</code></li>
+<li><code>FnMut</code>がミュータブル参照<code>&amp;mut self</code></li>
+<li><code>FnOnce</code>が所有権<code>self</code>
+を取ることがわかります。</li>
+</ul>
+<p>クロージャを構造体として考えると<code>FnOnce</code>がなぜ１度しか呼べないのかわかりやすいですね。</p>
+<h2 id="クロージャのcaptureと環境">クロージャのcaptureと環境</h2>
+<p>先ほどのこのコード</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">counter</span> () -&gt; <span style="color:#a6e22e">impl</span> FnMut() -&gt; <span style="color:#66d9ef">i32</span> {
+    <span style="color:#66d9ef">let</span> <span style="color:#66d9ef">mut</span> x: <span style="color:#66d9ef">i32</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">move</span> <span style="color:#f92672">||</span> {
+        x <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>;
+        x
+    }
+}
+</code></pre></div><p><code>x</code>はクロージャの中で参照されていますね。これをcaptureといいます。
+なので<code>x</code>はクロージャにcaptureされていると言えます。</p>
+<p>次にクロージャの構造体に相当する部分ですが、これをクロージャの<code>環境</code>と言ったりします。</p>
+<p>変数がcaptureされるときはRustコンパイラが型を推測します。</p>
+<p><a href="https://doc.rust-lang.org/reference/types/closure.html#capture-modes">ここ</a>に書いてあるように</p>
+<ul>
+<li>イミュータブル参照</li>
+<li>ミュータブル参照</li>
+<li>所有権
+の優先順になっているようです。</li>
+</ul>
+<p>先ほどの例でいうと、ミュータブル参照としてcaptureしようとするとクロージャのライフタイムが<code>x</code>のライフタイムより長くなってしまいます。
+そのため<code>move</code>キーワードを使ってRustコンパイラに所有権を渡すようにさせています。</p>
+<h2 id="クロージャを引数に取る場合">クロージャを引数に取る場合</h2>
+<ul>
+<li>ジェネリック</li>
+<li>implトレイト</li>
+<li>dynトレイト
+の３つがあります</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">closure_generic</span><span style="color:#f92672">&lt;</span>T: Fn(<span style="color:#66d9ef">i32</span>) -&gt; <span style="color:#66d9ef">i32</span><span style="color:#f92672">&gt;</span>(f: <span style="color:#a6e22e">T</span>) {
+    println!(<span style="color:#e6db74">&#34;generic {}&#34;</span>, f(<span style="color:#ae81ff">1</span>));
+}
+
+<span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">closure_impl</span>(f: <span style="color:#a6e22e">impl</span> Fn(<span style="color:#66d9ef">i32</span>) -&gt; <span style="color:#66d9ef">i32</span>) {
+    println!(<span style="color:#e6db74">&#34;impl {}&#34;</span>, f(<span style="color:#ae81ff">1</span>));
+}
+
+<span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">closure_dyn</span>(f: Box<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">dyn</span> Fn(<span style="color:#66d9ef">i32</span>) -&gt; <span style="color:#66d9ef">i32</span><span style="color:#f92672">&gt;</span>) {
+    println!(<span style="color:#e6db74">&#34;dyn {}&#34;</span>, f(<span style="color:#ae81ff">1</span>));
+}
+
+
+<span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
+    closure_generic(<span style="color:#f92672">|</span>x<span style="color:#f92672">|</span> x <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>);
+    closure_impl(<span style="color:#f92672">|</span>x<span style="color:#f92672">|</span> x <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>);
+    closure_dyn(Box::new(<span style="color:#f92672">|</span>x<span style="color:#f92672">|</span> x <span style="color:#f92672">+</span><span style="color:#ae81ff">1</span> ));
+}
+</code></pre></div><p>ジェネリックとimplトレイトについては引数に取る場合ほぼ同じです。(implトレイトのほうがシンプルでよさそうです。)
+implとdynについては静的ディスパッチするか動的ディスパッチするかの違いになります。
+dynの場合はトレイトオブジェクトを使っているのでBoxする必要があります。</p>
+<h2 id="クロージャを返す場合">クロージャを返す場合</h2>
+<ul>
+<li>implトレイト</li>
+<li>dynトレイト
+の２つがあります</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">closure_impl</span>() -&gt; <span style="color:#a6e22e">impl</span> Fn(<span style="color:#66d9ef">i32</span>) -&gt; <span style="color:#66d9ef">i32</span> {
+    <span style="color:#66d9ef">return</span> <span style="color:#f92672">|</span>x<span style="color:#f92672">|</span> x <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>;
+}
+
+<span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">closure_dyn</span>() -&gt; Box<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">dyn</span> Fn(<span style="color:#66d9ef">i32</span>) -&gt; <span style="color:#66d9ef">i32</span> <span style="color:#f92672">&gt;</span>{
+    <span style="color:#66d9ef">return</span> Box::new(<span style="color:#f92672">|</span>x<span style="color:#f92672">|</span> x <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>);
+}
+
+<span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
+    println!(<span style="color:#e6db74">&#34;impl {}&#34;</span>, closure_impl()(<span style="color:#ae81ff">1</span>));
+    println!(<span style="color:#e6db74">&#34;dyn {}&#34;</span>, closure_dyn()(<span style="color:#ae81ff">1</span>));
+}
+</code></pre></div><p>クロージャの型はRustコンパイラが生成するのでプログラマが知ることはできません。
+なのでジェネリックは使えずこの２パターンになります。</p>
+<p>静的ディスパッチ、動的ディスパッチは引数で渡すときと同じですが、戻り値で返す場合<code>dyn</code>じゃないと扱えない場合があります。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">closure_only_dyn</span>(flg: <span style="color:#66d9ef">bool</span>) -&gt; Box<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">dyn</span> Fn(<span style="color:#66d9ef">i32</span>) -&gt; <span style="color:#66d9ef">i32</span><span style="color:#f92672">&gt;</span> {
+    <span style="color:#66d9ef">if</span> flg { Box::new(<span style="color:#f92672">|</span>x<span style="color:#f92672">|</span> x <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>) } <span style="color:#66d9ef">else</span> { Box::new(<span style="color:#f92672">|</span>x<span style="color:#f92672">|</span> x <span style="color:#f92672">+</span> <span style="color:#ae81ff">2</span>) }
+}
+</code></pre></div><p>この関数のように条件によって異なるクロージャを返す場合です。
+<code>|x| x + 1</code>と<code>|x| x + 2</code>はシグネチャが同じで実装しているトレイトも同じですが、あくまで別の型として扱われます。
+そのためトレイトオブジェクトをつかった動的ディスパッチにする必要があります。</p>
+<h2 id="まとめ">まとめ</h2>
+<p>最初はよくわからなかったRustのクロージャですが、構造体であるということがわかったらだいぶ理解がはかどりました。
+参考になれば幸いです。</p>
+
+    </div>
+  </article>
+
+  
+  
+
+
+
+
+
+
+  <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/posts">Posts</a></li>
+         
+          <li><a href="/tags">Tags</a></li>
+        
+      </ul>
+    </div>
+
+    
+    <div id="toc-footer" style="display: none">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#rustのクロージャとは何なのか">Rustのクロージャとは何なのか</a></li>
+    <li><a href="#クロージャトレイト">クロージャトレイト</a></li>
+    <li><a href="#クロージャのcaptureと環境">クロージャのcaptureと環境</a></li>
+    <li><a href="#クロージャを引数に取る場合">クロージャを引数に取る場合</a></li>
+    <li><a href="#クロージャを返す場合">クロージャを返す場合</a></li>
+    <li><a href="#まとめ">まとめ</a></li>
+  </ul>
+</nav>
+    </div>
+    
+
+    <div id="share-footer" style="display: none">
+      
+      <ul>
+  
+  
+    
+  
+  
+  <li>
+    <a class="icon" href="http://www.facebook.com/sharer.php?u=https%3a%2f%2fblog.take4s5i.dev%2fposts%2f2021%2frust-closure%2f" aria-label="Facebook">
+      <i class="fab fa-facebook fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://twitter.com/share?url=https%3a%2f%2fblog.take4s5i.dev%2fposts%2f2021%2frust-closure%2f&text=Rust%e3%81%ae%e3%82%af%e3%83%ad%e3%83%bc%e3%82%b8%e3%83%a3%e3%82%92%e7%90%86%e8%a7%a3%e3%81%99%e3%82%8b" aria-label="Twitter">
+      <i class="fab fa-twitter fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://www.linkedin.com/shareArticle?url=https%3a%2f%2fblog.take4s5i.dev%2fposts%2f2021%2frust-closure%2f&title=Rust%e3%81%ae%e3%82%af%e3%83%ad%e3%83%bc%e3%82%b8%e3%83%a3%e3%82%92%e7%90%86%e8%a7%a3%e3%81%99%e3%82%8b" aria-label="Linkedin">
+      <i class="fab fa-linkedin fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https%3a%2f%2fblog.take4s5i.dev%2fposts%2f2021%2frust-closure%2f&is_video=false&description=Rust%e3%81%ae%e3%82%af%e3%83%ad%e3%83%bc%e3%82%b8%e3%83%a3%e3%82%92%e7%90%86%e8%a7%a3%e3%81%99%e3%82%8b" aria-label="Pinterest">
+      <i class="fab fa-pinterest fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="mailto:?subject=Rust%e3%81%ae%e3%82%af%e3%83%ad%e3%83%bc%e3%82%b8%e3%83%a3%e3%82%92%e7%90%86%e8%a7%a3%e3%81%99%e3%82%8b&body=Check out this article: https%3a%2f%2fblog.take4s5i.dev%2fposts%2f2021%2frust-closure%2f" aria-label="Email">
+      <i class="fas fa-envelope fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://getpocket.com/save?url=https%3a%2f%2fblog.take4s5i.dev%2fposts%2f2021%2frust-closure%2f&title=Rust%e3%81%ae%e3%82%af%e3%83%ad%e3%83%bc%e3%82%b8%e3%83%a3%e3%82%92%e7%90%86%e8%a7%a3%e3%81%99%e3%82%8b" aria-label="Pocket">
+      <i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://reddit.com/submit?url=https%3a%2f%2fblog.take4s5i.dev%2fposts%2f2021%2frust-closure%2f&title=Rust%e3%81%ae%e3%82%af%e3%83%ad%e3%83%bc%e3%82%b8%e3%83%a3%e3%82%92%e7%90%86%e8%a7%a3%e3%81%99%e3%82%8b" aria-label="reddit">
+      <i class="fab fa-reddit fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://www.tumblr.com/share/link?url=https%3a%2f%2fblog.take4s5i.dev%2fposts%2f2021%2frust-closure%2f&name=Rust%e3%81%ae%e3%82%af%e3%83%ad%e3%83%bc%e3%82%b8%e3%83%a3%e3%82%92%e7%90%86%e8%a7%a3%e3%81%99%e3%82%8b&description=%e3%81%be%e3%81%9a%e3%81%afRust%e3%81%ae%e3%82%af%e3%83%ad%e3%83%bc%e3%82%b8%e3%83%a3%e3%82%92%e8%a6%8b%e3%81%a6%e3%81%bf%e3%81%be%e3%81%97%e3%82%87%e3%81%86%e3%80%82%0afn%20main%28%29%20%7b%20let%20nums%3a%20Vec%26lt%3bi32%26gt%3b%20%3d%20vec%21%5b1%2c2%2c3%2c4%2c5%5d%3b%20let%20y%3a%20i32%20%3d%202%3b%20let%20iter%20%3d%20nums%20.into_iter%28%29%20.map%28%7cx%7c%20x%20%2a%20y%29%3b%20for%20x%20in%20iter%20%7b%20println%21%28%26%2334%3b%7b%7d%26%2334%3b%2c%20x%29%3b%20%7d%20%7d%20%e5%87%ba%e5%8a%9b%3a%0a2%204%206%208%2010%20%7cx%7c%20x%20%2a%20y%20%e3%81%ae%e9%83%a8%e5%88%86%e3%81%8c%e3%82%af%e3%83%ad%e3%83%bc%e3%82%b8%e3%83%a3%e3%81%a7%e3%81%99%e3%81%ad%e3%80%82%20%e3%83%91%e3%83%83%e3%83%88%e8%a6%8b%e5%8d%98%e7%b4%94%e3%81%9d%e3%81%86%e3%81%ab%e8%a6%8b%e3%81%88%e3%81%be%e3%81%99%e3%81%8c%e3%80%81%e4%bb%96%e3%81%ae%e8%a8%80%e8%aa%9e%e3%81%ae%e3%82%af%e3%83%ad%e3%83%bc%e3%82%b8%e3%83%a3%e3%81%a8%e5%90%8c%e3%81%98%e3%82%88%e3%81%86%e3%81%ab%e4%bd%bf%e3%81%8a%e3%81%86%e3%81%a8%e3%81%99%e3%82%8b%e3%81%a8Rust%e3%81%ae%e3%83%a9%e3%82%a4%e3%83%95%e3%82%bf%e3%82%a4%e3%83%a0%e3%82%84%e6%89%80%e6%9c%89%e6%a8%a9%e3%81%a7%e8%ba%93%e3%81%8d%e3%81%be%e3%81%99%e3%80%82%0a%e4%be%8b%e3%81%88%e3%81%b0%e4%bb%a5%e4%b8%8b%e3%81%ae%e3%82%b3%e3%83%bc%e3%83%89%e3%80%82%20%e3%82%af%e3%83%ad%e3%83%bc%e3%82%b8%e3%83%a3%e3%81%ae%e5%85%a5%e9%96%80%e3%81%a8%e3%81%97%e3%81%a6%e3%82%88%e3%81%8f%e4%bd%bf%e3%82%8f%e3%82%8c%e3%81%a6%e3%81%84%e3%82%8b%ef%bc%9f%e5%91%bc%e3%81%b0%e3%82%8c%e3%81%9f%e5%9b%9e%e6%95%b0%e3%82%92%e3%82%ab%e3%82%a6%e3%83%b3%e3%83%88%e3%81%99%e3%82%8b%e9%96%a2%e6%95%b0%e3%81%a7%e3%81%99%e3%81%8c%e3%80%81%e3%81%93%e3%82%8c%e3%81%af%e3%82%b3%e3%83%b3%e3%83%91%e3%82%a4%e3%83%ab%e3%81%a7%e3%81%8d%e3%81%be%e3%81%9b%e3%82%93%e3%80%82%0afn%20counter%20%28%29%20-%26gt%3b%20Fn%28%29%20-%26gt%3b%20i32%20%7b%20let%20mut%20x%3a%20i32%20%3d%200%3b%20return%20%7c%7c%20%7b%20x%20%2b%3d%201%3b%20x%20%7d%20%7d%20fn%20main%28%29%20%7b%20let%20c%20%3d%20counter%28%29%3b%20println%21" aria-label="Tumblr">
+      <i class="fab fa-tumblr fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2fblog.take4s5i.dev%2fposts%2f2021%2frust-closure%2f&t=Rust%e3%81%ae%e3%82%af%e3%83%ad%e3%83%bc%e3%82%b8%e3%83%a3%e3%82%92%e7%90%86%e8%a7%a3%e3%81%99%e3%82%8b" aria-label="Hacker News">
+      <i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+      
+        <a id="menu-toggle" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;" aria-label="Menu">
+          <i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        
+        <a id="toc-toggle" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;" aria-label="TOC">
+          <i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        
+        <a id="share-toggle" class="icon" href="#" onclick="$('#share-footer').toggle();return false;" aria-label="Share">
+          <i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" aria-label="Top of Page">
+          <i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+
+  <footer id="footer">
+  <div class="footer-left">
+    Copyright  &copy; 2021  6 bits blog 
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+        <li><a href="/">Home</a></li>
+         
+        <li><a href="/posts">Posts</a></li>
+         
+        <li><a href="/tags">Tags</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+
+  </div>
+</body>
+
+<link rel="stylesheet" href=/lib/font-awesome/css/all.min.css>
+<script src=/lib/jquery/jquery.min.js></script>
+<script src=/js/main.js></script>
+
+<script src=/js/code-copy.js></script>
+
+
+
+
+</html>

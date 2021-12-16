@@ -6,7 +6,20 @@
     <description>Recent content in rust on 6 bits blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Tue, 07 Dec 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.take4s5i.dev/tags/rust/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 16 Dec 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.take4s5i.dev/tags/rust/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Rustのクロージャを理解する</title>
+      <link>https://blog.take4s5i.dev/posts/2021/rust-closure/</link>
+      <pubDate>Thu, 16 Dec 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.take4s5i.dev/posts/2021/rust-closure/</guid>
+      <description>まずはRustのクロージャを見てみましょう。
+fn main() { let nums: Vec&amp;lt;i32&amp;gt; = vec![1,2,3,4,5]; let y: i32 = 2; let iter = nums .into_iter() .map(|x| x * y); for x in iter { println!(&amp;#34;{}&amp;#34;, x); } } 出力:
+2 4 6 8 10 |x| x * y の部分がクロージャですね。 パット見単純そうに見えますが、他の言語のクロージャと同じように使おうとするとRustのライフタイムや所有権で躓きます。
+例えば以下のコード。 クロージャの入門としてよく使われている？呼ばれた回数をカウントする関数ですが、これはコンパイルできません。
+fn counter () -&amp;gt; Fn() -&amp;gt; i32 { let mut x: i32 = 0; return || { x += 1; x } } fn main() { let c = counter(); println!</description>
+    </item>
+    
     <item>
       <title>[Rust] panic を理解する</title>
       <link>https://blog.take4s5i.dev/posts/2021/rust-understanding-panics/</link>
