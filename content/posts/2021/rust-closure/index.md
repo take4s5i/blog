@@ -1,6 +1,7 @@
 ---
-title: "Rsutのクロージャを理解する"
-date: 2021-12-17
+title: Rustのクロージャを理解する
+slug: rust-closure
+date: 2021-12-16
 draft: false
 tags:
   - rust
