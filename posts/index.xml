@@ -6,7 +6,21 @@
     <description>Recent content in Posts on 6 bits blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Thu, 16 Dec 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.take4s5i.dev/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 06 Jan 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.take4s5i.dev/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>[Rust] 並列処理に使うAPIたち(Mutex, RwLock, Barrier, Condvar)</title>
+      <link>https://blog.take4s5i.dev/posts/2022/rust-std-sync/</link>
+      <pubDate>Thu, 06 Jan 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.take4s5i.dev/posts/2022/rust-std-sync/</guid>
+      <description>最近業務でgoで並列処理を書くことがあり、Rustの場合はどうなっているのか気になったので調べてみました。
+std::syncモジュールの中をいろいろ見ていきたいと思います。
+Mutex まずは基本のMutexから。
+RustのMutexは単にロックを制御するだけではなく、ロックで守られたデータを持つことができます。 （データが不要で単にロックだけほしい場合はユニット型()を使えばよいですね）
+Mutexでカウンタをつくり、 4スレッド起動し、各スレッドで100回インクリメントを行います。 cntは400になるはずです。
+use std::sync::{Arc, Mutex, MutexGuard}; use std::thread; const N_THREADS: usize = 4; fn main() { let mut handles: Vec&amp;lt;thread::JoinHandle&amp;lt;_&amp;gt;&amp;gt; = Vec::with_capacity(N_THREADS); let mutex: Arc&amp;lt;Mutex&amp;lt;usize&amp;gt;&amp;gt; = Arc::new(Mutex::new(0)); for _ in 0..N_THREADS { let mutex = mutex.clone(); let handle = thread::spawn(move || { for _ in 0..100 { let mut cnt: MutexGuard&amp;lt;_&amp;gt; = mutex.lock().unwrap(); *cnt += 1; } }); handles.push(handle); } while let Some(handle) = handles.</description>
+    </item>
+    
     <item>
       <title>Rustのクロージャを理解する</title>
       <link>https://blog.take4s5i.dev/posts/2021/rust-closure/</link>
