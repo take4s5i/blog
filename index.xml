@@ -6,7 +6,19 @@
     <description>Recent content on 6 bits blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Thu, 06 Jan 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.take4s5i.dev/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 29 Jan 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.take4s5i.dev/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>[Rust] 並列処理に使うAPIたち2(Once, channel)</title>
+      <link>https://blog.take4s5i.dev/posts/2022/rust-std-sync2/</link>
+      <pubDate>Sat, 29 Jan 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.take4s5i.dev/posts/2022/rust-std-sync2/</guid>
+      <description>前回の続きで Once と mpsc を調べていきます。
+Once Once は static 変数の初期化に利用できます。
+Once を使うことで、複数スレッドから同時に初期処理が実行されても、一度だけ実行されることを保証できます。
+use std::collections::HashMap; use std::sync::Once; use std::thread; static mut CONFIG: Option&amp;lt;HashMap&amp;lt;String, String&amp;gt;&amp;gt; = None; static START: Once = Once::new(); fn get_config(key: &amp;amp;str) -&amp;gt; Option&amp;lt;String&amp;gt; { unsafe { START.call_once(|| { println!(&amp;#34;call_once&amp;#34;); CONFIG = Some(HashMap::new()); CONFIG .as_mut() .unwrap() .insert(&amp;#34;hoge&amp;#34;.to_owned(), &amp;#34;12345&amp;#34;.to_owned()); }); CONFIG.as_ref().unwrap().get(key).map(|v| v.clone()) } } fn main() { let mut handles = Vec::new(); for i in 0..10 { handles.push(thread::spawn(move || { println!</description>
+    </item>
+    
     <item>
       <title>[Rust] 並列処理に使うAPIたち(Mutex, RwLock, Barrier, Condvar)</title>
       <link>https://blog.take4s5i.dev/posts/2022/rust-std-sync/</link>
