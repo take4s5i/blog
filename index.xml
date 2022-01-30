@@ -20,6 +20,24 @@ use std::collections::HashMap; use std::sync::Once; use std::thread; static mut 
     </item>
     
     <item>
+      <title>Elastic Searchのobject, flattened, nestedの違い</title>
+      <link>https://blog.take4s5i.dev/posts/2022/elastic-search-object-types/</link>
+      <pubDate>Sat, 29 Jan 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.take4s5i.dev/posts/2022/elastic-search-object-types/</guid>
+      <description>Elastic Search の object 系の type について調べたのでまとめていきます。
+object objectは JSON のオブジェクトなどの データ構造をインデックスするのに使える型です。
+{ &amp;#34;user&amp;#34;: { &amp;#34;name&amp;#34;: &amp;#34;tanaka&amp;#34;, &amp;#34;age&amp;#34;: 20 } } このようなオブジェクトがあった場合
+{ &amp;#34;user.name&amp;#34;: &amp;#34;tanaka&amp;#34;, &amp;#34;user.age&amp;#34;: 20 } のようにフラットにされてインデックスされます。
+オブジェクトにすることでパフォーマンス的なデメリットは特になさそうだったので、 単純にフィールドを構造化して整理するのに利用すると良さそうです。
+ただし、オブジェクトの配列を持つ場合はおそらく意図した挙動にならないので注意が必要です。
+例えば以下のようなデータがあったとします
+{ &amp;#34;skills&amp;#34;: [ { &amp;#34;name&amp;#34;: &amp;#34;ElasticSearch&amp;#34;, &amp;#34;level&amp;#34;: &amp;#34;newbie&amp;#34; }, { &amp;#34;name&amp;#34;: &amp;#34;Typescript&amp;#34;, &amp;#34;level&amp;#34;: &amp;#34;advanced&amp;#34; } ] } これは次のようにインデックスされます。
+{ &amp;#34;skills.name&amp;#34;: [&amp;#34;ElasticSearch&amp;#34;, &amp;#34;Typescript&amp;#34;], &amp;#34;skills.level&amp;#34;: [&amp;#34;newbie&amp;#34;, &amp;#34;advanced&amp;#34;] } フラットにされてしまうことで、name と level の関係性が失われてしまいます。
+{ &amp;#34;query&amp;#34;: { &amp;#34;bool&amp;#34;: { &amp;#34;must&amp;#34;: [ { &amp;#34;term&amp;#34;: { &amp;#34;skills.</description>
+    </item>
+    
+    <item>
       <title>[Rust] 並列処理に使うAPIたち(Mutex, RwLock, Barrier, Condvar)</title>
       <link>https://blog.take4s5i.dev/posts/2022/rust-std-sync/</link>
       <pubDate>Thu, 06 Jan 2022 00:00:00 +0000</pubDate>
