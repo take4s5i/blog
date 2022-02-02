@@ -1,6 +1,5 @@
 ---
 title: "Elastic Searchのobject, flattened, nestedの違い"
-slug: elastic-search-object-types
 date: 2022-01-29
 draft: false
 tags:

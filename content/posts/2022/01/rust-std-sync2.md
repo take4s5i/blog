@@ -1,6 +1,5 @@
 ---
 title: "[Rust] 並列処理に使うAPIたち2(Once, channel)"
-slug: rust-std-sync2
 date: 2022-01-29
 draft: false
 tags:

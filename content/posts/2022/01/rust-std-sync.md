@@ -1,6 +1,5 @@
 ---
 title: "[Rust] 並列処理に使うAPIたち(Mutex, RwLock, Barrier, Condvar)"
-slug: rust-std-sync
 date: 2022-01-06
 draft: false
 tags:

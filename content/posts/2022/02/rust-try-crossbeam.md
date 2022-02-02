@@ -1,6 +1,6 @@
 ---
 title: "Rustのcrossbeamを試してみる"
-date: 2022-01-31
+date: 2022-02-03
 draft: false
 tags:
   - rust

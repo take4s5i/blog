@@ -3,6 +3,7 @@ languageCode = 'ja-jp'
 title = '6 bits blog'
 theme = 'cactus'
 googleAnalytics = 'G-EL27BW0FWC'
+timeZone = 'Asia/Tokyo'
 
 [[menu.main]]
 name = "Home"
@@ -23,3 +24,6 @@ weight = 3
 # name = "About"
 # url = "/about"
 # weight = 4
+
+[params]
+  showAllPostsOnHomePage = true
