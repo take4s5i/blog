@@ -6,22 +6,31 @@
     <description>Recent content in Tags on 6 bits blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Sat, 29 Jan 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.take4s5i.dev/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 31 Jan 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.take4s5i.dev/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>elasticsearch</title>
-      <link>https://blog.take4s5i.dev/tags/elasticsearch/</link>
-      <pubDate>Sat, 29 Jan 2022 00:00:00 +0000</pubDate>
+      <title>corssbeam</title>
+      <link>https://blog.take4s5i.dev/tags/corssbeam/</link>
+      <pubDate>Mon, 31 Jan 2022 00:00:00 +0000</pubDate>
       
-      <guid>https://blog.take4s5i.dev/tags/elasticsearch/</guid>
+      <guid>https://blog.take4s5i.dev/tags/corssbeam/</guid>
       <description></description>
     </item>
     
     <item>
       <title>rust</title>
       <link>https://blog.take4s5i.dev/tags/rust/</link>
-      <pubDate>Sat, 29 Jan 2022 00:00:00 +0000</pubDate>
+      <pubDate>Mon, 31 Jan 2022 00:00:00 +0000</pubDate>
       
       <guid>https://blog.take4s5i.dev/tags/rust/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>elasticsearch</title>
+      <link>https://blog.take4s5i.dev/tags/elasticsearch/</link>
+      <pubDate>Sat, 29 Jan 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.take4s5i.dev/tags/elasticsearch/</guid>
       <description></description>
     </item>
     

@@ -6,7 +6,24 @@
     <description>Recent content in Posts on 6 bits blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Sat, 29 Jan 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.take4s5i.dev/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 31 Jan 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.take4s5i.dev/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Rustのcrossbeamを試してみる</title>
+      <link>https://blog.take4s5i.dev/posts/2022/rust-try-crossbeam/</link>
+      <pubDate>Mon, 31 Jan 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.take4s5i.dev/posts/2022/rust-try-crossbeam/</guid>
+      <description>Rustのライブラリであるcrossbeamを試してみます。
+crossbeamは公式の説明によると
+This crate provides a set of tools for concurrent programming  このcrateは並列プログラミングのためのツールセットを提供する、とあります。
+並列プログラミングを行う際のデータ構造や便利な関数が実装されているようです。 それではみていきます。
+crossbeam::scope crossbeam::scope関数は スコープ付きのスレッドを作ることができます。
+スコープ付きというのはライフタイムが制限されているということです。 通常のスレッドはいつまでスレッドが生きるのかわからないため、スレッドの外から借用するには&#39;staticライフタイムが必要でした。
+スコープ付きスレッドを使うと、Rustコンパイラがスレッドのライフタイムを認識してくれるため、 &#39;static出なくてもデータを借用できるようになります。
+std::threadでの例 まずはcrossbeamを使わない普通のstd::threadのコードをみていきます。
+use std::{ collections::HashMap, fs, sync::{Arc, Mutex}, }; fn main() { let files = vec![&amp;#34;a.txt&amp;#34;, &amp;#34;b.txt&amp;#34;, &amp;#34;c.txt&amp;#34;]; let contents: Arc&amp;lt;Mutex&amp;lt;HashMap&amp;lt;String, String&amp;gt;&amp;gt;&amp;gt; = Arc::new(Mutex::new(HashMap::new())); let mut h = vec![]; // --------- ここでエラー  for file in files.iter() { let file = file; let contents = contents.clone(); h.push(std::thread::spawn(move || { let s = fs::read_to_string(file).</description>
+    </item>
+    
     <item>
       <title>[Rust] 並列処理に使うAPIたち2(Once, channel)</title>
       <link>https://blog.take4s5i.dev/posts/2022/rust-std-sync2/</link>
