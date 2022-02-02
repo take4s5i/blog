@@ -10,7 +10,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title> [Rust] panic を理解する | 6 bits blog</title>
-  <link rel = 'canonical' href = 'https://blog.take4s5i.dev/posts/2021/rust-understanding-panics/'>
+  <link rel = 'canonical' href = 'https://blog.take4s5i.dev/posts/2021/12/rust-understanding-panics/'>
   
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="all,follow">
@@ -20,9 +20,9 @@
 panic したときの挙動 #[derive(Debug)] struct Data(u32); impl Drop for Data { fn drop(&amp;mut self){ println!(&#34;drop {:?}&#34;, self); } } fn call_recurse(n: u32) { if n == 0 { panic!(&#34;panic!&#34;); } let data = Data(n); call_recurse(n - 1); println!(&#34;return: {:?}&#34;, data); } fn main() { call_recurse(4); } 出力:
  Compiling playground v0.0.1 (/playground) Finished dev [unoptimized &#43; debuginfo] target(s) in 1.07s Running `target/debug/playground` thread &#39;main&#39; panicked at &#39;panic!&#39;, src/main.rs:12:9 note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace drop Data(1) drop Data(2) drop Data(3) drop Data(4) Drop トレイトを実装した構造体の生存中にpanicしたところ、ちゃんとdropされました。 この挙動はunwindingというようです。" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://blog.take4s5i.dev/posts/2021/rust-understanding-panics/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2021-12-07T00:00:00+00:00" />
-<meta property="article:modified_time" content="2021-12-07T00:00:00+00:00" />
+<meta property="og:url" content="https://blog.take4s5i.dev/posts/2021/12/rust-understanding-panics/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-12-07T00:00:00+09:00" />
+<meta property="article:modified_time" content="2021-12-07T00:00:00+09:00" />
 
 
   <meta name="twitter:card" content="summary"/>
@@ -92,7 +92,7 @@ if (!doNotTrack) {
         
         
         <li>
-          <a class="icon" href="https://blog.take4s5i.dev/posts/2021/rust-closure/" aria-label="Next">
+          <a class="icon" href="https://blog.take4s5i.dev/posts/2021/12/rust-closure/" aria-label="Next">
             <i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i>
           </a>
         </li>
@@ -123,47 +123,47 @@ if (!doNotTrack) {
   
   
   <li>
-    <a class="icon" href="http://www.facebook.com/sharer.php?u=https%3a%2f%2fblog.take4s5i.dev%2fposts%2f2021%2frust-understanding-panics%2f" aria-label="Facebook">
+    <a class="icon" href="http://www.facebook.com/sharer.php?u=https%3a%2f%2fblog.take4s5i.dev%2fposts%2f2021%2f12%2frust-understanding-panics%2f" aria-label="Facebook">
       <i class="fab fa-facebook " aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="https://twitter.com/share?url=https%3a%2f%2fblog.take4s5i.dev%2fposts%2f2021%2frust-understanding-panics%2f&text=%5bRust%5d%20panic%20%e3%82%92%e7%90%86%e8%a7%a3%e3%81%99%e3%82%8b" aria-label="Twitter">
+    <a class="icon" href="https://twitter.com/share?url=https%3a%2f%2fblog.take4s5i.dev%2fposts%2f2021%2f12%2frust-understanding-panics%2f&text=%5bRust%5d%20panic%20%e3%82%92%e7%90%86%e8%a7%a3%e3%81%99%e3%82%8b" aria-label="Twitter">
       <i class="fab fa-twitter " aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="http://www.linkedin.com/shareArticle?url=https%3a%2f%2fblog.take4s5i.dev%2fposts%2f2021%2frust-understanding-panics%2f&title=%5bRust%5d%20panic%20%e3%82%92%e7%90%86%e8%a7%a3%e3%81%99%e3%82%8b" aria-label="Linkedin">
+    <a class="icon" href="http://www.linkedin.com/shareArticle?url=https%3a%2f%2fblog.take4s5i.dev%2fposts%2f2021%2f12%2frust-understanding-panics%2f&title=%5bRust%5d%20panic%20%e3%82%92%e7%90%86%e8%a7%a3%e3%81%99%e3%82%8b" aria-label="Linkedin">
       <i class="fab fa-linkedin " aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https%3a%2f%2fblog.take4s5i.dev%2fposts%2f2021%2frust-understanding-panics%2f&is_video=false&description=%5bRust%5d%20panic%20%e3%82%92%e7%90%86%e8%a7%a3%e3%81%99%e3%82%8b" aria-label="Pinterest">
+    <a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https%3a%2f%2fblog.take4s5i.dev%2fposts%2f2021%2f12%2frust-understanding-panics%2f&is_video=false&description=%5bRust%5d%20panic%20%e3%82%92%e7%90%86%e8%a7%a3%e3%81%99%e3%82%8b" aria-label="Pinterest">
       <i class="fab fa-pinterest " aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="mailto:?subject=%5bRust%5d%20panic%20%e3%82%92%e7%90%86%e8%a7%a3%e3%81%99%e3%82%8b&body=Check out this article: https%3a%2f%2fblog.take4s5i.dev%2fposts%2f2021%2frust-understanding-panics%2f" aria-label="Email">
+    <a class="icon" href="mailto:?subject=%5bRust%5d%20panic%20%e3%82%92%e7%90%86%e8%a7%a3%e3%81%99%e3%82%8b&body=Check out this article: https%3a%2f%2fblog.take4s5i.dev%2fposts%2f2021%2f12%2frust-understanding-panics%2f" aria-label="Email">
       <i class="fas fa-envelope " aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="https://getpocket.com/save?url=https%3a%2f%2fblog.take4s5i.dev%2fposts%2f2021%2frust-understanding-panics%2f&title=%5bRust%5d%20panic%20%e3%82%92%e7%90%86%e8%a7%a3%e3%81%99%e3%82%8b" aria-label="Pocket">
+    <a class="icon" href="https://getpocket.com/save?url=https%3a%2f%2fblog.take4s5i.dev%2fposts%2f2021%2f12%2frust-understanding-panics%2f&title=%5bRust%5d%20panic%20%e3%82%92%e7%90%86%e8%a7%a3%e3%81%99%e3%82%8b" aria-label="Pocket">
       <i class="fab fa-get-pocket " aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="http://reddit.com/submit?url=https%3a%2f%2fblog.take4s5i.dev%2fposts%2f2021%2frust-understanding-panics%2f&title=%5bRust%5d%20panic%20%e3%82%92%e7%90%86%e8%a7%a3%e3%81%99%e3%82%8b" aria-label="reddit">
+    <a class="icon" href="http://reddit.com/submit?url=https%3a%2f%2fblog.take4s5i.dev%2fposts%2f2021%2f12%2frust-understanding-panics%2f&title=%5bRust%5d%20panic%20%e3%82%92%e7%90%86%e8%a7%a3%e3%81%99%e3%82%8b" aria-label="reddit">
       <i class="fab fa-reddit " aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="http://www.tumblr.com/share/link?url=https%3a%2f%2fblog.take4s5i.dev%2fposts%2f2021%2frust-understanding-panics%2f&name=%5bRust%5d%20panic%20%e3%82%92%e7%90%86%e8%a7%a3%e3%81%99%e3%82%8b&description=panic%e3%81%97%e3%81%9f%e3%82%89%e7%95%b0%e5%b8%b8%e7%b5%82%e4%ba%86%e3%81%99%e3%82%8b%e3%81%90%e3%82%89%e3%81%84%e3%81%ab%e3%81%97%e3%81%8b%e7%90%86%e8%a7%a3%e3%81%97%e3%81%a6%e3%81%84%e3%81%aa%e3%81%8b%e3%81%a3%e3%81%9f%e3%81%ae%e3%81%a7%e3%80%82%20%e3%81%84%e3%82%8d%e3%81%84%e3%82%8d%e8%aa%bf%e3%81%b9%e3%81%9f%e3%82%8a%e5%ae%9f%e9%a8%93%e3%81%97%e3%81%9f%e3%82%8a%e3%81%97%e3%81%a6%e3%81%bf%e3%81%be%e3%81%97%e3%81%9f%e3%80%82%0apanic%20%e3%81%97%e3%81%9f%e3%81%a8%e3%81%8d%e3%81%ae%e6%8c%99%e5%8b%95%20%23%5bderive%28Debug%29%5d%20struct%20Data%28u32%29%3b%20impl%20Drop%20for%20Data%20%7b%20fn%20drop%28%26amp%3bmut%20self%29%7b%20println%21%28%26%2334%3bdrop%20%7b%3a%3f%7d%26%2334%3b%2c%20self%29%3b%20%7d%20%7d%20fn%20call_recurse%28n%3a%20u32%29%20%7b%20if%20n%20%3d%3d%200%20%7b%20panic%21%28%26%2334%3bpanic%21%26%2334%3b%29%3b%20%7d%20let%20data%20%3d%20Data%28n%29%3b%20call_recurse%28n%20-%201%29%3b%20println%21%28%26%2334%3breturn%3a%20%7b%3a%3f%7d%26%2334%3b%2c%20data%29%3b%20%7d%20fn%20main%28%29%20%7b%20call_recurse%284%29%3b%20%7d%20%e5%87%ba%e5%8a%9b%3a%0a%20Compiling%20playground%20v0.0.1%20%28%2fplayground%29%20Finished%20dev%20%5bunoptimized%20%2b%20debuginfo%5d%20target%28s%29%20in%201.07s%20Running%20%60target%2fdebug%2fplayground%60%20thread%20%27main%27%20panicked%20at%20%27panic%21%27%2c%20src%2fmain.rs%3a12%3a9%20note%3a%20run%20with%20%60RUST_BACKTRACE%3d1%60%20environment%20variable%20to%20display%20a%20backtrace%20drop%20Data%281%29%20drop%20Data%282%29%20drop%20Data%283%29%20drop%20Data%284%29%20Drop%20%e3%83%88%e3%83%ac%e3%82%a4%e3%83%88%e3%82%92%e5%ae%9f%e8%a3%85%e3%81%97%e3%81%9f%e6%a7%8b%e9%80%a0%e4%bd%93%e3%81%ae%e7%94%9f%e5%ad%98%e4%b8%ad%e3%81%abpanic%e3%81%97%e3%81%9f%e3%81%a8%e3%81%93%e3%82%8d%e3%80%81%e3%81%a1%e3%82%83%e3%82%93%e3%81%a8drop%e3%81%95%e3%82%8c%e3%81%be%e3%81%97%e3%81%9f%e3%80%82%20%e3%81%93%e3%81%ae%e6%8c%99%e5%8b%95%e3%81%afunwinding%e3%81%a8%e3%81%84%e3%81%86%e3%82%88%e3%81%86%e3%81%a7%e3%81%99%e3%80%82" aria-label="Tumblr">
+    <a class="icon" href="http://www.tumblr.com/share/link?url=https%3a%2f%2fblog.take4s5i.dev%2fposts%2f2021%2f12%2frust-understanding-panics%2f&name=%5bRust%5d%20panic%20%e3%82%92%e7%90%86%e8%a7%a3%e3%81%99%e3%82%8b&description=panic%e3%81%97%e3%81%9f%e3%82%89%e7%95%b0%e5%b8%b8%e7%b5%82%e4%ba%86%e3%81%99%e3%82%8b%e3%81%90%e3%82%89%e3%81%84%e3%81%ab%e3%81%97%e3%81%8b%e7%90%86%e8%a7%a3%e3%81%97%e3%81%a6%e3%81%84%e3%81%aa%e3%81%8b%e3%81%a3%e3%81%9f%e3%81%ae%e3%81%a7%e3%80%82%20%e3%81%84%e3%82%8d%e3%81%84%e3%82%8d%e8%aa%bf%e3%81%b9%e3%81%9f%e3%82%8a%e5%ae%9f%e9%a8%93%e3%81%97%e3%81%9f%e3%82%8a%e3%81%97%e3%81%a6%e3%81%bf%e3%81%be%e3%81%97%e3%81%9f%e3%80%82%0apanic%20%e3%81%97%e3%81%9f%e3%81%a8%e3%81%8d%e3%81%ae%e6%8c%99%e5%8b%95%20%23%5bderive%28Debug%29%5d%20struct%20Data%28u32%29%3b%20impl%20Drop%20for%20Data%20%7b%20fn%20drop%28%26amp%3bmut%20self%29%7b%20println%21%28%26%2334%3bdrop%20%7b%3a%3f%7d%26%2334%3b%2c%20self%29%3b%20%7d%20%7d%20fn%20call_recurse%28n%3a%20u32%29%20%7b%20if%20n%20%3d%3d%200%20%7b%20panic%21%28%26%2334%3bpanic%21%26%2334%3b%29%3b%20%7d%20let%20data%20%3d%20Data%28n%29%3b%20call_recurse%28n%20-%201%29%3b%20println%21%28%26%2334%3breturn%3a%20%7b%3a%3f%7d%26%2334%3b%2c%20data%29%3b%20%7d%20fn%20main%28%29%20%7b%20call_recurse%284%29%3b%20%7d%20%e5%87%ba%e5%8a%9b%3a%0a%20Compiling%20playground%20v0.0.1%20%28%2fplayground%29%20Finished%20dev%20%5bunoptimized%20%2b%20debuginfo%5d%20target%28s%29%20in%201.07s%20Running%20%60target%2fdebug%2fplayground%60%20thread%20%27main%27%20panicked%20at%20%27panic%21%27%2c%20src%2fmain.rs%3a12%3a9%20note%3a%20run%20with%20%60RUST_BACKTRACE%3d1%60%20environment%20variable%20to%20display%20a%20backtrace%20drop%20Data%281%29%20drop%20Data%282%29%20drop%20Data%283%29%20drop%20Data%284%29%20Drop%20%e3%83%88%e3%83%ac%e3%82%a4%e3%83%88%e3%82%92%e5%ae%9f%e8%a3%85%e3%81%97%e3%81%9f%e6%a7%8b%e9%80%a0%e4%bd%93%e3%81%ae%e7%94%9f%e5%ad%98%e4%b8%ad%e3%81%abpanic%e3%81%97%e3%81%9f%e3%81%a8%e3%81%93%e3%82%8d%e3%80%81%e3%81%a1%e3%82%83%e3%82%93%e3%81%a8drop%e3%81%95%e3%82%8c%e3%81%be%e3%81%97%e3%81%9f%e3%80%82%20%e3%81%93%e3%81%ae%e6%8c%99%e5%8b%95%e3%81%afunwinding%e3%81%a8%e3%81%84%e3%81%86%e3%82%88%e3%81%86%e3%81%a7%e3%81%99%e3%80%82" aria-label="Tumblr">
       <i class="fab fa-tumblr " aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2fblog.take4s5i.dev%2fposts%2f2021%2frust-understanding-panics%2f&t=%5bRust%5d%20panic%20%e3%82%92%e7%90%86%e8%a7%a3%e3%81%99%e3%82%8b" aria-label="Hacker News">
+    <a class="icon" href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2fblog.take4s5i.dev%2fposts%2f2021%2f12%2frust-understanding-panics%2f&t=%5bRust%5d%20panic%20%e3%82%92%e7%90%86%e8%a7%a3%e3%81%99%e3%82%8b" aria-label="Hacker News">
       <i class="fab fa-hacker-news " aria-hidden="true"></i>
     </a>
   </li>
@@ -200,7 +200,7 @@ if (!doNotTrack) {
         
         <div class="postdate">
           
-          <time datetime="2021-12-07 00:00:00 &#43;0000 UTC" itemprop="datePublished">2021-12-07</time>
+          <time datetime="2021-12-07 00:00:00 &#43;0900 JST" itemprop="datePublished">2021-12-07</time>
           
         </div>
         
@@ -381,47 +381,47 @@ paniced
   
   
   <li>
-    <a class="icon" href="http://www.facebook.com/sharer.php?u=https%3a%2f%2fblog.take4s5i.dev%2fposts%2f2021%2frust-understanding-panics%2f" aria-label="Facebook">
+    <a class="icon" href="http://www.facebook.com/sharer.php?u=https%3a%2f%2fblog.take4s5i.dev%2fposts%2f2021%2f12%2frust-understanding-panics%2f" aria-label="Facebook">
       <i class="fab fa-facebook fa-lg" aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="https://twitter.com/share?url=https%3a%2f%2fblog.take4s5i.dev%2fposts%2f2021%2frust-understanding-panics%2f&text=%5bRust%5d%20panic%20%e3%82%92%e7%90%86%e8%a7%a3%e3%81%99%e3%82%8b" aria-label="Twitter">
+    <a class="icon" href="https://twitter.com/share?url=https%3a%2f%2fblog.take4s5i.dev%2fposts%2f2021%2f12%2frust-understanding-panics%2f&text=%5bRust%5d%20panic%20%e3%82%92%e7%90%86%e8%a7%a3%e3%81%99%e3%82%8b" aria-label="Twitter">
       <i class="fab fa-twitter fa-lg" aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="http://www.linkedin.com/shareArticle?url=https%3a%2f%2fblog.take4s5i.dev%2fposts%2f2021%2frust-understanding-panics%2f&title=%5bRust%5d%20panic%20%e3%82%92%e7%90%86%e8%a7%a3%e3%81%99%e3%82%8b" aria-label="Linkedin">
+    <a class="icon" href="http://www.linkedin.com/shareArticle?url=https%3a%2f%2fblog.take4s5i.dev%2fposts%2f2021%2f12%2frust-understanding-panics%2f&title=%5bRust%5d%20panic%20%e3%82%92%e7%90%86%e8%a7%a3%e3%81%99%e3%82%8b" aria-label="Linkedin">
       <i class="fab fa-linkedin fa-lg" aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https%3a%2f%2fblog.take4s5i.dev%2fposts%2f2021%2frust-understanding-panics%2f&is_video=false&description=%5bRust%5d%20panic%20%e3%82%92%e7%90%86%e8%a7%a3%e3%81%99%e3%82%8b" aria-label="Pinterest">
+    <a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https%3a%2f%2fblog.take4s5i.dev%2fposts%2f2021%2f12%2frust-understanding-panics%2f&is_video=false&description=%5bRust%5d%20panic%20%e3%82%92%e7%90%86%e8%a7%a3%e3%81%99%e3%82%8b" aria-label="Pinterest">
       <i class="fab fa-pinterest fa-lg" aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="mailto:?subject=%5bRust%5d%20panic%20%e3%82%92%e7%90%86%e8%a7%a3%e3%81%99%e3%82%8b&body=Check out this article: https%3a%2f%2fblog.take4s5i.dev%2fposts%2f2021%2frust-understanding-panics%2f" aria-label="Email">
+    <a class="icon" href="mailto:?subject=%5bRust%5d%20panic%20%e3%82%92%e7%90%86%e8%a7%a3%e3%81%99%e3%82%8b&body=Check out this article: https%3a%2f%2fblog.take4s5i.dev%2fposts%2f2021%2f12%2frust-understanding-panics%2f" aria-label="Email">
       <i class="fas fa-envelope fa-lg" aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="https://getpocket.com/save?url=https%3a%2f%2fblog.take4s5i.dev%2fposts%2f2021%2frust-understanding-panics%2f&title=%5bRust%5d%20panic%20%e3%82%92%e7%90%86%e8%a7%a3%e3%81%99%e3%82%8b" aria-label="Pocket">
+    <a class="icon" href="https://getpocket.com/save?url=https%3a%2f%2fblog.take4s5i.dev%2fposts%2f2021%2f12%2frust-understanding-panics%2f&title=%5bRust%5d%20panic%20%e3%82%92%e7%90%86%e8%a7%a3%e3%81%99%e3%82%8b" aria-label="Pocket">
       <i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="http://reddit.com/submit?url=https%3a%2f%2fblog.take4s5i.dev%2fposts%2f2021%2frust-understanding-panics%2f&title=%5bRust%5d%20panic%20%e3%82%92%e7%90%86%e8%a7%a3%e3%81%99%e3%82%8b" aria-label="reddit">
+    <a class="icon" href="http://reddit.com/submit?url=https%3a%2f%2fblog.take4s5i.dev%2fposts%2f2021%2f12%2frust-understanding-panics%2f&title=%5bRust%5d%20panic%20%e3%82%92%e7%90%86%e8%a7%a3%e3%81%99%e3%82%8b" aria-label="reddit">
       <i class="fab fa-reddit fa-lg" aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="http://www.tumblr.com/share/link?url=https%3a%2f%2fblog.take4s5i.dev%2fposts%2f2021%2frust-understanding-panics%2f&name=%5bRust%5d%20panic%20%e3%82%92%e7%90%86%e8%a7%a3%e3%81%99%e3%82%8b&description=panic%e3%81%97%e3%81%9f%e3%82%89%e7%95%b0%e5%b8%b8%e7%b5%82%e4%ba%86%e3%81%99%e3%82%8b%e3%81%90%e3%82%89%e3%81%84%e3%81%ab%e3%81%97%e3%81%8b%e7%90%86%e8%a7%a3%e3%81%97%e3%81%a6%e3%81%84%e3%81%aa%e3%81%8b%e3%81%a3%e3%81%9f%e3%81%ae%e3%81%a7%e3%80%82%20%e3%81%84%e3%82%8d%e3%81%84%e3%82%8d%e8%aa%bf%e3%81%b9%e3%81%9f%e3%82%8a%e5%ae%9f%e9%a8%93%e3%81%97%e3%81%9f%e3%82%8a%e3%81%97%e3%81%a6%e3%81%bf%e3%81%be%e3%81%97%e3%81%9f%e3%80%82%0apanic%20%e3%81%97%e3%81%9f%e3%81%a8%e3%81%8d%e3%81%ae%e6%8c%99%e5%8b%95%20%23%5bderive%28Debug%29%5d%20struct%20Data%28u32%29%3b%20impl%20Drop%20for%20Data%20%7b%20fn%20drop%28%26amp%3bmut%20self%29%7b%20println%21%28%26%2334%3bdrop%20%7b%3a%3f%7d%26%2334%3b%2c%20self%29%3b%20%7d%20%7d%20fn%20call_recurse%28n%3a%20u32%29%20%7b%20if%20n%20%3d%3d%200%20%7b%20panic%21%28%26%2334%3bpanic%21%26%2334%3b%29%3b%20%7d%20let%20data%20%3d%20Data%28n%29%3b%20call_recurse%28n%20-%201%29%3b%20println%21%28%26%2334%3breturn%3a%20%7b%3a%3f%7d%26%2334%3b%2c%20data%29%3b%20%7d%20fn%20main%28%29%20%7b%20call_recurse%284%29%3b%20%7d%20%e5%87%ba%e5%8a%9b%3a%0a%20Compiling%20playground%20v0.0.1%20%28%2fplayground%29%20Finished%20dev%20%5bunoptimized%20%2b%20debuginfo%5d%20target%28s%29%20in%201.07s%20Running%20%60target%2fdebug%2fplayground%60%20thread%20%27main%27%20panicked%20at%20%27panic%21%27%2c%20src%2fmain.rs%3a12%3a9%20note%3a%20run%20with%20%60RUST_BACKTRACE%3d1%60%20environment%20variable%20to%20display%20a%20backtrace%20drop%20Data%281%29%20drop%20Data%282%29%20drop%20Data%283%29%20drop%20Data%284%29%20Drop%20%e3%83%88%e3%83%ac%e3%82%a4%e3%83%88%e3%82%92%e5%ae%9f%e8%a3%85%e3%81%97%e3%81%9f%e6%a7%8b%e9%80%a0%e4%bd%93%e3%81%ae%e7%94%9f%e5%ad%98%e4%b8%ad%e3%81%abpanic%e3%81%97%e3%81%9f%e3%81%a8%e3%81%93%e3%82%8d%e3%80%81%e3%81%a1%e3%82%83%e3%82%93%e3%81%a8drop%e3%81%95%e3%82%8c%e3%81%be%e3%81%97%e3%81%9f%e3%80%82%20%e3%81%93%e3%81%ae%e6%8c%99%e5%8b%95%e3%81%afunwinding%e3%81%a8%e3%81%84%e3%81%86%e3%82%88%e3%81%86%e3%81%a7%e3%81%99%e3%80%82" aria-label="Tumblr">
+    <a class="icon" href="http://www.tumblr.com/share/link?url=https%3a%2f%2fblog.take4s5i.dev%2fposts%2f2021%2f12%2frust-understanding-panics%2f&name=%5bRust%5d%20panic%20%e3%82%92%e7%90%86%e8%a7%a3%e3%81%99%e3%82%8b&description=panic%e3%81%97%e3%81%9f%e3%82%89%e7%95%b0%e5%b8%b8%e7%b5%82%e4%ba%86%e3%81%99%e3%82%8b%e3%81%90%e3%82%89%e3%81%84%e3%81%ab%e3%81%97%e3%81%8b%e7%90%86%e8%a7%a3%e3%81%97%e3%81%a6%e3%81%84%e3%81%aa%e3%81%8b%e3%81%a3%e3%81%9f%e3%81%ae%e3%81%a7%e3%80%82%20%e3%81%84%e3%82%8d%e3%81%84%e3%82%8d%e8%aa%bf%e3%81%b9%e3%81%9f%e3%82%8a%e5%ae%9f%e9%a8%93%e3%81%97%e3%81%9f%e3%82%8a%e3%81%97%e3%81%a6%e3%81%bf%e3%81%be%e3%81%97%e3%81%9f%e3%80%82%0apanic%20%e3%81%97%e3%81%9f%e3%81%a8%e3%81%8d%e3%81%ae%e6%8c%99%e5%8b%95%20%23%5bderive%28Debug%29%5d%20struct%20Data%28u32%29%3b%20impl%20Drop%20for%20Data%20%7b%20fn%20drop%28%26amp%3bmut%20self%29%7b%20println%21%28%26%2334%3bdrop%20%7b%3a%3f%7d%26%2334%3b%2c%20self%29%3b%20%7d%20%7d%20fn%20call_recurse%28n%3a%20u32%29%20%7b%20if%20n%20%3d%3d%200%20%7b%20panic%21%28%26%2334%3bpanic%21%26%2334%3b%29%3b%20%7d%20let%20data%20%3d%20Data%28n%29%3b%20call_recurse%28n%20-%201%29%3b%20println%21%28%26%2334%3breturn%3a%20%7b%3a%3f%7d%26%2334%3b%2c%20data%29%3b%20%7d%20fn%20main%28%29%20%7b%20call_recurse%284%29%3b%20%7d%20%e5%87%ba%e5%8a%9b%3a%0a%20Compiling%20playground%20v0.0.1%20%28%2fplayground%29%20Finished%20dev%20%5bunoptimized%20%2b%20debuginfo%5d%20target%28s%29%20in%201.07s%20Running%20%60target%2fdebug%2fplayground%60%20thread%20%27main%27%20panicked%20at%20%27panic%21%27%2c%20src%2fmain.rs%3a12%3a9%20note%3a%20run%20with%20%60RUST_BACKTRACE%3d1%60%20environment%20variable%20to%20display%20a%20backtrace%20drop%20Data%281%29%20drop%20Data%282%29%20drop%20Data%283%29%20drop%20Data%284%29%20Drop%20%e3%83%88%e3%83%ac%e3%82%a4%e3%83%88%e3%82%92%e5%ae%9f%e8%a3%85%e3%81%97%e3%81%9f%e6%a7%8b%e9%80%a0%e4%bd%93%e3%81%ae%e7%94%9f%e5%ad%98%e4%b8%ad%e3%81%abpanic%e3%81%97%e3%81%9f%e3%81%a8%e3%81%93%e3%82%8d%e3%80%81%e3%81%a1%e3%82%83%e3%82%93%e3%81%a8drop%e3%81%95%e3%82%8c%e3%81%be%e3%81%97%e3%81%9f%e3%80%82%20%e3%81%93%e3%81%ae%e6%8c%99%e5%8b%95%e3%81%afunwinding%e3%81%a8%e3%81%84%e3%81%86%e3%82%88%e3%81%86%e3%81%a7%e3%81%99%e3%80%82" aria-label="Tumblr">
       <i class="fab fa-tumblr fa-lg" aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2fblog.take4s5i.dev%2fposts%2f2021%2frust-understanding-panics%2f&t=%5bRust%5d%20panic%20%e3%82%92%e7%90%86%e8%a7%a3%e3%81%99%e3%82%8b" aria-label="Hacker News">
+    <a class="icon" href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2fblog.take4s5i.dev%2fposts%2f2021%2f12%2frust-understanding-panics%2f&t=%5bRust%5d%20panic%20%e3%82%92%e7%90%86%e8%a7%a3%e3%81%99%e3%82%8b" aria-label="Hacker News">
       <i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i>
     </a>
   </li>

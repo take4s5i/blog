@@ -6,13 +6,13 @@
     <description>Recent content in rust on 6 bits blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Mon, 31 Jan 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.take4s5i.dev/tags/rust/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 03 Feb 2022 00:00:00 +0900</lastBuildDate><atom:link href="https://blog.take4s5i.dev/tags/rust/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Rustのcrossbeamを試してみる</title>
-      <link>https://blog.take4s5i.dev/posts/2022/rust-try-crossbeam/</link>
-      <pubDate>Mon, 31 Jan 2022 00:00:00 +0000</pubDate>
+      <link>https://blog.take4s5i.dev/posts/2022/02/rust-try-crossbeam/</link>
+      <pubDate>Thu, 03 Feb 2022 00:00:00 +0900</pubDate>
       
-      <guid>https://blog.take4s5i.dev/posts/2022/rust-try-crossbeam/</guid>
+      <guid>https://blog.take4s5i.dev/posts/2022/02/rust-try-crossbeam/</guid>
       <description>Rustのライブラリであるcrossbeamを試してみます。
 crossbeamは公式の説明によると
 This crate provides a set of tools for concurrent programming  このcrateは並列プログラミングのためのツールセットを提供する、とあります。
@@ -26,10 +26,10 @@ use std::{ collections::HashMap, fs, sync::{Arc, Mutex}, }; fn main() { let file
     
     <item>
       <title>[Rust] 並列処理に使うAPIたち2(Once, channel)</title>
-      <link>https://blog.take4s5i.dev/posts/2022/rust-std-sync2/</link>
-      <pubDate>Sat, 29 Jan 2022 00:00:00 +0000</pubDate>
+      <link>https://blog.take4s5i.dev/posts/2022/01/rust-std-sync2/</link>
+      <pubDate>Sat, 29 Jan 2022 00:00:00 +0900</pubDate>
       
-      <guid>https://blog.take4s5i.dev/posts/2022/rust-std-sync2/</guid>
+      <guid>https://blog.take4s5i.dev/posts/2022/01/rust-std-sync2/</guid>
       <description>前回の続きで Once と mpsc を調べていきます。
 Once Once は static 変数の初期化に利用できます。
 Once を使うことで、複数スレッドから同時に初期処理が実行されても、一度だけ実行されることを保証できます。
@@ -38,10 +38,10 @@ use std::collections::HashMap; use std::sync::Once; use std::thread; static mut 
     
     <item>
       <title>[Rust] 並列処理に使うAPIたち(Mutex, RwLock, Barrier, Condvar)</title>
-      <link>https://blog.take4s5i.dev/posts/2022/rust-std-sync/</link>
-      <pubDate>Thu, 06 Jan 2022 00:00:00 +0000</pubDate>
+      <link>https://blog.take4s5i.dev/posts/2022/01/rust-std-sync/</link>
+      <pubDate>Thu, 06 Jan 2022 00:00:00 +0900</pubDate>
       
-      <guid>https://blog.take4s5i.dev/posts/2022/rust-std-sync/</guid>
+      <guid>https://blog.take4s5i.dev/posts/2022/01/rust-std-sync/</guid>
       <description>最近業務でgoで並列処理を書くことがあり、Rustの場合はどうなっているのか気になったので調べてみました。
 std::syncモジュールの中をいろいろ見ていきたいと思います。
 Mutex まずは基本のMutexから。
@@ -52,10 +52,10 @@ use std::sync::{Arc, Mutex, MutexGuard}; use std::thread; const N_THREADS: usize
     
     <item>
       <title>Rustのクロージャを理解する</title>
-      <link>https://blog.take4s5i.dev/posts/2021/rust-closure/</link>
-      <pubDate>Thu, 16 Dec 2021 00:00:00 +0000</pubDate>
+      <link>https://blog.take4s5i.dev/posts/2021/12/rust-closure/</link>
+      <pubDate>Thu, 16 Dec 2021 00:00:00 +0900</pubDate>
       
-      <guid>https://blog.take4s5i.dev/posts/2021/rust-closure/</guid>
+      <guid>https://blog.take4s5i.dev/posts/2021/12/rust-closure/</guid>
       <description>まずはRustのクロージャを見てみましょう。
 fn main() { let nums: Vec&amp;lt;i32&amp;gt; = vec![1,2,3,4,5]; let y: i32 = 2; let iter = nums .into_iter() .map(|x| x * y); for x in iter { println!(&amp;#34;{}&amp;#34;, x); } } 出力:
 2 4 6 8 10 |x| x * y の部分がクロージャですね。 パット見単純そうに見えますが、他の言語のクロージャと同じように使おうとするとRustのライフタイムや所有権で躓きます。
@@ -65,10 +65,10 @@ fn counter () -&amp;gt; Fn() -&amp;gt; i32 { let mut x: i32 = 0; return || { x +
     
     <item>
       <title>[Rust] panic を理解する</title>
-      <link>https://blog.take4s5i.dev/posts/2021/rust-understanding-panics/</link>
-      <pubDate>Tue, 07 Dec 2021 00:00:00 +0000</pubDate>
+      <link>https://blog.take4s5i.dev/posts/2021/12/rust-understanding-panics/</link>
+      <pubDate>Tue, 07 Dec 2021 00:00:00 +0900</pubDate>
       
-      <guid>https://blog.take4s5i.dev/posts/2021/rust-understanding-panics/</guid>
+      <guid>https://blog.take4s5i.dev/posts/2021/12/rust-understanding-panics/</guid>
       <description>panicしたら異常終了するぐらいにしか理解していなかったので。 いろいろ調べたり実験したりしてみました。
 panic したときの挙動 #[derive(Debug)] struct Data(u32); impl Drop for Data { fn drop(&amp;amp;mut self){ println!(&amp;#34;drop {:?}&amp;#34;, self); } } fn call_recurse(n: u32) { if n == 0 { panic!(&amp;#34;panic!&amp;#34;); } let data = Data(n); call_recurse(n - 1); println!(&amp;#34;return: {:?}&amp;#34;, data); } fn main() { call_recurse(4); } 出力:
  Compiling playground v0.0.1 (/playground) Finished dev [unoptimized + debuginfo] target(s) in 1.07s Running `target/debug/playground` thread &#39;main&#39; panicked at &#39;panic!&#39;, src/main.rs:12:9 note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace drop Data(1) drop Data(2) drop Data(3) drop Data(4) Drop トレイトを実装した構造体の生存中にpanicしたところ、ちゃんとdropされました。 この挙動はunwindingというようです。</description>

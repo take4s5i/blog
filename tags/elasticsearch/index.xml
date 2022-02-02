@@ -6,13 +6,13 @@
     <description>Recent content in elasticsearch on 6 bits blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Sat, 29 Jan 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.take4s5i.dev/tags/elasticsearch/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 29 Jan 2022 00:00:00 +0900</lastBuildDate><atom:link href="https://blog.take4s5i.dev/tags/elasticsearch/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Elastic Searchのobject, flattened, nestedの違い</title>
-      <link>https://blog.take4s5i.dev/posts/2022/elastic-search-object-types/</link>
-      <pubDate>Sat, 29 Jan 2022 00:00:00 +0000</pubDate>
+      <link>https://blog.take4s5i.dev/posts/2022/01/elastic-search-object-types/</link>
+      <pubDate>Sat, 29 Jan 2022 00:00:00 +0900</pubDate>
       
-      <guid>https://blog.take4s5i.dev/posts/2022/elastic-search-object-types/</guid>
+      <guid>https://blog.take4s5i.dev/posts/2022/01/elastic-search-object-types/</guid>
       <description>Elastic Search の object 系の type について調べたのでまとめていきます。
 object objectは JSON のオブジェクトなどの データ構造をインデックスするのに使える型です。
 { &amp;#34;user&amp;#34;: { &amp;#34;name&amp;#34;: &amp;#34;tanaka&amp;#34;, &amp;#34;age&amp;#34;: 20 } } このようなオブジェクトがあった場合

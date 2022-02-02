@@ -10,7 +10,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title> [Rust] 並列処理に使うAPIたち(Mutex, RwLock, Barrier, Condvar) | 6 bits blog</title>
-  <link rel = 'canonical' href = 'https://blog.take4s5i.dev/posts/2022/rust-std-sync/'>
+  <link rel = 'canonical' href = 'https://blog.take4s5i.dev/posts/2022/01/rust-std-sync/'>
   
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="all,follow">
@@ -23,9 +23,9 @@ RustのMutexは単にロックを制御するだけではなく、ロックで�
 Mutexでカウンタをつくり、 4スレッド起動し、各スレッドで100回インクリメントを行います。 cntは400になるはずです。
 use std::sync::{Arc, Mutex, MutexGuard}; use std::thread; const N_THREADS: usize = 4; fn main() { let mut handles: Vec&lt;thread::JoinHandle&lt;_&gt;&gt; = Vec::with_capacity(N_THREADS); let mutex: Arc&lt;Mutex&lt;usize&gt;&gt; = Arc::new(Mutex::new(0)); for _ in 0..N_THREADS { let mutex = mutex.clone(); let handle = thread::spawn(move || { for _ in 0..100 { let mut cnt: MutexGuard&lt;_&gt; = mutex.lock().unwrap(); *cnt &#43;= 1; } }); handles.push(handle); } while let Some(handle) = handles." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://blog.take4s5i.dev/posts/2022/rust-std-sync/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2022-01-06T00:00:00+00:00" />
-<meta property="article:modified_time" content="2022-01-06T00:00:00+00:00" />
+<meta property="og:url" content="https://blog.take4s5i.dev/posts/2022/01/rust-std-sync/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-01-06T00:00:00+09:00" />
+<meta property="article:modified_time" content="2022-01-06T00:00:00+09:00" />
 
 
   <meta name="twitter:card" content="summary"/>
@@ -97,14 +97,14 @@ if (!doNotTrack) {
       <ul>
         
         <li>
-          <a class="icon" href=" https://blog.take4s5i.dev/posts/2021/rust-closure/" aria-label="Previous">
+          <a class="icon" href=" https://blog.take4s5i.dev/posts/2021/12/rust-closure/" aria-label="Previous">
             <i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i>
           </a>
         </li>
         
         
         <li>
-          <a class="icon" href="https://blog.take4s5i.dev/posts/2022/elastic-search-object-types/" aria-label="Next">
+          <a class="icon" href="https://blog.take4s5i.dev/posts/2022/01/elastic-search-object-types/" aria-label="Next">
             <i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i>
           </a>
         </li>
@@ -135,47 +135,47 @@ if (!doNotTrack) {
   
   
   <li>
-    <a class="icon" href="http://www.facebook.com/sharer.php?u=https%3a%2f%2fblog.take4s5i.dev%2fposts%2f2022%2frust-std-sync%2f" aria-label="Facebook">
+    <a class="icon" href="http://www.facebook.com/sharer.php?u=https%3a%2f%2fblog.take4s5i.dev%2fposts%2f2022%2f01%2frust-std-sync%2f" aria-label="Facebook">
       <i class="fab fa-facebook " aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="https://twitter.com/share?url=https%3a%2f%2fblog.take4s5i.dev%2fposts%2f2022%2frust-std-sync%2f&text=%5bRust%5d%20%e4%b8%a6%e5%88%97%e5%87%a6%e7%90%86%e3%81%ab%e4%bd%bf%e3%81%86API%e3%81%9f%e3%81%a1%28Mutex%2c%20RwLock%2c%20Barrier%2c%20Condvar%29" aria-label="Twitter">
+    <a class="icon" href="https://twitter.com/share?url=https%3a%2f%2fblog.take4s5i.dev%2fposts%2f2022%2f01%2frust-std-sync%2f&text=%5bRust%5d%20%e4%b8%a6%e5%88%97%e5%87%a6%e7%90%86%e3%81%ab%e4%bd%bf%e3%81%86API%e3%81%9f%e3%81%a1%28Mutex%2c%20RwLock%2c%20Barrier%2c%20Condvar%29" aria-label="Twitter">
       <i class="fab fa-twitter " aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="http://www.linkedin.com/shareArticle?url=https%3a%2f%2fblog.take4s5i.dev%2fposts%2f2022%2frust-std-sync%2f&title=%5bRust%5d%20%e4%b8%a6%e5%88%97%e5%87%a6%e7%90%86%e3%81%ab%e4%bd%bf%e3%81%86API%e3%81%9f%e3%81%a1%28Mutex%2c%20RwLock%2c%20Barrier%2c%20Condvar%29" aria-label="Linkedin">
+    <a class="icon" href="http://www.linkedin.com/shareArticle?url=https%3a%2f%2fblog.take4s5i.dev%2fposts%2f2022%2f01%2frust-std-sync%2f&title=%5bRust%5d%20%e4%b8%a6%e5%88%97%e5%87%a6%e7%90%86%e3%81%ab%e4%bd%bf%e3%81%86API%e3%81%9f%e3%81%a1%28Mutex%2c%20RwLock%2c%20Barrier%2c%20Condvar%29" aria-label="Linkedin">
       <i class="fab fa-linkedin " aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https%3a%2f%2fblog.take4s5i.dev%2fposts%2f2022%2frust-std-sync%2f&is_video=false&description=%5bRust%5d%20%e4%b8%a6%e5%88%97%e5%87%a6%e7%90%86%e3%81%ab%e4%bd%bf%e3%81%86API%e3%81%9f%e3%81%a1%28Mutex%2c%20RwLock%2c%20Barrier%2c%20Condvar%29" aria-label="Pinterest">
+    <a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https%3a%2f%2fblog.take4s5i.dev%2fposts%2f2022%2f01%2frust-std-sync%2f&is_video=false&description=%5bRust%5d%20%e4%b8%a6%e5%88%97%e5%87%a6%e7%90%86%e3%81%ab%e4%bd%bf%e3%81%86API%e3%81%9f%e3%81%a1%28Mutex%2c%20RwLock%2c%20Barrier%2c%20Condvar%29" aria-label="Pinterest">
       <i class="fab fa-pinterest " aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="mailto:?subject=%5bRust%5d%20%e4%b8%a6%e5%88%97%e5%87%a6%e7%90%86%e3%81%ab%e4%bd%bf%e3%81%86API%e3%81%9f%e3%81%a1%28Mutex%2c%20RwLock%2c%20Barrier%2c%20Condvar%29&body=Check out this article: https%3a%2f%2fblog.take4s5i.dev%2fposts%2f2022%2frust-std-sync%2f" aria-label="Email">
+    <a class="icon" href="mailto:?subject=%5bRust%5d%20%e4%b8%a6%e5%88%97%e5%87%a6%e7%90%86%e3%81%ab%e4%bd%bf%e3%81%86API%e3%81%9f%e3%81%a1%28Mutex%2c%20RwLock%2c%20Barrier%2c%20Condvar%29&body=Check out this article: https%3a%2f%2fblog.take4s5i.dev%2fposts%2f2022%2f01%2frust-std-sync%2f" aria-label="Email">
       <i class="fas fa-envelope " aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="https://getpocket.com/save?url=https%3a%2f%2fblog.take4s5i.dev%2fposts%2f2022%2frust-std-sync%2f&title=%5bRust%5d%20%e4%b8%a6%e5%88%97%e5%87%a6%e7%90%86%e3%81%ab%e4%bd%bf%e3%81%86API%e3%81%9f%e3%81%a1%28Mutex%2c%20RwLock%2c%20Barrier%2c%20Condvar%29" aria-label="Pocket">
+    <a class="icon" href="https://getpocket.com/save?url=https%3a%2f%2fblog.take4s5i.dev%2fposts%2f2022%2f01%2frust-std-sync%2f&title=%5bRust%5d%20%e4%b8%a6%e5%88%97%e5%87%a6%e7%90%86%e3%81%ab%e4%bd%bf%e3%81%86API%e3%81%9f%e3%81%a1%28Mutex%2c%20RwLock%2c%20Barrier%2c%20Condvar%29" aria-label="Pocket">
       <i class="fab fa-get-pocket " aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="http://reddit.com/submit?url=https%3a%2f%2fblog.take4s5i.dev%2fposts%2f2022%2frust-std-sync%2f&title=%5bRust%5d%20%e4%b8%a6%e5%88%97%e5%87%a6%e7%90%86%e3%81%ab%e4%bd%bf%e3%81%86API%e3%81%9f%e3%81%a1%28Mutex%2c%20RwLock%2c%20Barrier%2c%20Condvar%29" aria-label="reddit">
+    <a class="icon" href="http://reddit.com/submit?url=https%3a%2f%2fblog.take4s5i.dev%2fposts%2f2022%2f01%2frust-std-sync%2f&title=%5bRust%5d%20%e4%b8%a6%e5%88%97%e5%87%a6%e7%90%86%e3%81%ab%e4%bd%bf%e3%81%86API%e3%81%9f%e3%81%a1%28Mutex%2c%20RwLock%2c%20Barrier%2c%20Condvar%29" aria-label="reddit">
       <i class="fab fa-reddit " aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="http://www.tumblr.com/share/link?url=https%3a%2f%2fblog.take4s5i.dev%2fposts%2f2022%2frust-std-sync%2f&name=%5bRust%5d%20%e4%b8%a6%e5%88%97%e5%87%a6%e7%90%86%e3%81%ab%e4%bd%bf%e3%81%86API%e3%81%9f%e3%81%a1%28Mutex%2c%20RwLock%2c%20Barrier%2c%20Condvar%29&description=%e6%9c%80%e8%bf%91%e6%a5%ad%e5%8b%99%e3%81%a7go%e3%81%a7%e4%b8%a6%e5%88%97%e5%87%a6%e7%90%86%e3%82%92%e6%9b%b8%e3%81%8f%e3%81%93%e3%81%a8%e3%81%8c%e3%81%82%e3%82%8a%e3%80%81Rust%e3%81%ae%e5%a0%b4%e5%90%88%e3%81%af%e3%81%a9%e3%81%86%e3%81%aa%e3%81%a3%e3%81%a6%e3%81%84%e3%82%8b%e3%81%ae%e3%81%8b%e6%b0%97%e3%81%ab%e3%81%aa%e3%81%a3%e3%81%9f%e3%81%ae%e3%81%a7%e8%aa%bf%e3%81%b9%e3%81%a6%e3%81%bf%e3%81%be%e3%81%97%e3%81%9f%e3%80%82%0astd%3a%3async%e3%83%a2%e3%82%b8%e3%83%a5%e3%83%bc%e3%83%ab%e3%81%ae%e4%b8%ad%e3%82%92%e3%81%84%e3%82%8d%e3%81%84%e3%82%8d%e8%a6%8b%e3%81%a6%e3%81%84%e3%81%8d%e3%81%9f%e3%81%84%e3%81%a8%e6%80%9d%e3%81%84%e3%81%be%e3%81%99%e3%80%82%0aMutex%20%e3%81%be%e3%81%9a%e3%81%af%e5%9f%ba%e6%9c%ac%e3%81%aeMutex%e3%81%8b%e3%82%89%e3%80%82%0aRust%e3%81%aeMutex%e3%81%af%e5%8d%98%e3%81%ab%e3%83%ad%e3%83%83%e3%82%af%e3%82%92%e5%88%b6%e5%be%a1%e3%81%99%e3%82%8b%e3%81%a0%e3%81%91%e3%81%a7%e3%81%af%e3%81%aa%e3%81%8f%e3%80%81%e3%83%ad%e3%83%83%e3%82%af%e3%81%a7%e5%ae%88%e3%82%89%e3%82%8c%e3%81%9f%e3%83%87%e3%83%bc%e3%82%bf%e3%82%92%e6%8c%81%e3%81%a4%e3%81%93%e3%81%a8%e3%81%8c%e3%81%a7%e3%81%8d%e3%81%be%e3%81%99%e3%80%82%20%ef%bc%88%e3%83%87%e3%83%bc%e3%82%bf%e3%81%8c%e4%b8%8d%e8%a6%81%e3%81%a7%e5%8d%98%e3%81%ab%e3%83%ad%e3%83%83%e3%82%af%e3%81%a0%e3%81%91%e3%81%bb%e3%81%97%e3%81%84%e5%a0%b4%e5%90%88%e3%81%af%e3%83%a6%e3%83%8b%e3%83%83%e3%83%88%e5%9e%8b%28%29%e3%82%92%e4%bd%bf%e3%81%88%e3%81%b0%e3%82%88%e3%81%84%e3%81%a7%e3%81%99%e3%81%ad%ef%bc%89%0aMutex%e3%81%a7%e3%82%ab%e3%82%a6%e3%83%b3%e3%82%bf%e3%82%92%e3%81%a4%e3%81%8f%e3%82%8a%e3%80%81%204%e3%82%b9%e3%83%ac%e3%83%83%e3%83%89%e8%b5%b7%e5%8b%95%e3%81%97%e3%80%81%e5%90%84%e3%82%b9%e3%83%ac%e3%83%83%e3%83%89%e3%81%a7100%e5%9b%9e%e3%82%a4%e3%83%b3%e3%82%af%e3%83%aa%e3%83%a1%e3%83%b3%e3%83%88%e3%82%92%e8%a1%8c%e3%81%84%e3%81%be%e3%81%99%e3%80%82%20cnt%e3%81%af400%e3%81%ab%e3%81%aa%e3%82%8b%e3%81%af%e3%81%9a%e3%81%a7%e3%81%99%e3%80%82%0ause%20std%3a%3async%3a%3a%7bArc%2c%20Mutex%2c%20MutexGuard%7d%3b%20use%20std%3a%3athread%3b%20const%20N_THREADS%3a%20usize%20%3d%204%3b%20fn%20main%28%29%20%7b%20let%20mut%20handles%3a%20Vec%26lt%3bthread%3a%3aJoinHandle%26lt%3b_%26gt%3b%26gt%3b%20%3d%20Vec%3a%3awith_capacity%28N_THREADS%29%3b%20let%20mutex%3a%20Arc%26lt%3bMutex%26lt%3busize%26gt%3b%26gt%3b%20%3d%20Arc%3a%3anew%28Mutex%3a%3anew%280%29%29%3b%20for%20_%20in%200..N_THREADS%20%7b%20let%20mutex%20%3d%20mutex.clone%28%29%3b%20let%20handle%20%3d%20thread%3a%3aspawn%28move%20%7c%7c%20%7b%20for%20_%20in%200..100%20%7b%20let%20mut%20cnt%3a%20MutexGuard%26lt%3b_%26gt%3b%20%3d%20mutex.lock%28%29.unwrap%28%29%3b%20%2acnt%20%2b%3d%201%3b%20%7d%20%7d%29%3b%20handles.push%28handle%29%3b%20%7d%20while%20let%20Some%28handle%29%20%3d%20handles." aria-label="Tumblr">
+    <a class="icon" href="http://www.tumblr.com/share/link?url=https%3a%2f%2fblog.take4s5i.dev%2fposts%2f2022%2f01%2frust-std-sync%2f&name=%5bRust%5d%20%e4%b8%a6%e5%88%97%e5%87%a6%e7%90%86%e3%81%ab%e4%bd%bf%e3%81%86API%e3%81%9f%e3%81%a1%28Mutex%2c%20RwLock%2c%20Barrier%2c%20Condvar%29&description=%e6%9c%80%e8%bf%91%e6%a5%ad%e5%8b%99%e3%81%a7go%e3%81%a7%e4%b8%a6%e5%88%97%e5%87%a6%e7%90%86%e3%82%92%e6%9b%b8%e3%81%8f%e3%81%93%e3%81%a8%e3%81%8c%e3%81%82%e3%82%8a%e3%80%81Rust%e3%81%ae%e5%a0%b4%e5%90%88%e3%81%af%e3%81%a9%e3%81%86%e3%81%aa%e3%81%a3%e3%81%a6%e3%81%84%e3%82%8b%e3%81%ae%e3%81%8b%e6%b0%97%e3%81%ab%e3%81%aa%e3%81%a3%e3%81%9f%e3%81%ae%e3%81%a7%e8%aa%bf%e3%81%b9%e3%81%a6%e3%81%bf%e3%81%be%e3%81%97%e3%81%9f%e3%80%82%0astd%3a%3async%e3%83%a2%e3%82%b8%e3%83%a5%e3%83%bc%e3%83%ab%e3%81%ae%e4%b8%ad%e3%82%92%e3%81%84%e3%82%8d%e3%81%84%e3%82%8d%e8%a6%8b%e3%81%a6%e3%81%84%e3%81%8d%e3%81%9f%e3%81%84%e3%81%a8%e6%80%9d%e3%81%84%e3%81%be%e3%81%99%e3%80%82%0aMutex%20%e3%81%be%e3%81%9a%e3%81%af%e5%9f%ba%e6%9c%ac%e3%81%aeMutex%e3%81%8b%e3%82%89%e3%80%82%0aRust%e3%81%aeMutex%e3%81%af%e5%8d%98%e3%81%ab%e3%83%ad%e3%83%83%e3%82%af%e3%82%92%e5%88%b6%e5%be%a1%e3%81%99%e3%82%8b%e3%81%a0%e3%81%91%e3%81%a7%e3%81%af%e3%81%aa%e3%81%8f%e3%80%81%e3%83%ad%e3%83%83%e3%82%af%e3%81%a7%e5%ae%88%e3%82%89%e3%82%8c%e3%81%9f%e3%83%87%e3%83%bc%e3%82%bf%e3%82%92%e6%8c%81%e3%81%a4%e3%81%93%e3%81%a8%e3%81%8c%e3%81%a7%e3%81%8d%e3%81%be%e3%81%99%e3%80%82%20%ef%bc%88%e3%83%87%e3%83%bc%e3%82%bf%e3%81%8c%e4%b8%8d%e8%a6%81%e3%81%a7%e5%8d%98%e3%81%ab%e3%83%ad%e3%83%83%e3%82%af%e3%81%a0%e3%81%91%e3%81%bb%e3%81%97%e3%81%84%e5%a0%b4%e5%90%88%e3%81%af%e3%83%a6%e3%83%8b%e3%83%83%e3%83%88%e5%9e%8b%28%29%e3%82%92%e4%bd%bf%e3%81%88%e3%81%b0%e3%82%88%e3%81%84%e3%81%a7%e3%81%99%e3%81%ad%ef%bc%89%0aMutex%e3%81%a7%e3%82%ab%e3%82%a6%e3%83%b3%e3%82%bf%e3%82%92%e3%81%a4%e3%81%8f%e3%82%8a%e3%80%81%204%e3%82%b9%e3%83%ac%e3%83%83%e3%83%89%e8%b5%b7%e5%8b%95%e3%81%97%e3%80%81%e5%90%84%e3%82%b9%e3%83%ac%e3%83%83%e3%83%89%e3%81%a7100%e5%9b%9e%e3%82%a4%e3%83%b3%e3%82%af%e3%83%aa%e3%83%a1%e3%83%b3%e3%83%88%e3%82%92%e8%a1%8c%e3%81%84%e3%81%be%e3%81%99%e3%80%82%20cnt%e3%81%af400%e3%81%ab%e3%81%aa%e3%82%8b%e3%81%af%e3%81%9a%e3%81%a7%e3%81%99%e3%80%82%0ause%20std%3a%3async%3a%3a%7bArc%2c%20Mutex%2c%20MutexGuard%7d%3b%20use%20std%3a%3athread%3b%20const%20N_THREADS%3a%20usize%20%3d%204%3b%20fn%20main%28%29%20%7b%20let%20mut%20handles%3a%20Vec%26lt%3bthread%3a%3aJoinHandle%26lt%3b_%26gt%3b%26gt%3b%20%3d%20Vec%3a%3awith_capacity%28N_THREADS%29%3b%20let%20mutex%3a%20Arc%26lt%3bMutex%26lt%3busize%26gt%3b%26gt%3b%20%3d%20Arc%3a%3anew%28Mutex%3a%3anew%280%29%29%3b%20for%20_%20in%200..N_THREADS%20%7b%20let%20mutex%20%3d%20mutex.clone%28%29%3b%20let%20handle%20%3d%20thread%3a%3aspawn%28move%20%7c%7c%20%7b%20for%20_%20in%200..100%20%7b%20let%20mut%20cnt%3a%20MutexGuard%26lt%3b_%26gt%3b%20%3d%20mutex.lock%28%29.unwrap%28%29%3b%20%2acnt%20%2b%3d%201%3b%20%7d%20%7d%29%3b%20handles.push%28handle%29%3b%20%7d%20while%20let%20Some%28handle%29%20%3d%20handles." aria-label="Tumblr">
       <i class="fab fa-tumblr " aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2fblog.take4s5i.dev%2fposts%2f2022%2frust-std-sync%2f&t=%5bRust%5d%20%e4%b8%a6%e5%88%97%e5%87%a6%e7%90%86%e3%81%ab%e4%bd%bf%e3%81%86API%e3%81%9f%e3%81%a1%28Mutex%2c%20RwLock%2c%20Barrier%2c%20Condvar%29" aria-label="Hacker News">
+    <a class="icon" href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2fblog.take4s5i.dev%2fposts%2f2022%2f01%2frust-std-sync%2f&t=%5bRust%5d%20%e4%b8%a6%e5%88%97%e5%87%a6%e7%90%86%e3%81%ab%e4%bd%bf%e3%81%86API%e3%81%9f%e3%81%a1%28Mutex%2c%20RwLock%2c%20Barrier%2c%20Condvar%29" aria-label="Hacker News">
       <i class="fab fa-hacker-news " aria-hidden="true"></i>
     </a>
   </li>
@@ -200,7 +200,7 @@ if (!doNotTrack) {
         
         <div class="postdate">
           
-          <time datetime="2022-01-06 00:00:00 &#43;0000 UTC" itemprop="datePublished">2022-01-06</time>
+          <time datetime="2022-01-06 00:00:00 &#43;0900 JST" itemprop="datePublished">2022-01-06</time>
           
         </div>
         
@@ -520,47 +520,47 @@ notifyされてメインスレッドに処理が戻ってくると再びMutexGua
   
   
   <li>
-    <a class="icon" href="http://www.facebook.com/sharer.php?u=https%3a%2f%2fblog.take4s5i.dev%2fposts%2f2022%2frust-std-sync%2f" aria-label="Facebook">
+    <a class="icon" href="http://www.facebook.com/sharer.php?u=https%3a%2f%2fblog.take4s5i.dev%2fposts%2f2022%2f01%2frust-std-sync%2f" aria-label="Facebook">
       <i class="fab fa-facebook fa-lg" aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="https://twitter.com/share?url=https%3a%2f%2fblog.take4s5i.dev%2fposts%2f2022%2frust-std-sync%2f&text=%5bRust%5d%20%e4%b8%a6%e5%88%97%e5%87%a6%e7%90%86%e3%81%ab%e4%bd%bf%e3%81%86API%e3%81%9f%e3%81%a1%28Mutex%2c%20RwLock%2c%20Barrier%2c%20Condvar%29" aria-label="Twitter">
+    <a class="icon" href="https://twitter.com/share?url=https%3a%2f%2fblog.take4s5i.dev%2fposts%2f2022%2f01%2frust-std-sync%2f&text=%5bRust%5d%20%e4%b8%a6%e5%88%97%e5%87%a6%e7%90%86%e3%81%ab%e4%bd%bf%e3%81%86API%e3%81%9f%e3%81%a1%28Mutex%2c%20RwLock%2c%20Barrier%2c%20Condvar%29" aria-label="Twitter">
       <i class="fab fa-twitter fa-lg" aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="http://www.linkedin.com/shareArticle?url=https%3a%2f%2fblog.take4s5i.dev%2fposts%2f2022%2frust-std-sync%2f&title=%5bRust%5d%20%e4%b8%a6%e5%88%97%e5%87%a6%e7%90%86%e3%81%ab%e4%bd%bf%e3%81%86API%e3%81%9f%e3%81%a1%28Mutex%2c%20RwLock%2c%20Barrier%2c%20Condvar%29" aria-label="Linkedin">
+    <a class="icon" href="http://www.linkedin.com/shareArticle?url=https%3a%2f%2fblog.take4s5i.dev%2fposts%2f2022%2f01%2frust-std-sync%2f&title=%5bRust%5d%20%e4%b8%a6%e5%88%97%e5%87%a6%e7%90%86%e3%81%ab%e4%bd%bf%e3%81%86API%e3%81%9f%e3%81%a1%28Mutex%2c%20RwLock%2c%20Barrier%2c%20Condvar%29" aria-label="Linkedin">
       <i class="fab fa-linkedin fa-lg" aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https%3a%2f%2fblog.take4s5i.dev%2fposts%2f2022%2frust-std-sync%2f&is_video=false&description=%5bRust%5d%20%e4%b8%a6%e5%88%97%e5%87%a6%e7%90%86%e3%81%ab%e4%bd%bf%e3%81%86API%e3%81%9f%e3%81%a1%28Mutex%2c%20RwLock%2c%20Barrier%2c%20Condvar%29" aria-label="Pinterest">
+    <a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https%3a%2f%2fblog.take4s5i.dev%2fposts%2f2022%2f01%2frust-std-sync%2f&is_video=false&description=%5bRust%5d%20%e4%b8%a6%e5%88%97%e5%87%a6%e7%90%86%e3%81%ab%e4%bd%bf%e3%81%86API%e3%81%9f%e3%81%a1%28Mutex%2c%20RwLock%2c%20Barrier%2c%20Condvar%29" aria-label="Pinterest">
       <i class="fab fa-pinterest fa-lg" aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="mailto:?subject=%5bRust%5d%20%e4%b8%a6%e5%88%97%e5%87%a6%e7%90%86%e3%81%ab%e4%bd%bf%e3%81%86API%e3%81%9f%e3%81%a1%28Mutex%2c%20RwLock%2c%20Barrier%2c%20Condvar%29&body=Check out this article: https%3a%2f%2fblog.take4s5i.dev%2fposts%2f2022%2frust-std-sync%2f" aria-label="Email">
+    <a class="icon" href="mailto:?subject=%5bRust%5d%20%e4%b8%a6%e5%88%97%e5%87%a6%e7%90%86%e3%81%ab%e4%bd%bf%e3%81%86API%e3%81%9f%e3%81%a1%28Mutex%2c%20RwLock%2c%20Barrier%2c%20Condvar%29&body=Check out this article: https%3a%2f%2fblog.take4s5i.dev%2fposts%2f2022%2f01%2frust-std-sync%2f" aria-label="Email">
       <i class="fas fa-envelope fa-lg" aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="https://getpocket.com/save?url=https%3a%2f%2fblog.take4s5i.dev%2fposts%2f2022%2frust-std-sync%2f&title=%5bRust%5d%20%e4%b8%a6%e5%88%97%e5%87%a6%e7%90%86%e3%81%ab%e4%bd%bf%e3%81%86API%e3%81%9f%e3%81%a1%28Mutex%2c%20RwLock%2c%20Barrier%2c%20Condvar%29" aria-label="Pocket">
+    <a class="icon" href="https://getpocket.com/save?url=https%3a%2f%2fblog.take4s5i.dev%2fposts%2f2022%2f01%2frust-std-sync%2f&title=%5bRust%5d%20%e4%b8%a6%e5%88%97%e5%87%a6%e7%90%86%e3%81%ab%e4%bd%bf%e3%81%86API%e3%81%9f%e3%81%a1%28Mutex%2c%20RwLock%2c%20Barrier%2c%20Condvar%29" aria-label="Pocket">
       <i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="http://reddit.com/submit?url=https%3a%2f%2fblog.take4s5i.dev%2fposts%2f2022%2frust-std-sync%2f&title=%5bRust%5d%20%e4%b8%a6%e5%88%97%e5%87%a6%e7%90%86%e3%81%ab%e4%bd%bf%e3%81%86API%e3%81%9f%e3%81%a1%28Mutex%2c%20RwLock%2c%20Barrier%2c%20Condvar%29" aria-label="reddit">
+    <a class="icon" href="http://reddit.com/submit?url=https%3a%2f%2fblog.take4s5i.dev%2fposts%2f2022%2f01%2frust-std-sync%2f&title=%5bRust%5d%20%e4%b8%a6%e5%88%97%e5%87%a6%e7%90%86%e3%81%ab%e4%bd%bf%e3%81%86API%e3%81%9f%e3%81%a1%28Mutex%2c%20RwLock%2c%20Barrier%2c%20Condvar%29" aria-label="reddit">
       <i class="fab fa-reddit fa-lg" aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="http://www.tumblr.com/share/link?url=https%3a%2f%2fblog.take4s5i.dev%2fposts%2f2022%2frust-std-sync%2f&name=%5bRust%5d%20%e4%b8%a6%e5%88%97%e5%87%a6%e7%90%86%e3%81%ab%e4%bd%bf%e3%81%86API%e3%81%9f%e3%81%a1%28Mutex%2c%20RwLock%2c%20Barrier%2c%20Condvar%29&description=%e6%9c%80%e8%bf%91%e6%a5%ad%e5%8b%99%e3%81%a7go%e3%81%a7%e4%b8%a6%e5%88%97%e5%87%a6%e7%90%86%e3%82%92%e6%9b%b8%e3%81%8f%e3%81%93%e3%81%a8%e3%81%8c%e3%81%82%e3%82%8a%e3%80%81Rust%e3%81%ae%e5%a0%b4%e5%90%88%e3%81%af%e3%81%a9%e3%81%86%e3%81%aa%e3%81%a3%e3%81%a6%e3%81%84%e3%82%8b%e3%81%ae%e3%81%8b%e6%b0%97%e3%81%ab%e3%81%aa%e3%81%a3%e3%81%9f%e3%81%ae%e3%81%a7%e8%aa%bf%e3%81%b9%e3%81%a6%e3%81%bf%e3%81%be%e3%81%97%e3%81%9f%e3%80%82%0astd%3a%3async%e3%83%a2%e3%82%b8%e3%83%a5%e3%83%bc%e3%83%ab%e3%81%ae%e4%b8%ad%e3%82%92%e3%81%84%e3%82%8d%e3%81%84%e3%82%8d%e8%a6%8b%e3%81%a6%e3%81%84%e3%81%8d%e3%81%9f%e3%81%84%e3%81%a8%e6%80%9d%e3%81%84%e3%81%be%e3%81%99%e3%80%82%0aMutex%20%e3%81%be%e3%81%9a%e3%81%af%e5%9f%ba%e6%9c%ac%e3%81%aeMutex%e3%81%8b%e3%82%89%e3%80%82%0aRust%e3%81%aeMutex%e3%81%af%e5%8d%98%e3%81%ab%e3%83%ad%e3%83%83%e3%82%af%e3%82%92%e5%88%b6%e5%be%a1%e3%81%99%e3%82%8b%e3%81%a0%e3%81%91%e3%81%a7%e3%81%af%e3%81%aa%e3%81%8f%e3%80%81%e3%83%ad%e3%83%83%e3%82%af%e3%81%a7%e5%ae%88%e3%82%89%e3%82%8c%e3%81%9f%e3%83%87%e3%83%bc%e3%82%bf%e3%82%92%e6%8c%81%e3%81%a4%e3%81%93%e3%81%a8%e3%81%8c%e3%81%a7%e3%81%8d%e3%81%be%e3%81%99%e3%80%82%20%ef%bc%88%e3%83%87%e3%83%bc%e3%82%bf%e3%81%8c%e4%b8%8d%e8%a6%81%e3%81%a7%e5%8d%98%e3%81%ab%e3%83%ad%e3%83%83%e3%82%af%e3%81%a0%e3%81%91%e3%81%bb%e3%81%97%e3%81%84%e5%a0%b4%e5%90%88%e3%81%af%e3%83%a6%e3%83%8b%e3%83%83%e3%83%88%e5%9e%8b%28%29%e3%82%92%e4%bd%bf%e3%81%88%e3%81%b0%e3%82%88%e3%81%84%e3%81%a7%e3%81%99%e3%81%ad%ef%bc%89%0aMutex%e3%81%a7%e3%82%ab%e3%82%a6%e3%83%b3%e3%82%bf%e3%82%92%e3%81%a4%e3%81%8f%e3%82%8a%e3%80%81%204%e3%82%b9%e3%83%ac%e3%83%83%e3%83%89%e8%b5%b7%e5%8b%95%e3%81%97%e3%80%81%e5%90%84%e3%82%b9%e3%83%ac%e3%83%83%e3%83%89%e3%81%a7100%e5%9b%9e%e3%82%a4%e3%83%b3%e3%82%af%e3%83%aa%e3%83%a1%e3%83%b3%e3%83%88%e3%82%92%e8%a1%8c%e3%81%84%e3%81%be%e3%81%99%e3%80%82%20cnt%e3%81%af400%e3%81%ab%e3%81%aa%e3%82%8b%e3%81%af%e3%81%9a%e3%81%a7%e3%81%99%e3%80%82%0ause%20std%3a%3async%3a%3a%7bArc%2c%20Mutex%2c%20MutexGuard%7d%3b%20use%20std%3a%3athread%3b%20const%20N_THREADS%3a%20usize%20%3d%204%3b%20fn%20main%28%29%20%7b%20let%20mut%20handles%3a%20Vec%26lt%3bthread%3a%3aJoinHandle%26lt%3b_%26gt%3b%26gt%3b%20%3d%20Vec%3a%3awith_capacity%28N_THREADS%29%3b%20let%20mutex%3a%20Arc%26lt%3bMutex%26lt%3busize%26gt%3b%26gt%3b%20%3d%20Arc%3a%3anew%28Mutex%3a%3anew%280%29%29%3b%20for%20_%20in%200..N_THREADS%20%7b%20let%20mutex%20%3d%20mutex.clone%28%29%3b%20let%20handle%20%3d%20thread%3a%3aspawn%28move%20%7c%7c%20%7b%20for%20_%20in%200..100%20%7b%20let%20mut%20cnt%3a%20MutexGuard%26lt%3b_%26gt%3b%20%3d%20mutex.lock%28%29.unwrap%28%29%3b%20%2acnt%20%2b%3d%201%3b%20%7d%20%7d%29%3b%20handles.push%28handle%29%3b%20%7d%20while%20let%20Some%28handle%29%20%3d%20handles." aria-label="Tumblr">
+    <a class="icon" href="http://www.tumblr.com/share/link?url=https%3a%2f%2fblog.take4s5i.dev%2fposts%2f2022%2f01%2frust-std-sync%2f&name=%5bRust%5d%20%e4%b8%a6%e5%88%97%e5%87%a6%e7%90%86%e3%81%ab%e4%bd%bf%e3%81%86API%e3%81%9f%e3%81%a1%28Mutex%2c%20RwLock%2c%20Barrier%2c%20Condvar%29&description=%e6%9c%80%e8%bf%91%e6%a5%ad%e5%8b%99%e3%81%a7go%e3%81%a7%e4%b8%a6%e5%88%97%e5%87%a6%e7%90%86%e3%82%92%e6%9b%b8%e3%81%8f%e3%81%93%e3%81%a8%e3%81%8c%e3%81%82%e3%82%8a%e3%80%81Rust%e3%81%ae%e5%a0%b4%e5%90%88%e3%81%af%e3%81%a9%e3%81%86%e3%81%aa%e3%81%a3%e3%81%a6%e3%81%84%e3%82%8b%e3%81%ae%e3%81%8b%e6%b0%97%e3%81%ab%e3%81%aa%e3%81%a3%e3%81%9f%e3%81%ae%e3%81%a7%e8%aa%bf%e3%81%b9%e3%81%a6%e3%81%bf%e3%81%be%e3%81%97%e3%81%9f%e3%80%82%0astd%3a%3async%e3%83%a2%e3%82%b8%e3%83%a5%e3%83%bc%e3%83%ab%e3%81%ae%e4%b8%ad%e3%82%92%e3%81%84%e3%82%8d%e3%81%84%e3%82%8d%e8%a6%8b%e3%81%a6%e3%81%84%e3%81%8d%e3%81%9f%e3%81%84%e3%81%a8%e6%80%9d%e3%81%84%e3%81%be%e3%81%99%e3%80%82%0aMutex%20%e3%81%be%e3%81%9a%e3%81%af%e5%9f%ba%e6%9c%ac%e3%81%aeMutex%e3%81%8b%e3%82%89%e3%80%82%0aRust%e3%81%aeMutex%e3%81%af%e5%8d%98%e3%81%ab%e3%83%ad%e3%83%83%e3%82%af%e3%82%92%e5%88%b6%e5%be%a1%e3%81%99%e3%82%8b%e3%81%a0%e3%81%91%e3%81%a7%e3%81%af%e3%81%aa%e3%81%8f%e3%80%81%e3%83%ad%e3%83%83%e3%82%af%e3%81%a7%e5%ae%88%e3%82%89%e3%82%8c%e3%81%9f%e3%83%87%e3%83%bc%e3%82%bf%e3%82%92%e6%8c%81%e3%81%a4%e3%81%93%e3%81%a8%e3%81%8c%e3%81%a7%e3%81%8d%e3%81%be%e3%81%99%e3%80%82%20%ef%bc%88%e3%83%87%e3%83%bc%e3%82%bf%e3%81%8c%e4%b8%8d%e8%a6%81%e3%81%a7%e5%8d%98%e3%81%ab%e3%83%ad%e3%83%83%e3%82%af%e3%81%a0%e3%81%91%e3%81%bb%e3%81%97%e3%81%84%e5%a0%b4%e5%90%88%e3%81%af%e3%83%a6%e3%83%8b%e3%83%83%e3%83%88%e5%9e%8b%28%29%e3%82%92%e4%bd%bf%e3%81%88%e3%81%b0%e3%82%88%e3%81%84%e3%81%a7%e3%81%99%e3%81%ad%ef%bc%89%0aMutex%e3%81%a7%e3%82%ab%e3%82%a6%e3%83%b3%e3%82%bf%e3%82%92%e3%81%a4%e3%81%8f%e3%82%8a%e3%80%81%204%e3%82%b9%e3%83%ac%e3%83%83%e3%83%89%e8%b5%b7%e5%8b%95%e3%81%97%e3%80%81%e5%90%84%e3%82%b9%e3%83%ac%e3%83%83%e3%83%89%e3%81%a7100%e5%9b%9e%e3%82%a4%e3%83%b3%e3%82%af%e3%83%aa%e3%83%a1%e3%83%b3%e3%83%88%e3%82%92%e8%a1%8c%e3%81%84%e3%81%be%e3%81%99%e3%80%82%20cnt%e3%81%af400%e3%81%ab%e3%81%aa%e3%82%8b%e3%81%af%e3%81%9a%e3%81%a7%e3%81%99%e3%80%82%0ause%20std%3a%3async%3a%3a%7bArc%2c%20Mutex%2c%20MutexGuard%7d%3b%20use%20std%3a%3athread%3b%20const%20N_THREADS%3a%20usize%20%3d%204%3b%20fn%20main%28%29%20%7b%20let%20mut%20handles%3a%20Vec%26lt%3bthread%3a%3aJoinHandle%26lt%3b_%26gt%3b%26gt%3b%20%3d%20Vec%3a%3awith_capacity%28N_THREADS%29%3b%20let%20mutex%3a%20Arc%26lt%3bMutex%26lt%3busize%26gt%3b%26gt%3b%20%3d%20Arc%3a%3anew%28Mutex%3a%3anew%280%29%29%3b%20for%20_%20in%200..N_THREADS%20%7b%20let%20mutex%20%3d%20mutex.clone%28%29%3b%20let%20handle%20%3d%20thread%3a%3aspawn%28move%20%7c%7c%20%7b%20for%20_%20in%200..100%20%7b%20let%20mut%20cnt%3a%20MutexGuard%26lt%3b_%26gt%3b%20%3d%20mutex.lock%28%29.unwrap%28%29%3b%20%2acnt%20%2b%3d%201%3b%20%7d%20%7d%29%3b%20handles.push%28handle%29%3b%20%7d%20while%20let%20Some%28handle%29%20%3d%20handles." aria-label="Tumblr">
       <i class="fab fa-tumblr fa-lg" aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2fblog.take4s5i.dev%2fposts%2f2022%2frust-std-sync%2f&t=%5bRust%5d%20%e4%b8%a6%e5%88%97%e5%87%a6%e7%90%86%e3%81%ab%e4%bd%bf%e3%81%86API%e3%81%9f%e3%81%a1%28Mutex%2c%20RwLock%2c%20Barrier%2c%20Condvar%29" aria-label="Hacker News">
+    <a class="icon" href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2fblog.take4s5i.dev%2fposts%2f2022%2f01%2frust-std-sync%2f&t=%5bRust%5d%20%e4%b8%a6%e5%88%97%e5%87%a6%e7%90%86%e3%81%ab%e4%bd%bf%e3%81%86API%e3%81%9f%e3%81%a1%28Mutex%2c%20RwLock%2c%20Barrier%2c%20Condvar%29" aria-label="Hacker News">
       <i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i>
     </a>
   </li>

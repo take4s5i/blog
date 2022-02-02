@@ -10,7 +10,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title> [Rust] 並列処理に使うAPIたち2(Once, channel) | 6 bits blog</title>
-  <link rel = 'canonical' href = 'https://blog.take4s5i.dev/posts/2022/rust-std-sync2/'>
+  <link rel = 'canonical' href = 'https://blog.take4s5i.dev/posts/2022/01/rust-std-sync2/'>
   
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="all,follow">
@@ -21,9 +21,9 @@ Once Once は static 変数の初期化に利用できます。
 Once を使うことで、複数スレッドから同時に初期処理が実行されても、一度だけ実行されることを保証できます。
 use std::collections::HashMap; use std::sync::Once; use std::thread; static mut CONFIG: Option&lt;HashMap&lt;String, String&gt;&gt; = None; static START: Once = Once::new(); fn get_config(key: &amp;str) -&gt; Option&lt;String&gt; { unsafe { START.call_once(|| { println!(&#34;call_once&#34;); CONFIG = Some(HashMap::new()); CONFIG .as_mut() .unwrap() .insert(&#34;hoge&#34;.to_owned(), &#34;12345&#34;.to_owned()); }); CONFIG.as_ref().unwrap().get(key).map(|v| v.clone()) } } fn main() { let mut handles = Vec::new(); for i in 0..10 { handles.push(thread::spawn(move || { println!" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://blog.take4s5i.dev/posts/2022/rust-std-sync2/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2022-01-29T00:00:00+00:00" />
-<meta property="article:modified_time" content="2022-01-29T00:00:00+00:00" />
+<meta property="og:url" content="https://blog.take4s5i.dev/posts/2022/01/rust-std-sync2/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-01-29T00:00:00+09:00" />
+<meta property="article:modified_time" content="2022-01-29T00:00:00+09:00" />
 
 
   <meta name="twitter:card" content="summary"/>
@@ -93,14 +93,14 @@ if (!doNotTrack) {
       <ul>
         
         <li>
-          <a class="icon" href=" https://blog.take4s5i.dev/posts/2022/elastic-search-object-types/" aria-label="Previous">
+          <a class="icon" href=" https://blog.take4s5i.dev/posts/2022/01/elastic-search-object-types/" aria-label="Previous">
             <i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i>
           </a>
         </li>
         
         
         <li>
-          <a class="icon" href="https://blog.take4s5i.dev/posts/2022/rust-try-crossbeam/" aria-label="Next">
+          <a class="icon" href="https://blog.take4s5i.dev/posts/2022/02/rust-try-crossbeam/" aria-label="Next">
             <i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i>
           </a>
         </li>
@@ -131,47 +131,47 @@ if (!doNotTrack) {
   
   
   <li>
-    <a class="icon" href="http://www.facebook.com/sharer.php?u=https%3a%2f%2fblog.take4s5i.dev%2fposts%2f2022%2frust-std-sync2%2f" aria-label="Facebook">
+    <a class="icon" href="http://www.facebook.com/sharer.php?u=https%3a%2f%2fblog.take4s5i.dev%2fposts%2f2022%2f01%2frust-std-sync2%2f" aria-label="Facebook">
       <i class="fab fa-facebook " aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="https://twitter.com/share?url=https%3a%2f%2fblog.take4s5i.dev%2fposts%2f2022%2frust-std-sync2%2f&text=%5bRust%5d%20%e4%b8%a6%e5%88%97%e5%87%a6%e7%90%86%e3%81%ab%e4%bd%bf%e3%81%86API%e3%81%9f%e3%81%a12%28Once%2c%20channel%29" aria-label="Twitter">
+    <a class="icon" href="https://twitter.com/share?url=https%3a%2f%2fblog.take4s5i.dev%2fposts%2f2022%2f01%2frust-std-sync2%2f&text=%5bRust%5d%20%e4%b8%a6%e5%88%97%e5%87%a6%e7%90%86%e3%81%ab%e4%bd%bf%e3%81%86API%e3%81%9f%e3%81%a12%28Once%2c%20channel%29" aria-label="Twitter">
       <i class="fab fa-twitter " aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="http://www.linkedin.com/shareArticle?url=https%3a%2f%2fblog.take4s5i.dev%2fposts%2f2022%2frust-std-sync2%2f&title=%5bRust%5d%20%e4%b8%a6%e5%88%97%e5%87%a6%e7%90%86%e3%81%ab%e4%bd%bf%e3%81%86API%e3%81%9f%e3%81%a12%28Once%2c%20channel%29" aria-label="Linkedin">
+    <a class="icon" href="http://www.linkedin.com/shareArticle?url=https%3a%2f%2fblog.take4s5i.dev%2fposts%2f2022%2f01%2frust-std-sync2%2f&title=%5bRust%5d%20%e4%b8%a6%e5%88%97%e5%87%a6%e7%90%86%e3%81%ab%e4%bd%bf%e3%81%86API%e3%81%9f%e3%81%a12%28Once%2c%20channel%29" aria-label="Linkedin">
       <i class="fab fa-linkedin " aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https%3a%2f%2fblog.take4s5i.dev%2fposts%2f2022%2frust-std-sync2%2f&is_video=false&description=%5bRust%5d%20%e4%b8%a6%e5%88%97%e5%87%a6%e7%90%86%e3%81%ab%e4%bd%bf%e3%81%86API%e3%81%9f%e3%81%a12%28Once%2c%20channel%29" aria-label="Pinterest">
+    <a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https%3a%2f%2fblog.take4s5i.dev%2fposts%2f2022%2f01%2frust-std-sync2%2f&is_video=false&description=%5bRust%5d%20%e4%b8%a6%e5%88%97%e5%87%a6%e7%90%86%e3%81%ab%e4%bd%bf%e3%81%86API%e3%81%9f%e3%81%a12%28Once%2c%20channel%29" aria-label="Pinterest">
       <i class="fab fa-pinterest " aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="mailto:?subject=%5bRust%5d%20%e4%b8%a6%e5%88%97%e5%87%a6%e7%90%86%e3%81%ab%e4%bd%bf%e3%81%86API%e3%81%9f%e3%81%a12%28Once%2c%20channel%29&body=Check out this article: https%3a%2f%2fblog.take4s5i.dev%2fposts%2f2022%2frust-std-sync2%2f" aria-label="Email">
+    <a class="icon" href="mailto:?subject=%5bRust%5d%20%e4%b8%a6%e5%88%97%e5%87%a6%e7%90%86%e3%81%ab%e4%bd%bf%e3%81%86API%e3%81%9f%e3%81%a12%28Once%2c%20channel%29&body=Check out this article: https%3a%2f%2fblog.take4s5i.dev%2fposts%2f2022%2f01%2frust-std-sync2%2f" aria-label="Email">
       <i class="fas fa-envelope " aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="https://getpocket.com/save?url=https%3a%2f%2fblog.take4s5i.dev%2fposts%2f2022%2frust-std-sync2%2f&title=%5bRust%5d%20%e4%b8%a6%e5%88%97%e5%87%a6%e7%90%86%e3%81%ab%e4%bd%bf%e3%81%86API%e3%81%9f%e3%81%a12%28Once%2c%20channel%29" aria-label="Pocket">
+    <a class="icon" href="https://getpocket.com/save?url=https%3a%2f%2fblog.take4s5i.dev%2fposts%2f2022%2f01%2frust-std-sync2%2f&title=%5bRust%5d%20%e4%b8%a6%e5%88%97%e5%87%a6%e7%90%86%e3%81%ab%e4%bd%bf%e3%81%86API%e3%81%9f%e3%81%a12%28Once%2c%20channel%29" aria-label="Pocket">
       <i class="fab fa-get-pocket " aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="http://reddit.com/submit?url=https%3a%2f%2fblog.take4s5i.dev%2fposts%2f2022%2frust-std-sync2%2f&title=%5bRust%5d%20%e4%b8%a6%e5%88%97%e5%87%a6%e7%90%86%e3%81%ab%e4%bd%bf%e3%81%86API%e3%81%9f%e3%81%a12%28Once%2c%20channel%29" aria-label="reddit">
+    <a class="icon" href="http://reddit.com/submit?url=https%3a%2f%2fblog.take4s5i.dev%2fposts%2f2022%2f01%2frust-std-sync2%2f&title=%5bRust%5d%20%e4%b8%a6%e5%88%97%e5%87%a6%e7%90%86%e3%81%ab%e4%bd%bf%e3%81%86API%e3%81%9f%e3%81%a12%28Once%2c%20channel%29" aria-label="reddit">
       <i class="fab fa-reddit " aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="http://www.tumblr.com/share/link?url=https%3a%2f%2fblog.take4s5i.dev%2fposts%2f2022%2frust-std-sync2%2f&name=%5bRust%5d%20%e4%b8%a6%e5%88%97%e5%87%a6%e7%90%86%e3%81%ab%e4%bd%bf%e3%81%86API%e3%81%9f%e3%81%a12%28Once%2c%20channel%29&description=%e5%89%8d%e5%9b%9e%e3%81%ae%e7%b6%9a%e3%81%8d%e3%81%a7%20Once%20%e3%81%a8%20mpsc%20%e3%82%92%e8%aa%bf%e3%81%b9%e3%81%a6%e3%81%84%e3%81%8d%e3%81%be%e3%81%99%e3%80%82%0aOnce%20Once%20%e3%81%af%20static%20%e5%a4%89%e6%95%b0%e3%81%ae%e5%88%9d%e6%9c%9f%e5%8c%96%e3%81%ab%e5%88%a9%e7%94%a8%e3%81%a7%e3%81%8d%e3%81%be%e3%81%99%e3%80%82%0aOnce%20%e3%82%92%e4%bd%bf%e3%81%86%e3%81%93%e3%81%a8%e3%81%a7%e3%80%81%e8%a4%87%e6%95%b0%e3%82%b9%e3%83%ac%e3%83%83%e3%83%89%e3%81%8b%e3%82%89%e5%90%8c%e6%99%82%e3%81%ab%e5%88%9d%e6%9c%9f%e5%87%a6%e7%90%86%e3%81%8c%e5%ae%9f%e8%a1%8c%e3%81%95%e3%82%8c%e3%81%a6%e3%82%82%e3%80%81%e4%b8%80%e5%ba%a6%e3%81%a0%e3%81%91%e5%ae%9f%e8%a1%8c%e3%81%95%e3%82%8c%e3%82%8b%e3%81%93%e3%81%a8%e3%82%92%e4%bf%9d%e8%a8%bc%e3%81%a7%e3%81%8d%e3%81%be%e3%81%99%e3%80%82%0ause%20std%3a%3acollections%3a%3aHashMap%3b%20use%20std%3a%3async%3a%3aOnce%3b%20use%20std%3a%3athread%3b%20static%20mut%20CONFIG%3a%20Option%26lt%3bHashMap%26lt%3bString%2c%20String%26gt%3b%26gt%3b%20%3d%20None%3b%20static%20START%3a%20Once%20%3d%20Once%3a%3anew%28%29%3b%20fn%20get_config%28key%3a%20%26amp%3bstr%29%20-%26gt%3b%20Option%26lt%3bString%26gt%3b%20%7b%20unsafe%20%7b%20START.call_once%28%7c%7c%20%7b%20println%21%28%26%2334%3bcall_once%26%2334%3b%29%3b%20CONFIG%20%3d%20Some%28HashMap%3a%3anew%28%29%29%3b%20CONFIG%20.as_mut%28%29%20.unwrap%28%29%20.insert%28%26%2334%3bhoge%26%2334%3b.to_owned%28%29%2c%20%26%2334%3b12345%26%2334%3b.to_owned%28%29%29%3b%20%7d%29%3b%20CONFIG.as_ref%28%29.unwrap%28%29.get%28key%29.map%28%7cv%7c%20v.clone%28%29%29%20%7d%20%7d%20fn%20main%28%29%20%7b%20let%20mut%20handles%20%3d%20Vec%3a%3anew%28%29%3b%20for%20i%20in%200..10%20%7b%20handles.push%28thread%3a%3aspawn%28move%20%7c%7c%20%7b%20println%21" aria-label="Tumblr">
+    <a class="icon" href="http://www.tumblr.com/share/link?url=https%3a%2f%2fblog.take4s5i.dev%2fposts%2f2022%2f01%2frust-std-sync2%2f&name=%5bRust%5d%20%e4%b8%a6%e5%88%97%e5%87%a6%e7%90%86%e3%81%ab%e4%bd%bf%e3%81%86API%e3%81%9f%e3%81%a12%28Once%2c%20channel%29&description=%e5%89%8d%e5%9b%9e%e3%81%ae%e7%b6%9a%e3%81%8d%e3%81%a7%20Once%20%e3%81%a8%20mpsc%20%e3%82%92%e8%aa%bf%e3%81%b9%e3%81%a6%e3%81%84%e3%81%8d%e3%81%be%e3%81%99%e3%80%82%0aOnce%20Once%20%e3%81%af%20static%20%e5%a4%89%e6%95%b0%e3%81%ae%e5%88%9d%e6%9c%9f%e5%8c%96%e3%81%ab%e5%88%a9%e7%94%a8%e3%81%a7%e3%81%8d%e3%81%be%e3%81%99%e3%80%82%0aOnce%20%e3%82%92%e4%bd%bf%e3%81%86%e3%81%93%e3%81%a8%e3%81%a7%e3%80%81%e8%a4%87%e6%95%b0%e3%82%b9%e3%83%ac%e3%83%83%e3%83%89%e3%81%8b%e3%82%89%e5%90%8c%e6%99%82%e3%81%ab%e5%88%9d%e6%9c%9f%e5%87%a6%e7%90%86%e3%81%8c%e5%ae%9f%e8%a1%8c%e3%81%95%e3%82%8c%e3%81%a6%e3%82%82%e3%80%81%e4%b8%80%e5%ba%a6%e3%81%a0%e3%81%91%e5%ae%9f%e8%a1%8c%e3%81%95%e3%82%8c%e3%82%8b%e3%81%93%e3%81%a8%e3%82%92%e4%bf%9d%e8%a8%bc%e3%81%a7%e3%81%8d%e3%81%be%e3%81%99%e3%80%82%0ause%20std%3a%3acollections%3a%3aHashMap%3b%20use%20std%3a%3async%3a%3aOnce%3b%20use%20std%3a%3athread%3b%20static%20mut%20CONFIG%3a%20Option%26lt%3bHashMap%26lt%3bString%2c%20String%26gt%3b%26gt%3b%20%3d%20None%3b%20static%20START%3a%20Once%20%3d%20Once%3a%3anew%28%29%3b%20fn%20get_config%28key%3a%20%26amp%3bstr%29%20-%26gt%3b%20Option%26lt%3bString%26gt%3b%20%7b%20unsafe%20%7b%20START.call_once%28%7c%7c%20%7b%20println%21%28%26%2334%3bcall_once%26%2334%3b%29%3b%20CONFIG%20%3d%20Some%28HashMap%3a%3anew%28%29%29%3b%20CONFIG%20.as_mut%28%29%20.unwrap%28%29%20.insert%28%26%2334%3bhoge%26%2334%3b.to_owned%28%29%2c%20%26%2334%3b12345%26%2334%3b.to_owned%28%29%29%3b%20%7d%29%3b%20CONFIG.as_ref%28%29.unwrap%28%29.get%28key%29.map%28%7cv%7c%20v.clone%28%29%29%20%7d%20%7d%20fn%20main%28%29%20%7b%20let%20mut%20handles%20%3d%20Vec%3a%3anew%28%29%3b%20for%20i%20in%200..10%20%7b%20handles.push%28thread%3a%3aspawn%28move%20%7c%7c%20%7b%20println%21" aria-label="Tumblr">
       <i class="fab fa-tumblr " aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2fblog.take4s5i.dev%2fposts%2f2022%2frust-std-sync2%2f&t=%5bRust%5d%20%e4%b8%a6%e5%88%97%e5%87%a6%e7%90%86%e3%81%ab%e4%bd%bf%e3%81%86API%e3%81%9f%e3%81%a12%28Once%2c%20channel%29" aria-label="Hacker News">
+    <a class="icon" href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2fblog.take4s5i.dev%2fposts%2f2022%2f01%2frust-std-sync2%2f&t=%5bRust%5d%20%e4%b8%a6%e5%88%97%e5%87%a6%e7%90%86%e3%81%ab%e4%bd%bf%e3%81%86API%e3%81%9f%e3%81%a12%28Once%2c%20channel%29" aria-label="Hacker News">
       <i class="fab fa-hacker-news " aria-hidden="true"></i>
     </a>
   </li>
@@ -196,7 +196,7 @@ if (!doNotTrack) {
         
         <div class="postdate">
           
-          <time datetime="2022-01-29 00:00:00 &#43;0000 UTC" itemprop="datePublished">2022-01-29</time>
+          <time datetime="2022-01-29 00:00:00 &#43;0900 JST" itemprop="datePublished">2022-01-29</time>
           
         </div>
         
@@ -374,47 +374,47 @@ thread#2 val = 3
   
   
   <li>
-    <a class="icon" href="http://www.facebook.com/sharer.php?u=https%3a%2f%2fblog.take4s5i.dev%2fposts%2f2022%2frust-std-sync2%2f" aria-label="Facebook">
+    <a class="icon" href="http://www.facebook.com/sharer.php?u=https%3a%2f%2fblog.take4s5i.dev%2fposts%2f2022%2f01%2frust-std-sync2%2f" aria-label="Facebook">
       <i class="fab fa-facebook fa-lg" aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="https://twitter.com/share?url=https%3a%2f%2fblog.take4s5i.dev%2fposts%2f2022%2frust-std-sync2%2f&text=%5bRust%5d%20%e4%b8%a6%e5%88%97%e5%87%a6%e7%90%86%e3%81%ab%e4%bd%bf%e3%81%86API%e3%81%9f%e3%81%a12%28Once%2c%20channel%29" aria-label="Twitter">
+    <a class="icon" href="https://twitter.com/share?url=https%3a%2f%2fblog.take4s5i.dev%2fposts%2f2022%2f01%2frust-std-sync2%2f&text=%5bRust%5d%20%e4%b8%a6%e5%88%97%e5%87%a6%e7%90%86%e3%81%ab%e4%bd%bf%e3%81%86API%e3%81%9f%e3%81%a12%28Once%2c%20channel%29" aria-label="Twitter">
       <i class="fab fa-twitter fa-lg" aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="http://www.linkedin.com/shareArticle?url=https%3a%2f%2fblog.take4s5i.dev%2fposts%2f2022%2frust-std-sync2%2f&title=%5bRust%5d%20%e4%b8%a6%e5%88%97%e5%87%a6%e7%90%86%e3%81%ab%e4%bd%bf%e3%81%86API%e3%81%9f%e3%81%a12%28Once%2c%20channel%29" aria-label="Linkedin">
+    <a class="icon" href="http://www.linkedin.com/shareArticle?url=https%3a%2f%2fblog.take4s5i.dev%2fposts%2f2022%2f01%2frust-std-sync2%2f&title=%5bRust%5d%20%e4%b8%a6%e5%88%97%e5%87%a6%e7%90%86%e3%81%ab%e4%bd%bf%e3%81%86API%e3%81%9f%e3%81%a12%28Once%2c%20channel%29" aria-label="Linkedin">
       <i class="fab fa-linkedin fa-lg" aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https%3a%2f%2fblog.take4s5i.dev%2fposts%2f2022%2frust-std-sync2%2f&is_video=false&description=%5bRust%5d%20%e4%b8%a6%e5%88%97%e5%87%a6%e7%90%86%e3%81%ab%e4%bd%bf%e3%81%86API%e3%81%9f%e3%81%a12%28Once%2c%20channel%29" aria-label="Pinterest">
+    <a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https%3a%2f%2fblog.take4s5i.dev%2fposts%2f2022%2f01%2frust-std-sync2%2f&is_video=false&description=%5bRust%5d%20%e4%b8%a6%e5%88%97%e5%87%a6%e7%90%86%e3%81%ab%e4%bd%bf%e3%81%86API%e3%81%9f%e3%81%a12%28Once%2c%20channel%29" aria-label="Pinterest">
       <i class="fab fa-pinterest fa-lg" aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="mailto:?subject=%5bRust%5d%20%e4%b8%a6%e5%88%97%e5%87%a6%e7%90%86%e3%81%ab%e4%bd%bf%e3%81%86API%e3%81%9f%e3%81%a12%28Once%2c%20channel%29&body=Check out this article: https%3a%2f%2fblog.take4s5i.dev%2fposts%2f2022%2frust-std-sync2%2f" aria-label="Email">
+    <a class="icon" href="mailto:?subject=%5bRust%5d%20%e4%b8%a6%e5%88%97%e5%87%a6%e7%90%86%e3%81%ab%e4%bd%bf%e3%81%86API%e3%81%9f%e3%81%a12%28Once%2c%20channel%29&body=Check out this article: https%3a%2f%2fblog.take4s5i.dev%2fposts%2f2022%2f01%2frust-std-sync2%2f" aria-label="Email">
       <i class="fas fa-envelope fa-lg" aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="https://getpocket.com/save?url=https%3a%2f%2fblog.take4s5i.dev%2fposts%2f2022%2frust-std-sync2%2f&title=%5bRust%5d%20%e4%b8%a6%e5%88%97%e5%87%a6%e7%90%86%e3%81%ab%e4%bd%bf%e3%81%86API%e3%81%9f%e3%81%a12%28Once%2c%20channel%29" aria-label="Pocket">
+    <a class="icon" href="https://getpocket.com/save?url=https%3a%2f%2fblog.take4s5i.dev%2fposts%2f2022%2f01%2frust-std-sync2%2f&title=%5bRust%5d%20%e4%b8%a6%e5%88%97%e5%87%a6%e7%90%86%e3%81%ab%e4%bd%bf%e3%81%86API%e3%81%9f%e3%81%a12%28Once%2c%20channel%29" aria-label="Pocket">
       <i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="http://reddit.com/submit?url=https%3a%2f%2fblog.take4s5i.dev%2fposts%2f2022%2frust-std-sync2%2f&title=%5bRust%5d%20%e4%b8%a6%e5%88%97%e5%87%a6%e7%90%86%e3%81%ab%e4%bd%bf%e3%81%86API%e3%81%9f%e3%81%a12%28Once%2c%20channel%29" aria-label="reddit">
+    <a class="icon" href="http://reddit.com/submit?url=https%3a%2f%2fblog.take4s5i.dev%2fposts%2f2022%2f01%2frust-std-sync2%2f&title=%5bRust%5d%20%e4%b8%a6%e5%88%97%e5%87%a6%e7%90%86%e3%81%ab%e4%bd%bf%e3%81%86API%e3%81%9f%e3%81%a12%28Once%2c%20channel%29" aria-label="reddit">
       <i class="fab fa-reddit fa-lg" aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="http://www.tumblr.com/share/link?url=https%3a%2f%2fblog.take4s5i.dev%2fposts%2f2022%2frust-std-sync2%2f&name=%5bRust%5d%20%e4%b8%a6%e5%88%97%e5%87%a6%e7%90%86%e3%81%ab%e4%bd%bf%e3%81%86API%e3%81%9f%e3%81%a12%28Once%2c%20channel%29&description=%e5%89%8d%e5%9b%9e%e3%81%ae%e7%b6%9a%e3%81%8d%e3%81%a7%20Once%20%e3%81%a8%20mpsc%20%e3%82%92%e8%aa%bf%e3%81%b9%e3%81%a6%e3%81%84%e3%81%8d%e3%81%be%e3%81%99%e3%80%82%0aOnce%20Once%20%e3%81%af%20static%20%e5%a4%89%e6%95%b0%e3%81%ae%e5%88%9d%e6%9c%9f%e5%8c%96%e3%81%ab%e5%88%a9%e7%94%a8%e3%81%a7%e3%81%8d%e3%81%be%e3%81%99%e3%80%82%0aOnce%20%e3%82%92%e4%bd%bf%e3%81%86%e3%81%93%e3%81%a8%e3%81%a7%e3%80%81%e8%a4%87%e6%95%b0%e3%82%b9%e3%83%ac%e3%83%83%e3%83%89%e3%81%8b%e3%82%89%e5%90%8c%e6%99%82%e3%81%ab%e5%88%9d%e6%9c%9f%e5%87%a6%e7%90%86%e3%81%8c%e5%ae%9f%e8%a1%8c%e3%81%95%e3%82%8c%e3%81%a6%e3%82%82%e3%80%81%e4%b8%80%e5%ba%a6%e3%81%a0%e3%81%91%e5%ae%9f%e8%a1%8c%e3%81%95%e3%82%8c%e3%82%8b%e3%81%93%e3%81%a8%e3%82%92%e4%bf%9d%e8%a8%bc%e3%81%a7%e3%81%8d%e3%81%be%e3%81%99%e3%80%82%0ause%20std%3a%3acollections%3a%3aHashMap%3b%20use%20std%3a%3async%3a%3aOnce%3b%20use%20std%3a%3athread%3b%20static%20mut%20CONFIG%3a%20Option%26lt%3bHashMap%26lt%3bString%2c%20String%26gt%3b%26gt%3b%20%3d%20None%3b%20static%20START%3a%20Once%20%3d%20Once%3a%3anew%28%29%3b%20fn%20get_config%28key%3a%20%26amp%3bstr%29%20-%26gt%3b%20Option%26lt%3bString%26gt%3b%20%7b%20unsafe%20%7b%20START.call_once%28%7c%7c%20%7b%20println%21%28%26%2334%3bcall_once%26%2334%3b%29%3b%20CONFIG%20%3d%20Some%28HashMap%3a%3anew%28%29%29%3b%20CONFIG%20.as_mut%28%29%20.unwrap%28%29%20.insert%28%26%2334%3bhoge%26%2334%3b.to_owned%28%29%2c%20%26%2334%3b12345%26%2334%3b.to_owned%28%29%29%3b%20%7d%29%3b%20CONFIG.as_ref%28%29.unwrap%28%29.get%28key%29.map%28%7cv%7c%20v.clone%28%29%29%20%7d%20%7d%20fn%20main%28%29%20%7b%20let%20mut%20handles%20%3d%20Vec%3a%3anew%28%29%3b%20for%20i%20in%200..10%20%7b%20handles.push%28thread%3a%3aspawn%28move%20%7c%7c%20%7b%20println%21" aria-label="Tumblr">
+    <a class="icon" href="http://www.tumblr.com/share/link?url=https%3a%2f%2fblog.take4s5i.dev%2fposts%2f2022%2f01%2frust-std-sync2%2f&name=%5bRust%5d%20%e4%b8%a6%e5%88%97%e5%87%a6%e7%90%86%e3%81%ab%e4%bd%bf%e3%81%86API%e3%81%9f%e3%81%a12%28Once%2c%20channel%29&description=%e5%89%8d%e5%9b%9e%e3%81%ae%e7%b6%9a%e3%81%8d%e3%81%a7%20Once%20%e3%81%a8%20mpsc%20%e3%82%92%e8%aa%bf%e3%81%b9%e3%81%a6%e3%81%84%e3%81%8d%e3%81%be%e3%81%99%e3%80%82%0aOnce%20Once%20%e3%81%af%20static%20%e5%a4%89%e6%95%b0%e3%81%ae%e5%88%9d%e6%9c%9f%e5%8c%96%e3%81%ab%e5%88%a9%e7%94%a8%e3%81%a7%e3%81%8d%e3%81%be%e3%81%99%e3%80%82%0aOnce%20%e3%82%92%e4%bd%bf%e3%81%86%e3%81%93%e3%81%a8%e3%81%a7%e3%80%81%e8%a4%87%e6%95%b0%e3%82%b9%e3%83%ac%e3%83%83%e3%83%89%e3%81%8b%e3%82%89%e5%90%8c%e6%99%82%e3%81%ab%e5%88%9d%e6%9c%9f%e5%87%a6%e7%90%86%e3%81%8c%e5%ae%9f%e8%a1%8c%e3%81%95%e3%82%8c%e3%81%a6%e3%82%82%e3%80%81%e4%b8%80%e5%ba%a6%e3%81%a0%e3%81%91%e5%ae%9f%e8%a1%8c%e3%81%95%e3%82%8c%e3%82%8b%e3%81%93%e3%81%a8%e3%82%92%e4%bf%9d%e8%a8%bc%e3%81%a7%e3%81%8d%e3%81%be%e3%81%99%e3%80%82%0ause%20std%3a%3acollections%3a%3aHashMap%3b%20use%20std%3a%3async%3a%3aOnce%3b%20use%20std%3a%3athread%3b%20static%20mut%20CONFIG%3a%20Option%26lt%3bHashMap%26lt%3bString%2c%20String%26gt%3b%26gt%3b%20%3d%20None%3b%20static%20START%3a%20Once%20%3d%20Once%3a%3anew%28%29%3b%20fn%20get_config%28key%3a%20%26amp%3bstr%29%20-%26gt%3b%20Option%26lt%3bString%26gt%3b%20%7b%20unsafe%20%7b%20START.call_once%28%7c%7c%20%7b%20println%21%28%26%2334%3bcall_once%26%2334%3b%29%3b%20CONFIG%20%3d%20Some%28HashMap%3a%3anew%28%29%29%3b%20CONFIG%20.as_mut%28%29%20.unwrap%28%29%20.insert%28%26%2334%3bhoge%26%2334%3b.to_owned%28%29%2c%20%26%2334%3b12345%26%2334%3b.to_owned%28%29%29%3b%20%7d%29%3b%20CONFIG.as_ref%28%29.unwrap%28%29.get%28key%29.map%28%7cv%7c%20v.clone%28%29%29%20%7d%20%7d%20fn%20main%28%29%20%7b%20let%20mut%20handles%20%3d%20Vec%3a%3anew%28%29%3b%20for%20i%20in%200..10%20%7b%20handles.push%28thread%3a%3aspawn%28move%20%7c%7c%20%7b%20println%21" aria-label="Tumblr">
       <i class="fab fa-tumblr fa-lg" aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2fblog.take4s5i.dev%2fposts%2f2022%2frust-std-sync2%2f&t=%5bRust%5d%20%e4%b8%a6%e5%88%97%e5%87%a6%e7%90%86%e3%81%ab%e4%bd%bf%e3%81%86API%e3%81%9f%e3%81%a12%28Once%2c%20channel%29" aria-label="Hacker News">
+    <a class="icon" href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2fblog.take4s5i.dev%2fposts%2f2022%2f01%2frust-std-sync2%2f&t=%5bRust%5d%20%e4%b8%a6%e5%88%97%e5%87%a6%e7%90%86%e3%81%ab%e4%bd%bf%e3%81%86API%e3%81%9f%e3%81%a12%28Once%2c%20channel%29" aria-label="Hacker News">
       <i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i>
     </a>
   </li>
