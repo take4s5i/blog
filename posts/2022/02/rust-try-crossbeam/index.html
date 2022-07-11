@@ -32,9 +32,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&family=IBM+Plex+Sans:wght@400;700&display=swap">
 
-	<link rel="stylesheet" href="/assets/2df9b0e0.1271b01c.css" /><script type="module">(function(t,n,r,e,m){t[e]=t[e]||[],t[e].push({"gtm.start":new Date().getTime(),event:"gtm.js"});var g=n.getElementsByTagName(r)[0],a=n.createElement(r),s=e!="dataLayer"?"&l="+e:"";a.async=!0,a.src="https://www.googletagmanager.com/gtm.js?id="+m+s,g.parentNode.insertBefore(a,g)})(window,document,"script","dataLayer","GTM-P42NKJ8");
+	<link rel="stylesheet" href="/assets/8ad2a24b.1c76129c.css" /><script type="module">(function(t,n,r,e,m){t[e]=t[e]||[],t[e].push({"gtm.start":new Date().getTime(),event:"gtm.js"});var g=n.getElementsByTagName(r)[0],a=n.createElement(r),s=e!="dataLayer"?"&l="+e:"";a.async=!0,a.src="https://www.googletagmanager.com/gtm.js?id="+m+s,g.parentNode.insertBefore(a,g)})(window,document,"script","dataLayer","GTM-P42NKJ8");
 </script></head>
-
 	<body>
 		<header class="wrapper astro-63D5MSV2">
 	<article class="astro-63D5MSV2">
@@ -48,15 +47,18 @@
 
 
 		<div class="wrapper">
-			<div class="layout astro-U2BRR77M">
-	<article class="content astro-U2BRR77M">
-		<div class="astro-U2BRR77M">
-			<header class="astro-U2BRR77M">
+			<div class="layout astro-57SHIKPC">
+	<article class="content astro-57SHIKPC">
+		<div class="astro-57SHIKPC">
+			<header class="astro-57SHIKPC">
 				
-				<p class="publish-date astro-U2BRR77M">3 Feb 2022</p>
-				<h1 class="title astro-U2BRR77M">Rustのcrossbeamを試してみる</h1>
+				<p class="publish-date astro-57SHIKPC">3 Feb 2022</p>
+				<h1 class="title astro-57SHIKPC">Rustのcrossbeamを試してみる</h1>
 			</header>
-			<main class="astro-U2BRR77M">
+			<div class="editbar astro-57SHIKPC">
+				<a href="https://github.com/take4s5i/blog/blob/main/src/pages/posts/2022/02/rust-try-crossbeam.md" class="astro-57SHIKPC">Edit This Page</a>
+			</div>
+			<main class="astro-57SHIKPC">
 				<p>Rustのライブラリである<a href="https://github.com/crossbeam-rs/crossbeam">crossbeam</a>を試してみます。</p><p>crossbeamは公式の説明によると</p><p>This crate provides a set of tools for concurrent programming</p><p>このcrateは並列プログラミングのためのツールセットを提供する、とあります。</p><p>並列プログラミングを行う際のデータ構造や便利な関数が実装されているようです。
 それではみていきます。</p><h1 id="crossbeamscope">crossbeam::scope</h1><p><a href="https://docs.rs/crossbeam/0.8.1/crossbeam/fn.scope.html">crossbeam::scope</a>関数は
 スコープ付きのスレッドを作ることができます。</p><p>スコープ付きというのはライフタイムが制限されているということです。

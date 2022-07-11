@@ -32,9 +32,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&family=IBM+Plex+Sans:wght@400;700&display=swap">
 
-	<link rel="stylesheet" href="/assets/2df9b0e0.1271b01c.css" /><script type="module">(function(t,n,r,e,m){t[e]=t[e]||[],t[e].push({"gtm.start":new Date().getTime(),event:"gtm.js"});var g=n.getElementsByTagName(r)[0],a=n.createElement(r),s=e!="dataLayer"?"&l="+e:"";a.async=!0,a.src="https://www.googletagmanager.com/gtm.js?id="+m+s,g.parentNode.insertBefore(a,g)})(window,document,"script","dataLayer","GTM-P42NKJ8");
+	<link rel="stylesheet" href="/assets/8ad2a24b.1c76129c.css" /><script type="module">(function(t,n,r,e,m){t[e]=t[e]||[],t[e].push({"gtm.start":new Date().getTime(),event:"gtm.js"});var g=n.getElementsByTagName(r)[0],a=n.createElement(r),s=e!="dataLayer"?"&l="+e:"";a.async=!0,a.src="https://www.googletagmanager.com/gtm.js?id="+m+s,g.parentNode.insertBefore(a,g)})(window,document,"script","dataLayer","GTM-P42NKJ8");
 </script></head>
-
 	<body>
 		<header class="wrapper astro-63D5MSV2">
 	<article class="astro-63D5MSV2">
@@ -48,15 +47,18 @@
 
 
 		<div class="wrapper">
-			<div class="layout astro-U2BRR77M">
-	<article class="content astro-U2BRR77M">
-		<div class="astro-U2BRR77M">
-			<header class="astro-U2BRR77M">
+			<div class="layout astro-57SHIKPC">
+	<article class="content astro-57SHIKPC">
+		<div class="astro-57SHIKPC">
+			<header class="astro-57SHIKPC">
 				
-				<p class="publish-date astro-U2BRR77M">6 Jan 2022</p>
-				<h1 class="title astro-U2BRR77M">[Rust] 並列処理に使うAPIたち(Mutex, RwLock, Barrier, Condvar)</h1>
+				<p class="publish-date astro-57SHIKPC">6 Jan 2022</p>
+				<h1 class="title astro-57SHIKPC">[Rust] 並列処理に使うAPIたち(Mutex, RwLock, Barrier, Condvar)</h1>
 			</header>
-			<main class="astro-U2BRR77M">
+			<div class="editbar astro-57SHIKPC">
+				<a href="https://github.com/take4s5i/blog/blob/main/src/pages/posts/2022/01/rust-std-sync.md" class="astro-57SHIKPC">Edit This Page</a>
+			</div>
+			<main class="astro-57SHIKPC">
 				<p>最近業務でgoで並列処理を書くことがあり、Rustの場合はどうなっているのか気になったので調べてみました。</p><p><a href="https://doc.rust-lang.org/stable/std/sync/index.html">std::sync</a>モジュールの中をいろいろ見ていきたいと思います。</p><h1 id="mutex">Mutex</h1><p>まずは基本の<a href="https://doc.rust-lang.org/stable/std/sync/struct.Mutex.html">Mutex</a>から。</p><p>RustのMutexは単にロックを制御するだけではなく、ロックで守られたデータを持つことができます。
 （データが不要で単にロックだけほしい場合はユニット型<code>()</code>を使えばよいですね）</p><p>Mutexでカウンタをつくり、 4スレッド起動し、各スレッドで100回インクリメントを行います。
 <code>cnt</code>は400になるはずです。</p><pre class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #FF7B72">use</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">std</span><span style="color: #FF7B72">::</span><span style="color: #FFA657">sync</span><span style="color: #FF7B72">::</span><span style="color: #C9D1D9">{</span><span style="color: #FFA657">Arc</span><span style="color: #C9D1D9">, </span><span style="color: #FFA657">Mutex</span><span style="color: #C9D1D9">, </span><span style="color: #FFA657">MutexGuard</span><span style="color: #C9D1D9">};</span></span>

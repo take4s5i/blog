@@ -32,9 +32,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&family=IBM+Plex+Sans:wght@400;700&display=swap">
 
-	<link rel="stylesheet" href="/assets/2df9b0e0.1271b01c.css" /><script type="module">(function(t,n,r,e,m){t[e]=t[e]||[],t[e].push({"gtm.start":new Date().getTime(),event:"gtm.js"});var g=n.getElementsByTagName(r)[0],a=n.createElement(r),s=e!="dataLayer"?"&l="+e:"";a.async=!0,a.src="https://www.googletagmanager.com/gtm.js?id="+m+s,g.parentNode.insertBefore(a,g)})(window,document,"script","dataLayer","GTM-P42NKJ8");
+	<link rel="stylesheet" href="/assets/8ad2a24b.1c76129c.css" /><script type="module">(function(t,n,r,e,m){t[e]=t[e]||[],t[e].push({"gtm.start":new Date().getTime(),event:"gtm.js"});var g=n.getElementsByTagName(r)[0],a=n.createElement(r),s=e!="dataLayer"?"&l="+e:"";a.async=!0,a.src="https://www.googletagmanager.com/gtm.js?id="+m+s,g.parentNode.insertBefore(a,g)})(window,document,"script","dataLayer","GTM-P42NKJ8");
 </script></head>
-
 	<body>
 		<header class="wrapper astro-63D5MSV2">
 	<article class="astro-63D5MSV2">
@@ -48,15 +47,18 @@
 
 
 		<div class="wrapper">
-			<div class="layout astro-U2BRR77M">
-	<article class="content astro-U2BRR77M">
-		<div class="astro-U2BRR77M">
-			<header class="astro-U2BRR77M">
+			<div class="layout astro-57SHIKPC">
+	<article class="content astro-57SHIKPC">
+		<div class="astro-57SHIKPC">
+			<header class="astro-57SHIKPC">
 				
-				<p class="publish-date astro-U2BRR77M">16 Dec 2021</p>
-				<h1 class="title astro-U2BRR77M">Rustのクロージャを理解する</h1>
+				<p class="publish-date astro-57SHIKPC">16 Dec 2021</p>
+				<h1 class="title astro-57SHIKPC">Rustのクロージャを理解する</h1>
 			</header>
-			<main class="astro-U2BRR77M">
+			<div class="editbar astro-57SHIKPC">
+				<a href="https://github.com/take4s5i/blog/blob/main/src/pages/posts/2021/12/rust-closure.md" class="astro-57SHIKPC">Edit This Page</a>
+			</div>
+			<main class="astro-57SHIKPC">
 				<p>まずはRustのクロージャを見てみましょう。</p><pre class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #FF7B72">fn</span><span style="color: #C9D1D9"> </span><span style="color: #D2A8FF">main</span><span style="color: #C9D1D9">() {</span></span>
 <span class="line"><span style="color: #C9D1D9">    </span><span style="color: #FF7B72">let</span><span style="color: #C9D1D9"> nums</span><span style="color: #FF7B72">:</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">Vec</span><span style="color: #C9D1D9">&lt;</span><span style="color: #FFA657">i32</span><span style="color: #C9D1D9">&gt; </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> </span><span style="color: #D2A8FF">vec!</span><span style="color: #C9D1D9">[</span><span style="color: #79C0FF">1</span><span style="color: #C9D1D9">,</span><span style="color: #79C0FF">2</span><span style="color: #C9D1D9">,</span><span style="color: #79C0FF">3</span><span style="color: #C9D1D9">,</span><span style="color: #79C0FF">4</span><span style="color: #C9D1D9">,</span><span style="color: #79C0FF">5</span><span style="color: #C9D1D9">];</span></span>
 <span class="line"><span style="color: #C9D1D9">    </span><span style="color: #FF7B72">let</span><span style="color: #C9D1D9"> y</span><span style="color: #FF7B72">:</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">i32</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">2</span><span style="color: #C9D1D9">;</span></span>
