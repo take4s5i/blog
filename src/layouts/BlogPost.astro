@@ -1,8 +1,8 @@
 ---
+import { Debug } from 'astro/components';
 import BaseHead from '../components/BaseHead.astro';
 import BlogHeader from '../components/BlogHeader.astro';
 import BlogPost from '../components/BlogPost.astro';
-
 
 const { content } = Astro.props;
 const { title, description, publishDate, author, heroImage, permalink, alt } = content;
@@ -12,7 +12,6 @@ const { title, description, publishDate, author, heroImage, permalink, alt } = c
 	<head>
 		<BaseHead {title} {description} {permalink} />
 	</head>
-
 	<body>
 		<BlogHeader/>
 		<div class="wrapper">

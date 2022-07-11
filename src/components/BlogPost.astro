@@ -10,6 +10,10 @@ export interface Props {
 }
 
 const { title, author, publishDate, heroImage, alt } = Astro.props;
+
+const url = new URL(Astro.request.url);
+const removeTrailingSlash = (s) => s.endsWith('/') ? s.substring(0, s.length - 1) : s
+const editUrl = `https://github.com/take4s5i/blog/blob/main/src/pages${removeTrailingSlash(url.pathname)}.md`
 ---
 
 <div class="layout">
@@ -20,6 +24,9 @@ const { title, author, publishDate, heroImage, alt } = Astro.props;
 				<p class="publish-date">{publishDate}</p>
 				<h1 class="title">{title}</h1>
 			</header>
+			<div class="editbar">
+				<a href={editUrl}>Edit This Page</a>
+			</div>
 			<main>
 				<slot />
 			</main>
@@ -28,6 +35,12 @@ const { title, author, publishDate, heroImage, alt } = Astro.props;
 </div>
 
 <style>
+	.editbar {
+		display: flex;
+		flex-direction: row-reverse;
+		margin-bottom: 1rem;
+	}
+
 	.hero-image {
 		width: 100vw;
 		object-fit: cover;
