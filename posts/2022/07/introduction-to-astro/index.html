@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<!-- Google Tag Manager -->
+<!-- End Google Tag Manager -->
+
+<!-- Global Metadata -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+
+<!-- Primary Meta Tags -->
+<title>take4s5i DEV - Astro ざっくりまとめ</title>
+<meta name="title" content="Astro ざっくりまとめ">
+<meta name="description">
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:url">
+<meta property="og:title" content="Astro ざっくりまとめ">
+<meta property="og:description">
+<meta property="og:image" content="https://astro.build/social.png?v=1">
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:url">
+<meta property="twitter:title" content="Astro ざっくりまとめ">
+<meta property="twitter:description">
+<meta property="twitter:image" content="https://astro.build/social.png?v=1">
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&family=IBM+Plex+Sans:wght@400;700&display=swap">
+
+	<link rel="stylesheet" href="/assets/9f5bbbfb.87948273.css" /><script type="module">(function(t,n,r,e,m){t[e]=t[e]||[],t[e].push({"gtm.start":new Date().getTime(),event:"gtm.js"});var g=n.getElementsByTagName(r)[0],a=n.createElement(r),s=e!="dataLayer"?"&l="+e:"";a.async=!0,a.src="https://www.googletagmanager.com/gtm.js?id="+m+s,g.parentNode.insertBefore(a,g)})(window,document,"script","dataLayer","GTM-P42NKJ8");
+</script></head>
+	<body>
+		<header class="wrapper astro-63D5MSV2">
+	<article class="astro-63D5MSV2">
+		<h1 class="astro-63D5MSV2">
+			<a href="/" class="astro-63D5MSV2">
+				<span class="astro-63D5MSV2">take4s5i DEV</span>
+			</a>
+		</h1>
+	</article>
+</header>
+
+
+		<div class="wrapper">
+			<div class="layout astro-57SHIKPC">
+	<article class="content astro-57SHIKPC">
+		<div class="astro-57SHIKPC">
+			<header class="astro-57SHIKPC">
+				
+				<p class="publish-date astro-57SHIKPC">16 Jul 2022</p>
+				<h1 class="title astro-57SHIKPC">Astro ざっくりまとめ</h1>
+			</header>
+			<div class="editbar astro-57SHIKPC">
+				<a href="https://github.com/take4s5i/blog/blob/main/src/pages/posts/2022/07/introduction-to-astro.md" class="astro-57SHIKPC">Edit This Page</a>
+			</div>
+			<main class="astro-57SHIKPC">
+				<p>ブログを <a href="https://astro.build/">Astro</a> で作り直したので
+備忘録がてらまとめていこうかなと思います。</p><h2 id="astro-とは">Astro とは</h2><p><a href="https://astro.build/">Astro</a> は静的サイトジェネレータです。</p><p>Next.js のSSG, Hugo, Gatsby と同じようなツールと言えます。</p><p>以下のような特徴があります。</p><ul>
+<li>コンポーネント思考によるモダンなWeb開発</li>
+<li>React, Preact, Svelte, Vue 等の複数のフレームワークに対応</li>
+<li><a href="https://docs.astro.build/en/core-concepts/partial-hydration/#islands-architecture">Islands Archtecture</a> に基づいた高速なWebサイトの生成。</li>
+</ul><p>また、ブログ用途限定かもしれませんが何もセットアップしなくても markdown が読み込めて
+シンタックスハイライトまで効いてくれます。</p><h2 id="gatsby-との比較">Gatsby との比較</h2><p>会社のドキュメントで <a href="https://www.gatsbyjs.com/">Gatsby</a> を使ってるので比較してみようと思います。
+<a href="https://docs.astro.build/en/comparing-astro-vs-other-tools/#gatsby-vs-astro">公式での比較ドキュメント</a> があるので主に使用感について。</p><p><strong>Astro の良いところ</strong></p><ul>
+<li>Starter 探したり, Plugin 頑張って設定しなくても markdown 等がそこそこいい感じで使える</li>
+<li>build, devモードの起動が半端なく早い
+<ul>
+<li><a href="https://vitejs.dev/">Vite</a> 使ってるようなので Vite のおかげかも</li>
+</ul>
+</li>
+</ul><p><strong>Gatsby のよいところ</strong></p><ul>
+<li>コーディングのサポート
+<ul>
+<li>jsx なのでエディタ等のサポートが充実してます</li>
+<li>astro は Vim だとシンタックスハイライトすら効かない・・・(2022年7月現在)</li>
+</ul>
+</li>
+<li>GraphQL でデータを取ってこれる柔軟性</li>
+<li>プラグインによる拡張性</li>
+</ul><h2 id="従来の-ssr-の問題">従来の SSR の問題</h2><p>Islands Archtecture について話す前に従来の SSR の問題点について軽くおさらいします。</p><p>通常 SPA は<code>&lt;div id="app"&gt;</code> のようなタグ（=マウントポイント）を1つだけ body の中に設置し、
+その下はフレームワークによってレンダリングされます。</p><p>SSR 時、React 等のフレームワークはマウントポイントに静的に HTML をレンダリングしてクライアントに返します。
+このときクライアント側では <em>ハイドレーション</em> という処理が行われます。</p><p>ハイドレーション では以下のような処理が実行されます。</p><ul>
+<li>コンポーネント等のjsロード, 実行</li>
+<li>コンポーネントのローカルステートの設定</li>
+<li>イベントハンドラの設定</li>
+</ul><p>SSR によって Core Web Vitals の LCP (Largest Content Paint) は改善しますが、
+ハイドレーションの処理があるため FID (First Input Delay) は改善しません。</p><h2 id="islands-archtecture-とは">Islands Archtecture とは</h2><p>Islands Archtecture は Web ページを複数のパーツ (= Island) の組み合わせとして考えます。
+Island には2つのタイプがあって、</p><ul>
+<li>SSR + ハイドレーション or CSR する部分</li>
+<li>静的な HTML の部分</li>
+</ul><p>js 不要な部分に関しては単なるHTML + CSS で返してしまおうということですね。
+こうすることで、頭から全部ハイドレーションするより処理を軽くすることが出来ます。</p><p>また、Astro では Partial Hydration といって Island 毎に独立してハイドレーションします。
+ハイドレーションの方法も複数サポートしていて、ここらへんの細かい制御ができるのもAstroの強みになっています。</p><h2 id="astro-component-と-framework-component">Astro Component と Framework Component</h2><p>Astro では Component が複数種類あります。</p><p><strong>Astro Component</strong></p><ul>
+<li><code>*.astro</code></li>
+<li>Islands Archtecture の静的な HTML の部分を担当</li>
+<li>CSR は出来ない。</li>
+<li>JSX ぽいシンタックスで書ける</li>
+<li>Astro Comopnent 内では Astro Component, Framework Component の両方が使える</li>
+</ul><p>詳しくは<a href="https://docs.astro.build/en/core-concepts/astro-components/">こちら</a></p><p><strong>Framework Component</strong></p><ul>
+<li>React, Preact, Svelte, Vue 等の各種フレームワークでレンダリングされるコンポーネント</li>
+<li><code>*.tsx</code>, <code>*.jsx</code> など(フレームワークによる)</li>
+<li>Framework Comopnent 内では Astro Component は使えない。</li>
+</ul><p>また、ビルトインで markdown がサポートされており、何も設定しなくても勝手にシンタックスハイライトが効きます。
+（便利ですね）</p><p>markdownでは jsx のようなシンタックスもサポートされていて、 <a href="https://mdxjs.com/">MDX</a> のように使えます。
+markdownの中で, Astro Component や Framework Component を使うことも可能です。</p><h2 id="astro-のプロジェクト構成">Astro のプロジェクト構成</h2><ul>
+<li><code>src/components</code>: 再利用可能なコンポーネント群
+<ul>
+<li>Astro Component, Framework Component両方</li>
+</ul>
+</li>
+<li><code>src/pages</code>: Page Component
+<ul>
+<li>HTML全体をレンダリングする root となるコンポーネント</li>
+<li>Astro Component のみ</li>
+</ul>
+</li>
+<li><code>src/layouts</code>: markdown や Page Component で利用するレイアウト用コンポーネント
+<ul>
+<li>Astro Component のみ</li>
+</ul>
+</li>
+<li><code>src/styles</code>
+<ul>
+<li>css や sass 等のスタイル置き場</li>
+</ul>
+</li>
+<li><code>public</code>
+<ul>
+<li>robots.txt 等の そのまま公開されるファイルを置く場所</li>
+</ul>
+</li>
+</ul><p><a href="https://docs.astro.build/en/core-concepts/project-structure/">ここらへん</a>に詳しく書いてあります。</p><p>そのうち続き書きます。</p>
+			</main>
+		</div>
+	</article>
+</div>
+
+
+		</div>
+	</body></html>
