@@ -1,0 +1,107 @@
+---
+layout: ../../../../layouts/BlogPost.astro
+title: Astro ざっくりまとめ
+publishDate: 16 Jul 2022
+---
+
+ブログを [Astro](https://astro.build/) で作り直したので
+備忘録がてらまとめていこうかなと思います。
+
+## Astro とは
+[Astro](https://astro.build/) は静的サイトジェネレータです。
+
+Next.js のSSG, Hugo, Gatsby と同じようなツールと言えます。
+
+以下のような特徴があります。
+- コンポーネント思考によるモダンなWeb開発
+- React, Preact, Svelte, Vue 等の複数のフレームワークに対応
+- [Islands Archtecture](https://docs.astro.build/en/core-concepts/partial-hydration/#islands-architecture) に基づいた高速なWebサイトの生成。
+
+また、ブログ用途限定かもしれませんが何もセットアップしなくても markdown が読み込めて
+シンタックスハイライトまで効いてくれます。
+
+## Gatsby との比較
+会社のドキュメントで [Gatsby](https://www.gatsbyjs.com/) を使ってるので比較してみようと思います。
+[公式での比較ドキュメント](https://docs.astro.build/en/comparing-astro-vs-other-tools/#gatsby-vs-astro) があるので主に使用感について。
+
+**Astro の良いところ**
+- Starter 探したり, Plugin 頑張って設定しなくても markdown 等がそこそこいい感じで使える
+- build, devモードの起動が半端なく早い
+  - [Vite](https://vitejs.dev/) 使ってるようなので Vite のおかげかも
+
+**Gatsby のよいところ**
+- コーディングのサポート
+  - jsx なのでエディタ等のサポートが充実してます
+  - astro は Vim だとシンタックスハイライトすら効かない・・・(2022年7月現在)
+- GraphQL でデータを取ってこれる柔軟性
+- プラグインによる拡張性
+
+## 従来の SSR の問題
+Islands Archtecture について話す前に従来の SSR の問題点について軽くおさらいします。
+
+
+通常 SPA は`<div id="app">` のようなタグ（=マウントポイント）を1つだけ body の中に設置し、
+その下はフレームワークによってレンダリングされます。
+
+SSR 時、React 等のフレームワークはマウントポイントに静的に HTML をレンダリングしてクライアントに返します。
+このときクライアント側では *ハイドレーション* という処理が行われます。
+
+ハイドレーション では以下のような処理が実行されます。
+- コンポーネント等のjsロード, 実行
+- コンポーネントのローカルステートの設定
+- イベントハンドラの設定
+
+SSR によって Core Web Vitals の LCP (Largest Content Paint) は改善しますが、
+ハイドレーションの処理があるため FID (First Input Delay) は改善しません。
+
+## Islands Archtecture とは
+Islands Archtecture は Web ページを複数のパーツ (= Island) の組み合わせとして考えます。
+Island には2つのタイプがあって、
+- SSR + ハイドレーション or CSR する部分
+- 静的な HTML の部分
+
+js 不要な部分に関しては単なるHTML + CSS で返してしまおうということですね。
+こうすることで、頭から全部ハイドレーションするより処理を軽くすることが出来ます。
+
+また、Astro では Partial Hydration といって Island 毎に独立してハイドレーションします。
+ハイドレーションの方法も複数サポートしていて、ここらへんの細かい制御ができるのもAstroの強みになっています。
+
+## Astro Component と Framework Component
+Astro では Component が複数種類あります。
+
+**Astro Component**
+- `*.astro`
+- Islands Archtecture の静的な HTML の部分を担当
+- CSR は出来ない。
+- JSX ぽいシンタックスで書ける
+- Astro Comopnent 内では Astro Component, Framework Component の両方が使える
+
+詳しくは[こちら](https://docs.astro.build/en/core-concepts/astro-components/)
+
+**Framework Component**
+- React, Preact, Svelte, Vue 等の各種フレームワークでレンダリングされるコンポーネント
+- `*.tsx`, `*.jsx` など(フレームワークによる)
+- Framework Comopnent 内では Astro Component は使えない。
+
+また、ビルトインで markdown がサポートされており、何も設定しなくても勝手にシンタックスハイライトが効きます。
+（便利ですね）
+
+markdownでは jsx のようなシンタックスもサポートされていて、 [MDX](https://mdxjs.com/) のように使えます。
+markdownの中で, Astro Component や Framework Component を使うことも可能です。
+
+## Astro のプロジェクト構成
+- `src/components`: 再利用可能なコンポーネント群 
+  - Astro Component, Framework Component両方
+- `src/pages`: Page Component
+  - HTML全体をレンダリングする root となるコンポーネント
+  - Astro Component のみ
+- `src/layouts`: markdown や Page Component で利用するレイアウト用コンポーネント
+  - Astro Component のみ
+- `src/styles`
+  - css や sass 等のスタイル置き場
+- `public`
+  - robots.txt 等の そのまま公開されるファイルを置く場所
+
+[ここらへん](https://docs.astro.build/en/core-concepts/project-structure/)に詳しく書いてあります。
+
+そのうち続き書きます。
