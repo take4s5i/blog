@@ -1,5 +1,11 @@
 ---
 layout: ../../../../layouts/BlogPost.astro
+setup: |
+  import TodoList from '../../../../components/posts/2022/07/introduction-to-astro/TodoList.astro'
+  import Import from '../../../../components/Import.astro'
+  import * as Config from '../../../../config.mjs'
+
+  const sampleUrl = Config.getBlobUrl('src/components/posts/2022/07/introduction-to-astro')
 title: Astro ざっくりまとめ
 publishDate: 16 Jul 2022
 ---
@@ -104,4 +110,46 @@ markdownの中で, Astro Component や Framework Component を使うことも可
 
 [ここらへん](https://docs.astro.build/en/core-concepts/project-structure/)に詳しく書いてあります。
 
-そのうち続き書きます。
+## Astro サンプル実装
+サンプルを使って説明します。
+（<a href={sampleUrl}>ソース</a>）
+
+<Import
+  lang="js"
+  path="src/components/posts/2022/07/introduction-to-astro/Icon.astro" />
+
+<Import
+  lang="js"
+  path="src/components/posts/2022/07/introduction-to-astro/TodoItem.astro" />
+
+<Import
+  lang="js"
+  path="src/components/posts/2022/07/introduction-to-astro/TodoList.astro" />
+
+Astro Component は Component Script と Component Template の2つのパートからなります。
+
+`---` で区切られた最初の部分(frontmatter) は Component Scriptです。
+Component Script で Astro Component やFramework Component を import したり、
+`Astro.props` で Props を受け取る事もできます。
+
+Component Script は SSR 時、またはビルド時に実行されます。
+このブログはビルドした HTML をデプロイしているため、 *TodoList.asrto* はビルド時に fetch したデータで
+HTML をレンダリングします。
+
+`---` の後ろの部分は Component Template です。
+JSX ライクな記法でHTMLを記述することが出来ます。
+Component Script で import したコンポーネントを使ったり、定義した変数を参照出来ます。
+
+また、 `<style>` タグでスタイルを定義することも出来ます。
+スタイルは Asrto によって自動的に CSS Module 化されるので、クラス名の重複を気にする必要はありません。
+
+`<TodoList />` をレンダリングすると以下のようになります。
+
+<TodoList />
+
+## おわりに
+書き方がちょっと違うのと、 CSR はできないという点を除けば
+コンポーネントでの開発に慣れている方はそんなに違和感なく使えるのかなと思いました。
+
+先程の TodoList も記事のソースの markdown 中に直接コンポーネントとして呼び出してレンダリングしています。
+MDX をセットアップしなくても markdown 中でコンポーネントを使えるのは非常に便利だと思いました。

@@ -1,0 +1,21 @@
+---
+export interface Props {
+  path: string
+  lang?: string
+}
+
+import { Code } from 'astro/components'
+import { resolve, dirname, basename } from 'path'
+import * as fs from 'fs/promises'
+import * as Config from '../config.mjs'
+
+const { path, lang } = Astro.props
+
+const filePath = resolve(Config.getRepoRoot(), path)
+const fileName = basename(filePath)
+const srcUrl = Config.getBlobUrl(path)
+
+const content = await fs.readFile(filePath).then((data) => data.toString('utf-8'))
+---
+<p><strong>{fileName}</strong> [<a target="_blank" href={srcUrl}>src</a>]</p>
+<Code code={content} lang={lang}/>

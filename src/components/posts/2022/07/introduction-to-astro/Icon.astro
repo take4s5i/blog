@@ -1,0 +1,32 @@
+---
+// Icon.astro
+export interface Props {
+  type: 'success' | 'danger'
+}
+
+const { type } = Astro.props
+---
+<div class={['icon', `icon-${type}`].join(' ')}>
+  <slot />
+</div>
+<style>
+.icon {
+  min-width: 120px;
+  text-align: center;
+  font-weight: bold;
+  border-style: solid;
+  border-radius: 4px;
+  padding: 2px 4px;
+}
+
+.icon.icon-success {
+  background-color: royalblue;
+  border-color: royalblue;
+}
+
+.icon.icon-danger {
+  background-color: tomato;
+  border-color: tomato;
+}
+
+</style>

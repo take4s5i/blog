@@ -1,0 +1,26 @@
+---
+// TodoList.astro
+import TodoItem from './TodoItem.astro'
+
+const limit = 5
+const url = 'https://jsonplaceholder.typicode.com/todos/'
+const todos = await fetch(url).then((res) => res.json())
+---
+<ul class="list">
+  {todos.slice(0, limit).map((todo) => (
+    <li class="item">
+      <TodoItem title={todo.title} completed={todo.completed} />
+    </li>
+  ))}
+</ul>
+<style>
+.list {
+  display: flex;
+  flex-direction: column;
+  list-style-type: none;
+  padding: 4px;
+}
+
+.item {
+}
+</style>

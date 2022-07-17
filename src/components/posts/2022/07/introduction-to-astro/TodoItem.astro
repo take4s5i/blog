@@ -1,0 +1,40 @@
+---
+// TodoItem.astro
+export interface Props {
+  title: string;
+  completed: boolean;
+}
+
+import Icon from './Icon.astro'
+
+const { title, completed } = Astro.props
+
+---
+<div class="card">
+  <div class="title">{title}</div>
+  <div class="icon-wrap">
+  {completed
+    ? (<Icon type="success">COMPLETE</Icon>)
+    : (<Icon type="danger">IN PROGRESS</ICON>)
+  }
+  </div>
+</div>
+<style>
+.card {
+  border: 2px solid dimgray;
+  border-radius: 4px;
+  padding: 16px;
+  margin: 4px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.title {
+  font-size: 1.5rem;
+}
+
+.icon-wrap {
+  display: flex;
+  align-items: center;
+}
+</style>
