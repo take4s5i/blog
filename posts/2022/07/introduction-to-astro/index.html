@@ -32,7 +32,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&family=IBM+Plex+Sans:wght@400;700&display=swap">
 
-	<link rel="stylesheet" href="/assets/9f5bbbfb.87948273.css" /><script type="module">(function(t,n,r,e,m){t[e]=t[e]||[],t[e].push({"gtm.start":new Date().getTime(),event:"gtm.js"});var g=n.getElementsByTagName(r)[0],a=n.createElement(r),s=e!="dataLayer"?"&l="+e:"";a.async=!0,a.src="https://www.googletagmanager.com/gtm.js?id="+m+s,g.parentNode.insertBefore(a,g)})(window,document,"script","dataLayer","GTM-P42NKJ8");
+	<link rel="stylesheet" href="/assets/d305569f.32eb58ba.css" />
+<link rel="stylesheet" href="/assets/9f5bbbfb.87948273.css" /><script type="module">(function(t,n,r,e,m){t[e]=t[e]||[],t[e].push({"gtm.start":new Date().getTime(),event:"gtm.js"});var g=n.getElementsByTagName(r)[0],a=n.createElement(r),s=e!="dataLayer"?"&l="+e:"";a.async=!0,a.src="https://www.googletagmanager.com/gtm.js?id="+m+s,g.parentNode.insertBefore(a,g)})(window,document,"script","dataLayer","GTM-P42NKJ8");
 </script></head>
 	<body>
 		<header class="wrapper astro-63D5MSV2">
@@ -134,7 +135,179 @@ markdownの中で, Astro Component や Framework Component を使うことも可
 <li>robots.txt 等の そのまま公開されるファイルを置く場所</li>
 </ul>
 </li>
-</ul><p><a href="https://docs.astro.build/en/core-concepts/project-structure/">ここらへん</a>に詳しく書いてあります。</p><p>そのうち続き書きます。</p>
+</ul><p><a href="https://docs.astro.build/en/core-concepts/project-structure/">ここらへん</a>に詳しく書いてあります。</p><h2 id="astro-サンプル実装">Astro サンプル実装</h2><p>サンプルを使って説明します。
+（<a href="https://github.com/take4s5i/blog/blob/main/src/components/posts/2022/07/introduction-to-astro">ソース</a>）</p><p><strong>Icon.astro</strong> [<a target="_blank" href="https://github.com/take4s5i/blog/blob/main/src/components/posts/2022/07/introduction-to-astro/Icon.astro">src</a>]</p>
+<pre is:raw class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #FF7B72">---</span></span>
+<span class="line"><span style="color: #8B949E">// Icon.astro</span></span>
+<span class="line"><span style="color: #FF7B72">export</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">interface</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">Props</span><span style="color: #C9D1D9"> {</span></span>
+<span class="line"><span style="color: #C9D1D9">  </span><span style="color: #FFA657">type</span><span style="color: #FF7B72">:</span><span style="color: #C9D1D9"> </span><span style="color: #A5D6FF">&#39;success&#39;</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">|</span><span style="color: #C9D1D9"> </span><span style="color: #A5D6FF">&#39;danger&#39;</span></span>
+<span class="line"><span style="color: #C9D1D9">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #FF7B72">const</span><span style="color: #C9D1D9"> { </span><span style="color: #79C0FF">type</span><span style="color: #C9D1D9"> } </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> Astro.props</span></span>
+<span class="line"><span style="color: #FF7B72">---</span></span>
+<span class="line"><span style="color: #C9D1D9">&lt;</span><span style="color: #7EE787">div</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">class</span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9">{[</span><span style="color: #A5D6FF">&#39;icon&#39;</span><span style="color: #C9D1D9">, </span><span style="color: #A5D6FF">`icon-${</span><span style="color: #C9D1D9">type</span><span style="color: #A5D6FF">}`</span><span style="color: #C9D1D9">].</span><span style="color: #D2A8FF">join</span><span style="color: #C9D1D9">(</span><span style="color: #A5D6FF">&#39; &#39;</span><span style="color: #C9D1D9">)}&gt;</span></span>
+<span class="line"><span style="color: #C9D1D9">  &lt;</span><span style="color: #7EE787">slot</span><span style="color: #C9D1D9"> /&gt;</span></span>
+<span class="line"><span style="color: #C9D1D9">&lt;/</span><span style="color: #7EE787">div</span><span style="color: #C9D1D9">&gt;</span></span>
+<span class="line"><span style="color: #C9D1D9">&lt;</span><span style="color: #7EE787">style</span><span style="color: #C9D1D9">&gt;</span></span>
+<span class="line"><span style="color: #C9D1D9">.icon {</span></span>
+<span class="line"><span style="color: #C9D1D9">  min</span><span style="color: #FF7B72">-</span><span style="color: #C9D1D9">width: 120px;</span></span>
+<span class="line"><span style="color: #C9D1D9">  text</span><span style="color: #FF7B72">-</span><span style="color: #C9D1D9">align: center;</span></span>
+<span class="line"><span style="color: #C9D1D9">  font</span><span style="color: #FF7B72">-</span><span style="color: #C9D1D9">weight: bold;</span></span>
+<span class="line"><span style="color: #C9D1D9">  border</span><span style="color: #FF7B72">-</span><span style="color: #C9D1D9">style: solid;</span></span>
+<span class="line"><span style="color: #C9D1D9">  border</span><span style="color: #FF7B72">-</span><span style="color: #C9D1D9">radius: 4px;</span></span>
+<span class="line"><span style="color: #C9D1D9">  padding: 2px 4px;</span></span>
+<span class="line"><span style="color: #C9D1D9">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #C9D1D9">.icon.icon-success {</span></span>
+<span class="line"><span style="color: #C9D1D9">  background</span><span style="color: #FF7B72">-</span><span style="color: #C9D1D9">color: royalblue;</span></span>
+<span class="line"><span style="color: #C9D1D9">  border</span><span style="color: #FF7B72">-</span><span style="color: #C9D1D9">color: royalblue;</span></span>
+<span class="line"><span style="color: #C9D1D9">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #C9D1D9">.icon.icon-danger {</span></span>
+<span class="line"><span style="color: #C9D1D9">  background</span><span style="color: #FF7B72">-</span><span style="color: #C9D1D9">color: tomato;</span></span>
+<span class="line"><span style="color: #C9D1D9">  border</span><span style="color: #FF7B72">-</span><span style="color: #C9D1D9">color: tomato;</span></span>
+<span class="line"><span style="color: #C9D1D9">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #C9D1D9">&lt;/</span><span style="color: #7EE787">style</span><span style="color: #C9D1D9">&gt;</span></span>
+<span class="line"></span></code></pre>
+<p><strong>TodoItem.astro</strong> [<a target="_blank" href="https://github.com/take4s5i/blog/blob/main/src/components/posts/2022/07/introduction-to-astro/TodoItem.astro">src</a>]</p>
+<pre is:raw class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #FF7B72">---</span></span>
+<span class="line"><span style="color: #8B949E">// TodoItem.astro</span></span>
+<span class="line"><span style="color: #FF7B72">export</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">interface</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">Props</span><span style="color: #C9D1D9"> {</span></span>
+<span class="line"><span style="color: #C9D1D9">  </span><span style="color: #FFA657">title</span><span style="color: #FF7B72">:</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">string</span><span style="color: #C9D1D9">;</span></span>
+<span class="line"><span style="color: #C9D1D9">  </span><span style="color: #FFA657">completed</span><span style="color: #FF7B72">:</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">boolean</span><span style="color: #C9D1D9">;</span></span>
+<span class="line"><span style="color: #C9D1D9">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #FF7B72">import</span><span style="color: #C9D1D9"> Icon </span><span style="color: #FF7B72">from</span><span style="color: #C9D1D9"> </span><span style="color: #A5D6FF">&#39;./Icon.astro&#39;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #FF7B72">const</span><span style="color: #C9D1D9"> { </span><span style="color: #79C0FF">title</span><span style="color: #C9D1D9">, </span><span style="color: #79C0FF">completed</span><span style="color: #C9D1D9"> } </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> Astro.props</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #FF7B72">---</span></span>
+<span class="line"><span style="color: #C9D1D9">&lt;</span><span style="color: #7EE787">div</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">class</span><span style="color: #FF7B72">=</span><span style="color: #A5D6FF">&quot;card&quot;</span><span style="color: #C9D1D9">&gt;</span></span>
+<span class="line"><span style="color: #C9D1D9">  &lt;</span><span style="color: #7EE787">div</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">class</span><span style="color: #FF7B72">=</span><span style="color: #A5D6FF">&quot;title&quot;</span><span style="color: #C9D1D9">&gt;{title}&lt;/</span><span style="color: #7EE787">div</span><span style="color: #C9D1D9">&gt;</span></span>
+<span class="line"><span style="color: #C9D1D9">  &lt;</span><span style="color: #7EE787">div</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">class</span><span style="color: #FF7B72">=</span><span style="color: #A5D6FF">&quot;icon-wrap&quot;</span><span style="color: #C9D1D9">&gt;</span></span>
+<span class="line"><span style="color: #C9D1D9">  {completed</span></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #FF7B72">?</span><span style="color: #C9D1D9"> (&lt;</span><span style="color: #7EE787">Icon</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">type</span><span style="color: #FF7B72">=</span><span style="color: #A5D6FF">&quot;success&quot;</span><span style="color: #C9D1D9">&gt;COMPLETE&lt;/</span><span style="color: #7EE787">Icon</span><span style="color: #C9D1D9">&gt;)</span></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #FF7B72">:</span><span style="color: #C9D1D9"> (&lt;</span><span style="color: #7EE787">Icon</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">type</span><span style="color: #FF7B72">=</span><span style="color: #A5D6FF">&quot;danger&quot;</span><span style="color: #C9D1D9">&gt;IN PROGRESS&lt;/</span><span style="color: #7EE787">ICON</span><span style="color: #C9D1D9">&gt;)</span></span>
+<span class="line"><span style="color: #C9D1D9">  }</span></span>
+<span class="line"><span style="color: #C9D1D9">  &lt;/</span><span style="color: #7EE787">div</span><span style="color: #C9D1D9">&gt;</span></span>
+<span class="line"><span style="color: #C9D1D9">&lt;/</span><span style="color: #7EE787">div</span><span style="color: #C9D1D9">&gt;</span></span>
+<span class="line"><span style="color: #C9D1D9">&lt;</span><span style="color: #7EE787">style</span><span style="color: #C9D1D9">&gt;</span></span>
+<span class="line"><span style="color: #C9D1D9">.card {</span></span>
+<span class="line"><span style="color: #C9D1D9">  border: 2px solid dimgray;</span></span>
+<span class="line"><span style="color: #C9D1D9">  border</span><span style="color: #FF7B72">-</span><span style="color: #C9D1D9">radius: 4px;</span></span>
+<span class="line"><span style="color: #C9D1D9">  padding: 16px;</span></span>
+<span class="line"><span style="color: #C9D1D9">  margin: 4px;</span></span>
+<span class="line"><span style="color: #C9D1D9">  display: flex;</span></span>
+<span class="line"><span style="color: #C9D1D9">  justify</span><span style="color: #FF7B72">-</span><span style="color: #C9D1D9">content: space</span><span style="color: #FF7B72">-</span><span style="color: #C9D1D9">between;</span></span>
+<span class="line"><span style="color: #C9D1D9">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #C9D1D9">.title {</span></span>
+<span class="line"><span style="color: #C9D1D9">  font</span><span style="color: #FF7B72">-</span><span style="color: #C9D1D9">size: 1.5rem;</span></span>
+<span class="line"><span style="color: #C9D1D9">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #C9D1D9">.icon-wrap {</span></span>
+<span class="line"><span style="color: #C9D1D9">  display: flex;</span></span>
+<span class="line"><span style="color: #C9D1D9">  align</span><span style="color: #FF7B72">-</span><span style="color: #C9D1D9">items: center;</span></span>
+<span class="line"><span style="color: #C9D1D9">}</span></span>
+<span class="line"><span style="color: #C9D1D9">&lt;/</span><span style="color: #7EE787">style</span><span style="color: #C9D1D9">&gt;</span></span>
+<span class="line"></span></code></pre>
+<p><strong>TodoList.astro</strong> [<a target="_blank" href="https://github.com/take4s5i/blog/blob/main/src/components/posts/2022/07/introduction-to-astro/TodoList.astro">src</a>]</p>
+<pre is:raw class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #FF7B72">---</span></span>
+<span class="line"><span style="color: #8B949E">// TodoList.astro</span></span>
+<span class="line"><span style="color: #FF7B72">import</span><span style="color: #C9D1D9"> TodoItem </span><span style="color: #FF7B72">from</span><span style="color: #C9D1D9"> </span><span style="color: #A5D6FF">&#39;./TodoItem.astro&#39;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #FF7B72">const</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">limit</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">5</span></span>
+<span class="line"><span style="color: #FF7B72">const</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">url</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> </span><span style="color: #A5D6FF">&#39;https://jsonplaceholder.typicode.com/todos/&#39;</span></span>
+<span class="line"><span style="color: #FF7B72">const</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">todos</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">await</span><span style="color: #C9D1D9"> </span><span style="color: #D2A8FF">fetch</span><span style="color: #C9D1D9">(url).</span><span style="color: #D2A8FF">then</span><span style="color: #C9D1D9">((</span><span style="color: #FFA657">res</span><span style="color: #C9D1D9">) </span><span style="color: #FF7B72">=&gt;</span><span style="color: #C9D1D9"> res.</span><span style="color: #D2A8FF">json</span><span style="color: #C9D1D9">())</span></span>
+<span class="line"><span style="color: #FF7B72">---</span></span>
+<span class="line"><span style="color: #C9D1D9">&lt;</span><span style="color: #7EE787">ul</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">class</span><span style="color: #FF7B72">=</span><span style="color: #A5D6FF">&quot;list&quot;</span><span style="color: #C9D1D9">&gt;</span></span>
+<span class="line"><span style="color: #C9D1D9">  {todos.</span><span style="color: #D2A8FF">slice</span><span style="color: #C9D1D9">(</span><span style="color: #79C0FF">0</span><span style="color: #C9D1D9">, limit).</span><span style="color: #D2A8FF">map</span><span style="color: #C9D1D9">((</span><span style="color: #FFA657">todo</span><span style="color: #C9D1D9">) </span><span style="color: #FF7B72">=&gt;</span><span style="color: #C9D1D9"> (</span></span>
+<span class="line"><span style="color: #C9D1D9">    &lt;</span><span style="color: #7EE787">li</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">class</span><span style="color: #FF7B72">=</span><span style="color: #A5D6FF">&quot;item&quot;</span><span style="color: #C9D1D9">&gt;</span></span>
+<span class="line"><span style="color: #C9D1D9">      &lt;</span><span style="color: #7EE787">TodoItem</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">title</span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9">{todo.title} </span><span style="color: #79C0FF">completed</span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9">{todo.completed} /&gt;</span></span>
+<span class="line"><span style="color: #C9D1D9">    &lt;/</span><span style="color: #7EE787">li</span><span style="color: #C9D1D9">&gt;</span></span>
+<span class="line"><span style="color: #C9D1D9">  ))}</span></span>
+<span class="line"><span style="color: #C9D1D9">&lt;/</span><span style="color: #7EE787">ul</span><span style="color: #C9D1D9">&gt;</span></span>
+<span class="line"><span style="color: #C9D1D9">&lt;</span><span style="color: #7EE787">style</span><span style="color: #C9D1D9">&gt;</span></span>
+<span class="line"><span style="color: #C9D1D9">.list {</span></span>
+<span class="line"><span style="color: #C9D1D9">  display: flex;</span></span>
+<span class="line"><span style="color: #C9D1D9">  flex</span><span style="color: #FF7B72">-</span><span style="color: #C9D1D9">direction: column;</span></span>
+<span class="line"><span style="color: #C9D1D9">  list</span><span style="color: #FF7B72">-</span><span style="color: #C9D1D9">style</span><span style="color: #FF7B72">-</span><span style="color: #C9D1D9">type: none;</span></span>
+<span class="line"><span style="color: #C9D1D9">  padding: 4px;</span></span>
+<span class="line"><span style="color: #C9D1D9">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #C9D1D9">.item {</span></span>
+<span class="line"><span style="color: #C9D1D9">}</span></span>
+<span class="line"><span style="color: #C9D1D9">&lt;/</span><span style="color: #7EE787">style</span><span style="color: #C9D1D9">&gt;</span></span>
+<span class="line"></span></code></pre>
+<p>Astro Component は Component Script と Component Template の2つのパートからなります。</p><p><code>---</code> で区切られた最初の部分(frontmatter) は Component Scriptです。
+Component Script で Astro Component やFramework Component を import したり、
+<code>Astro.props</code> で Props を受け取る事もできます。</p><p>Component Script は SSR 時、またはビルド時に実行されます。
+このブログはビルドした HTML をデプロイしているため、 <em>TodoList.asrto</em> はビルド時に fetch したデータで
+HTML をレンダリングします。</p><p><code>---</code> の後ろの部分は Component Template です。
+JSX ライクな記法でHTMLを記述することが出来ます。
+Component Script で import したコンポーネントを使ったり、定義した変数を参照出来ます。</p><p>また、 <code>&lt;style&gt;</code> タグでスタイルを定義することも出来ます。
+スタイルは Asrto によって自動的に CSS Module 化されるので、クラス名の重複を気にする必要はありません。</p><p><code>&lt;TodoList /&gt;</code> をレンダリングすると以下のようになります。</p><ul class="list astro-FSZPXQQ5">
+  <li class="item astro-FSZPXQQ5">
+      <div class="card astro-GTEWGQ25">
+  <div class="title astro-GTEWGQ25">delectus aut autem</div>
+  <div class="icon-wrap astro-GTEWGQ25">
+  <div class="icon icon-danger astro-WQZDV2EJ">
+  IN PROGRESS
+</div>
+
+  </div>
+</div>
+
+    </li><li class="item astro-FSZPXQQ5">
+      <div class="card astro-GTEWGQ25">
+  <div class="title astro-GTEWGQ25">quis ut nam facilis et officia qui</div>
+  <div class="icon-wrap astro-GTEWGQ25">
+  <div class="icon icon-danger astro-WQZDV2EJ">
+  IN PROGRESS
+</div>
+
+  </div>
+</div>
+
+    </li><li class="item astro-FSZPXQQ5">
+      <div class="card astro-GTEWGQ25">
+  <div class="title astro-GTEWGQ25">fugiat veniam minus</div>
+  <div class="icon-wrap astro-GTEWGQ25">
+  <div class="icon icon-danger astro-WQZDV2EJ">
+  IN PROGRESS
+</div>
+
+  </div>
+</div>
+
+    </li><li class="item astro-FSZPXQQ5">
+      <div class="card astro-GTEWGQ25">
+  <div class="title astro-GTEWGQ25">et porro tempora</div>
+  <div class="icon-wrap astro-GTEWGQ25">
+  <div class="icon icon-success astro-WQZDV2EJ">
+  COMPLETE
+</div>
+
+  </div>
+</div>
+
+    </li><li class="item astro-FSZPXQQ5">
+      <div class="card astro-GTEWGQ25">
+  <div class="title astro-GTEWGQ25">laboriosam mollitia et enim quasi adipisci quia provident illum</div>
+  <div class="icon-wrap astro-GTEWGQ25">
+  <div class="icon icon-danger astro-WQZDV2EJ">
+  IN PROGRESS
+</div>
+
+  </div>
+</div>
+
+    </li>
+</ul>
+<h2 id="おわりに">おわりに</h2><p>書き方がちょっと違うのと、 CSR はできないという点を除けば
+コンポーネントでの開発に慣れている方はそんなに違和感なく使えるのかなと思いました。</p><p>先程の TodoList も記事のソースの markdown 中に直接コンポーネントとして呼び出してレンダリングしています。
+MDX をセットアップしなくても markdown 中でコンポーネントを使えるのは非常に便利だと思いました。</p>
 			</main>
 		</div>
 	</article>
