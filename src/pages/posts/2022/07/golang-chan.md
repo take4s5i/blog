@@ -1,0 +1,91 @@
+---
+layout: ../../../../layouts/BlogPost.astro
+setup: |
+  import Import from '../../../../components/Import.astro'
+title: Goのchannel
+publishDate: 25 Jul 2022
+---
+Goのchannelについて勉強したのでまとめます。
+Go 1.18 で調べています。
+
+読んだ資料はこの当たり
+- https://github.com/lotusirous/go-concurrency-patterns
+- https://talks.golang.org/2012/concurrency.slide#1
+- https://talks.golang.org/2013/advconc.slide#1
+
+## channel の作り方
+go の channel は goroutine 間でデータのやり取りを行うためのプリミティブ。
+マップやスライスと同様に `make` で値を生成する。
+
+`<- ch` で値を読み出し、 `ch <-` で値を書き込むことができる
+
+channel は使い終わったら `close` する。
+`close`した channel に読み書きすると panic する
+
+<Import
+  lang="go"
+  path="examples/posts/2022/07/golang-chan/01/main.go" />
+
+## channel の読み書き
+
+channel は goroutine safe なので複数の goroutine から読み書きできる。
+Rust の mpsc と異なり、同時に複数書き込んだり、読み込んだりしても良い。
+`Mutex` 使って同期する必要もない。
+
+`<-chan T` のように `<-` を型名につけることで、receive only channel にできる。
+同様に `chan<- T` で send only channel になる。
+
+<Import
+  lang="go"
+  path="examples/posts/2022/07/golang-chan/02/main.go" />
+
+出力:
+```
+receive '1 from sender 0' at receiver 0
+receive '2 from sender 0' at receiver 0
+receive '0 from sender 1' at receiver 0
+receive '1 from sender 1' at receiver 0
+receive '2 from sender 1' at receiver 0
+receive '0 from sender 0' at receiver 1
+```
+
+## channel を使ったパターン
+channel を扱うときはどこで `close` するのか責任を明確にしたほうが良い気がする。
+基本的に sender 側が `close` したほうがきれいに書けると思う。
+
+### Generator
+他言語のジェネレーターに相当するようなもの。
+go にはジェネレータ構文はないが、 goroutine と channel でジェネレータを作れる。
+生成する値がなくなったら `close` することで、後続の処理にデータがもう来ないことを伝えられる。
+
+<Import
+  lang="go"
+  path="examples/posts/2022/07/golang-chan/03/main.go" />
+
+### quit/done
+goroutine を外から止めたいときに使う
+`quit` や `done` という名前でよく使われている気がする。
+
+<Import
+  lang="go"
+  path="examples/posts/2022/07/golang-chan/04/main.go" />
+
+`context` でほぼ同様の機能 `ctx.Done()` と `context.WithCancel(ctx)` が提供されているので、
+こちらを使ったほうがいいかもしれない。
+
+<Import
+  lang="go"
+  path="examples/posts/2022/07/golang-chan/05/main.go" />
+
+### FanIn / FanOut
+複数の channel を１つに束ねるのを `FanIn`、
+１つのchannel を複数に分岐するのを `FanOut` という。
+
+channel は Multi-Producer / Multi-Consumer なので特に気にせず
+複数の goroutine から読み書きすればよい。
+
+<Import
+  lang="go"
+  path="examples/posts/2022/07/golang-chan/06/main.go" />
+
+とりあえず今回はここまで
