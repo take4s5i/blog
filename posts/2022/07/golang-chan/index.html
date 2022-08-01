@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<!-- Google Tag Manager -->
+<!-- End Google Tag Manager -->
+
+<!-- Global Metadata -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+
+<!-- Primary Meta Tags -->
+<title>take4s5i DEV - Goのchannel</title>
+<meta name="title" content="Goのchannel">
+<meta name="description">
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:url">
+<meta property="og:title" content="Goのchannel">
+<meta property="og:description">
+<meta property="og:image" content="https://astro.build/social.png?v=1">
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:url">
+<meta property="twitter:title" content="Goのchannel">
+<meta property="twitter:description">
+<meta property="twitter:image" content="https://astro.build/social.png?v=1">
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&family=IBM+Plex+Sans:wght@400;700&display=swap">
+
+	<link rel="stylesheet" href="/assets/1865bdc7.a6921d77.css" /><script type="module">(function(t,n,r,e,m){t[e]=t[e]||[],t[e].push({"gtm.start":new Date().getTime(),event:"gtm.js"});var g=n.getElementsByTagName(r)[0],a=n.createElement(r),s=e!="dataLayer"?"&l="+e:"";a.async=!0,a.src="https://www.googletagmanager.com/gtm.js?id="+m+s,g.parentNode.insertBefore(a,g)})(window,document,"script","dataLayer","GTM-P42NKJ8");
+</script></head>
+	<body>
+		<header class="wrapper astro-63D5MSV2">
+	<article class="astro-63D5MSV2">
+		<h1 class="astro-63D5MSV2">
+			<a href="/" class="astro-63D5MSV2">
+				<span class="astro-63D5MSV2">take4s5i DEV</span>
+			</a>
+		</h1>
+	</article>
+</header>
+
+
+		<div class="wrapper">
+			<div class="layout astro-57SHIKPC">
+	<article class="content astro-57SHIKPC">
+		<div class="astro-57SHIKPC">
+			<header class="astro-57SHIKPC">
+				
+				<p class="publish-date astro-57SHIKPC">25 Jul 2022</p>
+				<h1 class="title astro-57SHIKPC">Goのchannel</h1>
+			</header>
+			<div class="editbar astro-57SHIKPC">
+				<a href="https://github.com/take4s5i/blog/blob/main/src/pages/posts/2022/07/golang-chan.md" class="astro-57SHIKPC">Edit This Page</a>
+			</div>
+			<main class="astro-57SHIKPC">
+				<p>Goのchannelについて勉強したのでまとめます。
+Go 1.18 で調べています。</p><p>読んだ資料はこの当たり</p><ul>
+<li><a href="https://github.com/lotusirous/go-concurrency-patterns">https://github.com/lotusirous/go-concurrency-patterns</a></li>
+<li><a href="https://talks.golang.org/2012/concurrency.slide#1">https://talks.golang.org/2012/concurrency.slide#1</a></li>
+<li><a href="https://talks.golang.org/2013/advconc.slide#1">https://talks.golang.org/2013/advconc.slide#1</a></li>
+</ul><h2 id="channel-の作り方">channel の作り方</h2><p>go の channel は goroutine 間でデータのやり取りを行うためのプリミティブ。
+マップやスライスと同様に <code>make</code> で値を生成する。</p><p><code>&lt;- ch</code> で値を読み出し、 <code>ch &lt;-</code> で値を書き込むことができる</p><p>channel は使い終わったら <code>close</code> する。
+<code>close</code>した channel に読み書きすると panic する</p><p><strong>main.go</strong> [<a target="_blank" href="https://github.com/take4s5i/blog/blob/main/examples/posts/2022/07/golang-chan/01/main.go">src</a>]</p>
+<pre is:raw class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #FF7B72">package</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">main</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #FF7B72">import</span><span style="color: #C9D1D9"> (</span></span>
+<span class="line"><span style="color: #C9D1D9">	</span><span style="color: #A5D6FF">&quot;</span><span style="color: #FFA657">fmt</span><span style="color: #A5D6FF">&quot;</span></span>
+<span class="line"><span style="color: #C9D1D9">	</span><span style="color: #A5D6FF">&quot;</span><span style="color: #FFA657">time</span><span style="color: #A5D6FF">&quot;</span></span>
+<span class="line"><span style="color: #C9D1D9">)</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #FF7B72">func</span><span style="color: #C9D1D9"> </span><span style="color: #D2A8FF">main</span><span style="color: #C9D1D9">() {</span></span>
+<span class="line"><span style="color: #C9D1D9">	ch </span><span style="color: #FF7B72">:=</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">make</span><span style="color: #C9D1D9">(</span><span style="color: #FF7B72">chan</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">int</span><span style="color: #C9D1D9">)</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #C9D1D9">	</span><span style="color: #FF7B72">go</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">func</span><span style="color: #C9D1D9">() {</span></span>
+<span class="line"><span style="color: #C9D1D9">		ch </span><span style="color: #FF7B72">&lt;-</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">1</span></span>
+<span class="line"><span style="color: #C9D1D9">	}()</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #C9D1D9">	time.</span><span style="color: #79C0FF">Sleep</span><span style="color: #C9D1D9">(</span><span style="color: #79C0FF">500</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">*</span><span style="color: #C9D1D9"> time.Millisecond)</span></span>
+<span class="line"><span style="color: #C9D1D9">	fmt.</span><span style="color: #79C0FF">Println</span><span style="color: #C9D1D9">(</span><span style="color: #FF7B72">&lt;-</span><span style="color: #C9D1D9">ch)</span></span>
+<span class="line"><span style="color: #C9D1D9">	</span><span style="color: #79C0FF">close</span><span style="color: #C9D1D9">(ch)</span></span>
+<span class="line"><span style="color: #C9D1D9">}</span></span>
+<span class="line"></span></code></pre>
+<h2 id="channel-の読み書き">channel の読み書き</h2><p>channel は goroutine safe なので複数の goroutine から読み書きできる。
+Rust の mpsc と異なり、同時に複数書き込んだり、読み込んだりしても良い。
+<code>Mutex</code> 使って同期する必要もない。</p><p><code>&lt;-chan T</code> のように <code>&lt;-</code> を型名につけることで、receive only channel にできる。
+同様に <code>chan&lt;- T</code> で send only channel になる。</p><p><strong>main.go</strong> [<a target="_blank" href="https://github.com/take4s5i/blog/blob/main/examples/posts/2022/07/golang-chan/02/main.go">src</a>]</p>
+<pre is:raw class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #FF7B72">package</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">main</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #FF7B72">import</span><span style="color: #C9D1D9"> (</span></span>
+<span class="line"><span style="color: #C9D1D9">	</span><span style="color: #A5D6FF">&quot;</span><span style="color: #FFA657">fmt</span><span style="color: #A5D6FF">&quot;</span></span>
+<span class="line"><span style="color: #C9D1D9">	</span><span style="color: #A5D6FF">&quot;</span><span style="color: #FFA657">sync</span><span style="color: #A5D6FF">&quot;</span></span>
+<span class="line"><span style="color: #C9D1D9">)</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #FF7B72">func</span><span style="color: #C9D1D9"> </span><span style="color: #D2A8FF">startSend</span><span style="color: #C9D1D9">() </span><span style="color: #FF7B72">&lt;-chan</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">string</span><span style="color: #C9D1D9"> {</span></span>
+<span class="line"><span style="color: #C9D1D9">	</span><span style="color: #FF7B72">var</span><span style="color: #C9D1D9"> wg sync.WaitGroup</span></span>
+<span class="line"><span style="color: #C9D1D9">	ch </span><span style="color: #FF7B72">:=</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">make</span><span style="color: #C9D1D9">(</span><span style="color: #FF7B72">chan</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">string</span><span style="color: #C9D1D9">)</span></span>
+<span class="line"><span style="color: #C9D1D9">	nSender </span><span style="color: #FF7B72">:=</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">2</span></span>
+<span class="line"><span style="color: #C9D1D9">	nSend </span><span style="color: #FF7B72">:=</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">3</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #C9D1D9">	wg.</span><span style="color: #79C0FF">Add</span><span style="color: #C9D1D9">(nSender)</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #C9D1D9">	</span><span style="color: #8B949E">// nSender 個の goroutine を起動</span></span>
+<span class="line"><span style="color: #C9D1D9">	</span><span style="color: #FF7B72">for</span><span style="color: #C9D1D9"> n </span><span style="color: #FF7B72">:=</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">0</span><span style="color: #C9D1D9">; n </span><span style="color: #FF7B72">&lt;</span><span style="color: #C9D1D9"> nSender; n</span><span style="color: #FF7B72">++</span><span style="color: #C9D1D9"> {</span></span>
+<span class="line"><span style="color: #C9D1D9">		n </span><span style="color: #FF7B72">:=</span><span style="color: #C9D1D9"> n</span></span>
+<span class="line"><span style="color: #C9D1D9">		</span><span style="color: #FF7B72">go</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">func</span><span style="color: #C9D1D9">() {</span></span>
+<span class="line"><span style="color: #C9D1D9">			</span><span style="color: #FF7B72">defer</span><span style="color: #C9D1D9"> wg.</span><span style="color: #79C0FF">Done</span><span style="color: #C9D1D9">()</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #C9D1D9">			</span><span style="color: #8B949E">// nSend 回のメッセージを ch に送信</span></span>
+<span class="line"><span style="color: #C9D1D9">			</span><span style="color: #FF7B72">for</span><span style="color: #C9D1D9"> v </span><span style="color: #FF7B72">:=</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">0</span><span style="color: #C9D1D9">; v </span><span style="color: #FF7B72">&lt;</span><span style="color: #C9D1D9"> nSend; v</span><span style="color: #FF7B72">++</span><span style="color: #C9D1D9"> {</span></span>
+<span class="line"><span style="color: #C9D1D9">				ch </span><span style="color: #FF7B72">&lt;-</span><span style="color: #C9D1D9"> fmt.</span><span style="color: #79C0FF">Sprintf</span><span style="color: #C9D1D9">(</span><span style="color: #A5D6FF">&quot;</span><span style="color: #79C0FF">%d</span><span style="color: #A5D6FF"> from sender </span><span style="color: #79C0FF">%d</span><span style="color: #A5D6FF">&quot;</span><span style="color: #C9D1D9">, v, n)</span></span>
+<span class="line"><span style="color: #C9D1D9">			}</span></span>
+<span class="line"><span style="color: #C9D1D9">		}()</span></span>
+<span class="line"><span style="color: #C9D1D9">	}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #C9D1D9">	</span><span style="color: #8B949E">// すべての sender goroutine が終了したら close(ch) する</span></span>
+<span class="line"><span style="color: #C9D1D9">	</span><span style="color: #FF7B72">go</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">func</span><span style="color: #C9D1D9">() {</span></span>
+<span class="line"><span style="color: #C9D1D9">		wg.</span><span style="color: #79C0FF">Wait</span><span style="color: #C9D1D9">()</span></span>
+<span class="line"><span style="color: #C9D1D9">		</span><span style="color: #79C0FF">close</span><span style="color: #C9D1D9">(ch)</span></span>
+<span class="line"><span style="color: #C9D1D9">	}()</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #C9D1D9">	</span><span style="color: #FF7B72">return</span><span style="color: #C9D1D9"> ch</span></span>
+<span class="line"><span style="color: #C9D1D9">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #FF7B72">func</span><span style="color: #C9D1D9"> </span><span style="color: #D2A8FF">startReceive</span><span style="color: #C9D1D9">(ch </span><span style="color: #FF7B72">&lt;-chan</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">string</span><span style="color: #C9D1D9">) {</span></span>
+<span class="line"><span style="color: #C9D1D9">	</span><span style="color: #FF7B72">var</span><span style="color: #C9D1D9"> wg sync.WaitGroup</span></span>
+<span class="line"><span style="color: #C9D1D9">	nReceiver </span><span style="color: #FF7B72">:=</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">2</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #C9D1D9">	wg.</span><span style="color: #79C0FF">Add</span><span style="color: #C9D1D9">(nReceiver)</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #C9D1D9">	</span><span style="color: #8B949E">// nReceiver 個の goroutine を起動</span></span>
+<span class="line"><span style="color: #C9D1D9">	</span><span style="color: #FF7B72">for</span><span style="color: #C9D1D9"> n </span><span style="color: #FF7B72">:=</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">0</span><span style="color: #C9D1D9">; n </span><span style="color: #FF7B72">&lt;</span><span style="color: #C9D1D9"> nReceiver; n</span><span style="color: #FF7B72">++</span><span style="color: #C9D1D9"> {</span></span>
+<span class="line"><span style="color: #C9D1D9">		n </span><span style="color: #FF7B72">:=</span><span style="color: #C9D1D9"> n</span></span>
+<span class="line"><span style="color: #C9D1D9">		</span><span style="color: #FF7B72">go</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">func</span><span style="color: #C9D1D9">() {</span></span>
+<span class="line"><span style="color: #C9D1D9">			</span><span style="color: #FF7B72">defer</span><span style="color: #C9D1D9"> wg.</span><span style="color: #79C0FF">Done</span><span style="color: #C9D1D9">()</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #C9D1D9">			</span><span style="color: #FF7B72">for</span><span style="color: #C9D1D9"> v </span><span style="color: #FF7B72">:=</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">range</span><span style="color: #C9D1D9"> ch {</span></span>
+<span class="line"><span style="color: #C9D1D9">				fmt.</span><span style="color: #79C0FF">Printf</span><span style="color: #C9D1D9">(</span><span style="color: #A5D6FF">&quot;receive &#39;</span><span style="color: #79C0FF">%s</span><span style="color: #A5D6FF">&#39; at receiver </span><span style="color: #79C0FF">%d\n</span><span style="color: #A5D6FF">&quot;</span><span style="color: #C9D1D9">, v, n)</span></span>
+<span class="line"><span style="color: #C9D1D9">			}</span></span>
+<span class="line"><span style="color: #C9D1D9">		}()</span></span>
+<span class="line"><span style="color: #C9D1D9">	}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #C9D1D9">	wg.</span><span style="color: #79C0FF">Wait</span><span style="color: #C9D1D9">()</span></span>
+<span class="line"><span style="color: #C9D1D9">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #FF7B72">func</span><span style="color: #C9D1D9"> </span><span style="color: #D2A8FF">main</span><span style="color: #C9D1D9">() {</span></span>
+<span class="line"><span style="color: #C9D1D9">	ch </span><span style="color: #FF7B72">:=</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">startSend</span><span style="color: #C9D1D9">()</span></span>
+<span class="line"><span style="color: #C9D1D9">	</span><span style="color: #79C0FF">startReceive</span><span style="color: #C9D1D9">(ch)</span></span>
+<span class="line"><span style="color: #C9D1D9">}</span></span>
+<span class="line"></span></code></pre>
+<p>出力:</p><pre class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #c9d1d9">receive &#39;1 from sender 0&#39; at receiver 0</span></span>
+<span class="line"><span style="color: #c9d1d9">receive &#39;2 from sender 0&#39; at receiver 0</span></span>
+<span class="line"><span style="color: #c9d1d9">receive &#39;0 from sender 1&#39; at receiver 0</span></span>
+<span class="line"><span style="color: #c9d1d9">receive &#39;1 from sender 1&#39; at receiver 0</span></span>
+<span class="line"><span style="color: #c9d1d9">receive &#39;2 from sender 1&#39; at receiver 0</span></span>
+<span class="line"><span style="color: #c9d1d9">receive &#39;0 from sender 0&#39; at receiver 1</span></span></code></pre><h2 id="channel-を使ったパターン">channel を使ったパターン</h2><p>channel を扱うときはどこで <code>close</code> するのか責任を明確にしたほうが良い気がする。
+基本的に sender 側が <code>close</code> したほうがきれいに書けると思う。</p><h3 id="generator">Generator</h3><p>他言語のジェネレーターに相当するようなもの。
+go にはジェネレータ構文はないが、 goroutine と channel でジェネレータを作れる。
+生成する値がなくなったら <code>close</code> することで、後続の処理にデータがもう来ないことを伝えられる。</p><p><strong>main.go</strong> [<a target="_blank" href="https://github.com/take4s5i/blog/blob/main/examples/posts/2022/07/golang-chan/03/main.go">src</a>]</p>
+<pre is:raw class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #FF7B72">package</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">main</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #FF7B72">import</span><span style="color: #C9D1D9"> </span><span style="color: #A5D6FF">&quot;</span><span style="color: #FFA657">fmt</span><span style="color: #A5D6FF">&quot;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #FF7B72">func</span><span style="color: #C9D1D9"> </span><span style="color: #D2A8FF">fib</span><span style="color: #C9D1D9">(n </span><span style="color: #FF7B72">int</span><span style="color: #C9D1D9">) </span><span style="color: #FF7B72">&lt;-chan</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">int</span><span style="color: #C9D1D9"> {</span></span>
+<span class="line"><span style="color: #C9D1D9">	ch </span><span style="color: #FF7B72">:=</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">make</span><span style="color: #C9D1D9">(</span><span style="color: #FF7B72">chan</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">int</span><span style="color: #C9D1D9">)</span></span>
+<span class="line"><span style="color: #C9D1D9">	a, b </span><span style="color: #FF7B72">:=</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">0</span><span style="color: #C9D1D9">, </span><span style="color: #79C0FF">1</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #C9D1D9">	</span><span style="color: #FF7B72">go</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">func</span><span style="color: #C9D1D9">() {</span></span>
+<span class="line"><span style="color: #C9D1D9">		</span><span style="color: #FF7B72">defer</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">close</span><span style="color: #C9D1D9">(ch)</span></span>
+<span class="line"><span style="color: #C9D1D9">		</span><span style="color: #FF7B72">for</span><span style="color: #C9D1D9"> {</span></span>
+<span class="line"><span style="color: #C9D1D9">			v </span><span style="color: #FF7B72">:=</span><span style="color: #C9D1D9"> a</span></span>
+<span class="line"><span style="color: #C9D1D9">			a </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> b</span></span>
+<span class="line"><span style="color: #C9D1D9">			b </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> v </span><span style="color: #FF7B72">+</span><span style="color: #C9D1D9"> b</span></span>
+<span class="line"><span style="color: #C9D1D9">			n</span><span style="color: #FF7B72">--</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #C9D1D9">			</span><span style="color: #FF7B72">if</span><span style="color: #C9D1D9"> n </span><span style="color: #FF7B72">&lt;</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">0</span><span style="color: #C9D1D9"> {</span></span>
+<span class="line"><span style="color: #C9D1D9">				</span><span style="color: #FF7B72">return</span></span>
+<span class="line"><span style="color: #C9D1D9">			}</span></span>
+<span class="line"><span style="color: #C9D1D9">			ch </span><span style="color: #FF7B72">&lt;-</span><span style="color: #C9D1D9"> v</span></span>
+<span class="line"><span style="color: #C9D1D9">		}</span></span>
+<span class="line"><span style="color: #C9D1D9">	}()</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #C9D1D9">	</span><span style="color: #FF7B72">return</span><span style="color: #C9D1D9"> ch</span></span>
+<span class="line"><span style="color: #C9D1D9">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #FF7B72">func</span><span style="color: #C9D1D9"> </span><span style="color: #D2A8FF">main</span><span style="color: #C9D1D9">() {</span></span>
+<span class="line"><span style="color: #C9D1D9">	f </span><span style="color: #FF7B72">:=</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">fib</span><span style="color: #C9D1D9">(</span><span style="color: #79C0FF">10</span><span style="color: #C9D1D9">)</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #C9D1D9">	</span><span style="color: #FF7B72">for</span><span style="color: #C9D1D9"> v </span><span style="color: #FF7B72">:=</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">range</span><span style="color: #C9D1D9"> f {</span></span>
+<span class="line"><span style="color: #C9D1D9">		fmt.</span><span style="color: #79C0FF">Println</span><span style="color: #C9D1D9">(v)</span></span>
+<span class="line"><span style="color: #C9D1D9">	}</span></span>
+<span class="line"><span style="color: #C9D1D9">}</span></span>
+<span class="line"></span></code></pre>
+<h3 id="quitdone">quit/done</h3><p>goroutine を外から止めたいときに使う
+<code>quit</code> や <code>done</code> という名前でよく使われている気がする。</p><p><strong>main.go</strong> [<a target="_blank" href="https://github.com/take4s5i/blog/blob/main/examples/posts/2022/07/golang-chan/04/main.go">src</a>]</p>
+<pre is:raw class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #FF7B72">package</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">main</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #FF7B72">import</span><span style="color: #C9D1D9"> (</span></span>
+<span class="line"><span style="color: #C9D1D9">	</span><span style="color: #A5D6FF">&quot;</span><span style="color: #FFA657">fmt</span><span style="color: #A5D6FF">&quot;</span></span>
+<span class="line"><span style="color: #C9D1D9">	</span><span style="color: #A5D6FF">&quot;</span><span style="color: #FFA657">time</span><span style="color: #A5D6FF">&quot;</span></span>
+<span class="line"><span style="color: #C9D1D9">)</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #FF7B72">func</span><span style="color: #C9D1D9"> </span><span style="color: #D2A8FF">fib</span><span style="color: #C9D1D9">(quit </span><span style="color: #FF7B72">&lt;-chan</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">struct</span><span style="color: #C9D1D9">{}) </span><span style="color: #FF7B72">&lt;-chan</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">int</span><span style="color: #C9D1D9"> {</span></span>
+<span class="line"><span style="color: #C9D1D9">	ch </span><span style="color: #FF7B72">:=</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">make</span><span style="color: #C9D1D9">(</span><span style="color: #FF7B72">chan</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">int</span><span style="color: #C9D1D9">)</span></span>
+<span class="line"><span style="color: #C9D1D9">	a, b </span><span style="color: #FF7B72">:=</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">0</span><span style="color: #C9D1D9">, </span><span style="color: #79C0FF">1</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #C9D1D9">	</span><span style="color: #FF7B72">go</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">func</span><span style="color: #C9D1D9">() {</span></span>
+<span class="line"><span style="color: #C9D1D9">		</span><span style="color: #FF7B72">defer</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">close</span><span style="color: #C9D1D9">(ch)</span></span>
+<span class="line"><span style="color: #C9D1D9">		</span><span style="color: #FF7B72">for</span><span style="color: #C9D1D9"> {</span></span>
+<span class="line"><span style="color: #C9D1D9">			v </span><span style="color: #FF7B72">:=</span><span style="color: #C9D1D9"> a</span></span>
+<span class="line"><span style="color: #C9D1D9">			a </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> b</span></span>
+<span class="line"><span style="color: #C9D1D9">			b </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> v </span><span style="color: #FF7B72">+</span><span style="color: #C9D1D9"> b</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #C9D1D9">			</span><span style="color: #FF7B72">select</span><span style="color: #C9D1D9"> {</span></span>
+<span class="line"><span style="color: #C9D1D9">			</span><span style="color: #FF7B72">case</span><span style="color: #C9D1D9"> ch </span><span style="color: #FF7B72">&lt;-</span><span style="color: #C9D1D9"> v:</span></span>
+<span class="line"><span style="color: #C9D1D9">			</span><span style="color: #FF7B72">case</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">&lt;-</span><span style="color: #C9D1D9">quit:</span></span>
+<span class="line"><span style="color: #C9D1D9">				</span><span style="color: #8B949E">// case &lt;-quit: は quit が close された場合も実行される。</span></span>
+<span class="line"><span style="color: #C9D1D9">				</span><span style="color: #8B949E">// こう書いておくことで quit を close すると一括で goroutine を終了されられる</span></span>
+<span class="line"><span style="color: #C9D1D9">				</span><span style="color: #FF7B72">return</span></span>
+<span class="line"><span style="color: #C9D1D9">			}</span></span>
+<span class="line"><span style="color: #C9D1D9">		}</span></span>
+<span class="line"><span style="color: #C9D1D9">	}()</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #C9D1D9">	</span><span style="color: #FF7B72">return</span><span style="color: #C9D1D9"> ch</span></span>
+<span class="line"><span style="color: #C9D1D9">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #FF7B72">func</span><span style="color: #C9D1D9"> </span><span style="color: #D2A8FF">main</span><span style="color: #C9D1D9">() {</span></span>
+<span class="line"><span style="color: #C9D1D9">	quit </span><span style="color: #FF7B72">:=</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">make</span><span style="color: #C9D1D9">(</span><span style="color: #FF7B72">chan</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">struct</span><span style="color: #C9D1D9">{})</span></span>
+<span class="line"><span style="color: #C9D1D9">	f </span><span style="color: #FF7B72">:=</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">fib</span><span style="color: #C9D1D9">(quit)</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #C9D1D9">	</span><span style="color: #FF7B72">go</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">func</span><span style="color: #C9D1D9">() {</span></span>
+<span class="line"><span style="color: #C9D1D9">		time.</span><span style="color: #79C0FF">Sleep</span><span style="color: #C9D1D9">(</span><span style="color: #79C0FF">100</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">*</span><span style="color: #C9D1D9"> time.Millisecond)</span></span>
+<span class="line"><span style="color: #C9D1D9">		</span><span style="color: #79C0FF">close</span><span style="color: #C9D1D9">(quit)</span></span>
+<span class="line"><span style="color: #C9D1D9">	}()</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #C9D1D9">	</span><span style="color: #FF7B72">for</span><span style="color: #C9D1D9"> v </span><span style="color: #FF7B72">:=</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">range</span><span style="color: #C9D1D9"> f {</span></span>
+<span class="line"><span style="color: #C9D1D9">		fmt.</span><span style="color: #79C0FF">Println</span><span style="color: #C9D1D9">(v)</span></span>
+<span class="line"><span style="color: #C9D1D9">	}</span></span>
+<span class="line"><span style="color: #C9D1D9">}</span></span>
+<span class="line"></span></code></pre>
+<p><code>context</code> でほぼ同様の機能 <code>ctx.Done()</code> と <code>context.WithCancel(ctx)</code> が提供されているので、
+こちらを使ったほうがいいかもしれない。</p><p><strong>main.go</strong> [<a target="_blank" href="https://github.com/take4s5i/blog/blob/main/examples/posts/2022/07/golang-chan/05/main.go">src</a>]</p>
+<pre is:raw class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #FF7B72">package</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">main</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #FF7B72">import</span><span style="color: #C9D1D9"> (</span></span>
+<span class="line"><span style="color: #C9D1D9">	</span><span style="color: #A5D6FF">&quot;</span><span style="color: #FFA657">context</span><span style="color: #A5D6FF">&quot;</span></span>
+<span class="line"><span style="color: #C9D1D9">	</span><span style="color: #A5D6FF">&quot;</span><span style="color: #FFA657">fmt</span><span style="color: #A5D6FF">&quot;</span></span>
+<span class="line"><span style="color: #C9D1D9">	</span><span style="color: #A5D6FF">&quot;</span><span style="color: #FFA657">time</span><span style="color: #A5D6FF">&quot;</span></span>
+<span class="line"><span style="color: #C9D1D9">)</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #FF7B72">func</span><span style="color: #C9D1D9"> </span><span style="color: #D2A8FF">fib</span><span style="color: #C9D1D9">(ctx context.Context) </span><span style="color: #FF7B72">&lt;-chan</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">int</span><span style="color: #C9D1D9"> {</span></span>
+<span class="line"><span style="color: #C9D1D9">	ch </span><span style="color: #FF7B72">:=</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">make</span><span style="color: #C9D1D9">(</span><span style="color: #FF7B72">chan</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">int</span><span style="color: #C9D1D9">)</span></span>
+<span class="line"><span style="color: #C9D1D9">	a, b </span><span style="color: #FF7B72">:=</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">0</span><span style="color: #C9D1D9">, </span><span style="color: #79C0FF">1</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #C9D1D9">	</span><span style="color: #FF7B72">go</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">func</span><span style="color: #C9D1D9">() {</span></span>
+<span class="line"><span style="color: #C9D1D9">		</span><span style="color: #FF7B72">defer</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">close</span><span style="color: #C9D1D9">(ch)</span></span>
+<span class="line"><span style="color: #C9D1D9">		</span><span style="color: #FF7B72">for</span><span style="color: #C9D1D9"> {</span></span>
+<span class="line"><span style="color: #C9D1D9">			v </span><span style="color: #FF7B72">:=</span><span style="color: #C9D1D9"> a</span></span>
+<span class="line"><span style="color: #C9D1D9">			a </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> b</span></span>
+<span class="line"><span style="color: #C9D1D9">			b </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> v </span><span style="color: #FF7B72">+</span><span style="color: #C9D1D9"> b</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #C9D1D9">			</span><span style="color: #FF7B72">select</span><span style="color: #C9D1D9"> {</span></span>
+<span class="line"><span style="color: #C9D1D9">			</span><span style="color: #FF7B72">case</span><span style="color: #C9D1D9"> ch </span><span style="color: #FF7B72">&lt;-</span><span style="color: #C9D1D9"> v:</span></span>
+<span class="line"><span style="color: #C9D1D9">			</span><span style="color: #FF7B72">case</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">&lt;-</span><span style="color: #C9D1D9">ctx.</span><span style="color: #79C0FF">Done</span><span style="color: #C9D1D9">():</span></span>
+<span class="line"><span style="color: #C9D1D9">				</span><span style="color: #FF7B72">return</span></span>
+<span class="line"><span style="color: #C9D1D9">			}</span></span>
+<span class="line"><span style="color: #C9D1D9">		}</span></span>
+<span class="line"><span style="color: #C9D1D9">	}()</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #C9D1D9">	</span><span style="color: #FF7B72">return</span><span style="color: #C9D1D9"> ch</span></span>
+<span class="line"><span style="color: #C9D1D9">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #FF7B72">func</span><span style="color: #C9D1D9"> </span><span style="color: #D2A8FF">main</span><span style="color: #C9D1D9">() {</span></span>
+<span class="line"><span style="color: #C9D1D9">	ctx, cancel </span><span style="color: #FF7B72">:=</span><span style="color: #C9D1D9"> context.</span><span style="color: #79C0FF">WithCancel</span><span style="color: #C9D1D9">(context.</span><span style="color: #79C0FF">Background</span><span style="color: #C9D1D9">())</span></span>
+<span class="line"><span style="color: #C9D1D9">	f </span><span style="color: #FF7B72">:=</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">fib</span><span style="color: #C9D1D9">(ctx)</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #C9D1D9">	</span><span style="color: #FF7B72">go</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">func</span><span style="color: #C9D1D9">() {</span></span>
+<span class="line"><span style="color: #C9D1D9">		time.</span><span style="color: #79C0FF">Sleep</span><span style="color: #C9D1D9">(</span><span style="color: #79C0FF">100</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">*</span><span style="color: #C9D1D9"> time.Millisecond)</span></span>
+<span class="line"><span style="color: #C9D1D9">		</span><span style="color: #79C0FF">cancel</span><span style="color: #C9D1D9">()</span></span>
+<span class="line"><span style="color: #C9D1D9">	}()</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #C9D1D9">	</span><span style="color: #FF7B72">for</span><span style="color: #C9D1D9"> v </span><span style="color: #FF7B72">:=</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">range</span><span style="color: #C9D1D9"> f {</span></span>
+<span class="line"><span style="color: #C9D1D9">		fmt.</span><span style="color: #79C0FF">Println</span><span style="color: #C9D1D9">(v)</span></span>
+<span class="line"><span style="color: #C9D1D9">	}</span></span>
+<span class="line"><span style="color: #C9D1D9">}</span></span>
+<span class="line"></span></code></pre>
+<h3 id="fanin--fanout">FanIn / FanOut</h3><p>複数の channel を１つに束ねるのを <code>FanIn</code>、
+１つのchannel を複数に分岐するのを <code>FanOut</code> という。</p><p>channel は Multi-Producer / Multi-Consumer なので特に気にせず
+複数の goroutine から読み書きすればよい。</p><p><strong>main.go</strong> [<a target="_blank" href="https://github.com/take4s5i/blog/blob/main/examples/posts/2022/07/golang-chan/06/main.go">src</a>]</p>
+<pre is:raw class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #FF7B72">package</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">main</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #FF7B72">import</span><span style="color: #C9D1D9"> (</span></span>
+<span class="line"><span style="color: #C9D1D9">	</span><span style="color: #A5D6FF">&quot;</span><span style="color: #FFA657">fmt</span><span style="color: #A5D6FF">&quot;</span></span>
+<span class="line"><span style="color: #C9D1D9">	</span><span style="color: #A5D6FF">&quot;</span><span style="color: #FFA657">sync</span><span style="color: #A5D6FF">&quot;</span></span>
+<span class="line"><span style="color: #C9D1D9">)</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #FF7B72">type</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">MyInt</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">int</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #FF7B72">func</span><span style="color: #C9D1D9"> (x MyInt) </span><span style="color: #D2A8FF">String</span><span style="color: #C9D1D9">() </span><span style="color: #FF7B72">string</span><span style="color: #C9D1D9"> {</span></span>
+<span class="line"><span style="color: #C9D1D9">	</span><span style="color: #FF7B72">return</span><span style="color: #C9D1D9"> fmt.</span><span style="color: #79C0FF">Sprint</span><span style="color: #C9D1D9">(</span><span style="color: #79C0FF">int</span><span style="color: #C9D1D9">(x))</span></span>
+<span class="line"><span style="color: #C9D1D9">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #FF7B72">func</span><span style="color: #C9D1D9"> </span><span style="color: #D2A8FF">collatz</span><span style="color: #C9D1D9">(n </span><span style="color: #FF7B72">int</span><span style="color: #C9D1D9">) </span><span style="color: #FF7B72">&lt;-chan</span><span style="color: #C9D1D9"> MyInt {</span></span>
+<span class="line"><span style="color: #C9D1D9">	ch </span><span style="color: #FF7B72">:=</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">make</span><span style="color: #C9D1D9">(</span><span style="color: #FF7B72">chan</span><span style="color: #C9D1D9"> MyInt)</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #C9D1D9">	</span><span style="color: #FF7B72">go</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">func</span><span style="color: #C9D1D9">() {</span></span>
+<span class="line"><span style="color: #C9D1D9">		</span><span style="color: #FF7B72">defer</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">close</span><span style="color: #C9D1D9">(ch)</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #C9D1D9">		</span><span style="color: #FF7B72">for</span><span style="color: #C9D1D9"> {</span></span>
+<span class="line"><span style="color: #C9D1D9">			ch </span><span style="color: #FF7B72">&lt;-</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">MyInt</span><span style="color: #C9D1D9">(n)</span></span>
+<span class="line"><span style="color: #C9D1D9">			</span><span style="color: #FF7B72">switch</span><span style="color: #C9D1D9"> {</span></span>
+<span class="line"><span style="color: #C9D1D9">			</span><span style="color: #FF7B72">case</span><span style="color: #C9D1D9"> n </span><span style="color: #FF7B72">==</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">1</span><span style="color: #C9D1D9">:</span></span>
+<span class="line"><span style="color: #C9D1D9">				</span><span style="color: #FF7B72">return</span></span>
+<span class="line"><span style="color: #C9D1D9">			</span><span style="color: #FF7B72">case</span><span style="color: #C9D1D9"> n</span><span style="color: #FF7B72">%</span><span style="color: #79C0FF">2</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">==</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">0</span><span style="color: #C9D1D9">:</span></span>
+<span class="line"><span style="color: #C9D1D9">				n </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> n </span><span style="color: #FF7B72">/</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">2</span></span>
+<span class="line"><span style="color: #C9D1D9">			</span><span style="color: #FF7B72">default</span><span style="color: #C9D1D9">:</span></span>
+<span class="line"><span style="color: #C9D1D9">				n </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> n</span><span style="color: #FF7B72">*</span><span style="color: #79C0FF">3</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">+</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">1</span></span>
+<span class="line"><span style="color: #C9D1D9">			}</span></span>
+<span class="line"><span style="color: #C9D1D9">		}</span></span>
+<span class="line"><span style="color: #C9D1D9">	}()</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #C9D1D9">	</span><span style="color: #FF7B72">return</span><span style="color: #C9D1D9"> ch</span></span>
+<span class="line"><span style="color: #C9D1D9">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #FF7B72">func</span><span style="color: #C9D1D9"> fanIn[T any](cs </span><span style="color: #FF7B72">...&lt;-chan</span><span style="color: #C9D1D9"> T) </span><span style="color: #FF7B72">&lt;-chan</span><span style="color: #C9D1D9"> T {</span></span>
+<span class="line"><span style="color: #C9D1D9">	</span><span style="color: #FF7B72">var</span><span style="color: #C9D1D9"> wg sync.WaitGroup</span></span>
+<span class="line"><span style="color: #C9D1D9">	out </span><span style="color: #FF7B72">:=</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">make</span><span style="color: #C9D1D9">(</span><span style="color: #FF7B72">chan</span><span style="color: #C9D1D9"> T)</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #C9D1D9">	wg.</span><span style="color: #79C0FF">Add</span><span style="color: #C9D1D9">(</span><span style="color: #79C0FF">len</span><span style="color: #C9D1D9">(cs))</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #C9D1D9">	</span><span style="color: #FF7B72">for</span><span style="color: #C9D1D9"> _, ch </span><span style="color: #FF7B72">:=</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">range</span><span style="color: #C9D1D9"> cs {</span></span>
+<span class="line"><span style="color: #C9D1D9">		ch </span><span style="color: #FF7B72">:=</span><span style="color: #C9D1D9"> ch</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #C9D1D9">		</span><span style="color: #8B949E">// 元となる channel から値を受け取り out にわたすだけの goroutine</span></span>
+<span class="line"><span style="color: #C9D1D9">		</span><span style="color: #8B949E">// 元channelが close されると wg.Done()する</span></span>
+<span class="line"><span style="color: #C9D1D9">		</span><span style="color: #FF7B72">go</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">func</span><span style="color: #C9D1D9">() {</span></span>
+<span class="line"><span style="color: #C9D1D9">			</span><span style="color: #FF7B72">defer</span><span style="color: #C9D1D9"> wg.</span><span style="color: #79C0FF">Done</span><span style="color: #C9D1D9">()</span></span>
+<span class="line"><span style="color: #C9D1D9">			</span><span style="color: #FF7B72">for</span><span style="color: #C9D1D9"> v </span><span style="color: #FF7B72">:=</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">range</span><span style="color: #C9D1D9"> ch {</span></span>
+<span class="line"><span style="color: #C9D1D9">				out </span><span style="color: #FF7B72">&lt;-</span><span style="color: #C9D1D9"> v</span></span>
+<span class="line"><span style="color: #C9D1D9">			}</span></span>
+<span class="line"><span style="color: #C9D1D9">		}()</span></span>
+<span class="line"><span style="color: #C9D1D9">	}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #C9D1D9">	</span><span style="color: #8B949E">// すべての元 channel が close されると close(out) する</span></span>
+<span class="line"><span style="color: #C9D1D9">	</span><span style="color: #FF7B72">go</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">func</span><span style="color: #C9D1D9">() {</span></span>
+<span class="line"><span style="color: #C9D1D9">		wg.</span><span style="color: #79C0FF">Wait</span><span style="color: #C9D1D9">()</span></span>
+<span class="line"><span style="color: #C9D1D9">		</span><span style="color: #79C0FF">close</span><span style="color: #C9D1D9">(out)</span></span>
+<span class="line"><span style="color: #C9D1D9">	}()</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #C9D1D9">	</span><span style="color: #FF7B72">return</span><span style="color: #C9D1D9"> out</span></span>
+<span class="line"><span style="color: #C9D1D9">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #FF7B72">func</span><span style="color: #C9D1D9"> fanOut[T fmt.Stringer](ch </span><span style="color: #FF7B72">&lt;-chan</span><span style="color: #C9D1D9"> T, n </span><span style="color: #FF7B72">int</span><span style="color: #C9D1D9">) {</span></span>
+<span class="line"><span style="color: #C9D1D9">	</span><span style="color: #FF7B72">var</span><span style="color: #C9D1D9"> wg sync.WaitGroup</span></span>
+<span class="line"><span style="color: #C9D1D9">	wg.</span><span style="color: #79C0FF">Add</span><span style="color: #C9D1D9">(n)</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #C9D1D9">	</span><span style="color: #FF7B72">for</span><span style="color: #C9D1D9"> i </span><span style="color: #FF7B72">:=</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">0</span><span style="color: #C9D1D9">; i </span><span style="color: #FF7B72">&lt;</span><span style="color: #C9D1D9"> n; i</span><span style="color: #FF7B72">++</span><span style="color: #C9D1D9"> {</span></span>
+<span class="line"><span style="color: #C9D1D9">		i </span><span style="color: #FF7B72">:=</span><span style="color: #C9D1D9"> i</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #C9D1D9">		</span><span style="color: #8B949E">// ch から読み取って出力するだけの goroutine</span></span>
+<span class="line"><span style="color: #C9D1D9">		</span><span style="color: #8B949E">// ch は goroutine safe なので 複数の goroutine から読み書きしても問題ない</span></span>
+<span class="line"><span style="color: #C9D1D9">		</span><span style="color: #FF7B72">go</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">func</span><span style="color: #C9D1D9">() {</span></span>
+<span class="line"><span style="color: #C9D1D9">			</span><span style="color: #FF7B72">defer</span><span style="color: #C9D1D9"> wg.</span><span style="color: #79C0FF">Done</span><span style="color: #C9D1D9">()</span></span>
+<span class="line"><span style="color: #C9D1D9">			</span><span style="color: #FF7B72">for</span><span style="color: #C9D1D9"> v </span><span style="color: #FF7B72">:=</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">range</span><span style="color: #C9D1D9"> ch {</span></span>
+<span class="line"><span style="color: #C9D1D9">				fmt.</span><span style="color: #79C0FF">Printf</span><span style="color: #C9D1D9">(</span><span style="color: #A5D6FF">&quot;&#39;</span><span style="color: #79C0FF">%s</span><span style="color: #A5D6FF">&#39; from </span><span style="color: #79C0FF">%d\n</span><span style="color: #A5D6FF">&quot;</span><span style="color: #C9D1D9">, v.</span><span style="color: #79C0FF">String</span><span style="color: #C9D1D9">(), i)</span></span>
+<span class="line"><span style="color: #C9D1D9">			}</span></span>
+<span class="line"><span style="color: #C9D1D9">		}()</span></span>
+<span class="line"><span style="color: #C9D1D9">	}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #C9D1D9">	wg.</span><span style="color: #79C0FF">Wait</span><span style="color: #C9D1D9">()</span></span>
+<span class="line"><span style="color: #C9D1D9">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #FF7B72">func</span><span style="color: #C9D1D9"> </span><span style="color: #D2A8FF">main</span><span style="color: #C9D1D9">() {</span></span>
+<span class="line"><span style="color: #C9D1D9">	c </span><span style="color: #FF7B72">:=</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">fanIn</span><span style="color: #C9D1D9">(</span><span style="color: #79C0FF">collatz</span><span style="color: #C9D1D9">(</span><span style="color: #79C0FF">10</span><span style="color: #C9D1D9">), </span><span style="color: #79C0FF">collatz</span><span style="color: #C9D1D9">(</span><span style="color: #79C0FF">20</span><span style="color: #C9D1D9">), </span><span style="color: #79C0FF">collatz</span><span style="color: #C9D1D9">(</span><span style="color: #79C0FF">30</span><span style="color: #C9D1D9">))</span></span>
+<span class="line"><span style="color: #C9D1D9">	</span><span style="color: #79C0FF">fanOut</span><span style="color: #C9D1D9">(c, </span><span style="color: #79C0FF">3</span><span style="color: #C9D1D9">)</span></span>
+<span class="line"><span style="color: #C9D1D9">}</span></span>
+<span class="line"></span></code></pre>
+<p>とりあえず今回はここまで</p>
+			</main>
+		</div>
+	</article>
+</div>
+
+
+		</div>
+	</body></html>
