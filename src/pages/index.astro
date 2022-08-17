@@ -8,7 +8,7 @@ let title = 'take4s5i DEV';
 let description = "take4s5i's web site";
 let permalink = Astro.site
 
-let allPosts = await Astro.glob('./posts/**/*.md');
+let allPosts = await Astro.glob('./posts/**/*.{md,mdx}');
 allPosts = allPosts.sort((a, b) => new Date(b.frontmatter.publishDate).valueOf() - new Date(a.frontmatter.publishDate).valueOf());
 ---
 

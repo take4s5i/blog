@@ -1,14 +1,14 @@
 ---
 layout: ../../../../layouts/BlogPost.astro
-setup: |
-  import TodoList from '../../../../components/posts/2022/07/introduction-to-astro/TodoList.astro'
-  import Import from '../../../../components/Import.astro'
-  import * as Config from '../../../../config.mjs'
-
-  const sampleUrl = Config.getBlobUrl('src/components/posts/2022/07/introduction-to-astro')
 title: Astro ざっくりまとめ
 publishDate: 16 Jul 2022
 ---
+import TodoList from '../../../../components/posts/2022/07/introduction-to-astro/TodoList.astro'
+import Import from '../../../../components/Import.astro'
+import * as Config from '../../../../config.mjs'
+
+export const sampleUrl = Config.getBlobUrl('src/components/posts/2022/07/introduction-to-astro')
+
 
 ブログを [Astro](https://astro.build/) で作り直したので
 備忘録がてらまとめていこうかなと思います。
