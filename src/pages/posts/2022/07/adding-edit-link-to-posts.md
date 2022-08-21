@@ -1,5 +1,5 @@
 ---
-layout: ../../../../layouts/BlogPost.astro
+layout: src/layouts/BlogPost.astro
 title: GitHub Pagesで作ってるブログ編集リンクを追加する
 publishDate: 11 Jul 2022
 ---

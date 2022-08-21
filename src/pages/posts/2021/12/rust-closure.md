@@ -1,5 +1,5 @@
 ---
-layout: ../../../../layouts/BlogPost.astro
+layout: src/layouts/BlogPost.astro
 title: Rustのクロージャを理解する
 publishDate: 16 Dec 2021
 ---

@@ -1,5 +1,5 @@
 ---
-layout: ../../../../layouts/BlogPost.astro
+layout: src/layouts/BlogPost.astro
 title: {{ title }}
 publishDate: {{ getDate }}
 ---

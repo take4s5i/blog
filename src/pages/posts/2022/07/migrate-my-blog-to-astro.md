@@ -1,5 +1,5 @@
 ---
-layout: ../../../../layouts/BlogPost.astro
+layout: src/layouts/BlogPost.astro
 title: ブログをAstroに移行しました
 publishDate: 9 Jul 2022
 ---

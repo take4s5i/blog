@@ -1,5 +1,5 @@
 ---
-layout: ../../../../layouts/BlogPost.astro
+layout: src/layouts/BlogPost.astro
 title: Rust panic を理解する
 publishDate: 7 Dec 2021
 ---

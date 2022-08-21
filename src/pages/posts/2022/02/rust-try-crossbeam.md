@@ -1,5 +1,5 @@
 ---
-layout: ../../../../layouts/BlogPost.astro
+layout: src/layouts/BlogPost.astro
 title: "Rustのcrossbeamを試してみる"
 publishDate: 3 Feb 2022
 ---

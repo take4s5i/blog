@@ -1,5 +1,5 @@
 ---
-layout: ../../../../layouts/BlogPost.astro
+layout: src/layouts/BlogPost.astro
 title: "[Rust] 並列処理に使うAPIたち2(Once, channel)"
 publishDate: 29 Jan 2022
 ---

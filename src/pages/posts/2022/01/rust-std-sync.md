@@ -1,5 +1,5 @@
 ---
-layout: ../../../../layouts/BlogPost.astro
+layout: src/layouts/BlogPost.astro
 title: "[Rust] 並列処理に使うAPIたち(Mutex, RwLock, Barrier, Condvar)"
 publishDate: 6 Jan 2022
 ---

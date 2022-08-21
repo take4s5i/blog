@@ -1,5 +1,5 @@
 ---
-layout: ../../../../layouts/BlogPost.astro
+layout: src/layouts/BlogPost.astro
 title: Elastic Searchのobject, flattened, nestedの違い
 publishDate: 29 Jan 2022
 ---
