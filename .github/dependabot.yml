@@ -1,0 +1,14 @@
+version: 2
+updates:
+
+  # GitHub アクションの依存関係を維持する
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "daily"
+
+  # npm の依存関係を維持する
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "daily"

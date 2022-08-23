@@ -25,6 +25,9 @@ jobs:
         with:
           node-version: 16
 
+      - name: Enable Corepack
+        run: corepack enable
+
       # Not using npm? Change `npm ci` to `yarn install` or `pnpm i`
       - name: Install dependencies
         run: yarn
