@@ -116,8 +116,10 @@ dist
 .vscode-test
 
 # yarn
-.yarn/*
 .pnp.*
+!.yarn/releases/*
+.yarn/install-state.gz
+.yarn/cache/*
 
 ### Node Patch ###
 # Serverless Webpack directories
