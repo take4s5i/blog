@@ -1,0 +1,244 @@
+<!DOCTYPE html><html lang="en">
+	<head>
+		<!-- Google Tag Manager -->
+<!-- End Google Tag Manager -->
+
+<!-- Global Metadata -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+
+<!-- Primary Meta Tags -->
+<title>take4s5i DEV - AWS CDK で同じ環境で複数回 bootstrap する</title>
+<meta name="title" content="AWS CDK で同じ環境で複数回 bootstrap する">
+<meta name="description">
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:url">
+<meta property="og:title" content="AWS CDK で同じ環境で複数回 bootstrap する">
+<meta property="og:description">
+<meta property="og:image" content="https://astro.build/social.png?v=1">
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:url">
+<meta property="twitter:title" content="AWS CDK で同じ環境で複数回 bootstrap する">
+<meta property="twitter:description">
+<meta property="twitter:image" content="https://astro.build/social.png?v=1">
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&family=IBM+Plex+Sans:wght@400;700&display=swap">
+
+	<link rel="stylesheet" href="/assets/c99d5208.070dc6d6.css" /><script type="module">(function(t,n,r,e,m){t[e]=t[e]||[],t[e].push({"gtm.start":new Date().getTime(),event:"gtm.js"});var g=n.getElementsByTagName(r)[0],a=n.createElement(r),s=e!="dataLayer"?"&l="+e:"";a.async=!0,a.src="https://www.googletagmanager.com/gtm.js?id="+m+s,g.parentNode.insertBefore(a,g)})(window,document,"script","dataLayer","GTM-P42NKJ8");
+</script></head>
+	<body>
+		<header class="wrapper astro-W2MTFRY6">
+	<article class="astro-W2MTFRY6">
+		<h1 class="astro-W2MTFRY6">
+			<a href="/" class="astro-W2MTFRY6">
+				<span class="astro-W2MTFRY6">take4s5i DEV</span>
+			</a>
+		</h1>
+	</article>
+</header>
+
+
+		<div class="wrapper">
+			<div class="layout astro-O6PTD47S">
+	<article class="content astro-O6PTD47S">
+		<div class="astro-O6PTD47S">
+			<header class="astro-O6PTD47S">
+				
+				<p class="publish-date astro-O6PTD47S">23 Aug 2022</p>
+				<h1 class="title astro-O6PTD47S">AWS CDK で同じ環境で複数回 bootstrap する</h1>
+			</header>
+			<div class="editbar astro-O6PTD47S">
+				<a href="https://github.com/take4s5i/blog/blob/main/src/pages/posts/2022/08/aws-cdk-modern-bootstrap.md" class="astro-O6PTD47S">Edit This Page</a>
+			</div>
+			<main class="astro-O6PTD47S">
+				<h2 id="tldr">TL;DR</h2>
+<h3 id="cdk-bootstrap-の実行">cdk bootstrap の実行</h3>
+<pre is:raw="" class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #c9d1d9">cdk bootstrap --qualifier my-qualifier --toolkit-stack-name my-cdktoolkit-stack</span></span></code></pre>
+<ul>
+<li><code>my-qualifier</code> は他とかぶらない名前にする</li>
+<li><code>my-cdktoolkit-stack</code> は他とかぶらない Stack 名にする</li>
+</ul>
+<h3 id="qualifier-の設定">qualifier の設定</h3>
+<p><strong>cdk.json</strong></p>
+<pre is:raw="" class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #C9D1D9">{</span></span>
+<span class="line"><span style="color: #C9D1D9">  </span><span style="color: #79C0FF">"context"</span><span style="color: #C9D1D9">: {</span></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #79C0FF">"@aws-cdk/core:bootstrapQualifier"</span><span style="color: #C9D1D9">: </span><span style="color: #A5D6FF">"my-qualifier"</span></span>
+<span class="line"><span style="color: #C9D1D9">  }</span></span>
+<span class="line"><span style="color: #C9D1D9">}</span></span></code></pre>
+<h3 id="iam-userの設定">IAM Userの設定</h3>
+<p>デプロイに利用する IAM User に対して <code>cdk-my-qualifier-*</code> という名前の IAM Role を Assume できるように設定する。</p>
+<h2 id="cdk-bootstrap-ことはじめ">cdk bootstrap ことはじめ</h2>
+<p>いつのまにやら <code>cdk bootstrap</code> が大幅進化していたので改めて理解します。
+<code>cdk bootstrap</code> を実行すると、環境変数や <code>cdk.json</code> などから現在の環境を推測します</p>
+<p>環境というのは AWS アカウントとリージョンのことで</p>
+<pre is:raw="" class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #c9d1d9">cdk bootstrap aws://123456789012/ap-northeast-1</span></span></code></pre>
+<p>のように具体的に指定することも出来ます。</p>
+<p>bootstrap が始まると環境で指定された AWS アカウント、リージョン内に <code>CDKToolkit</code> という Cloud Formation スタックが作成されます。</p>
+<p>そのため、bootstrap を実行する IAM User/Role は <code>CDKToolkit</code> スタックを作れるだけのパーミションを持っている必要があります。</p>
+<p>bootstrap に必要な IAM Policy が書いてないのは不親切感はありますが、<code>cdk bootstrap --show-template</code> を実行すると
+<code>CDKToolkit</code> の Cloud Formation テンプレートが表示されるのでそこから必要最低限のパーミッションだけ抜き出す事ができるでしょう。</p>
+<h2 id="cdktoolkit-の中身"><code>CDKToolkit</code> の中身</h2>
+<p>肝心の <code>CDKToolkit</code> の中身ですが以下のようなリソースが作成されていました。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>論理ID</th><th>物理ID</th><th>タイプ</th></tr></thead><tbody><tr><td>CdkBootstrapVersion</td><td>/cdk-bootstrap/hnb659fds/version</td><td>AWS::SSM::Parameter</td></tr><tr><td>CloudFormationExecutionRole</td><td>cdk-hnb659fds-cfn-exec-role-123456789012-ap-northeast-1</td><td>AWS::IAM::Role</td></tr><tr><td>ContainerAssetsRepository</td><td>cdk-hnb659fds-container-assets-123456789012-ap-northeast-1</td><td>AWS::ECR::Repository</td></tr><tr><td>DeploymentActionRole</td><td>cdk-hnb659fds-deploy-role-123456789012-ap-northeast-1</td><td>AWS::IAM::Role</td></tr><tr><td>FilePublishingRole</td><td>cdk-hnb659fds-file-publishing-role-123456789012-ap-northeast-1</td><td>AWS::IAM::Role</td></tr><tr><td>FilePublishingRoleDefaultPolicy</td><td>CDKTo-File-8GKTZEZLLE17</td><td>AWS::IAM::Policy</td></tr><tr><td>ImagePublishingRole</td><td>cdk-hnb659fds-image-publishing-role-123456789012-ap-northeast-1</td><td>AWS::IAM::Role</td></tr><tr><td>ImagePublishingRoleDefaultPolicy</td><td>CDKTo-Imag-1IOQ0HFE6YPV9</td><td>AWS::IAM::Policy</td></tr><tr><td>LookupRole</td><td>cdk-hnb659fds-lookup-role-123456789012-ap-northeast-1</td><td>AWS::IAM::Role</td></tr><tr><td>StagingBucket</td><td>cdk-hnb659fds-assets-123456789012-ap-northeast-1</td><td>AWS::S3::Bucket</td></tr><tr><td>StagingBucketPolicy</td><td>CDKToolkit-StagingBucketPolicy-19C4MIKTPA6IG</td><td>AWS::S3::BucketPolicy</td></tr></tbody></table>
+<p>物理IDに規則性が見えますね。</p>
+<ul>
+<li><code>hnb659fds</code>: Qualifier (後述)</li>
+<li><code>123456789012</code>: AWS Account ID</li>
+<li><code>ap-northeast-1</code>: AWS Region</li>
+</ul>
+<p>となっています。</p>
+<h3 id="cdkbootstrapversion">CdkBootstrapVersion</h3>
+<p>これはおそらく <code>CDKToolkit</code> に使われている Cloud Formation テンプレートのバージョンでしょう。
+この記事を書いている時点で値は <code>14</code> でした。</p>
+<h3 id="cloudformationexecutionrole">CloudFormationExecutionRole</h3>
+<p>CDK は最終的に Cloud Formation テンプレートを作成しそれをデプロイしますが、
+このロールは CloudFormation を実行する際に使われると思われます。</p>
+<p>デフォルトでは <code>AdministratorAccess</code> が付与されていて、非常に強い権限となっています。</p>
+<p>cdk bootstrap のオプション <code>--cloudformation-execution-policies</code> を指定することで、
+このロールに付与する権限を変更できるようです。</p>
+<h3 id="stagingbucket-filepublishingrole">StagingBucket, FilePublishingRole</h3>
+<p>CDK ではローカルにあるディレクトリやファイルをS3 バケットにアップロードする
+<a href="https://docs.aws.amazon.com/cdk/v2/guide/assets.html">Assets</a> という機能を持っています。</p>
+<p>これは Lambda を使うときに非常に便利です。
+Lambda を Cloud Formation でデプロイする場合、コードを zip で固めて s3 に事前にアップロードしておき、
+その s3 パスを Cloud Formation テンプレートに指定する必要があります。</p>
+<p>CDK ではその作業を自動でやってくれます。
+おそらく、<code>cdk deploy</code> の中で、Cloud Formation のデプロイ前に assets を s3 バケットにアップロードするような処理を行っているのでしょう。</p>
+<p><code>StagingBucket</code> と <code>FilePublishingRole</code> はこのとき使われるアップロード先とアップロード用の IAM Role と思われます。</p>
+<h3 id="containerassetsrepository-imagepublishingrole">ContainerAssetsRepository, ImagePublishingRole</h3>
+<p>CDK の Assets は S3 バケットにファイルをアップロードするのと同じ要領で
+ECR へのコンテナイメージの push も出来ます。</p>
+<p>同様の使い方でしょう。</p>
+<h3 id="lookuprole">LookupRole</h3>
+<p>CDK では <a href="https://docs.aws.amazon.com/cdk/v2/guide/context.html">Context</a> という機能で
+デプロイ時に環境から vpc id などを取得することが出来ます。</p>
+<p><code>LookupRole</code> は Context 取得時に使われる IAM Role かと思われます。</p>
+<h3 id="deploymentactionrole">DeploymentActionRole</h3>
+<p>こいつだけよくわかりませんでした・・・
+CLI や Pipeline でデプロイするのに使われると書いてあったので、<code>cdk deploy</code> したときにこのRole を Assume し、
+そこから更に <code>LookupRole</code> などを Assume するようなイメージでしょうか</p>
+<h2 id="cdk-deploy">cdk deploy</h2>
+<p><code>cdk deploy</code> するときには <code>cdk bootstrap</code> で作られた IAM Role や S3 Bucket を使うわけですが、
+一体どうやってその名前を取得しているのでしょうか？</p>
+<p><code>CDKToolkit</code> のスタックから物理IDを取得しているのかと思っていましたが、
+どうやらそうではなく、物理IDの命名規則に従って特定しているようです。</p>
+<p>この挙動は <a href="https://docs.aws.amazon.com/cdk/api/v2/docs/aws-cdk-lib.DefaultStackSynthesizer.html">DefaultStackSynthesizer</a>
+を明示的に指定することで他の Role や S3 Bucket を使ってデプロイすることが出来ます。</p>
+<p>また、Role を使ってデプロイすることになる都合上、<code>cdk deploy</code> を実行する
+IAM User は bootstrap で作られた Role を Assume できる必要があります。</p>
+<p>Assume 出来ない場合は IAM User の権限でそのまま実行されますが、Assume できるようにしておいたほうが楽だし無難でしょう。</p>
+<h2 id="qualifier">Qualifier</h2>
+<p>ここでやっと登場するのが <code>Qualifier</code> です。</p>
+<p><code>Qualifier</code> のデフォルト値は <code>hnb659fds</code> ですが、明示的に指定することが出来ます。</p>
+<ul>
+<li><code>cdk bootstrap</code> の <code>--qualifier</code> オプション</li>
+<li><code>cdk.json</code> の <code>context.@aws-cdk/core:bootstrapQualifier</code></li>
+<li><code>DefaultStackSynthesizer</code> の <code>qualifier</code> プロパティ</li>
+</ul>
+<p>いつ qualifier を使うんだという話ですが、
+<code>cdk bootstrap</code> は環境毎に行う都合上、同じ AWS アカウント、リージョン内で１回しかbootstrap出来ません。</p>
+<p>これは以下のようなケースで使いにくい場合があるでしょう。</p>
+<ul>
+<li>同じ環境を複数チームで使っている場合
+<ul>
+<li>CDK bootstrap バージョンが異なると壊れる/壊される可能性がある</li>
+</ul>
+</li>
+<li>同じ環境に複数の CDK App があり、それぞれ <code>--cloudformation-execution-policies</code> を分けたい場合</li>
+<li>たまたま同じ名前のリソースがあり、コンフリクトした場合
+<ul>
+<li>前のcdk bootstrap の残骸とか</li>
+<li>Staging Bucket は <code>CDKToolkit</code> を消しても残る</li>
+</ul>
+</li>
+</ul>
+<p>Qualifier を使うとリソース名のコンフリクトを回避出来ます。
+この場合 <code>--toolkit-stack-name</code> で <code>CDKToolkit</code> のスタック名を変えておく必要があります。
+（変えていないと 既存の <code>CDKToolkit</code> を上書きして破壊することになりそう）</p>
+<p>また bootstrap で作られる IAM Role は <code>cdk-{qualifier}-*</code> で始まるので、
+IAM User に <code>sts::AssumeRole</code> を設定するときにリソースを指定することで不要なRoleへのAssumeを拒否出来ます。</p>
+<h2 id=""></h2>
+<ul>
+<li><a href="https://docs.aws.amazon.com/cdk/v2/guide/bootstrapping.html">Bootstrapping - AWS Cloud Development Kit (AWS CDK) v2</a></li>
+<li><a href="https://docs.aws.amazon.com/cdk/api/v2/docs/aws-cdk-lib.DefaultStackSynthesizer.html">class DefaultStackSynthesizer · AWS CDK</a></li>
+</ul>
+			</main>
+		</div>
+	</article>
+</div>
+
+
+		</div>
+	</body></html>

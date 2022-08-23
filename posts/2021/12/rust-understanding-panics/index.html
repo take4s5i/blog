@@ -1,5 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 	<head>
 		<!-- Google Tag Manager -->
 <!-- End Google Tag Manager -->
@@ -32,14 +31,14 @@
 <link rel="preconnect" href="https://fonts.gstatic.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&family=IBM+Plex+Sans:wght@400;700&display=swap">
 
-	<link rel="stylesheet" href="/assets/1865bdc7.a6921d77.css" /><script type="module">(function(t,n,r,e,m){t[e]=t[e]||[],t[e].push({"gtm.start":new Date().getTime(),event:"gtm.js"});var g=n.getElementsByTagName(r)[0],a=n.createElement(r),s=e!="dataLayer"?"&l="+e:"";a.async=!0,a.src="https://www.googletagmanager.com/gtm.js?id="+m+s,g.parentNode.insertBefore(a,g)})(window,document,"script","dataLayer","GTM-P42NKJ8");
+	<link rel="stylesheet" href="/assets/c99d5208.070dc6d6.css" /><script type="module">(function(t,n,r,e,m){t[e]=t[e]||[],t[e].push({"gtm.start":new Date().getTime(),event:"gtm.js"});var g=n.getElementsByTagName(r)[0],a=n.createElement(r),s=e!="dataLayer"?"&l="+e:"";a.async=!0,a.src="https://www.googletagmanager.com/gtm.js?id="+m+s,g.parentNode.insertBefore(a,g)})(window,document,"script","dataLayer","GTM-P42NKJ8");
 </script></head>
 	<body>
-		<header class="wrapper astro-63D5MSV2">
-	<article class="astro-63D5MSV2">
-		<h1 class="astro-63D5MSV2">
-			<a href="/" class="astro-63D5MSV2">
-				<span class="astro-63D5MSV2">take4s5i DEV</span>
+		<header class="wrapper astro-W2MTFRY6">
+	<article class="astro-W2MTFRY6">
+		<h1 class="astro-W2MTFRY6">
+			<a href="/" class="astro-W2MTFRY6">
+				<span class="astro-W2MTFRY6">take4s5i DEV</span>
 			</a>
 		</h1>
 	</article>
@@ -47,96 +46,123 @@
 
 
 		<div class="wrapper">
-			<div class="layout astro-57SHIKPC">
-	<article class="content astro-57SHIKPC">
-		<div class="astro-57SHIKPC">
-			<header class="astro-57SHIKPC">
+			<div class="layout astro-O6PTD47S">
+	<article class="content astro-O6PTD47S">
+		<div class="astro-O6PTD47S">
+			<header class="astro-O6PTD47S">
 				
-				<p class="publish-date astro-57SHIKPC">7 Dec 2021</p>
-				<h1 class="title astro-57SHIKPC">Rust panic を理解する</h1>
+				<p class="publish-date astro-O6PTD47S">7 Dec 2021</p>
+				<h1 class="title astro-O6PTD47S">Rust panic を理解する</h1>
 			</header>
-			<div class="editbar astro-57SHIKPC">
-				<a href="https://github.com/take4s5i/blog/blob/main/src/pages/posts/2021/12/rust-understanding-panics.md" class="astro-57SHIKPC">Edit This Page</a>
+			<div class="editbar astro-O6PTD47S">
+				<a href="https://github.com/take4s5i/blog/blob/main/src/pages/posts/2021/12/rust-understanding-panics.md" class="astro-O6PTD47S">Edit This Page</a>
 			</div>
-			<main class="astro-57SHIKPC">
+			<main class="astro-O6PTD47S">
 				<p>panicしたら異常終了するぐらいにしか理解していなかったので。
-いろいろ調べたり実験したりしてみました。</p><h2 id="panic-したときの挙動">panic したときの挙動</h2><pre class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #C9D1D9">#[derive(</span><span style="color: #FFA657">Debug</span><span style="color: #C9D1D9">)]</span></span>
+いろいろ調べたり実験したりしてみました。</p>
+<h2 id="panic-したときの挙動">panic したときの挙動</h2>
+<pre is:raw="" class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #C9D1D9">#[derive(</span><span style="color: #FFA657">Debug</span><span style="color: #C9D1D9">)]</span></span>
 <span class="line"><span style="color: #FF7B72">struct</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">Data</span><span style="color: #C9D1D9">(</span><span style="color: #FFA657">u32</span><span style="color: #C9D1D9">);</span></span>
 <span class="line"></span>
 <span class="line"><span style="color: #FF7B72">impl</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">Drop</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">for</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">Data</span><span style="color: #C9D1D9"> {</span></span>
-<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #FF7B72">fn</span><span style="color: #C9D1D9"> </span><span style="color: #D2A8FF">drop</span><span style="color: #C9D1D9">(</span><span style="color: #FF7B72">&amp;mut</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">self</span><span style="color: #C9D1D9">){</span></span>
-<span class="line"><span style="color: #C9D1D9">        </span><span style="color: #D2A8FF">println!</span><span style="color: #C9D1D9">(</span><span style="color: #A5D6FF">&quot;drop {:?}&quot;</span><span style="color: #C9D1D9">, </span><span style="color: #79C0FF">self</span><span style="color: #C9D1D9">);</span></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #FF7B72">fn</span><span style="color: #C9D1D9"> </span><span style="color: #D2A8FF">drop</span><span style="color: #C9D1D9">(</span><span style="color: #FF7B72">&#x26;mut</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">self</span><span style="color: #C9D1D9">){</span></span>
+<span class="line"><span style="color: #C9D1D9">        </span><span style="color: #D2A8FF">println!</span><span style="color: #C9D1D9">(</span><span style="color: #A5D6FF">"drop {:?}"</span><span style="color: #C9D1D9">, </span><span style="color: #79C0FF">self</span><span style="color: #C9D1D9">);</span></span>
 <span class="line"><span style="color: #C9D1D9">    }</span></span>
 <span class="line"><span style="color: #C9D1D9">}</span></span>
 <span class="line"></span>
 <span class="line"><span style="color: #FF7B72">fn</span><span style="color: #C9D1D9"> </span><span style="color: #D2A8FF">call_recurse</span><span style="color: #C9D1D9">(n</span><span style="color: #FF7B72">:</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">u32</span><span style="color: #C9D1D9">) {</span></span>
 <span class="line"><span style="color: #C9D1D9">    </span><span style="color: #FF7B72">if</span><span style="color: #C9D1D9"> n </span><span style="color: #FF7B72">==</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">0</span><span style="color: #C9D1D9"> {</span></span>
-<span class="line"><span style="color: #C9D1D9">        </span><span style="color: #D2A8FF">panic!</span><span style="color: #C9D1D9">(</span><span style="color: #A5D6FF">&quot;panic!&quot;</span><span style="color: #C9D1D9">);</span></span>
+<span class="line"><span style="color: #C9D1D9">        </span><span style="color: #D2A8FF">panic!</span><span style="color: #C9D1D9">(</span><span style="color: #A5D6FF">"panic!"</span><span style="color: #C9D1D9">);</span></span>
 <span class="line"><span style="color: #C9D1D9">    }</span></span>
 <span class="line"><span style="color: #C9D1D9">    </span><span style="color: #FF7B72">let</span><span style="color: #C9D1D9"> data </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> </span><span style="color: #D2A8FF">Data</span><span style="color: #C9D1D9">(n);</span></span>
 <span class="line"><span style="color: #C9D1D9">    </span><span style="color: #D2A8FF">call_recurse</span><span style="color: #C9D1D9">(n </span><span style="color: #FF7B72">-</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">1</span><span style="color: #C9D1D9">);</span></span>
-<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #D2A8FF">println!</span><span style="color: #C9D1D9">(</span><span style="color: #A5D6FF">&quot;return: {:?}&quot;</span><span style="color: #C9D1D9">, data);</span></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #D2A8FF">println!</span><span style="color: #C9D1D9">(</span><span style="color: #A5D6FF">"return: {:?}"</span><span style="color: #C9D1D9">, data);</span></span>
 <span class="line"><span style="color: #C9D1D9">}</span></span>
 <span class="line"></span>
 <span class="line"><span style="color: #FF7B72">fn</span><span style="color: #C9D1D9"> </span><span style="color: #D2A8FF">main</span><span style="color: #C9D1D9">() {</span></span>
 <span class="line"><span style="color: #C9D1D9">    </span><span style="color: #D2A8FF">call_recurse</span><span style="color: #C9D1D9">(</span><span style="color: #79C0FF">4</span><span style="color: #C9D1D9">);</span></span>
-<span class="line"><span style="color: #C9D1D9">}</span></span></code></pre><p>出力:</p><pre class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #c9d1d9">  Compiling playground v0.0.1 (/playground)</span></span>
+<span class="line"><span style="color: #C9D1D9">}</span></span></code></pre>
+<p>出力:</p>
+<pre is:raw="" class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #c9d1d9">  Compiling playground v0.0.1 (/playground)</span></span>
 <span class="line"><span style="color: #c9d1d9">    Finished dev [unoptimized + debuginfo] target(s) in 1.07s</span></span>
 <span class="line"><span style="color: #c9d1d9">     Running `target/debug/playground`</span></span>
-<span class="line"><span style="color: #c9d1d9">thread &#39;main&#39; panicked at &#39;panic!&#39;, src/main.rs:12:9</span></span>
+<span class="line"><span style="color: #c9d1d9">thread 'main' panicked at 'panic!', src/main.rs:12:9</span></span>
 <span class="line"><span style="color: #c9d1d9">note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace</span></span>
 <span class="line"><span style="color: #c9d1d9"></span></span>
 <span class="line"><span style="color: #c9d1d9">drop Data(1)</span></span>
 <span class="line"><span style="color: #c9d1d9">drop Data(2)</span></span>
 <span class="line"><span style="color: #c9d1d9">drop Data(3)</span></span>
-<span class="line"><span style="color: #c9d1d9">drop Data(4)</span></span></code></pre><p><code>Drop</code> トレイトを実装した構造体の生存中に<code>panic</code>したところ、ちゃんとdropされました。
-この挙動は<code>unwinding</code>というようです。</p><h2 id="unwind-と-abort">unwind と abort</h2><p>panic時の挙動ですが、Cargoを使って変更できるようです。</p><p><a href="https://doc.rust-lang.org/cargo/reference/profiles.html#panic">Profiles - The Cargo Book</a></p><ul>
+<span class="line"><span style="color: #c9d1d9">drop Data(4)</span></span></code></pre>
+<p><code>Drop</code> トレイトを実装した構造体の生存中に<code>panic</code>したところ、ちゃんとdropされました。
+この挙動は<code>unwinding</code>というようです。</p>
+<h2 id="unwind-と-abort">unwind と abort</h2>
+<p>panic時の挙動ですが、Cargoを使って変更できるようです。</p>
+<p><a href="https://doc.rust-lang.org/cargo/reference/profiles.html#panic">Profiles - The Cargo Book</a></p>
+<ul>
 <li><code>panic</code> を<code>unwind</code>にすると<code>unwinding</code>を行う</li>
 <li><code>panic</code> を<code>abort</code>にするとプロセスをその場で以上終了する。</li>
-</ul><p><code>unwind</code>するとスレッドがパニックしてもハンドリングできるためプログラムは頑強になりそうです。
-が、unwinding用のコードが各関数に埋め込まれるためコードサイズも大きくなるようなので一長一短ですね。</p><p>デーモンやWebサーバのといった長生きするプログラム以外では <code>abort</code> にしてしまってもいいかもしれません。</p><h2 id="panicのハンドリング">panicのハンドリング</h2><h3 id="set_hook">set_hook</h3><pre class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #FF7B72">use</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">std</span><span style="color: #FF7B72">::</span><span style="color: #C9D1D9">panic;</span></span>
+</ul>
+<p><code>unwind</code>するとスレッドがパニックしてもハンドリングできるためプログラムは頑強になりそうです。
+が、unwinding用のコードが各関数に埋め込まれるためコードサイズも大きくなるようなので一長一短ですね。</p>
+<p>デーモンやWebサーバのといった長生きするプログラム以外では <code>abort</code> にしてしまってもいいかもしれません。</p>
+<h2 id="panicのハンドリング">panicのハンドリング</h2>
+<h3 id="set_hook">set_hook</h3>
+<pre is:raw="" class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #FF7B72">use</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">std</span><span style="color: #FF7B72">::</span><span style="color: #C9D1D9">panic;</span></span>
 <span class="line"><span style="color: #FF7B72">use</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">std</span><span style="color: #FF7B72">::</span><span style="color: #C9D1D9">thread;</span></span>
 <span class="line"></span>
 <span class="line"><span style="color: #FF7B72">fn</span><span style="color: #C9D1D9"> </span><span style="color: #D2A8FF">main</span><span style="color: #C9D1D9">() {</span></span>
 <span class="line"><span style="color: #C9D1D9">    </span><span style="color: #FFA657">std</span><span style="color: #FF7B72">::</span><span style="color: #FFA657">panic</span><span style="color: #FF7B72">::</span><span style="color: #D2A8FF">set_hook</span><span style="color: #C9D1D9">(</span><span style="color: #FFA657">Box</span><span style="color: #FF7B72">::</span><span style="color: #D2A8FF">new</span><span style="color: #C9D1D9">(</span><span style="color: #FF7B72">|</span><span style="color: #C9D1D9">_</span><span style="color: #FF7B72">|</span><span style="color: #C9D1D9"> {</span></span>
-<span class="line"><span style="color: #C9D1D9">        </span><span style="color: #D2A8FF">println!</span><span style="color: #C9D1D9">(</span><span style="color: #A5D6FF">&quot;Custom panic hook&quot;</span><span style="color: #C9D1D9">);</span></span>
+<span class="line"><span style="color: #C9D1D9">        </span><span style="color: #D2A8FF">println!</span><span style="color: #C9D1D9">(</span><span style="color: #A5D6FF">"Custom panic hook"</span><span style="color: #C9D1D9">);</span></span>
 <span class="line"><span style="color: #C9D1D9">    }));</span></span>
 <span class="line"><span style="color: #C9D1D9">    </span><span style="color: #FF7B72">let</span><span style="color: #C9D1D9"> handle </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">thread</span><span style="color: #FF7B72">::</span><span style="color: #D2A8FF">spawn</span><span style="color: #C9D1D9">(</span><span style="color: #FF7B72">||</span><span style="color: #C9D1D9"> {</span></span>
 <span class="line"><span style="color: #C9D1D9">        </span><span style="color: #D2A8FF">panic!</span><span style="color: #C9D1D9">();</span></span>
 <span class="line"><span style="color: #C9D1D9">    });</span></span>
 <span class="line"></span>
 <span class="line"><span style="color: #C9D1D9">    </span><span style="color: #FF7B72">match</span><span style="color: #C9D1D9"> handle</span><span style="color: #FF7B72">.</span><span style="color: #D2A8FF">join</span><span style="color: #C9D1D9">() {</span></span>
-<span class="line"><span style="color: #C9D1D9">        </span><span style="color: #FFA657">Err</span><span style="color: #C9D1D9">(_) </span><span style="color: #FF7B72">=&gt;</span><span style="color: #C9D1D9"> </span><span style="color: #D2A8FF">println!</span><span style="color: #C9D1D9">(</span><span style="color: #A5D6FF">&quot;thread paniced&quot;</span><span style="color: #C9D1D9">),</span></span>
-<span class="line"><span style="color: #C9D1D9">        </span><span style="color: #FFA657">Ok</span><span style="color: #C9D1D9">(_) </span><span style="color: #FF7B72">=&gt;</span><span style="color: #C9D1D9"> </span><span style="color: #D2A8FF">println!</span><span style="color: #C9D1D9">(</span><span style="color: #A5D6FF">&quot;thread exit successfly&quot;</span><span style="color: #C9D1D9">),</span></span>
+<span class="line"><span style="color: #C9D1D9">        </span><span style="color: #FFA657">Err</span><span style="color: #C9D1D9">(_) </span><span style="color: #FF7B72">=></span><span style="color: #C9D1D9"> </span><span style="color: #D2A8FF">println!</span><span style="color: #C9D1D9">(</span><span style="color: #A5D6FF">"thread paniced"</span><span style="color: #C9D1D9">),</span></span>
+<span class="line"><span style="color: #C9D1D9">        </span><span style="color: #FFA657">Ok</span><span style="color: #C9D1D9">(_) </span><span style="color: #FF7B72">=></span><span style="color: #C9D1D9"> </span><span style="color: #D2A8FF">println!</span><span style="color: #C9D1D9">(</span><span style="color: #A5D6FF">"thread exit successfly"</span><span style="color: #C9D1D9">),</span></span>
 <span class="line"><span style="color: #C9D1D9">    }</span></span>
 <span class="line"></span>
 <span class="line"><span style="color: #C9D1D9">    </span><span style="color: #D2A8FF">panic!</span><span style="color: #C9D1D9">();</span></span>
-<span class="line"><span style="color: #C9D1D9">}</span></span></code></pre><p>出力:</p><pre class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #c9d1d9">Custom panic hook</span></span>
+<span class="line"><span style="color: #C9D1D9">}</span></span></code></pre>
+<p>出力:</p>
+<pre is:raw="" class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #c9d1d9">Custom panic hook</span></span>
 <span class="line"><span style="color: #c9d1d9">thread paniced</span></span>
-<span class="line"><span style="color: #c9d1d9">Custom panic hook</span></span></code></pre><p><code>set_hook</code> を使ってpanic時の処理をクロージャで渡します。
+<span class="line"><span style="color: #c9d1d9">Custom panic hook</span></span></code></pre>
+<p><code>set_hook</code> を使ってpanic時の処理をクロージャで渡します。
 panicが起きると何度も呼ばれるようです。
-このコードだとspawnした子スレッドのpanicとメインスレッドのpanicで２回呼ばれています。</p><p><code>set_hook</code> で登録したパニックハンドラは<code>take_hook</code>という関数で登録解除できます。</p><h3 id="thread">Thread</h3><p>さっきしれっとやってましたがThreadもpanicをハンドリングする方法の１つです。
-子スレッドでパニックすると親スレッド側で<code>join</code>したときに<code>Err</code>が返ります。</p><h3 id="catch_unwind">catch_unwind</h3><pre class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #FF7B72">use</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">std</span><span style="color: #FF7B72">::</span><span style="color: #C9D1D9">panic;</span></span>
+このコードだとspawnした子スレッドのpanicとメインスレッドのpanicで２回呼ばれています。</p>
+<p><code>set_hook</code> で登録したパニックハンドラは<code>take_hook</code>という関数で登録解除できます。</p>
+<h3 id="thread">Thread</h3>
+<p>さっきしれっとやってましたがThreadもpanicをハンドリングする方法の１つです。
+子スレッドでパニックすると親スレッド側で<code>join</code>したときに<code>Err</code>が返ります。</p>
+<h3 id="catch_unwind">catch_unwind</h3>
+<pre is:raw="" class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #FF7B72">use</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">std</span><span style="color: #FF7B72">::</span><span style="color: #C9D1D9">panic;</span></span>
 <span class="line"></span>
 <span class="line"><span style="color: #FF7B72">fn</span><span style="color: #C9D1D9"> </span><span style="color: #D2A8FF">main</span><span style="color: #C9D1D9">() {</span></span>
 <span class="line"><span style="color: #C9D1D9">    </span><span style="color: #FF7B72">let</span><span style="color: #C9D1D9"> result </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">panic</span><span style="color: #FF7B72">::</span><span style="color: #D2A8FF">catch_unwind</span><span style="color: #C9D1D9">(</span><span style="color: #FF7B72">||</span><span style="color: #C9D1D9"> {</span></span>
-<span class="line"><span style="color: #C9D1D9">        </span><span style="color: #D2A8FF">println!</span><span style="color: #C9D1D9">(</span><span style="color: #A5D6FF">&quot;hi!&quot;</span><span style="color: #C9D1D9">);</span></span>
+<span class="line"><span style="color: #C9D1D9">        </span><span style="color: #D2A8FF">println!</span><span style="color: #C9D1D9">(</span><span style="color: #A5D6FF">"hi!"</span><span style="color: #C9D1D9">);</span></span>
 <span class="line"><span style="color: #C9D1D9">        </span><span style="color: #D2A8FF">panic!</span><span style="color: #C9D1D9">();</span></span>
-<span class="line"><span style="color: #C9D1D9">        </span><span style="color: #D2A8FF">println!</span><span style="color: #C9D1D9">(</span><span style="color: #A5D6FF">&quot;bye!&quot;</span><span style="color: #C9D1D9">);</span></span>
+<span class="line"><span style="color: #C9D1D9">        </span><span style="color: #D2A8FF">println!</span><span style="color: #C9D1D9">(</span><span style="color: #A5D6FF">"bye!"</span><span style="color: #C9D1D9">);</span></span>
 <span class="line"><span style="color: #C9D1D9">    });</span></span>
 <span class="line"></span>
 <span class="line"><span style="color: #C9D1D9">    </span><span style="color: #FF7B72">match</span><span style="color: #C9D1D9"> result {</span></span>
-<span class="line"><span style="color: #C9D1D9">        </span><span style="color: #FFA657">Err</span><span style="color: #C9D1D9">(_) </span><span style="color: #FF7B72">=&gt;</span><span style="color: #C9D1D9"> </span><span style="color: #D2A8FF">println!</span><span style="color: #C9D1D9">(</span><span style="color: #A5D6FF">&quot;paniced&quot;</span><span style="color: #C9D1D9">),</span></span>
-<span class="line"><span style="color: #C9D1D9">        </span><span style="color: #FFA657">Ok</span><span style="color: #C9D1D9">(_) </span><span style="color: #FF7B72">=&gt;</span><span style="color: #C9D1D9"> </span><span style="color: #D2A8FF">println!</span><span style="color: #C9D1D9">(</span><span style="color: #A5D6FF">&quot;successfly&quot;</span><span style="color: #C9D1D9">),</span></span>
+<span class="line"><span style="color: #C9D1D9">        </span><span style="color: #FFA657">Err</span><span style="color: #C9D1D9">(_) </span><span style="color: #FF7B72">=></span><span style="color: #C9D1D9"> </span><span style="color: #D2A8FF">println!</span><span style="color: #C9D1D9">(</span><span style="color: #A5D6FF">"paniced"</span><span style="color: #C9D1D9">),</span></span>
+<span class="line"><span style="color: #C9D1D9">        </span><span style="color: #FFA657">Ok</span><span style="color: #C9D1D9">(_) </span><span style="color: #FF7B72">=></span><span style="color: #C9D1D9"> </span><span style="color: #D2A8FF">println!</span><span style="color: #C9D1D9">(</span><span style="color: #A5D6FF">"successfly"</span><span style="color: #C9D1D9">),</span></span>
 <span class="line"><span style="color: #C9D1D9">    }</span></span>
-<span class="line"><span style="color: #C9D1D9">}</span></span></code></pre><p>出力:</p><pre class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #c9d1d9">hi!</span></span>
-<span class="line"><span style="color: #c9d1d9">paniced</span></span></code></pre><p><code>catch_unwind</code>を使うとスレッドを使わずにpanicを捕捉できます。</p><h1 id="参考">参考</h1><ul>
+<span class="line"><span style="color: #C9D1D9">}</span></span></code></pre>
+<p>出力:</p>
+<pre is:raw="" class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #c9d1d9">hi!</span></span>
+<span class="line"><span style="color: #c9d1d9">paniced</span></span></code></pre>
+<p><code>catch_unwind</code>を使うとスレッドを使わずにpanicを捕捉できます。</p>
+<h1 id="参考">参考</h1>
+<ul>
 <li><a href="https://doc.rust-lang.org/book/ch09-01-unrecoverable-errors-with-panic.html">Unrecoverable Errors with panic! - The Rust Programming Language</a></li>
 <li><a href="https://doc.rust-lang.org/nomicon/exception-safety.html">Exception Safety - The Rustonomicon</a></li>
 <li><a href="https://doc.rust-lang.org/std/panic/index.html">std::panic - Rust</a></li>
 <li><a href="https://doc.rust-lang.org/std/panic/fn.set_hook.html">set_hook in std::panic - Rust</a></li>
 <li><a href="https://doc.rust-lang.org/std/process/fn.abort.html">abort in std::process - Rust</a></li>
-<li><a href="https://www.reddit.com/r/rust/comments/phws7n/unwinding_vs_abortion_upon_panic/hbncri9/?utm_source=share&utm_medium=web2x&context=3">(4) Unwinding vs Abortion upon panic : rust</a></li>
+<li><a href="https://www.reddit.com/r/rust/comments/phws7n/unwinding_vs_abortion_upon_panic/hbncri9/?utm_source=share&#x26;utm_medium=web2x&#x26;context=3">(4) Unwinding vs Abortion upon panic : rust</a></li>
 </ul>
 			</main>
 		</div>

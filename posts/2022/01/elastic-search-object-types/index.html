@@ -1,5 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 	<head>
 		<!-- Google Tag Manager -->
 <!-- End Google Tag Manager -->
@@ -32,14 +31,14 @@
 <link rel="preconnect" href="https://fonts.gstatic.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&family=IBM+Plex+Sans:wght@400;700&display=swap">
 
-	<link rel="stylesheet" href="/assets/1865bdc7.a6921d77.css" /><script type="module">(function(t,n,r,e,m){t[e]=t[e]||[],t[e].push({"gtm.start":new Date().getTime(),event:"gtm.js"});var g=n.getElementsByTagName(r)[0],a=n.createElement(r),s=e!="dataLayer"?"&l="+e:"";a.async=!0,a.src="https://www.googletagmanager.com/gtm.js?id="+m+s,g.parentNode.insertBefore(a,g)})(window,document,"script","dataLayer","GTM-P42NKJ8");
+	<link rel="stylesheet" href="/assets/c99d5208.070dc6d6.css" /><script type="module">(function(t,n,r,e,m){t[e]=t[e]||[],t[e].push({"gtm.start":new Date().getTime(),event:"gtm.js"});var g=n.getElementsByTagName(r)[0],a=n.createElement(r),s=e!="dataLayer"?"&l="+e:"";a.async=!0,a.src="https://www.googletagmanager.com/gtm.js?id="+m+s,g.parentNode.insertBefore(a,g)})(window,document,"script","dataLayer","GTM-P42NKJ8");
 </script></head>
 	<body>
-		<header class="wrapper astro-63D5MSV2">
-	<article class="astro-63D5MSV2">
-		<h1 class="astro-63D5MSV2">
-			<a href="/" class="astro-63D5MSV2">
-				<span class="astro-63D5MSV2">take4s5i DEV</span>
+		<header class="wrapper astro-W2MTFRY6">
+	<article class="astro-W2MTFRY6">
+		<h1 class="astro-W2MTFRY6">
+			<a href="/" class="astro-W2MTFRY6">
+				<span class="astro-W2MTFRY6">take4s5i DEV</span>
 			</a>
 		</h1>
 	</article>
@@ -47,89 +46,128 @@
 
 
 		<div class="wrapper">
-			<div class="layout astro-57SHIKPC">
-	<article class="content astro-57SHIKPC">
-		<div class="astro-57SHIKPC">
-			<header class="astro-57SHIKPC">
+			<div class="layout astro-O6PTD47S">
+	<article class="content astro-O6PTD47S">
+		<div class="astro-O6PTD47S">
+			<header class="astro-O6PTD47S">
 				
-				<p class="publish-date astro-57SHIKPC">29 Jan 2022</p>
-				<h1 class="title astro-57SHIKPC">Elastic Searchのobject, flattened, nestedの違い</h1>
+				<p class="publish-date astro-O6PTD47S">29 Jan 2022</p>
+				<h1 class="title astro-O6PTD47S">Elastic Searchのobject, flattened, nestedの違い</h1>
 			</header>
-			<div class="editbar astro-57SHIKPC">
-				<a href="https://github.com/take4s5i/blog/blob/main/src/pages/posts/2022/01/elastic-search-object-types.md" class="astro-57SHIKPC">Edit This Page</a>
+			<div class="editbar astro-O6PTD47S">
+				<a href="https://github.com/take4s5i/blog/blob/main/src/pages/posts/2022/01/elastic-search-object-types.md" class="astro-O6PTD47S">Edit This Page</a>
 			</div>
-			<main class="astro-57SHIKPC">
-				<p>Elastic Search の object 系の type について調べたのでまとめていきます。</p><h1 id="object">object</h1><p><a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/object.html">object</a>は JSON のオブジェクトなどの
-データ構造をインデックスするのに使える型です。</p><pre class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #C9D1D9">{</span></span>
-<span class="line"><span style="color: #C9D1D9">  </span><span style="color: #79C0FF">&quot;user&quot;</span><span style="color: #C9D1D9">: {</span></span>
-<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #79C0FF">&quot;name&quot;</span><span style="color: #C9D1D9">: </span><span style="color: #A5D6FF">&quot;tanaka&quot;</span><span style="color: #C9D1D9">,</span></span>
-<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #79C0FF">&quot;age&quot;</span><span style="color: #C9D1D9">: </span><span style="color: #79C0FF">20</span></span>
+			<main class="astro-O6PTD47S">
+				<p>Elastic Search の object 系の type について調べたのでまとめていきます。</p>
+<h1 id="object">object</h1>
+<p><a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/object.html">object</a>は JSON のオブジェクトなどの
+データ構造をインデックスするのに使える型です。</p>
+<pre is:raw="" class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #C9D1D9">{</span></span>
+<span class="line"><span style="color: #C9D1D9">  </span><span style="color: #79C0FF">"user"</span><span style="color: #C9D1D9">: {</span></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #79C0FF">"name"</span><span style="color: #C9D1D9">: </span><span style="color: #A5D6FF">"tanaka"</span><span style="color: #C9D1D9">,</span></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #79C0FF">"age"</span><span style="color: #C9D1D9">: </span><span style="color: #79C0FF">20</span></span>
 <span class="line"><span style="color: #C9D1D9">  }</span></span>
-<span class="line"><span style="color: #C9D1D9">}</span></span></code></pre><p>このようなオブジェクトがあった場合</p><pre class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #C9D1D9">{</span></span>
-<span class="line"><span style="color: #C9D1D9">  </span><span style="color: #79C0FF">&quot;user.name&quot;</span><span style="color: #C9D1D9">: </span><span style="color: #A5D6FF">&quot;tanaka&quot;</span><span style="color: #C9D1D9">,</span></span>
-<span class="line"><span style="color: #C9D1D9">  </span><span style="color: #79C0FF">&quot;user.age&quot;</span><span style="color: #C9D1D9">: </span><span style="color: #79C0FF">20</span></span>
-<span class="line"><span style="color: #C9D1D9">}</span></span></code></pre><p>のようにフラットにされてインデックスされます。</p><p>オブジェクトにすることでパフォーマンス的なデメリットは特になさそうだったので、
-単純にフィールドを構造化して整理するのに利用すると良さそうです。</p><p>ただし、オブジェクトの配列を持つ場合はおそらく意図した挙動にならないので注意が必要です。</p><p>例えば以下のようなデータがあったとします</p><pre class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #C9D1D9">{</span></span>
-<span class="line"><span style="color: #C9D1D9">  </span><span style="color: #79C0FF">&quot;skills&quot;</span><span style="color: #C9D1D9">: [</span></span>
-<span class="line"><span style="color: #C9D1D9">    { </span><span style="color: #79C0FF">&quot;name&quot;</span><span style="color: #C9D1D9">: </span><span style="color: #A5D6FF">&quot;ElasticSearch&quot;</span><span style="color: #C9D1D9">, </span><span style="color: #79C0FF">&quot;level&quot;</span><span style="color: #C9D1D9">: </span><span style="color: #A5D6FF">&quot;newbie&quot;</span><span style="color: #C9D1D9"> },</span></span>
-<span class="line"><span style="color: #C9D1D9">    { </span><span style="color: #79C0FF">&quot;name&quot;</span><span style="color: #C9D1D9">: </span><span style="color: #A5D6FF">&quot;Typescript&quot;</span><span style="color: #C9D1D9">, </span><span style="color: #79C0FF">&quot;level&quot;</span><span style="color: #C9D1D9">: </span><span style="color: #A5D6FF">&quot;advanced&quot;</span><span style="color: #C9D1D9"> }</span></span>
+<span class="line"><span style="color: #C9D1D9">}</span></span></code></pre>
+<p>このようなオブジェクトがあった場合</p>
+<pre is:raw="" class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #C9D1D9">{</span></span>
+<span class="line"><span style="color: #C9D1D9">  </span><span style="color: #79C0FF">"user.name"</span><span style="color: #C9D1D9">: </span><span style="color: #A5D6FF">"tanaka"</span><span style="color: #C9D1D9">,</span></span>
+<span class="line"><span style="color: #C9D1D9">  </span><span style="color: #79C0FF">"user.age"</span><span style="color: #C9D1D9">: </span><span style="color: #79C0FF">20</span></span>
+<span class="line"><span style="color: #C9D1D9">}</span></span></code></pre>
+<p>のようにフラットにされてインデックスされます。</p>
+<p>オブジェクトにすることでパフォーマンス的なデメリットは特になさそうだったので、
+単純にフィールドを構造化して整理するのに利用すると良さそうです。</p>
+<p>ただし、オブジェクトの配列を持つ場合はおそらく意図した挙動にならないので注意が必要です。</p>
+<p>例えば以下のようなデータがあったとします</p>
+<pre is:raw="" class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #C9D1D9">{</span></span>
+<span class="line"><span style="color: #C9D1D9">  </span><span style="color: #79C0FF">"skills"</span><span style="color: #C9D1D9">: [</span></span>
+<span class="line"><span style="color: #C9D1D9">    { </span><span style="color: #79C0FF">"name"</span><span style="color: #C9D1D9">: </span><span style="color: #A5D6FF">"ElasticSearch"</span><span style="color: #C9D1D9">, </span><span style="color: #79C0FF">"level"</span><span style="color: #C9D1D9">: </span><span style="color: #A5D6FF">"newbie"</span><span style="color: #C9D1D9"> },</span></span>
+<span class="line"><span style="color: #C9D1D9">    { </span><span style="color: #79C0FF">"name"</span><span style="color: #C9D1D9">: </span><span style="color: #A5D6FF">"Typescript"</span><span style="color: #C9D1D9">, </span><span style="color: #79C0FF">"level"</span><span style="color: #C9D1D9">: </span><span style="color: #A5D6FF">"advanced"</span><span style="color: #C9D1D9"> }</span></span>
 <span class="line"><span style="color: #C9D1D9">  ]</span></span>
-<span class="line"><span style="color: #C9D1D9">}</span></span></code></pre><p>これは次のようにインデックスされます。</p><pre class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #C9D1D9">{</span></span>
-<span class="line"><span style="color: #C9D1D9">  </span><span style="color: #79C0FF">&quot;skills.name&quot;</span><span style="color: #C9D1D9">: [</span><span style="color: #A5D6FF">&quot;ElasticSearch&quot;</span><span style="color: #C9D1D9">, </span><span style="color: #A5D6FF">&quot;Typescript&quot;</span><span style="color: #C9D1D9">],</span></span>
-<span class="line"><span style="color: #C9D1D9">  </span><span style="color: #79C0FF">&quot;skills.level&quot;</span><span style="color: #C9D1D9">: [</span><span style="color: #A5D6FF">&quot;newbie&quot;</span><span style="color: #C9D1D9">, </span><span style="color: #A5D6FF">&quot;advanced&quot;</span><span style="color: #C9D1D9">]</span></span>
-<span class="line"><span style="color: #C9D1D9">}</span></span></code></pre><p>フラットにされてしまうことで、name と level の関係性が失われてしまいます。</p><pre class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #C9D1D9">{</span></span>
-<span class="line"><span style="color: #C9D1D9">  </span><span style="color: #79C0FF">&quot;query&quot;</span><span style="color: #C9D1D9">: {</span></span>
-<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #79C0FF">&quot;bool&quot;</span><span style="color: #C9D1D9">: {</span></span>
-<span class="line"><span style="color: #C9D1D9">      </span><span style="color: #79C0FF">&quot;must&quot;</span><span style="color: #C9D1D9">: [</span></span>
-<span class="line"><span style="color: #C9D1D9">        { </span><span style="color: #79C0FF">&quot;term&quot;</span><span style="color: #C9D1D9">: { </span><span style="color: #79C0FF">&quot;skills.name&quot;</span><span style="color: #C9D1D9">: </span><span style="color: #A5D6FF">&quot;ElasticSearch&quot;</span><span style="color: #C9D1D9"> } },</span></span>
-<span class="line"><span style="color: #C9D1D9">        { </span><span style="color: #79C0FF">&quot;term&quot;</span><span style="color: #C9D1D9">: { </span><span style="color: #79C0FF">&quot;skills.level&quot;</span><span style="color: #C9D1D9">: </span><span style="color: #A5D6FF">&quot;advanced&quot;</span><span style="color: #C9D1D9"> } }</span></span>
+<span class="line"><span style="color: #C9D1D9">}</span></span></code></pre>
+<p>これは次のようにインデックスされます。</p>
+<pre is:raw="" class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #C9D1D9">{</span></span>
+<span class="line"><span style="color: #C9D1D9">  </span><span style="color: #79C0FF">"skills.name"</span><span style="color: #C9D1D9">: [</span><span style="color: #A5D6FF">"ElasticSearch"</span><span style="color: #C9D1D9">, </span><span style="color: #A5D6FF">"Typescript"</span><span style="color: #C9D1D9">],</span></span>
+<span class="line"><span style="color: #C9D1D9">  </span><span style="color: #79C0FF">"skills.level"</span><span style="color: #C9D1D9">: [</span><span style="color: #A5D6FF">"newbie"</span><span style="color: #C9D1D9">, </span><span style="color: #A5D6FF">"advanced"</span><span style="color: #C9D1D9">]</span></span>
+<span class="line"><span style="color: #C9D1D9">}</span></span></code></pre>
+<p>フラットにされてしまうことで、name と level の関係性が失われてしまいます。</p>
+<pre is:raw="" class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #C9D1D9">{</span></span>
+<span class="line"><span style="color: #C9D1D9">  </span><span style="color: #79C0FF">"query"</span><span style="color: #C9D1D9">: {</span></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #79C0FF">"bool"</span><span style="color: #C9D1D9">: {</span></span>
+<span class="line"><span style="color: #C9D1D9">      </span><span style="color: #79C0FF">"must"</span><span style="color: #C9D1D9">: [</span></span>
+<span class="line"><span style="color: #C9D1D9">        { </span><span style="color: #79C0FF">"term"</span><span style="color: #C9D1D9">: { </span><span style="color: #79C0FF">"skills.name"</span><span style="color: #C9D1D9">: </span><span style="color: #A5D6FF">"ElasticSearch"</span><span style="color: #C9D1D9"> } },</span></span>
+<span class="line"><span style="color: #C9D1D9">        { </span><span style="color: #79C0FF">"term"</span><span style="color: #C9D1D9">: { </span><span style="color: #79C0FF">"skills.level"</span><span style="color: #C9D1D9">: </span><span style="color: #A5D6FF">"advanced"</span><span style="color: #C9D1D9"> } }</span></span>
 <span class="line"><span style="color: #C9D1D9">      ]</span></span>
 <span class="line"><span style="color: #C9D1D9">    }</span></span>
 <span class="line"><span style="color: #C9D1D9">  }</span></span>
-<span class="line"><span style="color: #C9D1D9">}</span></span></code></pre><p>このクエリの意図は「ElasticSearch が advanced な人」ですが、うまく機能しません。
-先ほどのデータでは、ElasticSearch は newbie だったためヒットするべきではありませんが、これがヒットしてしまいます。</p><h1 id="nested">nested</h1><p>これを解決するのが<a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/nested.html">nested</a>です。</p><p><code>nested</code> type としてフィールドを定義すると、フィールド同士の関係性が維持されるようになります。</p><pre class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #C9D1D9">{</span></span>
-<span class="line"><span style="color: #C9D1D9">  </span><span style="color: #79C0FF">&quot;mappings&quot;</span><span style="color: #C9D1D9">: {</span></span>
-<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #79C0FF">&quot;properties&quot;</span><span style="color: #C9D1D9">: {</span></span>
-<span class="line"><span style="color: #C9D1D9">      </span><span style="color: #79C0FF">&quot;skills&quot;</span><span style="color: #C9D1D9">: {</span></span>
-<span class="line"><span style="color: #C9D1D9">        </span><span style="color: #79C0FF">&quot;type&quot;</span><span style="color: #C9D1D9">: </span><span style="color: #A5D6FF">&quot;nested&quot;</span></span>
+<span class="line"><span style="color: #C9D1D9">}</span></span></code></pre>
+<p>このクエリの意図は「ElasticSearch が advanced な人」ですが、うまく機能しません。
+先ほどのデータでは、ElasticSearch は newbie だったためヒットするべきではありませんが、これがヒットしてしまいます。</p>
+<h1 id="nested">nested</h1>
+<p>これを解決するのが<a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/nested.html">nested</a>です。</p>
+<p><code>nested</code> type としてフィールドを定義すると、フィールド同士の関係性が維持されるようになります。</p>
+<pre is:raw="" class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #C9D1D9">{</span></span>
+<span class="line"><span style="color: #C9D1D9">  </span><span style="color: #79C0FF">"mappings"</span><span style="color: #C9D1D9">: {</span></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #79C0FF">"properties"</span><span style="color: #C9D1D9">: {</span></span>
+<span class="line"><span style="color: #C9D1D9">      </span><span style="color: #79C0FF">"skills"</span><span style="color: #C9D1D9">: {</span></span>
+<span class="line"><span style="color: #C9D1D9">        </span><span style="color: #79C0FF">"type"</span><span style="color: #C9D1D9">: </span><span style="color: #A5D6FF">"nested"</span></span>
 <span class="line"><span style="color: #C9D1D9">      }</span></span>
 <span class="line"><span style="color: #C9D1D9">    }</span></span>
 <span class="line"><span style="color: #C9D1D9">  }</span></span>
-<span class="line"><span style="color: #C9D1D9">}</span></span></code></pre><p>これは内部的には別のドキュメントとしてインデックスすることで実現しているようです。
-（skills を子テーブルのように持って join しているイメージ？）</p><p>クエリする際も<a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-nested-query.html">nested query</a>という専用のクエリを利用する必要があります。</p><pre class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #C9D1D9">{</span></span>
-<span class="line"><span style="color: #C9D1D9">  </span><span style="color: #79C0FF">&quot;query&quot;</span><span style="color: #C9D1D9">: {</span></span>
-<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #79C0FF">&quot;nested&quot;</span><span style="color: #C9D1D9">: {</span></span>
-<span class="line"><span style="color: #C9D1D9">      </span><span style="color: #79C0FF">&quot;path&quot;</span><span style="color: #C9D1D9">: </span><span style="color: #A5D6FF">&quot;skills&quot;</span><span style="color: #C9D1D9">,</span></span>
-<span class="line"><span style="color: #C9D1D9">      </span><span style="color: #79C0FF">&quot;query&quot;</span><span style="color: #C9D1D9">: {</span></span>
-<span class="line"><span style="color: #C9D1D9">        </span><span style="color: #79C0FF">&quot;bool&quot;</span><span style="color: #C9D1D9">: {</span></span>
-<span class="line"><span style="color: #C9D1D9">          </span><span style="color: #79C0FF">&quot;must&quot;</span><span style="color: #C9D1D9">: [</span></span>
-<span class="line"><span style="color: #C9D1D9">            { </span><span style="color: #79C0FF">&quot;term&quot;</span><span style="color: #C9D1D9">: { </span><span style="color: #79C0FF">&quot;skills.name&quot;</span><span style="color: #C9D1D9">: </span><span style="color: #A5D6FF">&quot;ElasticSearch&quot;</span><span style="color: #C9D1D9"> } },</span></span>
-<span class="line"><span style="color: #C9D1D9">            { </span><span style="color: #79C0FF">&quot;term&quot;</span><span style="color: #C9D1D9">: { </span><span style="color: #79C0FF">&quot;skills.level&quot;</span><span style="color: #C9D1D9">: </span><span style="color: #A5D6FF">&quot;advanced&quot;</span><span style="color: #C9D1D9"> } }</span></span>
+<span class="line"><span style="color: #C9D1D9">}</span></span></code></pre>
+<p>これは内部的には別のドキュメントとしてインデックスすることで実現しているようです。
+（skills を子テーブルのように持って join しているイメージ？）</p>
+<p>クエリする際も<a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-nested-query.html">nested query</a>という専用のクエリを利用する必要があります。</p>
+<pre is:raw="" class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #C9D1D9">{</span></span>
+<span class="line"><span style="color: #C9D1D9">  </span><span style="color: #79C0FF">"query"</span><span style="color: #C9D1D9">: {</span></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #79C0FF">"nested"</span><span style="color: #C9D1D9">: {</span></span>
+<span class="line"><span style="color: #C9D1D9">      </span><span style="color: #79C0FF">"path"</span><span style="color: #C9D1D9">: </span><span style="color: #A5D6FF">"skills"</span><span style="color: #C9D1D9">,</span></span>
+<span class="line"><span style="color: #C9D1D9">      </span><span style="color: #79C0FF">"query"</span><span style="color: #C9D1D9">: {</span></span>
+<span class="line"><span style="color: #C9D1D9">        </span><span style="color: #79C0FF">"bool"</span><span style="color: #C9D1D9">: {</span></span>
+<span class="line"><span style="color: #C9D1D9">          </span><span style="color: #79C0FF">"must"</span><span style="color: #C9D1D9">: [</span></span>
+<span class="line"><span style="color: #C9D1D9">            { </span><span style="color: #79C0FF">"term"</span><span style="color: #C9D1D9">: { </span><span style="color: #79C0FF">"skills.name"</span><span style="color: #C9D1D9">: </span><span style="color: #A5D6FF">"ElasticSearch"</span><span style="color: #C9D1D9"> } },</span></span>
+<span class="line"><span style="color: #C9D1D9">            { </span><span style="color: #79C0FF">"term"</span><span style="color: #C9D1D9">: { </span><span style="color: #79C0FF">"skills.level"</span><span style="color: #C9D1D9">: </span><span style="color: #A5D6FF">"advanced"</span><span style="color: #C9D1D9"> } }</span></span>
 <span class="line"><span style="color: #C9D1D9">          ]</span></span>
 <span class="line"><span style="color: #C9D1D9">        }</span></span>
 <span class="line"><span style="color: #C9D1D9">      }</span></span>
 <span class="line"><span style="color: #C9D1D9">    }</span></span>
 <span class="line"><span style="color: #C9D1D9">  }</span></span>
-<span class="line"><span style="color: #C9D1D9">}</span></span></code></pre><p>これでやっと意図通りに検索できます。</p><p>ただし、nested は join する特性上 ElasticSearch 的にかなり重いクエリのようなので、
-検索のパフォーマンスを最大化するなら非正規化する等で避けた方が良さそうです。</p><h1 id="flattened">flattened</h1><p><a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/flattened.html">flattened</a>は少し特殊な object 型です。</p><p>基本的な挙動は object と似ていて、フィールド間の関係性が保持されない点も同じです。</p><p>object との違いは、子フィールドがそれぞれ別フィールドとして扱われるか、１つのフィールドとして扱われるか、という点です。</p><pre class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #C9D1D9">{</span></span>
-<span class="line"><span style="color: #C9D1D9">  </span><span style="color: #79C0FF">&quot;skills&quot;</span><span style="color: #C9D1D9">: [</span></span>
-<span class="line"><span style="color: #C9D1D9">    { </span><span style="color: #79C0FF">&quot;name&quot;</span><span style="color: #C9D1D9">: </span><span style="color: #A5D6FF">&quot;ElasticSearch&quot;</span><span style="color: #C9D1D9">, </span><span style="color: #79C0FF">&quot;level&quot;</span><span style="color: #C9D1D9">: </span><span style="color: #A5D6FF">&quot;newbie&quot;</span><span style="color: #C9D1D9"> },</span></span>
-<span class="line"><span style="color: #C9D1D9">    { </span><span style="color: #79C0FF">&quot;name&quot;</span><span style="color: #C9D1D9">: </span><span style="color: #A5D6FF">&quot;Typescript&quot;</span><span style="color: #C9D1D9">, </span><span style="color: #79C0FF">&quot;level&quot;</span><span style="color: #C9D1D9">: </span><span style="color: #A5D6FF">&quot;advanced&quot;</span><span style="color: #C9D1D9"> }</span></span>
+<span class="line"><span style="color: #C9D1D9">}</span></span></code></pre>
+<p>これでやっと意図通りに検索できます。</p>
+<p>ただし、nested は join する特性上 ElasticSearch 的にかなり重いクエリのようなので、
+検索のパフォーマンスを最大化するなら非正規化する等で避けた方が良さそうです。</p>
+<h1 id="flattened">flattened</h1>
+<p><a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/flattened.html">flattened</a>は少し特殊な object 型です。</p>
+<p>基本的な挙動は object と似ていて、フィールド間の関係性が保持されない点も同じです。</p>
+<p>object との違いは、子フィールドがそれぞれ別フィールドとして扱われるか、１つのフィールドとして扱われるか、という点です。</p>
+<pre is:raw="" class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #C9D1D9">{</span></span>
+<span class="line"><span style="color: #C9D1D9">  </span><span style="color: #79C0FF">"skills"</span><span style="color: #C9D1D9">: [</span></span>
+<span class="line"><span style="color: #C9D1D9">    { </span><span style="color: #79C0FF">"name"</span><span style="color: #C9D1D9">: </span><span style="color: #A5D6FF">"ElasticSearch"</span><span style="color: #C9D1D9">, </span><span style="color: #79C0FF">"level"</span><span style="color: #C9D1D9">: </span><span style="color: #A5D6FF">"newbie"</span><span style="color: #C9D1D9"> },</span></span>
+<span class="line"><span style="color: #C9D1D9">    { </span><span style="color: #79C0FF">"name"</span><span style="color: #C9D1D9">: </span><span style="color: #A5D6FF">"Typescript"</span><span style="color: #C9D1D9">, </span><span style="color: #79C0FF">"level"</span><span style="color: #C9D1D9">: </span><span style="color: #A5D6FF">"advanced"</span><span style="color: #C9D1D9"> }</span></span>
 <span class="line"><span style="color: #C9D1D9">  ]</span></span>
-<span class="line"><span style="color: #C9D1D9">}</span></span></code></pre><p>このようなデータは flattened では次のようにインデックスされます。</p><pre class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #C9D1D9">{</span></span>
-<span class="line"><span style="color: #C9D1D9">  </span><span style="color: #79C0FF">&quot;skills&quot;</span><span style="color: #C9D1D9">: [</span></span>
-<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #A5D6FF">&quot;name</span><span style="color: #79C0FF">\u0000</span><span style="color: #A5D6FF">ElasticSearch&quot;</span><span style="color: #C9D1D9">,</span></span>
-<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #A5D6FF">&quot;level</span><span style="color: #79C0FF">\u0000</span><span style="color: #A5D6FF">newbie&quot;</span><span style="color: #C9D1D9">,</span></span>
-<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #A5D6FF">&quot;name</span><span style="color: #79C0FF">\u0000</span><span style="color: #A5D6FF">Typescript&quot;</span><span style="color: #C9D1D9">,</span></span>
-<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #A5D6FF">&quot;level</span><span style="color: #FFA198; font-style: italic">\a</span><span style="color: #A5D6FF">dvanced&quot;</span></span>
-<span class="line"><span style="color: #FFA198; font-style: italic">}</span></span></code></pre><p><code>\u0000</code>は ElasticSearch 内部で利用される区切り文字です。
-（<a href="https://github.com/elastic/elasticsearch/blob/58ce0f94a0bbdf2576e0a00a62abe1854ee7fe2f/server/src/main/java/org/elasticsearch/index/mapper/flattened/FlattenedFieldParser.java#L31">ソース</a>を読んだ感じ、null 文字で区切られているようです。）</p><p>見ての通り、<code>skills</code>という 1 つのフィールドに値としてフラットにされています。
-また、子フィールドの値が数値であっても文字列に返還されるのも特徴で、内部的には<code>keyword</code>型としてインデックスされています。</p><p>flattened はフィールド名が動的に変わったりする場合に使えそうです。</p><p>object にしてしまうと、フィールド名が変わったり追加するたびにフィールドが増えて mapping が肥大化していきますが、
-flattened にすることで１つのフィールドとして扱えます。</p><h1 id="まとめ">まとめ</h1><ul>
+<span class="line"><span style="color: #C9D1D9">}</span></span></code></pre>
+<p>このようなデータは flattened では次のようにインデックスされます。</p>
+<pre is:raw="" class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #C9D1D9">{</span></span>
+<span class="line"><span style="color: #C9D1D9">  </span><span style="color: #79C0FF">"skills"</span><span style="color: #C9D1D9">: [</span></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #A5D6FF">"name</span><span style="color: #79C0FF">\u0000</span><span style="color: #A5D6FF">ElasticSearch"</span><span style="color: #C9D1D9">,</span></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #A5D6FF">"level</span><span style="color: #79C0FF">\u0000</span><span style="color: #A5D6FF">newbie"</span><span style="color: #C9D1D9">,</span></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #A5D6FF">"name</span><span style="color: #79C0FF">\u0000</span><span style="color: #A5D6FF">Typescript"</span><span style="color: #C9D1D9">,</span></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #A5D6FF">"level</span><span style="color: #FFA198; font-style: italic">\a</span><span style="color: #A5D6FF">dvanced"</span></span>
+<span class="line"><span style="color: #FFA198; font-style: italic">}</span></span></code></pre>
+<p><code>\u0000</code>は ElasticSearch 内部で利用される区切り文字です。
+（<a href="https://github.com/elastic/elasticsearch/blob/58ce0f94a0bbdf2576e0a00a62abe1854ee7fe2f/server/src/main/java/org/elasticsearch/index/mapper/flattened/FlattenedFieldParser.java#L31">ソース</a>を読んだ感じ、null 文字で区切られているようです。）</p>
+<p>見ての通り、<code>skills</code>という 1 つのフィールドに値としてフラットにされています。
+また、子フィールドの値が数値であっても文字列に返還されるのも特徴で、内部的には<code>keyword</code>型としてインデックスされています。</p>
+<p>flattened はフィールド名が動的に変わったりする場合に使えそうです。</p>
+<p>object にしてしまうと、フィールド名が変わったり追加するたびにフィールドが増えて mapping が肥大化していきますが、
+flattened にすることで１つのフィールドとして扱えます。</p>
+<h1 id="まとめ">まとめ</h1>
+<ul>
 <li>object はフィールドを階層化してグルーピングしたい場合に使える</li>
 <li>nested はオブジェクトの配列を関係性を維持したままインデックス、クエリしたい場合に使える</li>
 <li>flattened はフィールド名が動的に変化する場合に使える</li>
-</ul><h1 id="参考">参考</h1><ul>
+</ul>
+<h1 id="参考">参考</h1>
+<ul>
 <li><a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-types.html#object-types">https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-types.html#object-types</a></li>
 <li><a href="https://www.elastic.co/jp/blog/managing-relations-inside-elasticsearch">https://www.elastic.co/jp/blog/managing-relations-inside-elasticsearch</a></li>
 <li><a href="https://opster.com/guides/elasticsearch/data-structuring/elasticsearch-nested-field-object-field/">https://opster.com/guides/elasticsearch/data-structuring/elasticsearch-nested-field-object-field/</a></li>

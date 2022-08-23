@@ -1,5 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 	<head>
 		<!-- Google Tag Manager -->
 <!-- End Google Tag Manager -->
@@ -32,14 +31,14 @@
 <link rel="preconnect" href="https://fonts.gstatic.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&family=IBM+Plex+Sans:wght@400;700&display=swap">
 
-	<link rel="stylesheet" href="/assets/1865bdc7.a6921d77.css" /><script type="module">(function(t,n,r,e,m){t[e]=t[e]||[],t[e].push({"gtm.start":new Date().getTime(),event:"gtm.js"});var g=n.getElementsByTagName(r)[0],a=n.createElement(r),s=e!="dataLayer"?"&l="+e:"";a.async=!0,a.src="https://www.googletagmanager.com/gtm.js?id="+m+s,g.parentNode.insertBefore(a,g)})(window,document,"script","dataLayer","GTM-P42NKJ8");
+	<link rel="stylesheet" href="/assets/c99d5208.070dc6d6.css" /><script type="module">(function(t,n,r,e,m){t[e]=t[e]||[],t[e].push({"gtm.start":new Date().getTime(),event:"gtm.js"});var g=n.getElementsByTagName(r)[0],a=n.createElement(r),s=e!="dataLayer"?"&l="+e:"";a.async=!0,a.src="https://www.googletagmanager.com/gtm.js?id="+m+s,g.parentNode.insertBefore(a,g)})(window,document,"script","dataLayer","GTM-P42NKJ8");
 </script></head>
 	<body>
-		<header class="wrapper astro-63D5MSV2">
-	<article class="astro-63D5MSV2">
-		<h1 class="astro-63D5MSV2">
-			<a href="/" class="astro-63D5MSV2">
-				<span class="astro-63D5MSV2">take4s5i DEV</span>
+		<header class="wrapper astro-W2MTFRY6">
+	<article class="astro-W2MTFRY6">
+		<h1 class="astro-W2MTFRY6">
+			<a href="/" class="astro-W2MTFRY6">
+				<span class="astro-W2MTFRY6">take4s5i DEV</span>
 			</a>
 		</h1>
 	</article>
@@ -47,36 +46,40 @@
 
 
 		<div class="wrapper">
-			<div class="layout astro-57SHIKPC">
-	<article class="content astro-57SHIKPC">
-		<div class="astro-57SHIKPC">
-			<header class="astro-57SHIKPC">
+			<div class="layout astro-O6PTD47S">
+	<article class="content astro-O6PTD47S">
+		<div class="astro-O6PTD47S">
+			<header class="astro-O6PTD47S">
 				
-				<p class="publish-date astro-57SHIKPC">29 Jan 2022</p>
-				<h1 class="title astro-57SHIKPC">[Rust] 並列処理に使うAPIたち2(Once, channel)</h1>
+				<p class="publish-date astro-O6PTD47S">29 Jan 2022</p>
+				<h1 class="title astro-O6PTD47S">[Rust] 並列処理に使うAPIたち2(Once, channel)</h1>
 			</header>
-			<div class="editbar astro-57SHIKPC">
-				<a href="https://github.com/take4s5i/blog/blob/main/src/pages/posts/2022/01/rust-std-sync2.md" class="astro-57SHIKPC">Edit This Page</a>
+			<div class="editbar astro-O6PTD47S">
+				<a href="https://github.com/take4s5i/blog/blob/main/src/pages/posts/2022/01/rust-std-sync2.md" class="astro-O6PTD47S">Edit This Page</a>
 			</div>
-			<main class="astro-57SHIKPC">
-				<p><a href="https://blog.take4s5i.dev/posts/2022/rust-std-sync/">前回</a>の続きで Once と mpsc を調べていきます。</p><h1 id="once">Once</h1><p><a href="https://doc.rust-lang.org/stable/std/sync/struct.Once.html">Once</a> は static 変数の初期化に利用できます。</p><p>Once を使うことで、複数スレッドから同時に初期処理が実行されても、一度だけ実行されることを保証できます。</p><pre class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #FF7B72">use</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">std</span><span style="color: #FF7B72">::</span><span style="color: #FFA657">collections</span><span style="color: #FF7B72">::</span><span style="color: #FFA657">HashMap</span><span style="color: #C9D1D9">;</span></span>
+			<main class="astro-O6PTD47S">
+				<p><a href="https://blog.take4s5i.dev/posts/2022/rust-std-sync/">前回</a>の続きで Once と mpsc を調べていきます。</p>
+<h1 id="once">Once</h1>
+<p><a href="https://doc.rust-lang.org/stable/std/sync/struct.Once.html">Once</a> は static 変数の初期化に利用できます。</p>
+<p>Once を使うことで、複数スレッドから同時に初期処理が実行されても、一度だけ実行されることを保証できます。</p>
+<pre is:raw="" class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #FF7B72">use</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">std</span><span style="color: #FF7B72">::</span><span style="color: #FFA657">collections</span><span style="color: #FF7B72">::</span><span style="color: #FFA657">HashMap</span><span style="color: #C9D1D9">;</span></span>
 <span class="line"><span style="color: #FF7B72">use</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">std</span><span style="color: #FF7B72">::</span><span style="color: #FFA657">sync</span><span style="color: #FF7B72">::</span><span style="color: #FFA657">Once</span><span style="color: #C9D1D9">;</span></span>
 <span class="line"><span style="color: #FF7B72">use</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">std</span><span style="color: #FF7B72">::</span><span style="color: #C9D1D9">thread;</span></span>
 <span class="line"></span>
-<span class="line"><span style="color: #FF7B72">static</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">mut</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">CONFIG</span><span style="color: #FF7B72">:</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">Option</span><span style="color: #C9D1D9">&lt;</span><span style="color: #FFA657">HashMap</span><span style="color: #C9D1D9">&lt;</span><span style="color: #FFA657">String</span><span style="color: #C9D1D9">, </span><span style="color: #FFA657">String</span><span style="color: #C9D1D9">&gt;&gt; </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">None</span><span style="color: #C9D1D9">;</span></span>
+<span class="line"><span style="color: #FF7B72">static</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">mut</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">CONFIG</span><span style="color: #FF7B72">:</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">Option</span><span style="color: #C9D1D9">&#x3C;</span><span style="color: #FFA657">HashMap</span><span style="color: #C9D1D9">&#x3C;</span><span style="color: #FFA657">String</span><span style="color: #C9D1D9">, </span><span style="color: #FFA657">String</span><span style="color: #C9D1D9">>> </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">None</span><span style="color: #C9D1D9">;</span></span>
 <span class="line"></span>
 <span class="line"><span style="color: #FF7B72">static</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">START</span><span style="color: #FF7B72">:</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">Once</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">Once</span><span style="color: #FF7B72">::</span><span style="color: #D2A8FF">new</span><span style="color: #C9D1D9">();</span></span>
 <span class="line"></span>
-<span class="line"><span style="color: #FF7B72">fn</span><span style="color: #C9D1D9"> </span><span style="color: #D2A8FF">get_config</span><span style="color: #C9D1D9">(key</span><span style="color: #FF7B72">:</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">&amp;</span><span style="color: #FFA657">str</span><span style="color: #C9D1D9">) </span><span style="color: #FF7B72">-&gt;</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">Option</span><span style="color: #C9D1D9">&lt;</span><span style="color: #FFA657">String</span><span style="color: #C9D1D9">&gt; {</span></span>
+<span class="line"><span style="color: #FF7B72">fn</span><span style="color: #C9D1D9"> </span><span style="color: #D2A8FF">get_config</span><span style="color: #C9D1D9">(key</span><span style="color: #FF7B72">:</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">&#x26;</span><span style="color: #FFA657">str</span><span style="color: #C9D1D9">) </span><span style="color: #FF7B72">-></span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">Option</span><span style="color: #C9D1D9">&#x3C;</span><span style="color: #FFA657">String</span><span style="color: #C9D1D9">> {</span></span>
 <span class="line"><span style="color: #C9D1D9">    </span><span style="color: #FF7B72">unsafe</span><span style="color: #C9D1D9"> {</span></span>
 <span class="line"><span style="color: #C9D1D9">        </span><span style="color: #79C0FF">START</span><span style="color: #FF7B72">.</span><span style="color: #D2A8FF">call_once</span><span style="color: #C9D1D9">(</span><span style="color: #FF7B72">||</span><span style="color: #C9D1D9"> {</span></span>
-<span class="line"><span style="color: #C9D1D9">            </span><span style="color: #D2A8FF">println!</span><span style="color: #C9D1D9">(</span><span style="color: #A5D6FF">&quot;call_once&quot;</span><span style="color: #C9D1D9">);</span></span>
+<span class="line"><span style="color: #C9D1D9">            </span><span style="color: #D2A8FF">println!</span><span style="color: #C9D1D9">(</span><span style="color: #A5D6FF">"call_once"</span><span style="color: #C9D1D9">);</span></span>
 <span class="line"><span style="color: #C9D1D9">            </span><span style="color: #79C0FF">CONFIG</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">Some</span><span style="color: #C9D1D9">(</span><span style="color: #FFA657">HashMap</span><span style="color: #FF7B72">::</span><span style="color: #D2A8FF">new</span><span style="color: #C9D1D9">());</span></span>
 <span class="line"></span>
 <span class="line"><span style="color: #C9D1D9">            </span><span style="color: #79C0FF">CONFIG</span></span>
 <span class="line"><span style="color: #C9D1D9">                </span><span style="color: #FF7B72">.</span><span style="color: #D2A8FF">as_mut</span><span style="color: #C9D1D9">()</span></span>
 <span class="line"><span style="color: #C9D1D9">                </span><span style="color: #FF7B72">.</span><span style="color: #D2A8FF">unwrap</span><span style="color: #C9D1D9">()</span></span>
-<span class="line"><span style="color: #C9D1D9">                </span><span style="color: #FF7B72">.</span><span style="color: #D2A8FF">insert</span><span style="color: #C9D1D9">(</span><span style="color: #A5D6FF">&quot;hoge&quot;</span><span style="color: #FF7B72">.</span><span style="color: #D2A8FF">to_owned</span><span style="color: #C9D1D9">(), </span><span style="color: #A5D6FF">&quot;12345&quot;</span><span style="color: #FF7B72">.</span><span style="color: #D2A8FF">to_owned</span><span style="color: #C9D1D9">());</span></span>
+<span class="line"><span style="color: #C9D1D9">                </span><span style="color: #FF7B72">.</span><span style="color: #D2A8FF">insert</span><span style="color: #C9D1D9">(</span><span style="color: #A5D6FF">"hoge"</span><span style="color: #FF7B72">.</span><span style="color: #D2A8FF">to_owned</span><span style="color: #C9D1D9">(), </span><span style="color: #A5D6FF">"12345"</span><span style="color: #FF7B72">.</span><span style="color: #D2A8FF">to_owned</span><span style="color: #C9D1D9">());</span></span>
 <span class="line"><span style="color: #C9D1D9">        });</span></span>
 <span class="line"><span style="color: #C9D1D9">        </span><span style="color: #79C0FF">CONFIG</span><span style="color: #FF7B72">.</span><span style="color: #D2A8FF">as_ref</span><span style="color: #C9D1D9">()</span><span style="color: #FF7B72">.</span><span style="color: #D2A8FF">unwrap</span><span style="color: #C9D1D9">()</span><span style="color: #FF7B72">.</span><span style="color: #D2A8FF">get</span><span style="color: #C9D1D9">(key)</span><span style="color: #FF7B72">.</span><span style="color: #D2A8FF">map</span><span style="color: #C9D1D9">(</span><span style="color: #FF7B72">|</span><span style="color: #C9D1D9">v</span><span style="color: #FF7B72">|</span><span style="color: #C9D1D9"> v</span><span style="color: #FF7B72">.</span><span style="color: #D2A8FF">clone</span><span style="color: #C9D1D9">())</span></span>
 <span class="line"><span style="color: #C9D1D9">    }</span></span>
@@ -86,14 +89,16 @@
 <span class="line"><span style="color: #C9D1D9">    </span><span style="color: #FF7B72">let</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">mut</span><span style="color: #C9D1D9"> handles </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">Vec</span><span style="color: #FF7B72">::</span><span style="color: #D2A8FF">new</span><span style="color: #C9D1D9">();</span></span>
 <span class="line"><span style="color: #C9D1D9">    </span><span style="color: #FF7B72">for</span><span style="color: #C9D1D9"> i </span><span style="color: #FF7B72">in</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">0</span><span style="color: #FF7B72">..</span><span style="color: #79C0FF">10</span><span style="color: #C9D1D9"> {</span></span>
 <span class="line"><span style="color: #C9D1D9">        handles</span><span style="color: #FF7B72">.</span><span style="color: #D2A8FF">push</span><span style="color: #C9D1D9">(</span><span style="color: #FFA657">thread</span><span style="color: #FF7B72">::</span><span style="color: #D2A8FF">spawn</span><span style="color: #C9D1D9">(</span><span style="color: #FF7B72">move</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">||</span><span style="color: #C9D1D9"> {</span></span>
-<span class="line"><span style="color: #C9D1D9">            </span><span style="color: #D2A8FF">println!</span><span style="color: #C9D1D9">(</span><span style="color: #A5D6FF">&quot;thread#{} {}&quot;</span><span style="color: #C9D1D9">, i, </span><span style="color: #D2A8FF">get_config</span><span style="color: #C9D1D9">(</span><span style="color: #A5D6FF">&quot;hoge&quot;</span><span style="color: #C9D1D9">)</span><span style="color: #FF7B72">.</span><span style="color: #D2A8FF">unwrap</span><span style="color: #C9D1D9">());</span></span>
+<span class="line"><span style="color: #C9D1D9">            </span><span style="color: #D2A8FF">println!</span><span style="color: #C9D1D9">(</span><span style="color: #A5D6FF">"thread#{} {}"</span><span style="color: #C9D1D9">, i, </span><span style="color: #D2A8FF">get_config</span><span style="color: #C9D1D9">(</span><span style="color: #A5D6FF">"hoge"</span><span style="color: #C9D1D9">)</span><span style="color: #FF7B72">.</span><span style="color: #D2A8FF">unwrap</span><span style="color: #C9D1D9">());</span></span>
 <span class="line"><span style="color: #C9D1D9">        }));</span></span>
 <span class="line"><span style="color: #C9D1D9">    }</span></span>
 <span class="line"></span>
 <span class="line"><span style="color: #C9D1D9">    </span><span style="color: #FF7B72">while</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">let</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">Some</span><span style="color: #C9D1D9">(h) </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> handles</span><span style="color: #FF7B72">.</span><span style="color: #D2A8FF">pop</span><span style="color: #C9D1D9">() {</span></span>
 <span class="line"><span style="color: #C9D1D9">        h</span><span style="color: #FF7B72">.</span><span style="color: #D2A8FF">join</span><span style="color: #C9D1D9">()</span><span style="color: #FF7B72">.</span><span style="color: #D2A8FF">unwrap</span><span style="color: #C9D1D9">()</span></span>
 <span class="line"><span style="color: #C9D1D9">    }</span></span>
-<span class="line"><span style="color: #C9D1D9">}</span></span></code></pre><p>出力:</p><pre class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #c9d1d9">call_once</span></span>
+<span class="line"><span style="color: #C9D1D9">}</span></span></code></pre>
+<p>出力:</p>
+<pre is:raw="" class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #c9d1d9">call_once</span></span>
 <span class="line"><span style="color: #c9d1d9">thread#0 12345</span></span>
 <span class="line"><span style="color: #c9d1d9">thread#4 12345</span></span>
 <span class="line"><span style="color: #c9d1d9">thread#3 12345</span></span>
@@ -103,21 +108,30 @@
 <span class="line"><span style="color: #c9d1d9">thread#7 12345</span></span>
 <span class="line"><span style="color: #c9d1d9">thread#2 12345</span></span>
 <span class="line"><span style="color: #c9d1d9">thread#8 12345</span></span>
-<span class="line"><span style="color: #c9d1d9">thread#9 12345</span></span></code></pre><p>複数スレッドから<code>call_once</code>が実行されていますが、一度しか初期化処理が実行されていないことがわかります。</p><p>また<code>call_once</code>は初期化処理中に別スレッドから呼び出されると、初期化が終わるまでブロックするため、
-初期化されていない状態で変数にアクセスしてしまうこともありません。</p><p>mut な static 変数にアクセスするには<code>unsafe</code>を使う必要があるため、関数にするなどしてラップしてあげるのが良さそうです。</p><p>std だけでも static なグローバル変数は実現できますが、素直に<a href="https://crates.io/crates/once_cell">once_cell</a>を使った方が使いやすそうです。</p><h1 id="channel">channel</h1><p><a href="https://doc.rust-lang.org/stable/std/sync/mpsc/fn.channel.html">std::mpsc::channel</a> はスレッド間での通信に利用できる FIFO キューを作る関数です。</p><p>モジュール名の<code>mpsc</code>は multiple producer single consumer の略で、
-producer（キューにデータを入れる側）は複数、consumer（キューからデータを取り出す側）は 1 つということを表しています。</p><p>複数の子スレッドからデータを送信し、メインスレッドで受信するサンプルを作ってみます。</p><pre class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #FF7B72">use</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">std</span><span style="color: #FF7B72">::</span><span style="color: #FFA657">sync</span><span style="color: #FF7B72">::</span><span style="color: #FFA657">mpsc</span><span style="color: #FF7B72">::</span><span style="color: #C9D1D9">channel;</span></span>
+<span class="line"><span style="color: #c9d1d9">thread#9 12345</span></span></code></pre>
+<p>複数スレッドから<code>call_once</code>が実行されていますが、一度しか初期化処理が実行されていないことがわかります。</p>
+<p>また<code>call_once</code>は初期化処理中に別スレッドから呼び出されると、初期化が終わるまでブロックするため、
+初期化されていない状態で変数にアクセスしてしまうこともありません。</p>
+<p>mut な static 変数にアクセスするには<code>unsafe</code>を使う必要があるため、関数にするなどしてラップしてあげるのが良さそうです。</p>
+<p>std だけでも static なグローバル変数は実現できますが、素直に<a href="https://crates.io/crates/once_cell">once_cell</a>を使った方が使いやすそうです。</p>
+<h1 id="channel">channel</h1>
+<p><a href="https://doc.rust-lang.org/stable/std/sync/mpsc/fn.channel.html">std::mpsc::channel</a> はスレッド間での通信に利用できる FIFO キューを作る関数です。</p>
+<p>モジュール名の<code>mpsc</code>は multiple producer single consumer の略で、
+producer（キューにデータを入れる側）は複数、consumer（キューからデータを取り出す側）は 1 つということを表しています。</p>
+<p>複数の子スレッドからデータを送信し、メインスレッドで受信するサンプルを作ってみます。</p>
+<pre is:raw="" class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #FF7B72">use</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">std</span><span style="color: #FF7B72">::</span><span style="color: #FFA657">sync</span><span style="color: #FF7B72">::</span><span style="color: #FFA657">mpsc</span><span style="color: #FF7B72">::</span><span style="color: #C9D1D9">channel;</span></span>
 <span class="line"><span style="color: #FF7B72">use</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">std</span><span style="color: #FF7B72">::</span><span style="color: #C9D1D9">thread;</span></span>
 <span class="line"></span>
 <span class="line"><span style="color: #FF7B72">fn</span><span style="color: #C9D1D9"> </span><span style="color: #D2A8FF">main</span><span style="color: #C9D1D9">() {</span></span>
 <span class="line"><span style="color: #C9D1D9">    </span><span style="color: #FF7B72">let</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">mut</span><span style="color: #C9D1D9"> handles </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">Vec</span><span style="color: #FF7B72">::</span><span style="color: #D2A8FF">new</span><span style="color: #C9D1D9">();</span></span>
-<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #FF7B72">let</span><span style="color: #C9D1D9"> (sender, receiver) </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> </span><span style="color: #D2A8FF">channel</span><span style="color: #FF7B72">::</span><span style="color: #C9D1D9">&lt;</span><span style="color: #FFA657">String</span><span style="color: #C9D1D9">&gt;();</span></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #FF7B72">let</span><span style="color: #C9D1D9"> (sender, receiver) </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> </span><span style="color: #D2A8FF">channel</span><span style="color: #FF7B72">::</span><span style="color: #C9D1D9">&#x3C;</span><span style="color: #FFA657">String</span><span style="color: #C9D1D9">>();</span></span>
 <span class="line"></span>
 <span class="line"><span style="color: #C9D1D9">    </span><span style="color: #FF7B72">for</span><span style="color: #C9D1D9"> n </span><span style="color: #FF7B72">in</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">0</span><span style="color: #FF7B72">..</span><span style="color: #79C0FF">4</span><span style="color: #C9D1D9"> {</span></span>
 <span class="line"><span style="color: #C9D1D9">        </span><span style="color: #FF7B72">let</span><span style="color: #C9D1D9"> sender </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> sender</span><span style="color: #FF7B72">.</span><span style="color: #D2A8FF">clone</span><span style="color: #C9D1D9">();</span></span>
 <span class="line"><span style="color: #C9D1D9">        handles</span><span style="color: #FF7B72">.</span><span style="color: #D2A8FF">push</span><span style="color: #C9D1D9">(</span><span style="color: #FFA657">thread</span><span style="color: #FF7B72">::</span><span style="color: #D2A8FF">spawn</span><span style="color: #C9D1D9">(</span><span style="color: #FF7B72">move</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">||</span><span style="color: #C9D1D9"> {</span></span>
 <span class="line"><span style="color: #C9D1D9">            </span><span style="color: #FF7B72">for</span><span style="color: #C9D1D9"> i </span><span style="color: #FF7B72">in</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">0</span><span style="color: #FF7B72">..</span><span style="color: #79C0FF">4</span><span style="color: #C9D1D9"> {</span></span>
 <span class="line"><span style="color: #C9D1D9">                sender</span></span>
-<span class="line"><span style="color: #C9D1D9">                    </span><span style="color: #FF7B72">.</span><span style="color: #D2A8FF">send</span><span style="color: #C9D1D9">(</span><span style="color: #D2A8FF">format!</span><span style="color: #C9D1D9">(</span><span style="color: #A5D6FF">&quot;thread#{} val = {}&quot;</span><span style="color: #C9D1D9">, n, i)</span><span style="color: #FF7B72">.</span><span style="color: #D2A8FF">to_owned</span><span style="color: #C9D1D9">())</span></span>
+<span class="line"><span style="color: #C9D1D9">                    </span><span style="color: #FF7B72">.</span><span style="color: #D2A8FF">send</span><span style="color: #C9D1D9">(</span><span style="color: #D2A8FF">format!</span><span style="color: #C9D1D9">(</span><span style="color: #A5D6FF">"thread#{} val = {}"</span><span style="color: #C9D1D9">, n, i)</span><span style="color: #FF7B72">.</span><span style="color: #D2A8FF">to_owned</span><span style="color: #C9D1D9">())</span></span>
 <span class="line"><span style="color: #C9D1D9">                    </span><span style="color: #FF7B72">.</span><span style="color: #D2A8FF">unwrap</span><span style="color: #C9D1D9">();</span></span>
 <span class="line"><span style="color: #C9D1D9">            }</span></span>
 <span class="line"><span style="color: #C9D1D9">        }));</span></span>
@@ -126,13 +140,15 @@ producer（キューにデータを入れる側）は複数、consumer（キュ�
 <span class="line"><span style="color: #C9D1D9">    </span><span style="color: #D2A8FF">drop</span><span style="color: #C9D1D9">(sender);</span></span>
 <span class="line"></span>
 <span class="line"><span style="color: #C9D1D9">    </span><span style="color: #FF7B72">while</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">let</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">Ok</span><span style="color: #C9D1D9">(v) </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> receiver</span><span style="color: #FF7B72">.</span><span style="color: #D2A8FF">recv</span><span style="color: #C9D1D9">() {</span></span>
-<span class="line"><span style="color: #C9D1D9">        </span><span style="color: #D2A8FF">println!</span><span style="color: #C9D1D9">(</span><span style="color: #A5D6FF">&quot;{}&quot;</span><span style="color: #C9D1D9">, v);</span></span>
+<span class="line"><span style="color: #C9D1D9">        </span><span style="color: #D2A8FF">println!</span><span style="color: #C9D1D9">(</span><span style="color: #A5D6FF">"{}"</span><span style="color: #C9D1D9">, v);</span></span>
 <span class="line"><span style="color: #C9D1D9">    }</span></span>
 <span class="line"></span>
 <span class="line"><span style="color: #C9D1D9">    </span><span style="color: #FF7B72">while</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">let</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">Some</span><span style="color: #C9D1D9">(h) </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> handles</span><span style="color: #FF7B72">.</span><span style="color: #D2A8FF">pop</span><span style="color: #C9D1D9">() {</span></span>
 <span class="line"><span style="color: #C9D1D9">        h</span><span style="color: #FF7B72">.</span><span style="color: #D2A8FF">join</span><span style="color: #C9D1D9">()</span><span style="color: #FF7B72">.</span><span style="color: #D2A8FF">unwrap</span><span style="color: #C9D1D9">()</span></span>
 <span class="line"><span style="color: #C9D1D9">    }</span></span>
-<span class="line"><span style="color: #C9D1D9">}</span></span></code></pre><p>出力:</p><pre class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #c9d1d9">thread#2 val = 0</span></span>
+<span class="line"><span style="color: #C9D1D9">}</span></span></code></pre>
+<p>出力:</p>
+<pre is:raw="" class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #c9d1d9">thread#2 val = 0</span></span>
 <span class="line"><span style="color: #c9d1d9">thread#3 val = 0</span></span>
 <span class="line"><span style="color: #c9d1d9">thread#1 val = 0</span></span>
 <span class="line"><span style="color: #c9d1d9">thread#3 val = 1</span></span>
@@ -147,10 +163,16 @@ producer（キューにデータを入れる側）は複数、consumer（キュ�
 <span class="line"><span style="color: #c9d1d9">thread#0 val = 3</span></span>
 <span class="line"><span style="color: #c9d1d9">thread#2 val = 1</span></span>
 <span class="line"><span style="color: #c9d1d9">thread#2 val = 2</span></span>
-<span class="line"><span style="color: #c9d1d9">thread#2 val = 3</span></span></code></pre><p><code>channel</code>関数は Sender と Receiver のタプルを返します。</p><p>これはお互いに関連づけられていて、Sender から送られたデータは対にになる Receiver で受信できます。</p><p>また、Sender は<code>clone</code>できるので clone したものを別スレッドに move します。</p><p><code>sender.send(val)</code>でデータを送信し <code>receiver.revc()</code>でデータを受信しますがこれらは以下のケースで Err を返します。</p><ul>
+<span class="line"><span style="color: #c9d1d9">thread#2 val = 3</span></span></code></pre>
+<p><code>channel</code>関数は Sender と Receiver のタプルを返します。</p>
+<p>これはお互いに関連づけられていて、Sender から送られたデータは対にになる Receiver で受信できます。</p>
+<p>また、Sender は<code>clone</code>できるので clone したものを別スレッドに move します。</p>
+<p><code>sender.send(val)</code>でデータを送信し <code>receiver.revc()</code>でデータを受信しますがこれらは以下のケースで Err を返します。</p>
+<ul>
 <li><code>sender.send(val)</code>: 対応する<code>receiver</code>が drop されていた場合</li>
 <li><code>receiver.recv()</code>: 対応する全ての<code>sender</code>が drop されていた場合</li>
-</ul><p>メインスレッド側 <code>drop(sender)</code> していますが、これをしないとメインスレッドの<code>sender</code>が drop されるのを待ち続けてデッドロックになります。</p>
+</ul>
+<p>メインスレッド側 <code>drop(sender)</code> していますが、これをしないとメインスレッドの<code>sender</code>が drop されるのを待ち続けてデッドロックになります。</p>
 			</main>
 		</div>
 	</article>

@@ -1,5 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 	<head>
 		<!-- Google Tag Manager -->
 <!-- End Google Tag Manager -->
@@ -32,14 +31,14 @@
 <link rel="preconnect" href="https://fonts.gstatic.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&family=IBM+Plex+Sans:wght@400;700&display=swap">
 
-	<link rel="stylesheet" href="/assets/1865bdc7.a6921d77.css" /><script type="module">(function(t,n,r,e,m){t[e]=t[e]||[],t[e].push({"gtm.start":new Date().getTime(),event:"gtm.js"});var g=n.getElementsByTagName(r)[0],a=n.createElement(r),s=e!="dataLayer"?"&l="+e:"";a.async=!0,a.src="https://www.googletagmanager.com/gtm.js?id="+m+s,g.parentNode.insertBefore(a,g)})(window,document,"script","dataLayer","GTM-P42NKJ8");
+	<link rel="stylesheet" href="/assets/c99d5208.070dc6d6.css" /><script type="module">(function(t,n,r,e,m){t[e]=t[e]||[],t[e].push({"gtm.start":new Date().getTime(),event:"gtm.js"});var g=n.getElementsByTagName(r)[0],a=n.createElement(r),s=e!="dataLayer"?"&l="+e:"";a.async=!0,a.src="https://www.googletagmanager.com/gtm.js?id="+m+s,g.parentNode.insertBefore(a,g)})(window,document,"script","dataLayer","GTM-P42NKJ8");
 </script></head>
 	<body>
-		<header class="wrapper astro-63D5MSV2">
-	<article class="astro-63D5MSV2">
-		<h1 class="astro-63D5MSV2">
-			<a href="/" class="astro-63D5MSV2">
-				<span class="astro-63D5MSV2">take4s5i DEV</span>
+		<header class="wrapper astro-W2MTFRY6">
+	<article class="astro-W2MTFRY6">
+		<h1 class="astro-W2MTFRY6">
+			<a href="/" class="astro-W2MTFRY6">
+				<span class="astro-W2MTFRY6">take4s5i DEV</span>
 			</a>
 		</h1>
 	</article>
@@ -47,27 +46,41 @@
 
 
 		<div class="wrapper">
-			<div class="layout astro-57SHIKPC">
-	<article class="content astro-57SHIKPC">
-		<div class="astro-57SHIKPC">
-			<header class="astro-57SHIKPC">
+			<div class="layout astro-O6PTD47S">
+	<article class="content astro-O6PTD47S">
+		<div class="astro-O6PTD47S">
+			<header class="astro-O6PTD47S">
 				
-				<p class="publish-date astro-57SHIKPC">11 Jul 2022</p>
-				<h1 class="title astro-57SHIKPC">GitHub Pagesで作ってるブログ編集リンクを追加する</h1>
+				<p class="publish-date astro-O6PTD47S">11 Jul 2022</p>
+				<h1 class="title astro-O6PTD47S">GitHub Pagesで作ってるブログ編集リンクを追加する</h1>
 			</header>
-			<div class="editbar astro-57SHIKPC">
-				<a href="https://github.com/take4s5i/blog/blob/main/src/pages/posts/2022/07/adding-edit-link-to-posts.md" class="astro-57SHIKPC">Edit This Page</a>
+			<div class="editbar astro-O6PTD47S">
+				<a href="https://github.com/take4s5i/blog/blob/main/src/pages/posts/2022/07/adding-edit-link-to-posts.md" class="astro-O6PTD47S">Edit This Page</a>
 			</div>
-			<main class="astro-57SHIKPC">
+			<main class="astro-O6PTD47S">
 				<p>ブログに編集できるリンクを追加しました。
-右上に出ている <code>Edit This Page</code> でGitHubの対応するmarkdownファイルに移動します。</p><h2 id="githubの編集リンク">GitHubの編集リンク</h2><p>GitHubの編集リンクを作るのは簡単で以下のようにすれば良いです。</p><pre class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #c9d1d9">https://github.com/{user or organization}/{repository}/blob/{branch}/{path to file}</span></span></code></pre><p>このページの場合は</p><ul>
+右上に出ている <code>Edit This Page</code> でGitHubの対応するmarkdownファイルに移動します。</p>
+<h2 id="githubの編集リンク">GitHubの編集リンク</h2>
+<p>GitHubの編集リンクを作るのは簡単で以下のようにすれば良いです。</p>
+<pre is:raw="" class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #c9d1d9">https://github.com/{user or organization}/{repository}/blob/{branch}/{path to file}</span></span></code></pre>
+<p>このページの場合は</p>
+<ul>
 <li>user: <code>take4s5i</code></li>
 <li>repository: <code>blog</code></li>
 <li>branch: <code>main</code></li>
 <li>path to file: <code>src/pages/posts/2022/07/adding-edit-link-to-posts.md</code></li>
-</ul><p>なのでこのようなURLになります</p><pre class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #c9d1d9">https://github.com/take4s5i/blog/blob/main/src/pages/posts/2022/07/adding-edit-link-to-posts.md</span></span></code></pre><p>このリンクで簡単にGitHub上の対応するファイルに飛んで編集できるというわけです。</p><p><code>blob</code>のところを<code>edit</code>にすれば直接編集画面に飛べます</p><h2 id="astroでpathを取得する方法">AstroでPathを取得する方法</h2><p><code>Astro.request.url</code>で現在のURLを取得出来ます。</p><p>こんな感じ</p><pre class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #FF7B72">const</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">url</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">new</span><span style="color: #C9D1D9"> </span><span style="color: #D2A8FF">URL</span><span style="color: #C9D1D9">(Astro.request.url);</span></span>
-<span class="line"><span style="color: #FF7B72">const</span><span style="color: #C9D1D9"> </span><span style="color: #D2A8FF">removeTrailingSlash</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> (</span><span style="color: #FFA657">s</span><span style="color: #C9D1D9">) </span><span style="color: #FF7B72">=&gt;</span><span style="color: #C9D1D9"> s.</span><span style="color: #D2A8FF">endsWith</span><span style="color: #C9D1D9">(</span><span style="color: #A5D6FF">&#39;/&#39;</span><span style="color: #C9D1D9">) </span><span style="color: #FF7B72">?</span><span style="color: #C9D1D9"> s.</span><span style="color: #D2A8FF">substring</span><span style="color: #C9D1D9">(</span><span style="color: #79C0FF">0</span><span style="color: #C9D1D9">, s.</span><span style="color: #79C0FF">length</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">-</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">1</span><span style="color: #C9D1D9">) </span><span style="color: #FF7B72">:</span><span style="color: #C9D1D9"> s</span></span>
-<span class="line"><span style="color: #FF7B72">const</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">editUrl</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> </span><span style="color: #A5D6FF">`https://github.com/take4s5i/blog/blob/main/src/pages${</span><span style="color: #D2A8FF">removeTrailingSlash</span><span style="color: #A5D6FF">(</span><span style="color: #C9D1D9">url</span><span style="color: #A5D6FF">.</span><span style="color: #C9D1D9">pathname</span><span style="color: #A5D6FF">)</span><span style="color: #A5D6FF">}.md`</span></span></code></pre><p>このURLを BlogPostのコンポーネントに埋め込めば完成です。</p>
+</ul>
+<p>なのでこのようなURLになります</p>
+<pre is:raw="" class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #c9d1d9">https://github.com/take4s5i/blog/blob/main/src/pages/posts/2022/07/adding-edit-link-to-posts.md</span></span></code></pre>
+<p>このリンクで簡単にGitHub上の対応するファイルに飛んで編集できるというわけです。</p>
+<p><code>blob</code>のところを<code>edit</code>にすれば直接編集画面に飛べます</p>
+<h2 id="astroでpathを取得する方法">AstroでPathを取得する方法</h2>
+<p><code>Astro.request.url</code>で現在のURLを取得出来ます。</p>
+<p>こんな感じ</p>
+<pre is:raw="" class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #FF7B72">const</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">url</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">new</span><span style="color: #C9D1D9"> </span><span style="color: #D2A8FF">URL</span><span style="color: #C9D1D9">(Astro.request.url);</span></span>
+<span class="line"><span style="color: #FF7B72">const</span><span style="color: #C9D1D9"> </span><span style="color: #D2A8FF">removeTrailingSlash</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> (</span><span style="color: #FFA657">s</span><span style="color: #C9D1D9">) </span><span style="color: #FF7B72">=></span><span style="color: #C9D1D9"> s.</span><span style="color: #D2A8FF">endsWith</span><span style="color: #C9D1D9">(</span><span style="color: #A5D6FF">'/'</span><span style="color: #C9D1D9">) </span><span style="color: #FF7B72">?</span><span style="color: #C9D1D9"> s.</span><span style="color: #D2A8FF">substring</span><span style="color: #C9D1D9">(</span><span style="color: #79C0FF">0</span><span style="color: #C9D1D9">, s.</span><span style="color: #79C0FF">length</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">-</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">1</span><span style="color: #C9D1D9">) </span><span style="color: #FF7B72">:</span><span style="color: #C9D1D9"> s</span></span>
+<span class="line"><span style="color: #FF7B72">const</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">editUrl</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> </span><span style="color: #A5D6FF">`https://github.com/take4s5i/blog/blob/main/src/pages${</span><span style="color: #D2A8FF">removeTrailingSlash</span><span style="color: #A5D6FF">(</span><span style="color: #C9D1D9">url</span><span style="color: #A5D6FF">.</span><span style="color: #C9D1D9">pathname</span><span style="color: #A5D6FF">)</span><span style="color: #A5D6FF">}.md`</span></span></code></pre>
+<p>このURLを BlogPostのコンポーネントに埋め込めば完成です。</p>
 			</main>
 		</div>
 	</article>

@@ -1,5 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 	<head>
 		<!-- Google Tag Manager -->
 <!-- End Google Tag Manager -->
@@ -32,14 +31,14 @@
 <link rel="preconnect" href="https://fonts.gstatic.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&family=IBM+Plex+Sans:wght@400;700&display=swap">
 
-	<link rel="stylesheet" href="/assets/1865bdc7.a6921d77.css" /><script type="module">(function(t,n,r,e,m){t[e]=t[e]||[],t[e].push({"gtm.start":new Date().getTime(),event:"gtm.js"});var g=n.getElementsByTagName(r)[0],a=n.createElement(r),s=e!="dataLayer"?"&l="+e:"";a.async=!0,a.src="https://www.googletagmanager.com/gtm.js?id="+m+s,g.parentNode.insertBefore(a,g)})(window,document,"script","dataLayer","GTM-P42NKJ8");
+	<link rel="stylesheet" href="/assets/c99d5208.070dc6d6.css" /><script type="module">(function(t,n,r,e,m){t[e]=t[e]||[],t[e].push({"gtm.start":new Date().getTime(),event:"gtm.js"});var g=n.getElementsByTagName(r)[0],a=n.createElement(r),s=e!="dataLayer"?"&l="+e:"";a.async=!0,a.src="https://www.googletagmanager.com/gtm.js?id="+m+s,g.parentNode.insertBefore(a,g)})(window,document,"script","dataLayer","GTM-P42NKJ8");
 </script></head>
 	<body>
-		<header class="wrapper astro-63D5MSV2">
-	<article class="astro-63D5MSV2">
-		<h1 class="astro-63D5MSV2">
-			<a href="/" class="astro-63D5MSV2">
-				<span class="astro-63D5MSV2">take4s5i DEV</span>
+		<header class="wrapper astro-W2MTFRY6">
+	<article class="astro-W2MTFRY6">
+		<h1 class="astro-W2MTFRY6">
+			<a href="/" class="astro-W2MTFRY6">
+				<span class="astro-W2MTFRY6">take4s5i DEV</span>
 			</a>
 		</h1>
 	</article>
@@ -47,27 +46,34 @@
 
 
 		<div class="wrapper">
-			<div class="layout astro-57SHIKPC">
-	<article class="content astro-57SHIKPC">
-		<div class="astro-57SHIKPC">
-			<header class="astro-57SHIKPC">
+			<div class="layout astro-O6PTD47S">
+	<article class="content astro-O6PTD47S">
+		<div class="astro-O6PTD47S">
+			<header class="astro-O6PTD47S">
 				
-				<p class="publish-date astro-57SHIKPC">25 Jul 2022</p>
-				<h1 class="title astro-57SHIKPC">Goのchannel</h1>
+				<p class="publish-date astro-O6PTD47S">25 Jul 2022</p>
+				<h1 class="title astro-O6PTD47S">Goのchannel</h1>
 			</header>
-			<div class="editbar astro-57SHIKPC">
-				<a href="https://github.com/take4s5i/blog/blob/main/src/pages/posts/2022/07/golang-chan.md" class="astro-57SHIKPC">Edit This Page</a>
+			<div class="editbar astro-O6PTD47S">
+				<a href="https://github.com/take4s5i/blog/blob/main/src/pages/posts/2022/07/golang-chan.md" class="astro-O6PTD47S">Edit This Page</a>
 			</div>
-			<main class="astro-57SHIKPC">
+			<main class="astro-O6PTD47S">
 				<p>Goのchannelについて勉強したのでまとめます。
-Go 1.18 で調べています。</p><p>読んだ資料はこの当たり</p><ul>
+Go 1.18 で調べています。</p>
+<p>読んだ資料はこの当たり</p>
+<ul>
 <li><a href="https://github.com/lotusirous/go-concurrency-patterns">https://github.com/lotusirous/go-concurrency-patterns</a></li>
 <li><a href="https://talks.golang.org/2012/concurrency.slide#1">https://talks.golang.org/2012/concurrency.slide#1</a></li>
 <li><a href="https://talks.golang.org/2013/advconc.slide#1">https://talks.golang.org/2013/advconc.slide#1</a></li>
-</ul><h2 id="channel-の作り方">channel の作り方</h2><p>go の channel は goroutine 間でデータのやり取りを行うためのプリミティブ。
-マップやスライスと同様に <code>make</code> で値を生成する。</p><p><code>&lt;- ch</code> で値を読み出し、 <code>ch &lt;-</code> で値を書き込むことができる</p><p>channel は使い終わったら <code>close</code> する。
-<code>close</code>した channel に読み書きすると panic する</p><p><strong>main.go</strong> [<a target="_blank" href="https://github.com/take4s5i/blog/blob/main/examples/posts/2022/07/golang-chan/01/main.go">src</a>]</p>
-<pre is:raw class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #FF7B72">package</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">main</span></span>
+</ul>
+<h2 id="channel-の作り方">channel の作り方</h2>
+<p>go の channel は goroutine 間でデータのやり取りを行うためのプリミティブ。
+マップやスライスと同様に <code>make</code> で値を生成する。</p>
+<p><code>&lt;- ch</code> で値を読み出し、 <code>ch &lt;-</code> で値を書き込むことができる</p>
+<p>channel は使い終わったら <code>close</code> する。
+<code>close</code>した channel に読み書きすると panic する</p>
+<p><strong>main.go</strong> [<a target="_blank" href="https://github.com/take4s5i/blog/blob/main/examples/posts/2022/07/golang-chan/01/main.go">src</a>]</p>
+<pre class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #FF7B72">package</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">main</span></span>
 <span class="line"></span>
 <span class="line"><span style="color: #FF7B72">import</span><span style="color: #C9D1D9"> (</span></span>
 <span class="line"><span style="color: #C9D1D9">	</span><span style="color: #A5D6FF">&quot;</span><span style="color: #FFA657">fmt</span><span style="color: #A5D6FF">&quot;</span></span>
@@ -86,11 +92,15 @@ Go 1.18 で調べています。</p><p>読んだ資料はこの当たり</p><ul>
 <span class="line"><span style="color: #C9D1D9">	</span><span style="color: #79C0FF">close</span><span style="color: #C9D1D9">(ch)</span></span>
 <span class="line"><span style="color: #C9D1D9">}</span></span>
 <span class="line"></span></code></pre>
-<h2 id="channel-の読み書き">channel の読み書き</h2><p>channel は goroutine safe なので複数の goroutine から読み書きできる。
+
+<h2 id="channel-の読み書き">channel の読み書き</h2>
+<p>channel は goroutine safe なので複数の goroutine から読み書きできる。
 Rust の mpsc と異なり、同時に複数書き込んだり、読み込んだりしても良い。
-<code>Mutex</code> 使って同期する必要もない。</p><p><code>&lt;-chan T</code> のように <code>&lt;-</code> を型名につけることで、receive only channel にできる。
-同様に <code>chan&lt;- T</code> で send only channel になる。</p><p><strong>main.go</strong> [<a target="_blank" href="https://github.com/take4s5i/blog/blob/main/examples/posts/2022/07/golang-chan/02/main.go">src</a>]</p>
-<pre is:raw class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #FF7B72">package</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">main</span></span>
+<code>Mutex</code> 使って同期する必要もない。</p>
+<p><code>&lt;-chan T</code> のように <code>&lt;-</code> を型名につけることで、receive only channel にできる。
+同様に <code>chan&lt;- T</code> で send only channel になる。</p>
+<p><strong>main.go</strong> [<a target="_blank" href="https://github.com/take4s5i/blog/blob/main/examples/posts/2022/07/golang-chan/02/main.go">src</a>]</p>
+<pre class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #FF7B72">package</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">main</span></span>
 <span class="line"></span>
 <span class="line"><span style="color: #FF7B72">import</span><span style="color: #C9D1D9"> (</span></span>
 <span class="line"><span style="color: #C9D1D9">	</span><span style="color: #A5D6FF">&quot;</span><span style="color: #FFA657">fmt</span><span style="color: #A5D6FF">&quot;</span></span>
@@ -153,16 +163,23 @@ Rust の mpsc と異なり、同時に複数書き込んだり、読み込んだ
 <span class="line"><span style="color: #C9D1D9">	</span><span style="color: #79C0FF">startReceive</span><span style="color: #C9D1D9">(ch)</span></span>
 <span class="line"><span style="color: #C9D1D9">}</span></span>
 <span class="line"></span></code></pre>
-<p>出力:</p><pre class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #c9d1d9">receive &#39;1 from sender 0&#39; at receiver 0</span></span>
-<span class="line"><span style="color: #c9d1d9">receive &#39;2 from sender 0&#39; at receiver 0</span></span>
-<span class="line"><span style="color: #c9d1d9">receive &#39;0 from sender 1&#39; at receiver 0</span></span>
-<span class="line"><span style="color: #c9d1d9">receive &#39;1 from sender 1&#39; at receiver 0</span></span>
-<span class="line"><span style="color: #c9d1d9">receive &#39;2 from sender 1&#39; at receiver 0</span></span>
-<span class="line"><span style="color: #c9d1d9">receive &#39;0 from sender 0&#39; at receiver 1</span></span></code></pre><h2 id="channel-を使ったパターン">channel を使ったパターン</h2><p>channel を扱うときはどこで <code>close</code> するのか責任を明確にしたほうが良い気がする。
-基本的に sender 側が <code>close</code> したほうがきれいに書けると思う。</p><h3 id="generator">Generator</h3><p>他言語のジェネレーターに相当するようなもの。
+
+<p>出力:</p>
+<pre class="astro-code" style="background-color:#0d1117;overflow-x:auto"><code><span class="line"><span style="color:#c9d1d9">receive &#39;1 from sender 0&#39; at receiver 0</span></span>
+<span class="line"><span style="color:#c9d1d9">receive &#39;2 from sender 0&#39; at receiver 0</span></span>
+<span class="line"><span style="color:#c9d1d9">receive &#39;0 from sender 1&#39; at receiver 0</span></span>
+<span class="line"><span style="color:#c9d1d9">receive &#39;1 from sender 1&#39; at receiver 0</span></span>
+<span class="line"><span style="color:#c9d1d9">receive &#39;2 from sender 1&#39; at receiver 0</span></span>
+<span class="line"><span style="color:#c9d1d9">receive &#39;0 from sender 0&#39; at receiver 1</span></span></code></pre>
+<h2 id="channel-を使ったパターン">channel を使ったパターン</h2>
+<p>channel を扱うときはどこで <code>close</code> するのか責任を明確にしたほうが良い気がする。
+基本的に sender 側が <code>close</code> したほうがきれいに書けると思う。</p>
+<h3 id="generator">Generator</h3>
+<p>他言語のジェネレーターに相当するようなもの。
 go にはジェネレータ構文はないが、 goroutine と channel でジェネレータを作れる。
-生成する値がなくなったら <code>close</code> することで、後続の処理にデータがもう来ないことを伝えられる。</p><p><strong>main.go</strong> [<a target="_blank" href="https://github.com/take4s5i/blog/blob/main/examples/posts/2022/07/golang-chan/03/main.go">src</a>]</p>
-<pre is:raw class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #FF7B72">package</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">main</span></span>
+生成する値がなくなったら <code>close</code> することで、後続の処理にデータがもう来ないことを伝えられる。</p>
+<p><strong>main.go</strong> [<a target="_blank" href="https://github.com/take4s5i/blog/blob/main/examples/posts/2022/07/golang-chan/03/main.go">src</a>]</p>
+<pre class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #FF7B72">package</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">main</span></span>
 <span class="line"></span>
 <span class="line"><span style="color: #FF7B72">import</span><span style="color: #C9D1D9"> </span><span style="color: #A5D6FF">&quot;</span><span style="color: #FFA657">fmt</span><span style="color: #A5D6FF">&quot;</span></span>
 <span class="line"></span>
@@ -196,9 +213,12 @@ go にはジェネレータ構文はないが、 goroutine と channel でジェ
 <span class="line"><span style="color: #C9D1D9">	}</span></span>
 <span class="line"><span style="color: #C9D1D9">}</span></span>
 <span class="line"></span></code></pre>
-<h3 id="quitdone">quit/done</h3><p>goroutine を外から止めたいときに使う
-<code>quit</code> や <code>done</code> という名前でよく使われている気がする。</p><p><strong>main.go</strong> [<a target="_blank" href="https://github.com/take4s5i/blog/blob/main/examples/posts/2022/07/golang-chan/04/main.go">src</a>]</p>
-<pre is:raw class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #FF7B72">package</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">main</span></span>
+
+<h3 id="quitdone">quit/done</h3>
+<p>goroutine を外から止めたいときに使う
+<code>quit</code> や <code>done</code> という名前でよく使われている気がする。</p>
+<p><strong>main.go</strong> [<a target="_blank" href="https://github.com/take4s5i/blog/blob/main/examples/posts/2022/07/golang-chan/04/main.go">src</a>]</p>
+<pre class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #FF7B72">package</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">main</span></span>
 <span class="line"></span>
 <span class="line"><span style="color: #FF7B72">import</span><span style="color: #C9D1D9"> (</span></span>
 <span class="line"><span style="color: #C9D1D9">	</span><span style="color: #A5D6FF">&quot;</span><span style="color: #FFA657">fmt</span><span style="color: #A5D6FF">&quot;</span></span>
@@ -243,9 +263,11 @@ go にはジェネレータ構文はないが、 goroutine と channel でジェ
 <span class="line"><span style="color: #C9D1D9">	}</span></span>
 <span class="line"><span style="color: #C9D1D9">}</span></span>
 <span class="line"></span></code></pre>
+
 <p><code>context</code> でほぼ同様の機能 <code>ctx.Done()</code> と <code>context.WithCancel(ctx)</code> が提供されているので、
-こちらを使ったほうがいいかもしれない。</p><p><strong>main.go</strong> [<a target="_blank" href="https://github.com/take4s5i/blog/blob/main/examples/posts/2022/07/golang-chan/05/main.go">src</a>]</p>
-<pre is:raw class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #FF7B72">package</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">main</span></span>
+こちらを使ったほうがいいかもしれない。</p>
+<p><strong>main.go</strong> [<a target="_blank" href="https://github.com/take4s5i/blog/blob/main/examples/posts/2022/07/golang-chan/05/main.go">src</a>]</p>
+<pre class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #FF7B72">package</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">main</span></span>
 <span class="line"></span>
 <span class="line"><span style="color: #FF7B72">import</span><span style="color: #C9D1D9"> (</span></span>
 <span class="line"><span style="color: #C9D1D9">	</span><span style="color: #A5D6FF">&quot;</span><span style="color: #FFA657">context</span><span style="color: #A5D6FF">&quot;</span></span>
@@ -289,10 +311,14 @@ go にはジェネレータ構文はないが、 goroutine と channel でジェ
 <span class="line"><span style="color: #C9D1D9">	}</span></span>
 <span class="line"><span style="color: #C9D1D9">}</span></span>
 <span class="line"></span></code></pre>
-<h3 id="fanin--fanout">FanIn / FanOut</h3><p>複数の channel を１つに束ねるのを <code>FanIn</code>、
-１つのchannel を複数に分岐するのを <code>FanOut</code> という。</p><p>channel は Multi-Producer / Multi-Consumer なので特に気にせず
-複数の goroutine から読み書きすればよい。</p><p><strong>main.go</strong> [<a target="_blank" href="https://github.com/take4s5i/blog/blob/main/examples/posts/2022/07/golang-chan/06/main.go">src</a>]</p>
-<pre is:raw class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #FF7B72">package</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">main</span></span>
+
+<h3 id="fanin--fanout">FanIn / FanOut</h3>
+<p>複数の channel を１つに束ねるのを <code>FanIn</code>、
+１つのchannel を複数に分岐するのを <code>FanOut</code> という。</p>
+<p>channel は Multi-Producer / Multi-Consumer なので特に気にせず
+複数の goroutine から読み書きすればよい。</p>
+<p><strong>main.go</strong> [<a target="_blank" href="https://github.com/take4s5i/blog/blob/main/examples/posts/2022/07/golang-chan/06/main.go">src</a>]</p>
+<pre class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #FF7B72">package</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">main</span></span>
 <span class="line"></span>
 <span class="line"><span style="color: #FF7B72">import</span><span style="color: #C9D1D9"> (</span></span>
 <span class="line"><span style="color: #C9D1D9">	</span><span style="color: #A5D6FF">&quot;</span><span style="color: #FFA657">fmt</span><span style="color: #A5D6FF">&quot;</span></span>
@@ -380,6 +406,7 @@ go にはジェネレータ構文はないが、 goroutine と channel でジェ
 <span class="line"><span style="color: #C9D1D9">	</span><span style="color: #79C0FF">fanOut</span><span style="color: #C9D1D9">(c, </span><span style="color: #79C0FF">3</span><span style="color: #C9D1D9">)</span></span>
 <span class="line"><span style="color: #C9D1D9">}</span></span>
 <span class="line"></span></code></pre>
+
 <p>とりあえず今回はここまで</p>
 			</main>
 		</div>

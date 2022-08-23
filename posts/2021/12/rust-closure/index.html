@@ -1,5 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 	<head>
 		<!-- Google Tag Manager -->
 <!-- End Google Tag Manager -->
@@ -32,14 +31,14 @@
 <link rel="preconnect" href="https://fonts.gstatic.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&family=IBM+Plex+Sans:wght@400;700&display=swap">
 
-	<link rel="stylesheet" href="/assets/1865bdc7.a6921d77.css" /><script type="module">(function(t,n,r,e,m){t[e]=t[e]||[],t[e].push({"gtm.start":new Date().getTime(),event:"gtm.js"});var g=n.getElementsByTagName(r)[0],a=n.createElement(r),s=e!="dataLayer"?"&l="+e:"";a.async=!0,a.src="https://www.googletagmanager.com/gtm.js?id="+m+s,g.parentNode.insertBefore(a,g)})(window,document,"script","dataLayer","GTM-P42NKJ8");
+	<link rel="stylesheet" href="/assets/c99d5208.070dc6d6.css" /><script type="module">(function(t,n,r,e,m){t[e]=t[e]||[],t[e].push({"gtm.start":new Date().getTime(),event:"gtm.js"});var g=n.getElementsByTagName(r)[0],a=n.createElement(r),s=e!="dataLayer"?"&l="+e:"";a.async=!0,a.src="https://www.googletagmanager.com/gtm.js?id="+m+s,g.parentNode.insertBefore(a,g)})(window,document,"script","dataLayer","GTM-P42NKJ8");
 </script></head>
 	<body>
-		<header class="wrapper astro-63D5MSV2">
-	<article class="astro-63D5MSV2">
-		<h1 class="astro-63D5MSV2">
-			<a href="/" class="astro-63D5MSV2">
-				<span class="astro-63D5MSV2">take4s5i DEV</span>
+		<header class="wrapper astro-W2MTFRY6">
+	<article class="astro-W2MTFRY6">
+		<h1 class="astro-W2MTFRY6">
+			<a href="/" class="astro-W2MTFRY6">
+				<span class="astro-W2MTFRY6">take4s5i DEV</span>
 			</a>
 		</h1>
 	</article>
@@ -47,35 +46,41 @@
 
 
 		<div class="wrapper">
-			<div class="layout astro-57SHIKPC">
-	<article class="content astro-57SHIKPC">
-		<div class="astro-57SHIKPC">
-			<header class="astro-57SHIKPC">
+			<div class="layout astro-O6PTD47S">
+	<article class="content astro-O6PTD47S">
+		<div class="astro-O6PTD47S">
+			<header class="astro-O6PTD47S">
 				
-				<p class="publish-date astro-57SHIKPC">16 Dec 2021</p>
-				<h1 class="title astro-57SHIKPC">Rustのクロージャを理解する</h1>
+				<p class="publish-date astro-O6PTD47S">16 Dec 2021</p>
+				<h1 class="title astro-O6PTD47S">Rustのクロージャを理解する</h1>
 			</header>
-			<div class="editbar astro-57SHIKPC">
-				<a href="https://github.com/take4s5i/blog/blob/main/src/pages/posts/2021/12/rust-closure.md" class="astro-57SHIKPC">Edit This Page</a>
+			<div class="editbar astro-O6PTD47S">
+				<a href="https://github.com/take4s5i/blog/blob/main/src/pages/posts/2021/12/rust-closure.md" class="astro-O6PTD47S">Edit This Page</a>
 			</div>
-			<main class="astro-57SHIKPC">
-				<p>まずはRustのクロージャを見てみましょう。</p><pre class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #FF7B72">fn</span><span style="color: #C9D1D9"> </span><span style="color: #D2A8FF">main</span><span style="color: #C9D1D9">() {</span></span>
-<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #FF7B72">let</span><span style="color: #C9D1D9"> nums</span><span style="color: #FF7B72">:</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">Vec</span><span style="color: #C9D1D9">&lt;</span><span style="color: #FFA657">i32</span><span style="color: #C9D1D9">&gt; </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> </span><span style="color: #D2A8FF">vec!</span><span style="color: #C9D1D9">[</span><span style="color: #79C0FF">1</span><span style="color: #C9D1D9">,</span><span style="color: #79C0FF">2</span><span style="color: #C9D1D9">,</span><span style="color: #79C0FF">3</span><span style="color: #C9D1D9">,</span><span style="color: #79C0FF">4</span><span style="color: #C9D1D9">,</span><span style="color: #79C0FF">5</span><span style="color: #C9D1D9">];</span></span>
+			<main class="astro-O6PTD47S">
+				<p>まずはRustのクロージャを見てみましょう。</p>
+<pre is:raw="" class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #FF7B72">fn</span><span style="color: #C9D1D9"> </span><span style="color: #D2A8FF">main</span><span style="color: #C9D1D9">() {</span></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #FF7B72">let</span><span style="color: #C9D1D9"> nums</span><span style="color: #FF7B72">:</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">Vec</span><span style="color: #C9D1D9">&#x3C;</span><span style="color: #FFA657">i32</span><span style="color: #C9D1D9">> </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> </span><span style="color: #D2A8FF">vec!</span><span style="color: #C9D1D9">[</span><span style="color: #79C0FF">1</span><span style="color: #C9D1D9">,</span><span style="color: #79C0FF">2</span><span style="color: #C9D1D9">,</span><span style="color: #79C0FF">3</span><span style="color: #C9D1D9">,</span><span style="color: #79C0FF">4</span><span style="color: #C9D1D9">,</span><span style="color: #79C0FF">5</span><span style="color: #C9D1D9">];</span></span>
 <span class="line"><span style="color: #C9D1D9">    </span><span style="color: #FF7B72">let</span><span style="color: #C9D1D9"> y</span><span style="color: #FF7B72">:</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">i32</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">2</span><span style="color: #C9D1D9">;</span></span>
 <span class="line"><span style="color: #C9D1D9">    </span><span style="color: #FF7B72">let</span><span style="color: #C9D1D9"> iter </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> nums</span></span>
 <span class="line"><span style="color: #C9D1D9">        </span><span style="color: #FF7B72">.</span><span style="color: #D2A8FF">into_iter</span><span style="color: #C9D1D9">()</span></span>
 <span class="line"><span style="color: #C9D1D9">        </span><span style="color: #FF7B72">.</span><span style="color: #D2A8FF">map</span><span style="color: #C9D1D9">(</span><span style="color: #FF7B72">|</span><span style="color: #C9D1D9">x</span><span style="color: #FF7B72">|</span><span style="color: #C9D1D9"> x </span><span style="color: #FF7B72">*</span><span style="color: #C9D1D9"> y);</span></span>
 <span class="line"></span>
 <span class="line"><span style="color: #C9D1D9">    </span><span style="color: #FF7B72">for</span><span style="color: #C9D1D9"> x </span><span style="color: #FF7B72">in</span><span style="color: #C9D1D9"> iter {</span></span>
-<span class="line"><span style="color: #C9D1D9">        </span><span style="color: #D2A8FF">println!</span><span style="color: #C9D1D9">(</span><span style="color: #A5D6FF">&quot;{}&quot;</span><span style="color: #C9D1D9">, x);</span></span>
+<span class="line"><span style="color: #C9D1D9">        </span><span style="color: #D2A8FF">println!</span><span style="color: #C9D1D9">(</span><span style="color: #A5D6FF">"{}"</span><span style="color: #C9D1D9">, x);</span></span>
 <span class="line"><span style="color: #C9D1D9">    }</span></span>
-<span class="line"><span style="color: #C9D1D9">}</span></span></code></pre><p>出力:</p><pre class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #c9d1d9">2</span></span>
+<span class="line"><span style="color: #C9D1D9">}</span></span></code></pre>
+<p>出力:</p>
+<pre is:raw="" class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #c9d1d9">2</span></span>
 <span class="line"><span style="color: #c9d1d9">4</span></span>
 <span class="line"><span style="color: #c9d1d9">6</span></span>
 <span class="line"><span style="color: #c9d1d9">8</span></span>
-<span class="line"><span style="color: #c9d1d9">10</span></span></code></pre><p><code>|x| x * y</code> の部分がクロージャですね。
-パット見単純そうに見えますが、他の言語のクロージャと同じように使おうとするとRustのライフタイムや所有権で躓きます。</p><p>例えば以下のコード。
-クロージャの入門としてよく使われている？呼ばれた回数をカウントする関数ですが、これはコンパイルできません。</p><pre class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #FF7B72">fn</span><span style="color: #C9D1D9"> counter () </span><span style="color: #FF7B72">-&gt;</span><span style="color: #C9D1D9"> </span><span style="color: #D2A8FF">Fn</span><span style="color: #C9D1D9">() </span><span style="color: #FF7B72">-&gt;</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">i32</span><span style="color: #C9D1D9"> {</span></span>
+<span class="line"><span style="color: #c9d1d9">10</span></span></code></pre>
+<p><code>|x| x * y</code> の部分がクロージャですね。
+パット見単純そうに見えますが、他の言語のクロージャと同じように使おうとするとRustのライフタイムや所有権で躓きます。</p>
+<p>例えば以下のコード。
+クロージャの入門としてよく使われている？呼ばれた回数をカウントする関数ですが、これはコンパイルできません。</p>
+<pre is:raw="" class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #FF7B72">fn</span><span style="color: #C9D1D9"> counter () </span><span style="color: #FF7B72">-></span><span style="color: #C9D1D9"> </span><span style="color: #D2A8FF">Fn</span><span style="color: #C9D1D9">() </span><span style="color: #FF7B72">-></span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">i32</span><span style="color: #C9D1D9"> {</span></span>
 <span class="line"><span style="color: #C9D1D9">    </span><span style="color: #FF7B72">let</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">mut</span><span style="color: #C9D1D9"> x</span><span style="color: #FF7B72">:</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">i32</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">0</span><span style="color: #C9D1D9">;</span></span>
 <span class="line"><span style="color: #C9D1D9">    </span><span style="color: #FF7B72">return</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">||</span><span style="color: #C9D1D9"> {</span></span>
 <span class="line"><span style="color: #C9D1D9">        x </span><span style="color: #FF7B72">+=</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">1</span><span style="color: #C9D1D9">;</span></span>
@@ -85,35 +90,42 @@
 <span class="line"></span>
 <span class="line"><span style="color: #FF7B72">fn</span><span style="color: #C9D1D9"> </span><span style="color: #D2A8FF">main</span><span style="color: #C9D1D9">() {</span></span>
 <span class="line"><span style="color: #C9D1D9">    </span><span style="color: #FF7B72">let</span><span style="color: #C9D1D9"> c </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> </span><span style="color: #D2A8FF">counter</span><span style="color: #C9D1D9">();</span></span>
-<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #D2A8FF">println!</span><span style="color: #C9D1D9">(</span><span style="color: #A5D6FF">&quot;{}&quot;</span><span style="color: #C9D1D9">, </span><span style="color: #D2A8FF">c</span><span style="color: #C9D1D9">());</span></span>
-<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #D2A8FF">println!</span><span style="color: #C9D1D9">(</span><span style="color: #A5D6FF">&quot;{}&quot;</span><span style="color: #C9D1D9">, </span><span style="color: #D2A8FF">c</span><span style="color: #C9D1D9">());</span></span>
-<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #D2A8FF">println!</span><span style="color: #C9D1D9">(</span><span style="color: #A5D6FF">&quot;{}&quot;</span><span style="color: #C9D1D9">, </span><span style="color: #D2A8FF">c</span><span style="color: #C9D1D9">());</span></span>
-<span class="line"><span style="color: #C9D1D9">}</span></span></code></pre><h2 id="rustのクロージャとは何なのか">Rustのクロージャとは何なのか</h2><p>Rustのクロージャとは<strong>特定のtraitを実装した構造体</strong>です。
-先ほどのコードは以下のような構造体がRustコンパイラによって生成されていると考えることができます（実際には動かないコードです)</p><pre class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #FF7B72">struct</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">MyClosure</span><span style="color: #C9D1D9"> {</span></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #D2A8FF">println!</span><span style="color: #C9D1D9">(</span><span style="color: #A5D6FF">"{}"</span><span style="color: #C9D1D9">, </span><span style="color: #D2A8FF">c</span><span style="color: #C9D1D9">());</span></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #D2A8FF">println!</span><span style="color: #C9D1D9">(</span><span style="color: #A5D6FF">"{}"</span><span style="color: #C9D1D9">, </span><span style="color: #D2A8FF">c</span><span style="color: #C9D1D9">());</span></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #D2A8FF">println!</span><span style="color: #C9D1D9">(</span><span style="color: #A5D6FF">"{}"</span><span style="color: #C9D1D9">, </span><span style="color: #D2A8FF">c</span><span style="color: #C9D1D9">());</span></span>
+<span class="line"><span style="color: #C9D1D9">}</span></span></code></pre>
+<h2 id="rustのクロージャとは何なのか">Rustのクロージャとは何なのか</h2>
+<p>Rustのクロージャとは<strong>特定のtraitを実装した構造体</strong>です。
+先ほどのコードは以下のような構造体がRustコンパイラによって生成されていると考えることができます（実際には動かないコードです)</p>
+<pre is:raw="" class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #FF7B72">struct</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">MyClosure</span><span style="color: #C9D1D9"> {</span></span>
 <span class="line"><span style="color: #C9D1D9">    x</span><span style="color: #FF7B72">:</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">i32</span></span>
 <span class="line"><span style="color: #C9D1D9">}</span></span>
 <span class="line"></span>
-<span class="line"><span style="color: #FF7B72">impl</span><span style="color: #C9D1D9"> (</span><span style="color: #D2A8FF">Fn</span><span style="color: #C9D1D9">() </span><span style="color: #FF7B72">-&gt;</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">i32</span><span style="color: #C9D1D9">) </span><span style="color: #FF7B72">for</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">MyClosure</span><span style="color: #C9D1D9"> {</span></span>
-<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #D2A8FF">call</span><span style="color: #C9D1D9">(</span><span style="color: #FF7B72">&amp;</span><span style="color: #79C0FF">self</span><span style="color: #C9D1D9">) </span><span style="color: #FF7B72">-&gt;</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">i32</span><span style="color: #C9D1D9"> {</span></span>
+<span class="line"><span style="color: #FF7B72">impl</span><span style="color: #C9D1D9"> (</span><span style="color: #D2A8FF">Fn</span><span style="color: #C9D1D9">() </span><span style="color: #FF7B72">-></span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">i32</span><span style="color: #C9D1D9">) </span><span style="color: #FF7B72">for</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">MyClosure</span><span style="color: #C9D1D9"> {</span></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #D2A8FF">call</span><span style="color: #C9D1D9">(</span><span style="color: #FF7B72">&#x26;</span><span style="color: #79C0FF">self</span><span style="color: #C9D1D9">) </span><span style="color: #FF7B72">-></span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">i32</span><span style="color: #C9D1D9"> {</span></span>
 <span class="line"><span style="color: #C9D1D9">        </span><span style="color: #79C0FF">self</span><span style="color: #FF7B72">.</span><span style="color: #C9D1D9">x </span><span style="color: #FF7B72">+=</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">1</span><span style="color: #C9D1D9">;</span></span>
 <span class="line"><span style="color: #C9D1D9">        x</span></span>
 <span class="line"><span style="color: #C9D1D9">    }</span></span>
 <span class="line"><span style="color: #C9D1D9">}</span></span>
 <span class="line"></span>
-<span class="line"><span style="color: #FF7B72">fn</span><span style="color: #C9D1D9"> counter () </span><span style="color: #FF7B72">-&gt;</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">impl</span><span style="color: #C9D1D9"> </span><span style="color: #D2A8FF">Fn</span><span style="color: #C9D1D9">() </span><span style="color: #FF7B72">-&gt;</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">i32</span><span style="color: #C9D1D9"> {</span></span>
+<span class="line"><span style="color: #FF7B72">fn</span><span style="color: #C9D1D9"> counter () </span><span style="color: #FF7B72">-></span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">impl</span><span style="color: #C9D1D9"> </span><span style="color: #D2A8FF">Fn</span><span style="color: #C9D1D9">() </span><span style="color: #FF7B72">-></span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">i32</span><span style="color: #C9D1D9"> {</span></span>
 <span class="line"><span style="color: #C9D1D9">    </span><span style="color: #FF7B72">let</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">mut</span><span style="color: #C9D1D9"> x</span><span style="color: #FF7B72">:</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">i32</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">0</span><span style="color: #C9D1D9">;</span></span>
 <span class="line"><span style="color: #C9D1D9">    </span><span style="color: #FF7B72">return</span><span style="color: #C9D1D9">  </span><span style="color: #FFA657">MyClosure</span><span style="color: #C9D1D9"> { x };</span></span>
 <span class="line"><span style="color: #C9D1D9">}</span></span>
 <span class="line"></span>
 <span class="line"><span style="color: #FF7B72">fn</span><span style="color: #C9D1D9"> </span><span style="color: #D2A8FF">main</span><span style="color: #C9D1D9">() {</span></span>
 <span class="line"><span style="color: #C9D1D9">    </span><span style="color: #FF7B72">let</span><span style="color: #C9D1D9"> c </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> </span><span style="color: #D2A8FF">counter</span><span style="color: #C9D1D9">();</span></span>
-<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #D2A8FF">println!</span><span style="color: #C9D1D9">(</span><span style="color: #A5D6FF">&quot;{}&quot;</span><span style="color: #C9D1D9">, c</span><span style="color: #FF7B72">.</span><span style="color: #D2A8FF">call</span><span style="color: #C9D1D9">());</span></span>
-<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #D2A8FF">println!</span><span style="color: #C9D1D9">(</span><span style="color: #A5D6FF">&quot;{}&quot;</span><span style="color: #C9D1D9">, c</span><span style="color: #FF7B72">.</span><span style="color: #D2A8FF">call</span><span style="color: #C9D1D9">());</span></span>
-<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #D2A8FF">println!</span><span style="color: #C9D1D9">(</span><span style="color: #A5D6FF">&quot;{}&quot;</span><span style="color: #C9D1D9">, c</span><span style="color: #FF7B72">.</span><span style="color: #D2A8FF">call</span><span style="color: #C9D1D9">());</span></span>
-<span class="line"><span style="color: #C9D1D9">}</span></span></code></pre><p>これで先ほどのコードがコンパイルできなかった理由がわかりやすくなりました。</p><ul>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #D2A8FF">println!</span><span style="color: #C9D1D9">(</span><span style="color: #A5D6FF">"{}"</span><span style="color: #C9D1D9">, c</span><span style="color: #FF7B72">.</span><span style="color: #D2A8FF">call</span><span style="color: #C9D1D9">());</span></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #D2A8FF">println!</span><span style="color: #C9D1D9">(</span><span style="color: #A5D6FF">"{}"</span><span style="color: #C9D1D9">, c</span><span style="color: #FF7B72">.</span><span style="color: #D2A8FF">call</span><span style="color: #C9D1D9">());</span></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #D2A8FF">println!</span><span style="color: #C9D1D9">(</span><span style="color: #A5D6FF">"{}"</span><span style="color: #C9D1D9">, c</span><span style="color: #FF7B72">.</span><span style="color: #D2A8FF">call</span><span style="color: #C9D1D9">());</span></span>
+<span class="line"><span style="color: #C9D1D9">}</span></span></code></pre>
+<p>これで先ほどのコードがコンパイルできなかった理由がわかりやすくなりました。</p>
+<ul>
 <li><code>self.x += 1</code> としているが、<code>self</code>がミュータブルではない</li>
-<li><code>call</code>の型を<code>&amp;mut self</code>にするなら<code>c</code>も<code>let mut c</code>でなければならない。</li>
-</ul><p>先ほどのコードを動くように直すとこのようになります。</p><pre class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #FF7B72">fn</span><span style="color: #C9D1D9"> counter () </span><span style="color: #FF7B72">-&gt;</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">impl</span><span style="color: #C9D1D9"> </span><span style="color: #D2A8FF">FnMut</span><span style="color: #C9D1D9">() </span><span style="color: #FF7B72">-&gt;</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">i32</span><span style="color: #C9D1D9"> {</span></span>
+<li><code>call</code>の型を<code>&#x26;mut self</code>にするなら<code>c</code>も<code>let mut c</code>でなければならない。</li>
+</ul>
+<p>先ほどのコードを動くように直すとこのようになります。</p>
+<pre is:raw="" class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #FF7B72">fn</span><span style="color: #C9D1D9"> counter () </span><span style="color: #FF7B72">-></span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">impl</span><span style="color: #C9D1D9"> </span><span style="color: #D2A8FF">FnMut</span><span style="color: #C9D1D9">() </span><span style="color: #FF7B72">-></span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">i32</span><span style="color: #C9D1D9"> {</span></span>
 <span class="line"><span style="color: #C9D1D9">    </span><span style="color: #FF7B72">let</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">mut</span><span style="color: #C9D1D9"> x</span><span style="color: #FF7B72">:</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">i32</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">0</span><span style="color: #C9D1D9">;</span></span>
 <span class="line"><span style="color: #C9D1D9">    </span><span style="color: #FF7B72">return</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">move</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">||</span><span style="color: #C9D1D9"> {</span></span>
 <span class="line"><span style="color: #C9D1D9">        x </span><span style="color: #FF7B72">+=</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">1</span><span style="color: #C9D1D9">;</span></span>
@@ -123,60 +135,79 @@
 <span class="line"></span>
 <span class="line"><span style="color: #FF7B72">fn</span><span style="color: #C9D1D9"> </span><span style="color: #D2A8FF">main</span><span style="color: #C9D1D9">() {</span></span>
 <span class="line"><span style="color: #C9D1D9">    </span><span style="color: #FF7B72">let</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">mut</span><span style="color: #C9D1D9"> c </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> </span><span style="color: #D2A8FF">counter</span><span style="color: #C9D1D9">();</span></span>
-<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #D2A8FF">println!</span><span style="color: #C9D1D9">(</span><span style="color: #A5D6FF">&quot;{}&quot;</span><span style="color: #C9D1D9">, </span><span style="color: #D2A8FF">c</span><span style="color: #C9D1D9">());</span></span>
-<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #D2A8FF">println!</span><span style="color: #C9D1D9">(</span><span style="color: #A5D6FF">&quot;{}&quot;</span><span style="color: #C9D1D9">, </span><span style="color: #D2A8FF">c</span><span style="color: #C9D1D9">());</span></span>
-<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #D2A8FF">println!</span><span style="color: #C9D1D9">(</span><span style="color: #A5D6FF">&quot;{}&quot;</span><span style="color: #C9D1D9">, </span><span style="color: #D2A8FF">c</span><span style="color: #C9D1D9">());</span></span>
-<span class="line"><span style="color: #C9D1D9">}</span></span></code></pre><h2 id="クロージャトレイト">クロージャトレイト</h2><p>Rustのクロージャは3種類あります。</p><ul>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #D2A8FF">println!</span><span style="color: #C9D1D9">(</span><span style="color: #A5D6FF">"{}"</span><span style="color: #C9D1D9">, </span><span style="color: #D2A8FF">c</span><span style="color: #C9D1D9">());</span></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #D2A8FF">println!</span><span style="color: #C9D1D9">(</span><span style="color: #A5D6FF">"{}"</span><span style="color: #C9D1D9">, </span><span style="color: #D2A8FF">c</span><span style="color: #C9D1D9">());</span></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #D2A8FF">println!</span><span style="color: #C9D1D9">(</span><span style="color: #A5D6FF">"{}"</span><span style="color: #C9D1D9">, </span><span style="color: #D2A8FF">c</span><span style="color: #C9D1D9">());</span></span>
+<span class="line"><span style="color: #C9D1D9">}</span></span></code></pre>
+<h2 id="クロージャトレイト">クロージャトレイト</h2>
+<p>Rustのクロージャは3種類あります。</p>
+<ul>
 <li><a href="https://doc.rust-lang.org/std/ops/trait.Fn.html">Fn</a></li>
 <li><a href="https://doc.rust-lang.org/std/ops/trait.FnMut.html">FnMut</a></li>
 <li><a href="https://doc.rust-lang.org/std/ops/trait.FnOnce.html">FnOnce</a></li>
-</ul><p>トレイトの定義をこのようになっていますが、注目すべきは<code>self</code>の型です。</p><pre class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #FF7B72">pub</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">trait</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">Fn</span><span style="color: #C9D1D9">&lt;</span><span style="color: #FFA657">Args</span><span style="color: #C9D1D9">&gt;</span><span style="color: #FF7B72">:</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">FnMut</span><span style="color: #C9D1D9">&lt;</span><span style="color: #FFA657">Args</span><span style="color: #C9D1D9">&gt; {</span></span>
-<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #FF7B72">extern</span><span style="color: #C9D1D9"> </span><span style="color: #A5D6FF">&quot;rust-call&quot;</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">fn</span><span style="color: #C9D1D9"> </span><span style="color: #D2A8FF">call</span><span style="color: #C9D1D9">(</span><span style="color: #FF7B72">&amp;</span><span style="color: #79C0FF">self</span><span style="color: #C9D1D9">, args</span><span style="color: #FF7B72">:</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">Args</span><span style="color: #C9D1D9">) </span><span style="color: #FF7B72">-&gt;</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">Self</span><span style="color: #FF7B72">::</span><span style="color: #FFA657">Output</span><span style="color: #C9D1D9">;</span></span>
+</ul>
+<p>トレイトの定義をこのようになっていますが、注目すべきは<code>self</code>の型です。</p>
+<pre is:raw="" class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #FF7B72">pub</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">trait</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">Fn</span><span style="color: #C9D1D9">&#x3C;</span><span style="color: #FFA657">Args</span><span style="color: #C9D1D9">></span><span style="color: #FF7B72">:</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">FnMut</span><span style="color: #C9D1D9">&#x3C;</span><span style="color: #FFA657">Args</span><span style="color: #C9D1D9">> {</span></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #FF7B72">extern</span><span style="color: #C9D1D9"> </span><span style="color: #A5D6FF">"rust-call"</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">fn</span><span style="color: #C9D1D9"> </span><span style="color: #D2A8FF">call</span><span style="color: #C9D1D9">(</span><span style="color: #FF7B72">&#x26;</span><span style="color: #79C0FF">self</span><span style="color: #C9D1D9">, args</span><span style="color: #FF7B72">:</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">Args</span><span style="color: #C9D1D9">) </span><span style="color: #FF7B72">-></span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">Self</span><span style="color: #FF7B72">::</span><span style="color: #FFA657">Output</span><span style="color: #C9D1D9">;</span></span>
 <span class="line"><span style="color: #C9D1D9">}</span></span>
 <span class="line"></span>
-<span class="line"><span style="color: #FF7B72">pub</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">trait</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">FnMut</span><span style="color: #C9D1D9">&lt;</span><span style="color: #FFA657">Args</span><span style="color: #C9D1D9">&gt;</span><span style="color: #FF7B72">:</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">FnOnce</span><span style="color: #C9D1D9">&lt;</span><span style="color: #FFA657">Args</span><span style="color: #C9D1D9">&gt; {</span></span>
-<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #FF7B72">extern</span><span style="color: #C9D1D9"> </span><span style="color: #A5D6FF">&quot;rust-call&quot;</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">fn</span><span style="color: #C9D1D9"> </span><span style="color: #D2A8FF">call_mut</span><span style="color: #C9D1D9">(</span></span>
-<span class="line"><span style="color: #C9D1D9">        </span><span style="color: #FF7B72">&amp;mut</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">self</span><span style="color: #C9D1D9">,</span></span>
+<span class="line"><span style="color: #FF7B72">pub</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">trait</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">FnMut</span><span style="color: #C9D1D9">&#x3C;</span><span style="color: #FFA657">Args</span><span style="color: #C9D1D9">></span><span style="color: #FF7B72">:</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">FnOnce</span><span style="color: #C9D1D9">&#x3C;</span><span style="color: #FFA657">Args</span><span style="color: #C9D1D9">> {</span></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #FF7B72">extern</span><span style="color: #C9D1D9"> </span><span style="color: #A5D6FF">"rust-call"</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">fn</span><span style="color: #C9D1D9"> </span><span style="color: #D2A8FF">call_mut</span><span style="color: #C9D1D9">(</span></span>
+<span class="line"><span style="color: #C9D1D9">        </span><span style="color: #FF7B72">&#x26;mut</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">self</span><span style="color: #C9D1D9">,</span></span>
 <span class="line"><span style="color: #C9D1D9">        args</span><span style="color: #FF7B72">:</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">Args</span></span>
-<span class="line"><span style="color: #C9D1D9">    ) </span><span style="color: #FF7B72">-&gt;</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">Self</span><span style="color: #FF7B72">::</span><span style="color: #FFA657">Output</span><span style="color: #C9D1D9">;</span></span>
+<span class="line"><span style="color: #C9D1D9">    ) </span><span style="color: #FF7B72">-></span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">Self</span><span style="color: #FF7B72">::</span><span style="color: #FFA657">Output</span><span style="color: #C9D1D9">;</span></span>
 <span class="line"><span style="color: #C9D1D9">}</span></span>
 <span class="line"></span>
-<span class="line"><span style="color: #FF7B72">pub</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">trait</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">FnOnce</span><span style="color: #C9D1D9">&lt;</span><span style="color: #FFA657">Args</span><span style="color: #C9D1D9">&gt; {</span></span>
+<span class="line"><span style="color: #FF7B72">pub</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">trait</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">FnOnce</span><span style="color: #C9D1D9">&#x3C;</span><span style="color: #FFA657">Args</span><span style="color: #C9D1D9">> {</span></span>
 <span class="line"><span style="color: #C9D1D9">    </span><span style="color: #FF7B72">type</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">Output</span><span style="color: #C9D1D9">;</span></span>
-<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #FF7B72">extern</span><span style="color: #C9D1D9"> </span><span style="color: #A5D6FF">&quot;rust-call&quot;</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">fn</span><span style="color: #C9D1D9"> </span><span style="color: #D2A8FF">call_once</span><span style="color: #C9D1D9">(</span><span style="color: #79C0FF">self</span><span style="color: #C9D1D9">, args</span><span style="color: #FF7B72">:</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">Args</span><span style="color: #C9D1D9">) </span><span style="color: #FF7B72">-&gt;</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">Self</span><span style="color: #FF7B72">::</span><span style="color: #FFA657">Output</span><span style="color: #C9D1D9">;</span></span>
-<span class="line"><span style="color: #C9D1D9">}</span></span></code></pre><ul>
-<li><code>Fn</code>がイミュータブル参照<code>&amp;self</code></li>
-<li><code>FnMut</code>がミュータブル参照<code>&amp;mut self</code></li>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #FF7B72">extern</span><span style="color: #C9D1D9"> </span><span style="color: #A5D6FF">"rust-call"</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">fn</span><span style="color: #C9D1D9"> </span><span style="color: #D2A8FF">call_once</span><span style="color: #C9D1D9">(</span><span style="color: #79C0FF">self</span><span style="color: #C9D1D9">, args</span><span style="color: #FF7B72">:</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">Args</span><span style="color: #C9D1D9">) </span><span style="color: #FF7B72">-></span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">Self</span><span style="color: #FF7B72">::</span><span style="color: #FFA657">Output</span><span style="color: #C9D1D9">;</span></span>
+<span class="line"><span style="color: #C9D1D9">}</span></span></code></pre>
+<ul>
+<li><code>Fn</code>がイミュータブル参照<code>&#x26;self</code></li>
+<li><code>FnMut</code>がミュータブル参照<code>&#x26;mut self</code></li>
 <li><code>FnOnce</code>が所有権<code>self</code>
 を取ることがわかります。</li>
-</ul><p>クロージャを構造体として考えると<code>FnOnce</code>がなぜ１度しか呼べないのかわかりやすいですね。</p><h2 id="クロージャのcaptureと環境">クロージャのcaptureと環境</h2><p>先ほどのこのコード</p><pre class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #FF7B72">fn</span><span style="color: #C9D1D9"> counter () </span><span style="color: #FF7B72">-&gt;</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">impl</span><span style="color: #C9D1D9"> </span><span style="color: #D2A8FF">FnMut</span><span style="color: #C9D1D9">() </span><span style="color: #FF7B72">-&gt;</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">i32</span><span style="color: #C9D1D9"> {</span></span>
+</ul>
+<p>クロージャを構造体として考えると<code>FnOnce</code>がなぜ１度しか呼べないのかわかりやすいですね。</p>
+<h2 id="クロージャのcaptureと環境">クロージャのcaptureと環境</h2>
+<p>先ほどのこのコード</p>
+<pre is:raw="" class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #FF7B72">fn</span><span style="color: #C9D1D9"> counter () </span><span style="color: #FF7B72">-></span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">impl</span><span style="color: #C9D1D9"> </span><span style="color: #D2A8FF">FnMut</span><span style="color: #C9D1D9">() </span><span style="color: #FF7B72">-></span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">i32</span><span style="color: #C9D1D9"> {</span></span>
 <span class="line"><span style="color: #C9D1D9">    </span><span style="color: #FF7B72">let</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">mut</span><span style="color: #C9D1D9"> x</span><span style="color: #FF7B72">:</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">i32</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">0</span><span style="color: #C9D1D9">;</span></span>
 <span class="line"><span style="color: #C9D1D9">    </span><span style="color: #FF7B72">return</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">move</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">||</span><span style="color: #C9D1D9"> {</span></span>
 <span class="line"><span style="color: #C9D1D9">        x </span><span style="color: #FF7B72">+=</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">1</span><span style="color: #C9D1D9">;</span></span>
 <span class="line"><span style="color: #C9D1D9">        x</span></span>
 <span class="line"><span style="color: #C9D1D9">    }</span></span>
-<span class="line"><span style="color: #C9D1D9">}</span></span></code></pre><p><code>x</code>はクロージャの中で参照されていますね。これをcaptureといいます。
-なので<code>x</code>はクロージャにcaptureされていると言えます。</p><p>次にクロージャの構造体に相当する部分ですが、これをクロージャの<code>環境</code>と言ったりします。</p><p>変数がcaptureされるときはRustコンパイラが型を推測します。</p><p><a href="https://doc.rust-lang.org/reference/types/closure.html#capture-modes">ここ</a>に書いてあるように</p><ul>
+<span class="line"><span style="color: #C9D1D9">}</span></span></code></pre>
+<p><code>x</code>はクロージャの中で参照されていますね。これをcaptureといいます。
+なので<code>x</code>はクロージャにcaptureされていると言えます。</p>
+<p>次にクロージャの構造体に相当する部分ですが、これをクロージャの<code>環境</code>と言ったりします。</p>
+<p>変数がcaptureされるときはRustコンパイラが型を推測します。</p>
+<p><a href="https://doc.rust-lang.org/reference/types/closure.html#capture-modes">ここ</a>に書いてあるように</p>
+<ul>
 <li>イミュータブル参照</li>
 <li>ミュータブル参照</li>
 <li>所有権
 の優先順になっているようです。</li>
-</ul><p>先ほどの例でいうと、ミュータブル参照としてcaptureしようとするとクロージャのライフタイムが<code>x</code>のライフタイムより長くなってしまいます。
-そのため<code>move</code>キーワードを使ってRustコンパイラに所有権を渡すようにさせています。</p><h2 id="クロージャを引数に取る場合">クロージャを引数に取る場合</h2><ul>
+</ul>
+<p>先ほどの例でいうと、ミュータブル参照としてcaptureしようとするとクロージャのライフタイムが<code>x</code>のライフタイムより長くなってしまいます。
+そのため<code>move</code>キーワードを使ってRustコンパイラに所有権を渡すようにさせています。</p>
+<h2 id="クロージャを引数に取る場合">クロージャを引数に取る場合</h2>
+<ul>
 <li>ジェネリック</li>
 <li>implトレイト</li>
 <li>dynトレイト
 の３つがあります</li>
-</ul><pre class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #FF7B72">fn</span><span style="color: #C9D1D9"> </span><span style="color: #D2A8FF">closure_generic</span><span style="color: #C9D1D9">&lt;</span><span style="color: #FFA657">T</span><span style="color: #FF7B72">:</span><span style="color: #C9D1D9"> </span><span style="color: #D2A8FF">Fn</span><span style="color: #C9D1D9">(</span><span style="color: #FFA657">i32</span><span style="color: #C9D1D9">) </span><span style="color: #FF7B72">-&gt;</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">i32</span><span style="color: #C9D1D9">&gt;(f</span><span style="color: #FF7B72">:</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">T</span><span style="color: #C9D1D9">) {</span></span>
-<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #D2A8FF">println!</span><span style="color: #C9D1D9">(</span><span style="color: #A5D6FF">&quot;generic {}&quot;</span><span style="color: #C9D1D9">, </span><span style="color: #D2A8FF">f</span><span style="color: #C9D1D9">(</span><span style="color: #79C0FF">1</span><span style="color: #C9D1D9">));</span></span>
+</ul>
+<pre is:raw="" class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #FF7B72">fn</span><span style="color: #C9D1D9"> </span><span style="color: #D2A8FF">closure_generic</span><span style="color: #C9D1D9">&#x3C;</span><span style="color: #FFA657">T</span><span style="color: #FF7B72">:</span><span style="color: #C9D1D9"> </span><span style="color: #D2A8FF">Fn</span><span style="color: #C9D1D9">(</span><span style="color: #FFA657">i32</span><span style="color: #C9D1D9">) </span><span style="color: #FF7B72">-></span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">i32</span><span style="color: #C9D1D9">>(f</span><span style="color: #FF7B72">:</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">T</span><span style="color: #C9D1D9">) {</span></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #D2A8FF">println!</span><span style="color: #C9D1D9">(</span><span style="color: #A5D6FF">"generic {}"</span><span style="color: #C9D1D9">, </span><span style="color: #D2A8FF">f</span><span style="color: #C9D1D9">(</span><span style="color: #79C0FF">1</span><span style="color: #C9D1D9">));</span></span>
 <span class="line"><span style="color: #C9D1D9">}</span></span>
 <span class="line"></span>
-<span class="line"><span style="color: #FF7B72">fn</span><span style="color: #C9D1D9"> </span><span style="color: #D2A8FF">closure_impl</span><span style="color: #C9D1D9">(f</span><span style="color: #FF7B72">:</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">impl</span><span style="color: #C9D1D9"> </span><span style="color: #D2A8FF">Fn</span><span style="color: #C9D1D9">(</span><span style="color: #FFA657">i32</span><span style="color: #C9D1D9">) </span><span style="color: #FF7B72">-&gt;</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">i32</span><span style="color: #C9D1D9">) {</span></span>
-<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #D2A8FF">println!</span><span style="color: #C9D1D9">(</span><span style="color: #A5D6FF">&quot;impl {}&quot;</span><span style="color: #C9D1D9">, </span><span style="color: #D2A8FF">f</span><span style="color: #C9D1D9">(</span><span style="color: #79C0FF">1</span><span style="color: #C9D1D9">));</span></span>
+<span class="line"><span style="color: #FF7B72">fn</span><span style="color: #C9D1D9"> </span><span style="color: #D2A8FF">closure_impl</span><span style="color: #C9D1D9">(f</span><span style="color: #FF7B72">:</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">impl</span><span style="color: #C9D1D9"> </span><span style="color: #D2A8FF">Fn</span><span style="color: #C9D1D9">(</span><span style="color: #FFA657">i32</span><span style="color: #C9D1D9">) </span><span style="color: #FF7B72">-></span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">i32</span><span style="color: #C9D1D9">) {</span></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #D2A8FF">println!</span><span style="color: #C9D1D9">(</span><span style="color: #A5D6FF">"impl {}"</span><span style="color: #C9D1D9">, </span><span style="color: #D2A8FF">f</span><span style="color: #C9D1D9">(</span><span style="color: #79C0FF">1</span><span style="color: #C9D1D9">));</span></span>
 <span class="line"><span style="color: #C9D1D9">}</span></span>
 <span class="line"></span>
-<span class="line"><span style="color: #FF7B72">fn</span><span style="color: #C9D1D9"> </span><span style="color: #D2A8FF">closure_dyn</span><span style="color: #C9D1D9">(f</span><span style="color: #FF7B72">:</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">Box</span><span style="color: #C9D1D9">&lt;</span><span style="color: #FF7B72">dyn</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">Fn</span><span style="color: #C9D1D9">(</span><span style="color: #FFA657">i32</span><span style="color: #C9D1D9">) </span><span style="color: #FF7B72">-&gt;</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">i32</span><span style="color: #C9D1D9">&gt;) {</span></span>
-<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #D2A8FF">println!</span><span style="color: #C9D1D9">(</span><span style="color: #A5D6FF">&quot;dyn {}&quot;</span><span style="color: #C9D1D9">, </span><span style="color: #D2A8FF">f</span><span style="color: #C9D1D9">(</span><span style="color: #79C0FF">1</span><span style="color: #C9D1D9">));</span></span>
+<span class="line"><span style="color: #FF7B72">fn</span><span style="color: #C9D1D9"> </span><span style="color: #D2A8FF">closure_dyn</span><span style="color: #C9D1D9">(f</span><span style="color: #FF7B72">:</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">Box</span><span style="color: #C9D1D9">&#x3C;</span><span style="color: #FF7B72">dyn</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">Fn</span><span style="color: #C9D1D9">(</span><span style="color: #FFA657">i32</span><span style="color: #C9D1D9">) </span><span style="color: #FF7B72">-></span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">i32</span><span style="color: #C9D1D9">>) {</span></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #D2A8FF">println!</span><span style="color: #C9D1D9">(</span><span style="color: #A5D6FF">"dyn {}"</span><span style="color: #C9D1D9">, </span><span style="color: #D2A8FF">f</span><span style="color: #C9D1D9">(</span><span style="color: #79C0FF">1</span><span style="color: #C9D1D9">));</span></span>
 <span class="line"><span style="color: #C9D1D9">}</span></span>
 <span class="line"></span>
 <span class="line"></span>
@@ -184,29 +215,39 @@
 <span class="line"><span style="color: #C9D1D9">    </span><span style="color: #D2A8FF">closure_generic</span><span style="color: #C9D1D9">(</span><span style="color: #FF7B72">|</span><span style="color: #C9D1D9">x</span><span style="color: #FF7B72">|</span><span style="color: #C9D1D9"> x </span><span style="color: #FF7B72">+</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">1</span><span style="color: #C9D1D9">);</span></span>
 <span class="line"><span style="color: #C9D1D9">    </span><span style="color: #D2A8FF">closure_impl</span><span style="color: #C9D1D9">(</span><span style="color: #FF7B72">|</span><span style="color: #C9D1D9">x</span><span style="color: #FF7B72">|</span><span style="color: #C9D1D9"> x </span><span style="color: #FF7B72">+</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">1</span><span style="color: #C9D1D9">);</span></span>
 <span class="line"><span style="color: #C9D1D9">    </span><span style="color: #D2A8FF">closure_dyn</span><span style="color: #C9D1D9">(</span><span style="color: #FFA657">Box</span><span style="color: #FF7B72">::</span><span style="color: #D2A8FF">new</span><span style="color: #C9D1D9">(</span><span style="color: #FF7B72">|</span><span style="color: #C9D1D9">x</span><span style="color: #FF7B72">|</span><span style="color: #C9D1D9"> x </span><span style="color: #FF7B72">+</span><span style="color: #79C0FF">1</span><span style="color: #C9D1D9"> ));</span></span>
-<span class="line"><span style="color: #C9D1D9">}</span></span></code></pre><p>ジェネリックとimplトレイトについては引数に取る場合ほぼ同じです。(implトレイトのほうがシンプルでよさそうです。)
+<span class="line"><span style="color: #C9D1D9">}</span></span></code></pre>
+<p>ジェネリックとimplトレイトについては引数に取る場合ほぼ同じです。(implトレイトのほうがシンプルでよさそうです。)
 implとdynについては静的ディスパッチするか動的ディスパッチするかの違いになります。
-dynの場合はトレイトオブジェクトを使っているのでBoxする必要があります。</p><h2 id="クロージャを返す場合">クロージャを返す場合</h2><ul>
+dynの場合はトレイトオブジェクトを使っているのでBoxする必要があります。</p>
+<h2 id="クロージャを返す場合">クロージャを返す場合</h2>
+<ul>
 <li>implトレイト</li>
 <li>dynトレイト
 の２つがあります</li>
-</ul><pre class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #FF7B72">fn</span><span style="color: #C9D1D9"> </span><span style="color: #D2A8FF">closure_impl</span><span style="color: #C9D1D9">() </span><span style="color: #FF7B72">-&gt;</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">impl</span><span style="color: #C9D1D9"> </span><span style="color: #D2A8FF">Fn</span><span style="color: #C9D1D9">(</span><span style="color: #FFA657">i32</span><span style="color: #C9D1D9">) </span><span style="color: #FF7B72">-&gt;</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">i32</span><span style="color: #C9D1D9"> {</span></span>
+</ul>
+<pre is:raw="" class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #FF7B72">fn</span><span style="color: #C9D1D9"> </span><span style="color: #D2A8FF">closure_impl</span><span style="color: #C9D1D9">() </span><span style="color: #FF7B72">-></span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">impl</span><span style="color: #C9D1D9"> </span><span style="color: #D2A8FF">Fn</span><span style="color: #C9D1D9">(</span><span style="color: #FFA657">i32</span><span style="color: #C9D1D9">) </span><span style="color: #FF7B72">-></span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">i32</span><span style="color: #C9D1D9"> {</span></span>
 <span class="line"><span style="color: #C9D1D9">    </span><span style="color: #FF7B72">return</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">|</span><span style="color: #C9D1D9">x</span><span style="color: #FF7B72">|</span><span style="color: #C9D1D9"> x </span><span style="color: #FF7B72">+</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">1</span><span style="color: #C9D1D9">;</span></span>
 <span class="line"><span style="color: #C9D1D9">}</span></span>
 <span class="line"></span>
-<span class="line"><span style="color: #FF7B72">fn</span><span style="color: #C9D1D9"> </span><span style="color: #D2A8FF">closure_dyn</span><span style="color: #C9D1D9">() </span><span style="color: #FF7B72">-&gt;</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">Box</span><span style="color: #C9D1D9">&lt;</span><span style="color: #FF7B72">dyn</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">Fn</span><span style="color: #C9D1D9">(</span><span style="color: #FFA657">i32</span><span style="color: #C9D1D9">) </span><span style="color: #FF7B72">-&gt;</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">i32</span><span style="color: #C9D1D9"> &gt;{</span></span>
+<span class="line"><span style="color: #FF7B72">fn</span><span style="color: #C9D1D9"> </span><span style="color: #D2A8FF">closure_dyn</span><span style="color: #C9D1D9">() </span><span style="color: #FF7B72">-></span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">Box</span><span style="color: #C9D1D9">&#x3C;</span><span style="color: #FF7B72">dyn</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">Fn</span><span style="color: #C9D1D9">(</span><span style="color: #FFA657">i32</span><span style="color: #C9D1D9">) </span><span style="color: #FF7B72">-></span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">i32</span><span style="color: #C9D1D9"> >{</span></span>
 <span class="line"><span style="color: #C9D1D9">    </span><span style="color: #FF7B72">return</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">Box</span><span style="color: #FF7B72">::</span><span style="color: #D2A8FF">new</span><span style="color: #C9D1D9">(</span><span style="color: #FF7B72">|</span><span style="color: #C9D1D9">x</span><span style="color: #FF7B72">|</span><span style="color: #C9D1D9"> x </span><span style="color: #FF7B72">+</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">1</span><span style="color: #C9D1D9">);</span></span>
 <span class="line"><span style="color: #C9D1D9">}</span></span>
 <span class="line"></span>
 <span class="line"><span style="color: #FF7B72">fn</span><span style="color: #C9D1D9"> </span><span style="color: #D2A8FF">main</span><span style="color: #C9D1D9">() {</span></span>
-<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #D2A8FF">println!</span><span style="color: #C9D1D9">(</span><span style="color: #A5D6FF">&quot;impl {}&quot;</span><span style="color: #C9D1D9">, </span><span style="color: #D2A8FF">closure_impl</span><span style="color: #C9D1D9">()(</span><span style="color: #79C0FF">1</span><span style="color: #C9D1D9">));</span></span>
-<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #D2A8FF">println!</span><span style="color: #C9D1D9">(</span><span style="color: #A5D6FF">&quot;dyn {}&quot;</span><span style="color: #C9D1D9">, </span><span style="color: #D2A8FF">closure_dyn</span><span style="color: #C9D1D9">()(</span><span style="color: #79C0FF">1</span><span style="color: #C9D1D9">));</span></span>
-<span class="line"><span style="color: #C9D1D9">}</span></span></code></pre><p>クロージャの型はRustコンパイラが生成するのでプログラマが知ることはできません。
-なのでジェネリックは使えずこの２パターンになります。</p><p>静的ディスパッチ、動的ディスパッチは引数で渡すときと同じですが、戻り値で返す場合<code>dyn</code>じゃないと扱えない場合があります。</p><pre class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #FF7B72">fn</span><span style="color: #C9D1D9"> </span><span style="color: #D2A8FF">closure_only_dyn</span><span style="color: #C9D1D9">(flg</span><span style="color: #FF7B72">:</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">bool</span><span style="color: #C9D1D9">) </span><span style="color: #FF7B72">-&gt;</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">Box</span><span style="color: #C9D1D9">&lt;</span><span style="color: #FF7B72">dyn</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">Fn</span><span style="color: #C9D1D9">(</span><span style="color: #FFA657">i32</span><span style="color: #C9D1D9">) </span><span style="color: #FF7B72">-&gt;</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">i32</span><span style="color: #C9D1D9">&gt; {</span></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #D2A8FF">println!</span><span style="color: #C9D1D9">(</span><span style="color: #A5D6FF">"impl {}"</span><span style="color: #C9D1D9">, </span><span style="color: #D2A8FF">closure_impl</span><span style="color: #C9D1D9">()(</span><span style="color: #79C0FF">1</span><span style="color: #C9D1D9">));</span></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #D2A8FF">println!</span><span style="color: #C9D1D9">(</span><span style="color: #A5D6FF">"dyn {}"</span><span style="color: #C9D1D9">, </span><span style="color: #D2A8FF">closure_dyn</span><span style="color: #C9D1D9">()(</span><span style="color: #79C0FF">1</span><span style="color: #C9D1D9">));</span></span>
+<span class="line"><span style="color: #C9D1D9">}</span></span></code></pre>
+<p>クロージャの型はRustコンパイラが生成するのでプログラマが知ることはできません。
+なのでジェネリックは使えずこの２パターンになります。</p>
+<p>静的ディスパッチ、動的ディスパッチは引数で渡すときと同じですが、戻り値で返す場合<code>dyn</code>じゃないと扱えない場合があります。</p>
+<pre is:raw="" class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #FF7B72">fn</span><span style="color: #C9D1D9"> </span><span style="color: #D2A8FF">closure_only_dyn</span><span style="color: #C9D1D9">(flg</span><span style="color: #FF7B72">:</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">bool</span><span style="color: #C9D1D9">) </span><span style="color: #FF7B72">-></span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">Box</span><span style="color: #C9D1D9">&#x3C;</span><span style="color: #FF7B72">dyn</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">Fn</span><span style="color: #C9D1D9">(</span><span style="color: #FFA657">i32</span><span style="color: #C9D1D9">) </span><span style="color: #FF7B72">-></span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">i32</span><span style="color: #C9D1D9">> {</span></span>
 <span class="line"><span style="color: #C9D1D9">    </span><span style="color: #FF7B72">if</span><span style="color: #C9D1D9"> flg { </span><span style="color: #FFA657">Box</span><span style="color: #FF7B72">::</span><span style="color: #D2A8FF">new</span><span style="color: #C9D1D9">(</span><span style="color: #FF7B72">|</span><span style="color: #C9D1D9">x</span><span style="color: #FF7B72">|</span><span style="color: #C9D1D9"> x </span><span style="color: #FF7B72">+</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">1</span><span style="color: #C9D1D9">) } </span><span style="color: #FF7B72">else</span><span style="color: #C9D1D9"> { </span><span style="color: #FFA657">Box</span><span style="color: #FF7B72">::</span><span style="color: #D2A8FF">new</span><span style="color: #C9D1D9">(</span><span style="color: #FF7B72">|</span><span style="color: #C9D1D9">x</span><span style="color: #FF7B72">|</span><span style="color: #C9D1D9"> x </span><span style="color: #FF7B72">+</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">2</span><span style="color: #C9D1D9">) }</span></span>
-<span class="line"><span style="color: #C9D1D9">}</span></span></code></pre><p>この関数のように条件によって異なるクロージャを返す場合です。
+<span class="line"><span style="color: #C9D1D9">}</span></span></code></pre>
+<p>この関数のように条件によって異なるクロージャを返す場合です。
 <code>|x| x + 1</code>と<code>|x| x + 2</code>はシグネチャが同じで実装しているトレイトも同じですが、あくまで別の型として扱われます。
-そのためトレイトオブジェクトをつかった動的ディスパッチにする必要があります。</p><h2 id="まとめ">まとめ</h2><p>最初はよくわからなかったRustのクロージャですが、構造体であるということがわかったらだいぶ理解がはかどりました。
+そのためトレイトオブジェクトをつかった動的ディスパッチにする必要があります。</p>
+<h2 id="まとめ">まとめ</h2>
+<p>最初はよくわからなかったRustのクロージャですが、構造体であるということがわかったらだいぶ理解がはかどりました。
 参考になれば幸いです。</p>
 			</main>
 		</div>

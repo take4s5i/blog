@@ -1,5 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 	<head>
 		<!-- Google Tag Manager -->
 <!-- End Google Tag Manager -->
@@ -32,14 +31,14 @@
 <link rel="preconnect" href="https://fonts.gstatic.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&family=IBM+Plex+Sans:wght@400;700&display=swap">
 
-	<link rel="stylesheet" href="/assets/1865bdc7.a6921d77.css" /><script type="module">(function(t,n,r,e,m){t[e]=t[e]||[],t[e].push({"gtm.start":new Date().getTime(),event:"gtm.js"});var g=n.getElementsByTagName(r)[0],a=n.createElement(r),s=e!="dataLayer"?"&l="+e:"";a.async=!0,a.src="https://www.googletagmanager.com/gtm.js?id="+m+s,g.parentNode.insertBefore(a,g)})(window,document,"script","dataLayer","GTM-P42NKJ8");
+	<link rel="stylesheet" href="/assets/c99d5208.070dc6d6.css" /><script type="module">(function(t,n,r,e,m){t[e]=t[e]||[],t[e].push({"gtm.start":new Date().getTime(),event:"gtm.js"});var g=n.getElementsByTagName(r)[0],a=n.createElement(r),s=e!="dataLayer"?"&l="+e:"";a.async=!0,a.src="https://www.googletagmanager.com/gtm.js?id="+m+s,g.parentNode.insertBefore(a,g)})(window,document,"script","dataLayer","GTM-P42NKJ8");
 </script></head>
 	<body>
-		<header class="wrapper astro-63D5MSV2">
-	<article class="astro-63D5MSV2">
-		<h1 class="astro-63D5MSV2">
-			<a href="/" class="astro-63D5MSV2">
-				<span class="astro-63D5MSV2">take4s5i DEV</span>
+		<header class="wrapper astro-W2MTFRY6">
+	<article class="astro-W2MTFRY6">
+		<h1 class="astro-W2MTFRY6">
+			<a href="/" class="astro-W2MTFRY6">
+				<span class="astro-W2MTFRY6">take4s5i DEV</span>
 			</a>
 		</h1>
 	</article>
@@ -47,31 +46,42 @@
 
 
 		<div class="wrapper">
-			<div class="layout astro-57SHIKPC">
-	<article class="content astro-57SHIKPC">
-		<div class="astro-57SHIKPC">
-			<header class="astro-57SHIKPC">
+			<div class="layout astro-O6PTD47S">
+	<article class="content astro-O6PTD47S">
+		<div class="astro-O6PTD47S">
+			<header class="astro-O6PTD47S">
 				
-				<p class="publish-date astro-57SHIKPC">3 Feb 2022</p>
-				<h1 class="title astro-57SHIKPC">Rustのcrossbeamを試してみる</h1>
+				<p class="publish-date astro-O6PTD47S">3 Feb 2022</p>
+				<h1 class="title astro-O6PTD47S">Rustのcrossbeamを試してみる</h1>
 			</header>
-			<div class="editbar astro-57SHIKPC">
-				<a href="https://github.com/take4s5i/blog/blob/main/src/pages/posts/2022/02/rust-try-crossbeam.md" class="astro-57SHIKPC">Edit This Page</a>
+			<div class="editbar astro-O6PTD47S">
+				<a href="https://github.com/take4s5i/blog/blob/main/src/pages/posts/2022/02/rust-try-crossbeam.md" class="astro-O6PTD47S">Edit This Page</a>
 			</div>
-			<main class="astro-57SHIKPC">
-				<p>Rustのライブラリである<a href="https://github.com/crossbeam-rs/crossbeam">crossbeam</a>を試してみます。</p><p>crossbeamは公式の説明によると</p><p>This crate provides a set of tools for concurrent programming</p><p>このcrateは並列プログラミングのためのツールセットを提供する、とあります。</p><p>並列プログラミングを行う際のデータ構造や便利な関数が実装されているようです。
-それではみていきます。</p><h1 id="crossbeamscope">crossbeam::scope</h1><p><a href="https://docs.rs/crossbeam/0.8.1/crossbeam/fn.scope.html">crossbeam::scope</a>関数は
-スコープ付きのスレッドを作ることができます。</p><p>スコープ付きというのはライフタイムが制限されているということです。
-通常のスレッドはいつまでスレッドが生きるのかわからないため、スレッドの外から借用するには<code>'static</code>ライフタイムが必要でした。</p><p>スコープ付きスレッドを使うと、Rustコンパイラがスレッドのライフタイムを認識してくれるため、
-<code>'static</code>出なくてもデータを借用できるようになります。</p><h2 id="stdthreadでの例">std::threadでの例</h2><p>まずはcrossbeamを使わない普通のstd::threadのコードをみていきます。</p><pre class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #FF7B72">use</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">std</span><span style="color: #FF7B72">::</span><span style="color: #C9D1D9">{</span></span>
+			<main class="astro-O6PTD47S">
+				<p>Rustのライブラリである<a href="https://github.com/crossbeam-rs/crossbeam">crossbeam</a>を試してみます。</p>
+<p>crossbeamは公式の説明によると</p>
+<pre is:raw="" class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #c9d1d9">This crate provides a set of tools for concurrent programming</span></span></code></pre>
+<p>このcrateは並列プログラミングのためのツールセットを提供する、とあります。</p>
+<p>並列プログラミングを行う際のデータ構造や便利な関数が実装されているようです。
+それではみていきます。</p>
+<h1 id="crossbeamscope">crossbeam::scope</h1>
+<p><a href="https://docs.rs/crossbeam/0.8.1/crossbeam/fn.scope.html">crossbeam::scope</a>関数は
+スコープ付きのスレッドを作ることができます。</p>
+<p>スコープ付きというのはライフタイムが制限されているということです。
+通常のスレッドはいつまでスレッドが生きるのかわからないため、スレッドの外から借用するには<code>'static</code>ライフタイムが必要でした。</p>
+<p>スコープ付きスレッドを使うと、Rustコンパイラがスレッドのライフタイムを認識してくれるため、
+<code>'static</code>出なくてもデータを借用できるようになります。</p>
+<h2 id="stdthreadでの例">std::threadでの例</h2>
+<p>まずはcrossbeamを使わない普通のstd::threadのコードをみていきます。</p>
+<pre is:raw="" class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #FF7B72">use</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">std</span><span style="color: #FF7B72">::</span><span style="color: #C9D1D9">{</span></span>
 <span class="line"><span style="color: #C9D1D9">    </span><span style="color: #FFA657">collections</span><span style="color: #FF7B72">::</span><span style="color: #FFA657">HashMap</span><span style="color: #C9D1D9">,</span></span>
 <span class="line"><span style="color: #C9D1D9">    fs,</span></span>
 <span class="line"><span style="color: #C9D1D9">    </span><span style="color: #FFA657">sync</span><span style="color: #FF7B72">::</span><span style="color: #C9D1D9">{</span><span style="color: #FFA657">Arc</span><span style="color: #C9D1D9">, </span><span style="color: #FFA657">Mutex</span><span style="color: #C9D1D9">},</span></span>
 <span class="line"><span style="color: #C9D1D9">};</span></span>
 <span class="line"></span>
 <span class="line"><span style="color: #FF7B72">fn</span><span style="color: #C9D1D9"> </span><span style="color: #D2A8FF">main</span><span style="color: #C9D1D9">() {</span></span>
-<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #FF7B72">let</span><span style="color: #C9D1D9"> files </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> </span><span style="color: #D2A8FF">vec!</span><span style="color: #C9D1D9">[</span><span style="color: #A5D6FF">&quot;a.txt&quot;</span><span style="color: #C9D1D9">, </span><span style="color: #A5D6FF">&quot;b.txt&quot;</span><span style="color: #C9D1D9">, </span><span style="color: #A5D6FF">&quot;c.txt&quot;</span><span style="color: #C9D1D9">];</span></span>
-<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #FF7B72">let</span><span style="color: #C9D1D9"> contents</span><span style="color: #FF7B72">:</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">Arc</span><span style="color: #C9D1D9">&lt;</span><span style="color: #FFA657">Mutex</span><span style="color: #C9D1D9">&lt;</span><span style="color: #FFA657">HashMap</span><span style="color: #C9D1D9">&lt;</span><span style="color: #FFA657">String</span><span style="color: #C9D1D9">, </span><span style="color: #FFA657">String</span><span style="color: #C9D1D9">&gt;&gt;&gt; </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">Arc</span><span style="color: #FF7B72">::</span><span style="color: #D2A8FF">new</span><span style="color: #C9D1D9">(</span><span style="color: #FFA657">Mutex</span><span style="color: #FF7B72">::</span><span style="color: #D2A8FF">new</span><span style="color: #C9D1D9">(</span><span style="color: #FFA657">HashMap</span><span style="color: #FF7B72">::</span><span style="color: #D2A8FF">new</span><span style="color: #C9D1D9">()));</span></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #FF7B72">let</span><span style="color: #C9D1D9"> files </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> </span><span style="color: #D2A8FF">vec!</span><span style="color: #C9D1D9">[</span><span style="color: #A5D6FF">"a.txt"</span><span style="color: #C9D1D9">, </span><span style="color: #A5D6FF">"b.txt"</span><span style="color: #C9D1D9">, </span><span style="color: #A5D6FF">"c.txt"</span><span style="color: #C9D1D9">];</span></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #FF7B72">let</span><span style="color: #C9D1D9"> contents</span><span style="color: #FF7B72">:</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">Arc</span><span style="color: #C9D1D9">&#x3C;</span><span style="color: #FFA657">Mutex</span><span style="color: #C9D1D9">&#x3C;</span><span style="color: #FFA657">HashMap</span><span style="color: #C9D1D9">&#x3C;</span><span style="color: #FFA657">String</span><span style="color: #C9D1D9">, </span><span style="color: #FFA657">String</span><span style="color: #C9D1D9">>>> </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">Arc</span><span style="color: #FF7B72">::</span><span style="color: #D2A8FF">new</span><span style="color: #C9D1D9">(</span><span style="color: #FFA657">Mutex</span><span style="color: #FF7B72">::</span><span style="color: #D2A8FF">new</span><span style="color: #C9D1D9">(</span><span style="color: #FFA657">HashMap</span><span style="color: #FF7B72">::</span><span style="color: #D2A8FF">new</span><span style="color: #C9D1D9">()));</span></span>
 <span class="line"></span>
 <span class="line"><span style="color: #C9D1D9">    </span><span style="color: #FF7B72">let</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">mut</span><span style="color: #C9D1D9"> h </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> </span><span style="color: #D2A8FF">vec!</span><span style="color: #C9D1D9">[];</span></span>
 <span class="line"><span style="color: #8B949E">    // --------- ここでエラー</span></span>
@@ -91,24 +101,30 @@
 <span class="line"><span style="color: #C9D1D9">    </span><span style="color: #FF7B72">let</span><span style="color: #C9D1D9"> contents </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">Mutex</span><span style="color: #FF7B72">::</span><span style="color: #D2A8FF">into_inner</span><span style="color: #C9D1D9">(</span><span style="color: #FFA657">Arc</span><span style="color: #FF7B72">::</span><span style="color: #D2A8FF">try_unwrap</span><span style="color: #C9D1D9">(contents)</span><span style="color: #FF7B72">.</span><span style="color: #D2A8FF">unwrap</span><span style="color: #C9D1D9">())</span><span style="color: #FF7B72">.</span><span style="color: #D2A8FF">unwrap</span><span style="color: #C9D1D9">();</span></span>
 <span class="line"></span>
 <span class="line"><span style="color: #C9D1D9">    </span><span style="color: #FF7B72">for</span><span style="color: #C9D1D9"> (f, c) </span><span style="color: #FF7B72">in</span><span style="color: #C9D1D9"> contents</span><span style="color: #FF7B72">.</span><span style="color: #D2A8FF">iter</span><span style="color: #C9D1D9">() {</span></span>
-<span class="line"><span style="color: #C9D1D9">        </span><span style="color: #D2A8FF">println!</span><span style="color: #C9D1D9">(</span><span style="color: #A5D6FF">&quot;file: {}&quot;</span><span style="color: #C9D1D9">, f);</span></span>
-<span class="line"><span style="color: #C9D1D9">        </span><span style="color: #D2A8FF">println!</span><span style="color: #C9D1D9">(</span><span style="color: #A5D6FF">&quot;---------------&quot;</span><span style="color: #C9D1D9">);</span></span>
-<span class="line"><span style="color: #C9D1D9">        </span><span style="color: #D2A8FF">println!</span><span style="color: #C9D1D9">(</span><span style="color: #A5D6FF">&quot;{}&quot;</span><span style="color: #C9D1D9">, c);</span></span>
+<span class="line"><span style="color: #C9D1D9">        </span><span style="color: #D2A8FF">println!</span><span style="color: #C9D1D9">(</span><span style="color: #A5D6FF">"file: {}"</span><span style="color: #C9D1D9">, f);</span></span>
+<span class="line"><span style="color: #C9D1D9">        </span><span style="color: #D2A8FF">println!</span><span style="color: #C9D1D9">(</span><span style="color: #A5D6FF">"---------------"</span><span style="color: #C9D1D9">);</span></span>
+<span class="line"><span style="color: #C9D1D9">        </span><span style="color: #D2A8FF">println!</span><span style="color: #C9D1D9">(</span><span style="color: #A5D6FF">"{}"</span><span style="color: #C9D1D9">, c);</span></span>
 <span class="line"><span style="color: #C9D1D9">        </span><span style="color: #D2A8FF">println!</span><span style="color: #C9D1D9">();</span></span>
 <span class="line"><span style="color: #C9D1D9">    }</span></span>
-<span class="line"><span style="color: #C9D1D9">}</span></span></code></pre><p>これはコンパイルエラーになります。</p><pre class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #c9d1d9">error[E0597]: `files` does not live long enough</span></span>
-<span class="line"><span style="color: #c9d1d9">  --&gt; src/main.rs:13:17</span></span>
+<span class="line"><span style="color: #C9D1D9">}</span></span></code></pre>
+<p>これはコンパイルエラーになります。</p>
+<pre is:raw="" class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #c9d1d9">error[E0597]: `files` does not live long enough</span></span>
+<span class="line"><span style="color: #c9d1d9">  --> src/main.rs:13:17</span></span>
 <span class="line"><span style="color: #c9d1d9">   |</span></span>
 <span class="line"><span style="color: #c9d1d9">13 |     for file in files.iter() {</span></span>
 <span class="line"><span style="color: #c9d1d9">   |                 ^^^^^^^^^^^^</span></span>
 <span class="line"><span style="color: #c9d1d9">   |                 |</span></span>
 <span class="line"><span style="color: #c9d1d9">   |                 borrowed value does not live long enough</span></span>
-<span class="line"><span style="color: #c9d1d9">   |                 argument requires that `files` is borrowed for `&#39;static`</span></span>
+<span class="line"><span style="color: #c9d1d9">   |                 argument requires that `files` is borrowed for `'static`</span></span>
 <span class="line"><span style="color: #c9d1d9">...</span></span>
 <span class="line"><span style="color: #c9d1d9">34 | }</span></span>
-<span class="line"><span style="color: #c9d1d9">   | - `files` dropped here while still borrowed</span></span></code></pre><p><code>files</code> からファイル名を借用してスレッドに送っていますが、
+<span class="line"><span style="color: #c9d1d9">   | - `files` dropped here while still borrowed</span></span></code></pre>
+<p><code>files</code> からファイル名を借用してスレッドに送っていますが、
 子スレッドの方が<code>files</code>より長生きする可能性があるとしてエラーになっています。
-（実際のところは, <code>files</code>のライフタイム内で子スレッドをjoinしているため、起こり得ません。）</p><h2 id="crossbeamでの例">crossbeamでの例</h2><p>次にcrossbeamのscope関数を使ってみます。</p><pre class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #FF7B72">use</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">crossbeam</span><span style="color: #FF7B72">::</span><span style="color: #C9D1D9">thread;</span></span>
+（実際のところは, <code>files</code>のライフタイム内で子スレッドをjoinしているため、起こり得ません。）</p>
+<h2 id="crossbeamでの例">crossbeamでの例</h2>
+<p>次にcrossbeamのscope関数を使ってみます。</p>
+<pre is:raw="" class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #FF7B72">use</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">crossbeam</span><span style="color: #FF7B72">::</span><span style="color: #C9D1D9">thread;</span></span>
 <span class="line"><span style="color: #FF7B72">use</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">std</span><span style="color: #FF7B72">::</span><span style="color: #C9D1D9">{</span></span>
 <span class="line"><span style="color: #C9D1D9">    </span><span style="color: #FFA657">collections</span><span style="color: #FF7B72">::</span><span style="color: #FFA657">HashMap</span><span style="color: #C9D1D9">,</span></span>
 <span class="line"><span style="color: #C9D1D9">    fs,</span></span>
@@ -116,8 +132,8 @@
 <span class="line"><span style="color: #C9D1D9">};</span></span>
 <span class="line"></span>
 <span class="line"><span style="color: #FF7B72">fn</span><span style="color: #C9D1D9"> </span><span style="color: #D2A8FF">main</span><span style="color: #C9D1D9">() {</span></span>
-<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #FF7B72">let</span><span style="color: #C9D1D9"> files </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> </span><span style="color: #D2A8FF">vec!</span><span style="color: #C9D1D9">[</span><span style="color: #A5D6FF">&quot;a.txt&quot;</span><span style="color: #C9D1D9">, </span><span style="color: #A5D6FF">&quot;b.txt&quot;</span><span style="color: #C9D1D9">, </span><span style="color: #A5D6FF">&quot;c.txt&quot;</span><span style="color: #C9D1D9">];</span></span>
-<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #FF7B72">let</span><span style="color: #C9D1D9"> contents</span><span style="color: #FF7B72">:</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">Arc</span><span style="color: #C9D1D9">&lt;</span><span style="color: #FFA657">Mutex</span><span style="color: #C9D1D9">&lt;</span><span style="color: #FFA657">HashMap</span><span style="color: #C9D1D9">&lt;</span><span style="color: #FFA657">String</span><span style="color: #C9D1D9">, </span><span style="color: #FFA657">String</span><span style="color: #C9D1D9">&gt;&gt;&gt; </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">Arc</span><span style="color: #FF7B72">::</span><span style="color: #D2A8FF">new</span><span style="color: #C9D1D9">(</span><span style="color: #FFA657">Mutex</span><span style="color: #FF7B72">::</span><span style="color: #D2A8FF">new</span><span style="color: #C9D1D9">(</span><span style="color: #FFA657">HashMap</span><span style="color: #FF7B72">::</span><span style="color: #D2A8FF">new</span><span style="color: #C9D1D9">()));</span></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #FF7B72">let</span><span style="color: #C9D1D9"> files </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> </span><span style="color: #D2A8FF">vec!</span><span style="color: #C9D1D9">[</span><span style="color: #A5D6FF">"a.txt"</span><span style="color: #C9D1D9">, </span><span style="color: #A5D6FF">"b.txt"</span><span style="color: #C9D1D9">, </span><span style="color: #A5D6FF">"c.txt"</span><span style="color: #C9D1D9">];</span></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #FF7B72">let</span><span style="color: #C9D1D9"> contents</span><span style="color: #FF7B72">:</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">Arc</span><span style="color: #C9D1D9">&#x3C;</span><span style="color: #FFA657">Mutex</span><span style="color: #C9D1D9">&#x3C;</span><span style="color: #FFA657">HashMap</span><span style="color: #C9D1D9">&#x3C;</span><span style="color: #FFA657">String</span><span style="color: #C9D1D9">, </span><span style="color: #FFA657">String</span><span style="color: #C9D1D9">>>> </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">Arc</span><span style="color: #FF7B72">::</span><span style="color: #D2A8FF">new</span><span style="color: #C9D1D9">(</span><span style="color: #FFA657">Mutex</span><span style="color: #FF7B72">::</span><span style="color: #D2A8FF">new</span><span style="color: #C9D1D9">(</span><span style="color: #FFA657">HashMap</span><span style="color: #FF7B72">::</span><span style="color: #D2A8FF">new</span><span style="color: #C9D1D9">()));</span></span>
 <span class="line"></span>
 <span class="line"><span style="color: #C9D1D9">    </span><span style="color: #FFA657">thread</span><span style="color: #FF7B72">::</span><span style="color: #D2A8FF">scope</span><span style="color: #C9D1D9">(</span><span style="color: #FF7B72">|</span><span style="color: #C9D1D9">s</span><span style="color: #FF7B72">|</span><span style="color: #C9D1D9"> {</span></span>
 <span class="line"><span style="color: #C9D1D9">        </span><span style="color: #FF7B72">for</span><span style="color: #C9D1D9"> file </span><span style="color: #FF7B72">in</span><span style="color: #C9D1D9"> files</span><span style="color: #FF7B72">.</span><span style="color: #D2A8FF">iter</span><span style="color: #C9D1D9">() {</span></span>
@@ -135,12 +151,14 @@
 <span class="line"><span style="color: #C9D1D9">    </span><span style="color: #FF7B72">let</span><span style="color: #C9D1D9"> contents </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">Mutex</span><span style="color: #FF7B72">::</span><span style="color: #D2A8FF">into_inner</span><span style="color: #C9D1D9">(</span><span style="color: #FFA657">Arc</span><span style="color: #FF7B72">::</span><span style="color: #D2A8FF">try_unwrap</span><span style="color: #C9D1D9">(contents)</span><span style="color: #FF7B72">.</span><span style="color: #D2A8FF">unwrap</span><span style="color: #C9D1D9">())</span><span style="color: #FF7B72">.</span><span style="color: #D2A8FF">unwrap</span><span style="color: #C9D1D9">();</span></span>
 <span class="line"></span>
 <span class="line"><span style="color: #C9D1D9">    </span><span style="color: #FF7B72">for</span><span style="color: #C9D1D9"> (f, c) </span><span style="color: #FF7B72">in</span><span style="color: #C9D1D9"> contents</span><span style="color: #FF7B72">.</span><span style="color: #D2A8FF">iter</span><span style="color: #C9D1D9">() {</span></span>
-<span class="line"><span style="color: #C9D1D9">        </span><span style="color: #D2A8FF">println!</span><span style="color: #C9D1D9">(</span><span style="color: #A5D6FF">&quot;file: {}&quot;</span><span style="color: #C9D1D9">, f);</span></span>
-<span class="line"><span style="color: #C9D1D9">        </span><span style="color: #D2A8FF">println!</span><span style="color: #C9D1D9">(</span><span style="color: #A5D6FF">&quot;---------------&quot;</span><span style="color: #C9D1D9">);</span></span>
-<span class="line"><span style="color: #C9D1D9">        </span><span style="color: #D2A8FF">println!</span><span style="color: #C9D1D9">(</span><span style="color: #A5D6FF">&quot;{}&quot;</span><span style="color: #C9D1D9">, c);</span></span>
+<span class="line"><span style="color: #C9D1D9">        </span><span style="color: #D2A8FF">println!</span><span style="color: #C9D1D9">(</span><span style="color: #A5D6FF">"file: {}"</span><span style="color: #C9D1D9">, f);</span></span>
+<span class="line"><span style="color: #C9D1D9">        </span><span style="color: #D2A8FF">println!</span><span style="color: #C9D1D9">(</span><span style="color: #A5D6FF">"---------------"</span><span style="color: #C9D1D9">);</span></span>
+<span class="line"><span style="color: #C9D1D9">        </span><span style="color: #D2A8FF">println!</span><span style="color: #C9D1D9">(</span><span style="color: #A5D6FF">"{}"</span><span style="color: #C9D1D9">, c);</span></span>
 <span class="line"><span style="color: #C9D1D9">        </span><span style="color: #D2A8FF">println!</span><span style="color: #C9D1D9">();</span></span>
 <span class="line"><span style="color: #C9D1D9">    }</span></span>
-<span class="line"><span style="color: #C9D1D9">}</span></span></code></pre><p>出力:</p><pre class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #c9d1d9">file: b.txt</span></span>
+<span class="line"><span style="color: #C9D1D9">}</span></span></code></pre>
+<p>出力:</p>
+<pre is:raw="" class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #c9d1d9">file: b.txt</span></span>
 <span class="line"><span style="color: #c9d1d9">---------------</span></span>
 <span class="line"><span style="color: #c9d1d9">bbbbbb</span></span>
 <span class="line"><span style="color: #c9d1d9"></span></span>
@@ -152,16 +170,28 @@
 <span class="line"><span style="color: #c9d1d9"></span></span>
 <span class="line"><span style="color: #c9d1d9">file: c.txt</span></span>
 <span class="line"><span style="color: #c9d1d9">---------------</span></span>
-<span class="line"><span style="color: #c9d1d9">ccccc</span></span></code></pre><p>コンパイルが通り期待通り動作しています。</p><p><code>s.spawn</code>で起動したスレッドで手動でjoinする必要はありません。
-<code>scope</code>関数は<code>s.spawn</code>したスレッドが全て完了するまで、自動的にブロックします。</p><p>ソースを読んでみた感じだと、
+<span class="line"><span style="color: #c9d1d9">ccccc</span></span></code></pre>
+<p>コンパイルが通り期待通り動作しています。</p>
+<p><code>s.spawn</code>で起動したスレッドで手動でjoinする必要はありません。
+<code>scope</code>関数は<code>s.spawn</code>したスレッドが全て完了するまで、自動的にブロックします。</p>
+<p>ソースを読んでみた感じだと、
 <a href="https://doc.rust-lang.org/std/thread/struct.Builder.html">std::thread::Builder</a>を使って
-スレッドを起動させているようでした。</p><p>つまり、スコープ付きで扱えるだけで普通にOSのネイティブスレッドが起動しているため、
-グリーンスレッドのようにカジュアルにスレッドを起動する用途には向いていないようです。</p><h1 id="crossbeamchannel">crossbeam::channel</h1><p><a href="https://docs.rs/crossbeam/0.8.1/crossbeam/channel/index.html">crossbeam::channel</a>は
-スレッド間のメッセージ送受信に利用するライブラリです。</p><p>使い方は<a href="https://blog.take4s5i.dev/posts/2022/rust-std-sync2/">std::mpsc::channel</a>とほとんど同じです。</p><p>違いとしては、</p><ul>
+スレッドを起動させているようでした。</p>
+<p>つまり、スコープ付きで扱えるだけで普通にOSのネイティブスレッドが起動しているため、
+グリーンスレッドのようにカジュアルにスレッドを起動する用途には向いていないようです。</p>
+<h1 id="crossbeamchannel">crossbeam::channel</h1>
+<p><a href="https://docs.rs/crossbeam/0.8.1/crossbeam/channel/index.html">crossbeam::channel</a>は
+スレッド間のメッセージ送受信に利用するライブラリです。</p>
+<p>使い方は<a href="https://blog.take4s5i.dev/posts/2022/rust-std-sync2/">std::mpsc::channel</a>とほとんど同じです。</p>
+<p>違いとしては、</p>
+<ul>
 <li>stdの方は multi-producer, single-consumerに対して</li>
 <li>crossbeamの方は multi-producer, multi-consumer
 になっていることが挙げられます。</li>
-</ul><p>また、公式の説明によるとstdより機能豊富でパフォーマンスが良いそうです。</p><p>チャネルを作るために２種類の関数が提供されており</p><ul>
+</ul>
+<p>また、公式の説明によるとstdより機能豊富でパフォーマンスが良いそうです。</p>
+<p>チャネルを作るために２種類の関数が提供されており</p>
+<ul>
 <li><a href="https://docs.rs/crossbeam/0.8.1/crossbeam/channel/fn.bounded.html">bounded</a>
 <ul>
 <li>メッセージのバッファが有限</li>
@@ -173,19 +203,21 @@
 <li>メモリの許す限りメッセージをバッファすることができる</li>
 </ul>
 </li>
-</ul><p><code>bounded</code>を使ってサンプルを作ってみます。</p><pre class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #FF7B72">use</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">crossbeam</span><span style="color: #FF7B72">::</span><span style="color: #C9D1D9">{channel, thread};</span></span>
+</ul>
+<p><code>bounded</code>を使ってサンプルを作ってみます。</p>
+<pre is:raw="" class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #FF7B72">use</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">crossbeam</span><span style="color: #FF7B72">::</span><span style="color: #C9D1D9">{channel, thread};</span></span>
 <span class="line"><span style="color: #FF7B72">use</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">std</span><span style="color: #FF7B72">::</span><span style="color: #C9D1D9">fs;</span></span>
 <span class="line"></span>
 <span class="line"><span style="color: #FF7B72">fn</span><span style="color: #C9D1D9"> </span><span style="color: #D2A8FF">main</span><span style="color: #C9D1D9">() {</span></span>
 <span class="line"><span style="color: #C9D1D9">    </span><span style="color: #FFA657">thread</span><span style="color: #FF7B72">::</span><span style="color: #D2A8FF">scope</span><span style="color: #C9D1D9">(</span><span style="color: #FF7B72">|</span><span style="color: #C9D1D9">s</span><span style="color: #FF7B72">|</span><span style="color: #C9D1D9"> {</span></span>
-<span class="line"><span style="color: #C9D1D9">        </span><span style="color: #FF7B72">let</span><span style="color: #C9D1D9"> (tx_file, rx_file) </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">channel</span><span style="color: #FF7B72">::</span><span style="color: #D2A8FF">bounded</span><span style="color: #FF7B72">::</span><span style="color: #C9D1D9">&lt;</span><span style="color: #FFA657">String</span><span style="color: #C9D1D9">&gt;(</span><span style="color: #79C0FF">0</span><span style="color: #C9D1D9">);</span></span>
-<span class="line"><span style="color: #C9D1D9">        </span><span style="color: #FF7B72">let</span><span style="color: #C9D1D9"> (tx_content, rx_content) </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">channel</span><span style="color: #FF7B72">::</span><span style="color: #D2A8FF">bounded</span><span style="color: #FF7B72">::</span><span style="color: #C9D1D9">&lt;(</span><span style="color: #FFA657">String</span><span style="color: #C9D1D9">, </span><span style="color: #FFA657">String</span><span style="color: #C9D1D9">)&gt;(</span><span style="color: #79C0FF">0</span><span style="color: #C9D1D9">);</span></span>
+<span class="line"><span style="color: #C9D1D9">        </span><span style="color: #FF7B72">let</span><span style="color: #C9D1D9"> (tx_file, rx_file) </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">channel</span><span style="color: #FF7B72">::</span><span style="color: #D2A8FF">bounded</span><span style="color: #FF7B72">::</span><span style="color: #C9D1D9">&#x3C;</span><span style="color: #FFA657">String</span><span style="color: #C9D1D9">>(</span><span style="color: #79C0FF">0</span><span style="color: #C9D1D9">);</span></span>
+<span class="line"><span style="color: #C9D1D9">        </span><span style="color: #FF7B72">let</span><span style="color: #C9D1D9"> (tx_content, rx_content) </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">channel</span><span style="color: #FF7B72">::</span><span style="color: #D2A8FF">bounded</span><span style="color: #FF7B72">::</span><span style="color: #C9D1D9">&#x3C;(</span><span style="color: #FFA657">String</span><span style="color: #C9D1D9">, </span><span style="color: #FFA657">String</span><span style="color: #C9D1D9">)>(</span><span style="color: #79C0FF">0</span><span style="color: #C9D1D9">);</span></span>
 <span class="line"></span>
 <span class="line"><span style="color: #8B949E">        // sending file name</span></span>
 <span class="line"><span style="color: #C9D1D9">        s</span><span style="color: #FF7B72">.</span><span style="color: #D2A8FF">spawn</span><span style="color: #C9D1D9">(</span><span style="color: #FF7B72">move</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">|</span><span style="color: #C9D1D9">_</span><span style="color: #FF7B72">|</span><span style="color: #C9D1D9"> {</span></span>
-<span class="line"><span style="color: #C9D1D9">            </span><span style="color: #FF7B72">let</span><span style="color: #C9D1D9"> files </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> </span><span style="color: #D2A8FF">vec!</span><span style="color: #C9D1D9">[</span><span style="color: #A5D6FF">&quot;a.txt&quot;</span><span style="color: #C9D1D9">, </span><span style="color: #A5D6FF">&quot;b.txt&quot;</span><span style="color: #C9D1D9">, </span><span style="color: #A5D6FF">&quot;c.txt&quot;</span><span style="color: #C9D1D9">];</span></span>
+<span class="line"><span style="color: #C9D1D9">            </span><span style="color: #FF7B72">let</span><span style="color: #C9D1D9"> files </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> </span><span style="color: #D2A8FF">vec!</span><span style="color: #C9D1D9">[</span><span style="color: #A5D6FF">"a.txt"</span><span style="color: #C9D1D9">, </span><span style="color: #A5D6FF">"b.txt"</span><span style="color: #C9D1D9">, </span><span style="color: #A5D6FF">"c.txt"</span><span style="color: #C9D1D9">];</span></span>
 <span class="line"><span style="color: #C9D1D9">            </span><span style="color: #FF7B72">for</span><span style="color: #C9D1D9"> f </span><span style="color: #FF7B72">in</span><span style="color: #C9D1D9"> files</span><span style="color: #FF7B72">.</span><span style="color: #D2A8FF">iter</span><span style="color: #C9D1D9">() {</span></span>
-<span class="line"><span style="color: #C9D1D9">                </span><span style="color: #D2A8FF">println!</span><span style="color: #C9D1D9">(</span><span style="color: #A5D6FF">&quot;[sender] send {}&quot;</span><span style="color: #C9D1D9">, f);</span></span>
+<span class="line"><span style="color: #C9D1D9">                </span><span style="color: #D2A8FF">println!</span><span style="color: #C9D1D9">(</span><span style="color: #A5D6FF">"[sender] send {}"</span><span style="color: #C9D1D9">, f);</span></span>
 <span class="line"><span style="color: #C9D1D9">                tx_file</span><span style="color: #FF7B72">.</span><span style="color: #D2A8FF">send</span><span style="color: #C9D1D9">(f</span><span style="color: #FF7B72">.</span><span style="color: #D2A8FF">to_string</span><span style="color: #C9D1D9">())</span><span style="color: #FF7B72">.</span><span style="color: #D2A8FF">unwrap</span><span style="color: #C9D1D9">();</span></span>
 <span class="line"><span style="color: #C9D1D9">                </span><span style="color: #FFA657">std</span><span style="color: #FF7B72">::</span><span style="color: #FFA657">thread</span><span style="color: #FF7B72">::</span><span style="color: #D2A8FF">sleep</span><span style="color: #C9D1D9">(</span><span style="color: #FFA657">std</span><span style="color: #FF7B72">::</span><span style="color: #FFA657">time</span><span style="color: #FF7B72">::</span><span style="color: #FFA657">Duration</span><span style="color: #FF7B72">::</span><span style="color: #D2A8FF">from_millis</span><span style="color: #C9D1D9">(</span><span style="color: #79C0FF">200</span><span style="color: #C9D1D9">));</span></span>
 <span class="line"><span style="color: #C9D1D9">            }</span></span>
@@ -194,8 +226,8 @@
 <span class="line"><span style="color: #8B949E">        // reading files</span></span>
 <span class="line"><span style="color: #C9D1D9">        s</span><span style="color: #FF7B72">.</span><span style="color: #D2A8FF">spawn</span><span style="color: #C9D1D9">(</span><span style="color: #FF7B72">move</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">|</span><span style="color: #C9D1D9">_</span><span style="color: #FF7B72">|</span><span style="color: #C9D1D9"> {</span></span>
 <span class="line"><span style="color: #C9D1D9">            </span><span style="color: #FF7B72">for</span><span style="color: #C9D1D9"> file </span><span style="color: #FF7B72">in</span><span style="color: #C9D1D9"> rx_file</span><span style="color: #FF7B72">.</span><span style="color: #D2A8FF">into_iter</span><span style="color: #C9D1D9">() {</span></span>
-<span class="line"><span style="color: #C9D1D9">                </span><span style="color: #D2A8FF">println!</span><span style="color: #C9D1D9">(</span><span style="color: #A5D6FF">&quot;[reader] read {}&quot;</span><span style="color: #C9D1D9">, file);</span></span>
-<span class="line"><span style="color: #C9D1D9">                </span><span style="color: #FF7B72">let</span><span style="color: #C9D1D9"> content </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">fs</span><span style="color: #FF7B72">::</span><span style="color: #D2A8FF">read_to_string</span><span style="color: #C9D1D9">(</span><span style="color: #FF7B72">&amp;</span><span style="color: #C9D1D9">file)</span><span style="color: #FF7B72">.</span><span style="color: #D2A8FF">unwrap</span><span style="color: #C9D1D9">();</span></span>
+<span class="line"><span style="color: #C9D1D9">                </span><span style="color: #D2A8FF">println!</span><span style="color: #C9D1D9">(</span><span style="color: #A5D6FF">"[reader] read {}"</span><span style="color: #C9D1D9">, file);</span></span>
+<span class="line"><span style="color: #C9D1D9">                </span><span style="color: #FF7B72">let</span><span style="color: #C9D1D9"> content </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">fs</span><span style="color: #FF7B72">::</span><span style="color: #D2A8FF">read_to_string</span><span style="color: #C9D1D9">(</span><span style="color: #FF7B72">&#x26;</span><span style="color: #C9D1D9">file)</span><span style="color: #FF7B72">.</span><span style="color: #D2A8FF">unwrap</span><span style="color: #C9D1D9">();</span></span>
 <span class="line"><span style="color: #C9D1D9">                tx_content</span><span style="color: #FF7B72">.</span><span style="color: #D2A8FF">send</span><span style="color: #C9D1D9">((file, content))</span><span style="color: #FF7B72">.</span><span style="color: #D2A8FF">unwrap</span><span style="color: #C9D1D9">();</span></span>
 <span class="line"><span style="color: #C9D1D9">                </span><span style="color: #FFA657">std</span><span style="color: #FF7B72">::</span><span style="color: #FFA657">thread</span><span style="color: #FF7B72">::</span><span style="color: #D2A8FF">sleep</span><span style="color: #C9D1D9">(</span><span style="color: #FFA657">std</span><span style="color: #FF7B72">::</span><span style="color: #FFA657">time</span><span style="color: #FF7B72">::</span><span style="color: #FFA657">Duration</span><span style="color: #FF7B72">::</span><span style="color: #D2A8FF">from_millis</span><span style="color: #C9D1D9">(</span><span style="color: #79C0FF">500</span><span style="color: #C9D1D9">));</span></span>
 <span class="line"><span style="color: #C9D1D9">            }</span></span>
@@ -204,33 +236,43 @@
 <span class="line"><span style="color: #8B949E">        // consuming results</span></span>
 <span class="line"><span style="color: #C9D1D9">        s</span><span style="color: #FF7B72">.</span><span style="color: #D2A8FF">spawn</span><span style="color: #C9D1D9">(</span><span style="color: #FF7B72">move</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">|</span><span style="color: #C9D1D9">_</span><span style="color: #FF7B72">|</span><span style="color: #C9D1D9"> {</span></span>
 <span class="line"><span style="color: #C9D1D9">            </span><span style="color: #FF7B72">for</span><span style="color: #C9D1D9"> (f, c) </span><span style="color: #FF7B72">in</span><span style="color: #C9D1D9"> rx_content</span><span style="color: #FF7B72">.</span><span style="color: #D2A8FF">into_iter</span><span style="color: #C9D1D9">() {</span></span>
-<span class="line"><span style="color: #C9D1D9">                </span><span style="color: #D2A8FF">println!</span><span style="color: #C9D1D9">(</span><span style="color: #A5D6FF">&quot;[consumer] {} = {:?}&quot;</span><span style="color: #C9D1D9">, f, c);</span></span>
+<span class="line"><span style="color: #C9D1D9">                </span><span style="color: #D2A8FF">println!</span><span style="color: #C9D1D9">(</span><span style="color: #A5D6FF">"[consumer] {} = {:?}"</span><span style="color: #C9D1D9">, f, c);</span></span>
 <span class="line"><span style="color: #C9D1D9">                </span><span style="color: #FFA657">std</span><span style="color: #FF7B72">::</span><span style="color: #FFA657">thread</span><span style="color: #FF7B72">::</span><span style="color: #D2A8FF">sleep</span><span style="color: #C9D1D9">(</span><span style="color: #FFA657">std</span><span style="color: #FF7B72">::</span><span style="color: #FFA657">time</span><span style="color: #FF7B72">::</span><span style="color: #FFA657">Duration</span><span style="color: #FF7B72">::</span><span style="color: #D2A8FF">from_millis</span><span style="color: #C9D1D9">(</span><span style="color: #79C0FF">1000</span><span style="color: #C9D1D9">));</span></span>
 <span class="line"><span style="color: #C9D1D9">            }</span></span>
 <span class="line"><span style="color: #C9D1D9">        });</span></span>
 <span class="line"><span style="color: #C9D1D9">    })</span></span>
 <span class="line"><span style="color: #C9D1D9">    </span><span style="color: #FF7B72">.</span><span style="color: #D2A8FF">unwrap</span><span style="color: #C9D1D9">();</span></span>
-<span class="line"><span style="color: #C9D1D9">}</span></span></code></pre><p>出力:</p><pre class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #c9d1d9">[sender] send a.txt</span></span>
+<span class="line"><span style="color: #C9D1D9">}</span></span></code></pre>
+<p>出力:</p>
+<pre is:raw="" class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #c9d1d9">[sender] send a.txt</span></span>
 <span class="line"><span style="color: #c9d1d9">[reader] read a.txt</span></span>
-<span class="line"><span style="color: #c9d1d9">[consumer] a.txt = &quot;aaaaa\n&quot;</span></span>
+<span class="line"><span style="color: #c9d1d9">[consumer] a.txt = "aaaaa\n"</span></span>
 <span class="line"><span style="color: #c9d1d9">[sender] send b.txt</span></span>
 <span class="line"><span style="color: #c9d1d9">[reader] read b.txt</span></span>
 <span class="line"><span style="color: #c9d1d9">[sender] send c.txt</span></span>
-<span class="line"><span style="color: #c9d1d9">[consumer] b.txt = &quot;bbbbbb\n&quot;</span></span>
+<span class="line"><span style="color: #c9d1d9">[consumer] b.txt = "bbbbbb\n"</span></span>
 <span class="line"><span style="color: #c9d1d9">[reader] read c.txt</span></span>
-<span class="line"><span style="color: #c9d1d9">[consumer] c.txt = &quot;ccccc\n&quot;</span></span></code></pre><pre class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #FF7B72">let</span><span style="color: #C9D1D9"> (tx_file, rx_file) </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">channel</span><span style="color: #FF7B72">::</span><span style="color: #D2A8FF">bounded</span><span style="color: #FF7B72">::</span><span style="color: #C9D1D9">&lt;</span><span style="color: #FFA657">String</span><span style="color: #C9D1D9">&gt;(</span><span style="color: #79C0FF">0</span><span style="color: #C9D1D9">);</span></span>
-<span class="line"><span style="color: #FF7B72">let</span><span style="color: #C9D1D9"> (tx_content, rx_content) </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">channel</span><span style="color: #FF7B72">::</span><span style="color: #D2A8FF">bounded</span><span style="color: #FF7B72">::</span><span style="color: #C9D1D9">&lt;(</span><span style="color: #FFA657">String</span><span style="color: #C9D1D9">, </span><span style="color: #FFA657">String</span><span style="color: #C9D1D9">)&gt;(</span><span style="color: #79C0FF">0</span><span style="color: #C9D1D9">);</span></span></code></pre><p>まず、スレッド間通信ようのチャネルを<code>bounded</code>を使って作ります。
+<span class="line"><span style="color: #c9d1d9">[consumer] c.txt = "ccccc\n"</span></span></code></pre>
+<pre is:raw="" class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #FF7B72">let</span><span style="color: #C9D1D9"> (tx_file, rx_file) </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">channel</span><span style="color: #FF7B72">::</span><span style="color: #D2A8FF">bounded</span><span style="color: #FF7B72">::</span><span style="color: #C9D1D9">&#x3C;</span><span style="color: #FFA657">String</span><span style="color: #C9D1D9">>(</span><span style="color: #79C0FF">0</span><span style="color: #C9D1D9">);</span></span>
+<span class="line"><span style="color: #FF7B72">let</span><span style="color: #C9D1D9"> (tx_content, rx_content) </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">channel</span><span style="color: #FF7B72">::</span><span style="color: #D2A8FF">bounded</span><span style="color: #FF7B72">::</span><span style="color: #C9D1D9">&#x3C;(</span><span style="color: #FFA657">String</span><span style="color: #C9D1D9">, </span><span style="color: #FFA657">String</span><span style="color: #C9D1D9">)>(</span><span style="color: #79C0FF">0</span><span style="color: #C9D1D9">);</span></span></code></pre>
+<p>まず、スレッド間通信ようのチャネルを<code>bounded</code>を使って作ります。
 キャパシティとして<code>0</code>を指定しているので、このチャネルにはバッファがありません。
-そのため、<code>send</code>した場合は<code>recv</code>されるまでブロックされることになります。</p><p>後続処理の方が処理時間が長く<code>send</code>をブロックするため綺麗に順番に実行されています。</p><p>これを次のように<code>3</code>で実行してみます。</p><pre class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #FF7B72">let</span><span style="color: #C9D1D9"> (tx_file, rx_file) </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">channel</span><span style="color: #FF7B72">::</span><span style="color: #D2A8FF">bounded</span><span style="color: #FF7B72">::</span><span style="color: #C9D1D9">&lt;</span><span style="color: #FFA657">String</span><span style="color: #C9D1D9">&gt;(</span><span style="color: #79C0FF">3</span><span style="color: #C9D1D9">);</span></span>
-<span class="line"><span style="color: #FF7B72">let</span><span style="color: #C9D1D9"> (tx_content, rx_content) </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">channel</span><span style="color: #FF7B72">::</span><span style="color: #D2A8FF">bounded</span><span style="color: #FF7B72">::</span><span style="color: #C9D1D9">&lt;(</span><span style="color: #FFA657">String</span><span style="color: #C9D1D9">, </span><span style="color: #FFA657">String</span><span style="color: #C9D1D9">)&gt;(</span><span style="color: #79C0FF">3</span><span style="color: #C9D1D9">);</span></span></code></pre><p>出力:</p><pre class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #c9d1d9">[sender] send a.txt</span></span>
+そのため、<code>send</code>した場合は<code>recv</code>されるまでブロックされることになります。</p>
+<p>後続処理の方が処理時間が長く<code>send</code>をブロックするため綺麗に順番に実行されています。</p>
+<p>これを次のように<code>3</code>で実行してみます。</p>
+<pre is:raw="" class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #FF7B72">let</span><span style="color: #C9D1D9"> (tx_file, rx_file) </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">channel</span><span style="color: #FF7B72">::</span><span style="color: #D2A8FF">bounded</span><span style="color: #FF7B72">::</span><span style="color: #C9D1D9">&#x3C;</span><span style="color: #FFA657">String</span><span style="color: #C9D1D9">>(</span><span style="color: #79C0FF">3</span><span style="color: #C9D1D9">);</span></span>
+<span class="line"><span style="color: #FF7B72">let</span><span style="color: #C9D1D9"> (tx_content, rx_content) </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">channel</span><span style="color: #FF7B72">::</span><span style="color: #D2A8FF">bounded</span><span style="color: #FF7B72">::</span><span style="color: #C9D1D9">&#x3C;(</span><span style="color: #FFA657">String</span><span style="color: #C9D1D9">, </span><span style="color: #FFA657">String</span><span style="color: #C9D1D9">)>(</span><span style="color: #79C0FF">3</span><span style="color: #C9D1D9">);</span></span></code></pre>
+<p>出力:</p>
+<pre is:raw="" class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #c9d1d9">[sender] send a.txt</span></span>
 <span class="line"><span style="color: #c9d1d9">[reader] read a.txt</span></span>
-<span class="line"><span style="color: #c9d1d9">[consumer] a.txt = &quot;aaaaa\n&quot;</span></span>
+<span class="line"><span style="color: #c9d1d9">[consumer] a.txt = "aaaaa\n"</span></span>
 <span class="line"><span style="color: #c9d1d9">[sender] send b.txt</span></span>
 <span class="line"><span style="color: #c9d1d9">[sender] send c.txt</span></span>
 <span class="line"><span style="color: #c9d1d9">[reader] read b.txt</span></span>
-<span class="line"><span style="color: #c9d1d9">[consumer] b.txt = &quot;bbbbbb\n&quot;</span></span>
+<span class="line"><span style="color: #c9d1d9">[consumer] b.txt = "bbbbbb\n"</span></span>
 <span class="line"><span style="color: #c9d1d9">[reader] read c.txt</span></span>
-<span class="line"><span style="color: #c9d1d9">[consumer] c.txt = &quot;ccccc\n&quot;</span></span></code></pre><p>最初の<code>sender</code>, <code>reader</code>, <code>consumer</code>の順番は同じですが、<code>reader</code>が<code>recv</code>するよりも先に
+<span class="line"><span style="color: #c9d1d9">[consumer] c.txt = "ccccc\n"</span></span></code></pre>
+<p>最初の<code>sender</code>, <code>reader</code>, <code>consumer</code>の順番は同じですが、<code>reader</code>が<code>recv</code>するよりも先に
 <code>sernder</code>が<code>send</code>できていることがわかります。</p>
 			</main>
 		</div>
