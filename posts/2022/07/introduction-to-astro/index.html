@@ -1,4 +1,5 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 	<head>
 		<!-- Google Tag Manager -->
 <!-- End Google Tag Manager -->
@@ -31,15 +32,15 @@
 <link rel="preconnect" href="https://fonts.gstatic.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&family=IBM+Plex+Sans:wght@400;700&display=swap">
 
-	<link rel="stylesheet" href="/assets/posts-2022-07-introduction-to-astro-index.488682a9.css" />
-<link rel="stylesheet" href="/assets/c99d5208.070dc6d6.css" /><script type="module">(function(t,n,r,e,m){t[e]=t[e]||[],t[e].push({"gtm.start":new Date().getTime(),event:"gtm.js"});var g=n.getElementsByTagName(r)[0],a=n.createElement(r),s=e!="dataLayer"?"&l="+e:"";a.async=!0,a.src="https://www.googletagmanager.com/gtm.js?id="+m+s,g.parentNode.insertBefore(a,g)})(window,document,"script","dataLayer","GTM-P42NKJ8");
+	<link rel="stylesheet" href="/assets/rust-closure.4f27fc2b.css" />
+<link rel="stylesheet" href="/assets/introduction-to-astro.a5e74d4d.css" /><script type="module">(function(t,n,r,e,m){t[e]=t[e]||[],t[e].push({"gtm.start":new Date().getTime(),event:"gtm.js"});var g=n.getElementsByTagName(r)[0],a=n.createElement(r),s=e!="dataLayer"?"&l="+e:"";a.async=!0,a.src="https://www.googletagmanager.com/gtm.js?id="+m+s,g.parentNode.insertBefore(a,g)})(window,document,"script","dataLayer","GTM-P42NKJ8");
 </script></head>
 	<body>
-		<header class="wrapper astro-W2MTFRY6">
-	<article class="astro-W2MTFRY6">
-		<h1 class="astro-W2MTFRY6">
-			<a href="/" class="astro-W2MTFRY6">
-				<span class="astro-W2MTFRY6">take4s5i DEV</span>
+		<header class="wrapper astro-ADWXMVY4">
+	<article class="astro-ADWXMVY4">
+		<h1 class="astro-ADWXMVY4">
+			<a href="/" class="astro-ADWXMVY4">
+				<span class="astro-ADWXMVY4">take4s5i DEV</span>
 			</a>
 		</h1>
 	</article>
@@ -47,18 +48,18 @@
 
 
 		<div class="wrapper">
-			<div class="layout astro-O6PTD47S">
-	<article class="content astro-O6PTD47S">
-		<div class="astro-O6PTD47S">
-			<header class="astro-O6PTD47S">
+			<div class="layout astro-QPG2P4FV">
+	<article class="content astro-QPG2P4FV">
+		<div class="astro-QPG2P4FV">
+			<header class="astro-QPG2P4FV">
 				
-				<p class="publish-date astro-O6PTD47S">16 Jul 2022</p>
-				<h1 class="title astro-O6PTD47S">Astro ざっくりまとめ</h1>
+				<p class="publish-date astro-QPG2P4FV">16 Jul 2022</p>
+				<h1 class="title astro-QPG2P4FV">Astro ざっくりまとめ</h1>
 			</header>
-			<div class="editbar astro-O6PTD47S">
-				<a href="https://github.com/take4s5i/blog/blob/main/src/pages/posts/2022/07/introduction-to-astro.md" class="astro-O6PTD47S">Edit This Page</a>
+			<div class="editbar astro-QPG2P4FV">
+				<a href="https://github.com/take4s5i/blog/blob/main/src/pages/posts/2022/07/introduction-to-astro.md" class="astro-QPG2P4FV">Edit This Page</a>
 			</div>
-			<main class="astro-O6PTD47S">
+			<main class="astro-QPG2P4FV">
 				<p>ブログを <a href="https://astro.build/">Astro</a> で作り直したので
 備忘録がてらまとめていこうかなと思います。</p>
 <h2 id="astro-とは">Astro とは</h2>
@@ -183,28 +184,28 @@ markdownの中で, Astro Component や Framework Component を使うことも可
 <span class="line"></span>
 <span class="line"><span style="color: #FF7B72">const</span><span style="color: #C9D1D9"> { </span><span style="color: #79C0FF">type</span><span style="color: #C9D1D9"> } </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> Astro.props</span></span>
 <span class="line"><span style="color: #FF7B72">---</span></span>
-<span class="line"><span style="color: #C9D1D9">&lt;</span><span style="color: #7EE787">div</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">class</span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9">{[</span><span style="color: #A5D6FF">&#39;icon&#39;</span><span style="color: #C9D1D9">, </span><span style="color: #A5D6FF">`icon-${</span><span style="color: #C9D1D9">type</span><span style="color: #A5D6FF">}`</span><span style="color: #C9D1D9">].</span><span style="color: #D2A8FF">join</span><span style="color: #C9D1D9">(</span><span style="color: #A5D6FF">&#39; &#39;</span><span style="color: #C9D1D9">)}&gt;</span></span>
+<span class="line"><span style="color: #C9D1D9">&lt;</span><span style="color: #7EE787">div</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">class</span><span style="color: #FF7B72">={</span><span style="color: #C9D1D9">[</span><span style="color: #A5D6FF">&#39;icon&#39;</span><span style="color: #C9D1D9">, </span><span style="color: #A5D6FF">`icon-${</span><span style="color: #C9D1D9">type</span><span style="color: #A5D6FF">}`</span><span style="color: #C9D1D9">].</span><span style="color: #D2A8FF">join</span><span style="color: #C9D1D9">(</span><span style="color: #A5D6FF">&#39; &#39;</span><span style="color: #C9D1D9">)</span><span style="color: #FF7B72">}</span><span style="color: #C9D1D9">&gt;</span></span>
 <span class="line"><span style="color: #C9D1D9">  &lt;</span><span style="color: #7EE787">slot</span><span style="color: #C9D1D9"> /&gt;</span></span>
 <span class="line"><span style="color: #C9D1D9">&lt;/</span><span style="color: #7EE787">div</span><span style="color: #C9D1D9">&gt;</span></span>
 <span class="line"><span style="color: #C9D1D9">&lt;</span><span style="color: #7EE787">style</span><span style="color: #C9D1D9">&gt;</span></span>
-<span class="line"><span style="color: #C9D1D9">.icon {</span></span>
+<span class="line"><span style="color: #C9D1D9">.icon </span><span style="color: #FF7B72">{</span></span>
 <span class="line"><span style="color: #C9D1D9">  min</span><span style="color: #FF7B72">-</span><span style="color: #C9D1D9">width: 120px;</span></span>
 <span class="line"><span style="color: #C9D1D9">  text</span><span style="color: #FF7B72">-</span><span style="color: #C9D1D9">align: center;</span></span>
 <span class="line"><span style="color: #C9D1D9">  font</span><span style="color: #FF7B72">-</span><span style="color: #C9D1D9">weight: bold;</span></span>
 <span class="line"><span style="color: #C9D1D9">  border</span><span style="color: #FF7B72">-</span><span style="color: #C9D1D9">style: solid;</span></span>
 <span class="line"><span style="color: #C9D1D9">  border</span><span style="color: #FF7B72">-</span><span style="color: #C9D1D9">radius: 4px;</span></span>
 <span class="line"><span style="color: #C9D1D9">  padding: 2px 4px;</span></span>
-<span class="line"><span style="color: #C9D1D9">}</span></span>
+<span class="line"><span style="color: #FF7B72">}</span></span>
 <span class="line"></span>
-<span class="line"><span style="color: #C9D1D9">.icon.icon-success {</span></span>
+<span class="line"><span style="color: #C9D1D9">.icon.icon-success </span><span style="color: #FF7B72">{</span></span>
 <span class="line"><span style="color: #C9D1D9">  background</span><span style="color: #FF7B72">-</span><span style="color: #C9D1D9">color: royalblue;</span></span>
 <span class="line"><span style="color: #C9D1D9">  border</span><span style="color: #FF7B72">-</span><span style="color: #C9D1D9">color: royalblue;</span></span>
-<span class="line"><span style="color: #C9D1D9">}</span></span>
+<span class="line"><span style="color: #FF7B72">}</span></span>
 <span class="line"></span>
-<span class="line"><span style="color: #C9D1D9">.icon.icon-danger {</span></span>
+<span class="line"><span style="color: #C9D1D9">.icon.icon-danger </span><span style="color: #FF7B72">{</span></span>
 <span class="line"><span style="color: #C9D1D9">  background</span><span style="color: #FF7B72">-</span><span style="color: #C9D1D9">color: tomato;</span></span>
 <span class="line"><span style="color: #C9D1D9">  border</span><span style="color: #FF7B72">-</span><span style="color: #C9D1D9">color: tomato;</span></span>
-<span class="line"><span style="color: #C9D1D9">}</span></span>
+<span class="line"><span style="color: #FF7B72">}</span></span>
 <span class="line"></span>
 <span class="line"><span style="color: #C9D1D9">&lt;/</span><span style="color: #7EE787">style</span><span style="color: #C9D1D9">&gt;</span></span>
 <span class="line"></span></code></pre>
@@ -223,32 +224,32 @@ markdownの中で, Astro Component や Framework Component を使うことも可
 <span class="line"></span>
 <span class="line"><span style="color: #FF7B72">---</span></span>
 <span class="line"><span style="color: #C9D1D9">&lt;</span><span style="color: #7EE787">div</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">class</span><span style="color: #FF7B72">=</span><span style="color: #A5D6FF">&quot;card&quot;</span><span style="color: #C9D1D9">&gt;</span></span>
-<span class="line"><span style="color: #C9D1D9">  &lt;</span><span style="color: #7EE787">div</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">class</span><span style="color: #FF7B72">=</span><span style="color: #A5D6FF">&quot;title&quot;</span><span style="color: #C9D1D9">&gt;{title}&lt;/</span><span style="color: #7EE787">div</span><span style="color: #C9D1D9">&gt;</span></span>
+<span class="line"><span style="color: #C9D1D9">  &lt;</span><span style="color: #7EE787">div</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">class</span><span style="color: #FF7B72">=</span><span style="color: #A5D6FF">&quot;title&quot;</span><span style="color: #C9D1D9">&gt;</span><span style="color: #FF7B72">{</span><span style="color: #C9D1D9">title</span><span style="color: #FF7B72">}</span><span style="color: #C9D1D9">&lt;/</span><span style="color: #7EE787">div</span><span style="color: #C9D1D9">&gt;</span></span>
 <span class="line"><span style="color: #C9D1D9">  &lt;</span><span style="color: #7EE787">div</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">class</span><span style="color: #FF7B72">=</span><span style="color: #A5D6FF">&quot;icon-wrap&quot;</span><span style="color: #C9D1D9">&gt;</span></span>
-<span class="line"><span style="color: #C9D1D9">  {completed</span></span>
+<span class="line"><span style="color: #C9D1D9">  </span><span style="color: #FF7B72">{</span><span style="color: #C9D1D9">completed</span></span>
 <span class="line"><span style="color: #C9D1D9">    </span><span style="color: #FF7B72">?</span><span style="color: #C9D1D9"> (&lt;</span><span style="color: #7EE787">Icon</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">type</span><span style="color: #FF7B72">=</span><span style="color: #A5D6FF">&quot;success&quot;</span><span style="color: #C9D1D9">&gt;COMPLETE&lt;/</span><span style="color: #7EE787">Icon</span><span style="color: #C9D1D9">&gt;)</span></span>
 <span class="line"><span style="color: #C9D1D9">    </span><span style="color: #FF7B72">:</span><span style="color: #C9D1D9"> (&lt;</span><span style="color: #7EE787">Icon</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">type</span><span style="color: #FF7B72">=</span><span style="color: #A5D6FF">&quot;danger&quot;</span><span style="color: #C9D1D9">&gt;IN PROGRESS&lt;/</span><span style="color: #7EE787">ICON</span><span style="color: #C9D1D9">&gt;)</span></span>
-<span class="line"><span style="color: #C9D1D9">  }</span></span>
+<span class="line"><span style="color: #C9D1D9">  </span><span style="color: #FF7B72">}</span></span>
 <span class="line"><span style="color: #C9D1D9">  &lt;/</span><span style="color: #7EE787">div</span><span style="color: #C9D1D9">&gt;</span></span>
 <span class="line"><span style="color: #C9D1D9">&lt;/</span><span style="color: #7EE787">div</span><span style="color: #C9D1D9">&gt;</span></span>
 <span class="line"><span style="color: #C9D1D9">&lt;</span><span style="color: #7EE787">style</span><span style="color: #C9D1D9">&gt;</span></span>
-<span class="line"><span style="color: #C9D1D9">.card {</span></span>
+<span class="line"><span style="color: #C9D1D9">.card </span><span style="color: #FF7B72">{</span></span>
 <span class="line"><span style="color: #C9D1D9">  border: 2px solid dimgray;</span></span>
 <span class="line"><span style="color: #C9D1D9">  border</span><span style="color: #FF7B72">-</span><span style="color: #C9D1D9">radius: 4px;</span></span>
 <span class="line"><span style="color: #C9D1D9">  padding: 16px;</span></span>
 <span class="line"><span style="color: #C9D1D9">  margin: 4px;</span></span>
 <span class="line"><span style="color: #C9D1D9">  display: flex;</span></span>
 <span class="line"><span style="color: #C9D1D9">  justify</span><span style="color: #FF7B72">-</span><span style="color: #C9D1D9">content: space</span><span style="color: #FF7B72">-</span><span style="color: #C9D1D9">between;</span></span>
-<span class="line"><span style="color: #C9D1D9">}</span></span>
+<span class="line"><span style="color: #FF7B72">}</span></span>
 <span class="line"></span>
-<span class="line"><span style="color: #C9D1D9">.title {</span></span>
+<span class="line"><span style="color: #C9D1D9">.title </span><span style="color: #FF7B72">{</span></span>
 <span class="line"><span style="color: #C9D1D9">  font</span><span style="color: #FF7B72">-</span><span style="color: #C9D1D9">size: 1.5rem;</span></span>
-<span class="line"><span style="color: #C9D1D9">}</span></span>
+<span class="line"><span style="color: #FF7B72">}</span></span>
 <span class="line"></span>
-<span class="line"><span style="color: #C9D1D9">.icon-wrap {</span></span>
+<span class="line"><span style="color: #C9D1D9">.icon-wrap </span><span style="color: #FF7B72">{</span></span>
 <span class="line"><span style="color: #C9D1D9">  display: flex;</span></span>
 <span class="line"><span style="color: #C9D1D9">  align</span><span style="color: #FF7B72">-</span><span style="color: #C9D1D9">items: center;</span></span>
-<span class="line"><span style="color: #C9D1D9">}</span></span>
+<span class="line"><span style="color: #FF7B72">}</span></span>
 <span class="line"><span style="color: #C9D1D9">&lt;/</span><span style="color: #7EE787">style</span><span style="color: #C9D1D9">&gt;</span></span>
 <span class="line"></span></code></pre>
 
@@ -262,22 +263,22 @@ markdownの中で, Astro Component や Framework Component を使うことも可
 <span class="line"><span style="color: #FF7B72">const</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">todos</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">await</span><span style="color: #C9D1D9"> </span><span style="color: #D2A8FF">fetch</span><span style="color: #C9D1D9">(url).</span><span style="color: #D2A8FF">then</span><span style="color: #C9D1D9">((</span><span style="color: #FFA657">res</span><span style="color: #C9D1D9">) </span><span style="color: #FF7B72">=&gt;</span><span style="color: #C9D1D9"> res.</span><span style="color: #D2A8FF">json</span><span style="color: #C9D1D9">())</span></span>
 <span class="line"><span style="color: #FF7B72">---</span></span>
 <span class="line"><span style="color: #C9D1D9">&lt;</span><span style="color: #7EE787">ul</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">class</span><span style="color: #FF7B72">=</span><span style="color: #A5D6FF">&quot;list&quot;</span><span style="color: #C9D1D9">&gt;</span></span>
-<span class="line"><span style="color: #C9D1D9">  {todos.</span><span style="color: #D2A8FF">slice</span><span style="color: #C9D1D9">(</span><span style="color: #79C0FF">0</span><span style="color: #C9D1D9">, limit).</span><span style="color: #D2A8FF">map</span><span style="color: #C9D1D9">((</span><span style="color: #FFA657">todo</span><span style="color: #C9D1D9">) </span><span style="color: #FF7B72">=&gt;</span><span style="color: #C9D1D9"> (</span></span>
+<span class="line"><span style="color: #C9D1D9">  </span><span style="color: #FF7B72">{</span><span style="color: #C9D1D9">todos.</span><span style="color: #D2A8FF">slice</span><span style="color: #C9D1D9">(</span><span style="color: #79C0FF">0</span><span style="color: #C9D1D9">, limit).</span><span style="color: #D2A8FF">map</span><span style="color: #C9D1D9">((</span><span style="color: #FFA657">todo</span><span style="color: #C9D1D9">) </span><span style="color: #FF7B72">=&gt;</span><span style="color: #C9D1D9"> (</span></span>
 <span class="line"><span style="color: #C9D1D9">    &lt;</span><span style="color: #7EE787">li</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">class</span><span style="color: #FF7B72">=</span><span style="color: #A5D6FF">&quot;item&quot;</span><span style="color: #C9D1D9">&gt;</span></span>
-<span class="line"><span style="color: #C9D1D9">      &lt;</span><span style="color: #7EE787">TodoItem</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">title</span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9">{todo.title} </span><span style="color: #79C0FF">completed</span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9">{todo.completed} /&gt;</span></span>
+<span class="line"><span style="color: #C9D1D9">      &lt;</span><span style="color: #7EE787">TodoItem</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">title</span><span style="color: #FF7B72">={</span><span style="color: #C9D1D9">todo.title</span><span style="color: #FF7B72">}</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">completed</span><span style="color: #FF7B72">={</span><span style="color: #C9D1D9">todo.completed</span><span style="color: #FF7B72">}</span><span style="color: #C9D1D9"> /&gt;</span></span>
 <span class="line"><span style="color: #C9D1D9">    &lt;/</span><span style="color: #7EE787">li</span><span style="color: #C9D1D9">&gt;</span></span>
-<span class="line"><span style="color: #C9D1D9">  ))}</span></span>
+<span class="line"><span style="color: #C9D1D9">  ))</span><span style="color: #FF7B72">}</span></span>
 <span class="line"><span style="color: #C9D1D9">&lt;/</span><span style="color: #7EE787">ul</span><span style="color: #C9D1D9">&gt;</span></span>
 <span class="line"><span style="color: #C9D1D9">&lt;</span><span style="color: #7EE787">style</span><span style="color: #C9D1D9">&gt;</span></span>
-<span class="line"><span style="color: #C9D1D9">.list {</span></span>
+<span class="line"><span style="color: #C9D1D9">.list </span><span style="color: #FF7B72">{</span></span>
 <span class="line"><span style="color: #C9D1D9">  display: flex;</span></span>
 <span class="line"><span style="color: #C9D1D9">  flex</span><span style="color: #FF7B72">-</span><span style="color: #C9D1D9">direction: column;</span></span>
 <span class="line"><span style="color: #C9D1D9">  list</span><span style="color: #FF7B72">-</span><span style="color: #C9D1D9">style</span><span style="color: #FF7B72">-</span><span style="color: #C9D1D9">type: none;</span></span>
 <span class="line"><span style="color: #C9D1D9">  padding: 4px;</span></span>
-<span class="line"><span style="color: #C9D1D9">}</span></span>
+<span class="line"><span style="color: #FF7B72">}</span></span>
 <span class="line"></span>
-<span class="line"><span style="color: #C9D1D9">.item {</span></span>
-<span class="line"><span style="color: #C9D1D9">}</span></span>
+<span class="line"><span style="color: #C9D1D9">.item </span><span style="color: #FF7B72">{</span></span>
+<span class="line"><span style="color: #FF7B72">}</span></span>
 <span class="line"><span style="color: #C9D1D9">&lt;/</span><span style="color: #7EE787">style</span><span style="color: #C9D1D9">&gt;</span></span>
 <span class="line"></span></code></pre>
 
@@ -294,56 +295,56 @@ Component Script で import したコンポーネントを使ったり、定義�
 <p>また、 <code>&lt;style&gt;</code> タグでスタイルを定義することも出来ます。
 スタイルは Asrto によって自動的に CSS Module 化されるので、クラス名の重複を気にする必要はありません。</p>
 <p><code>&lt;TodoList /&gt;</code> をレンダリングすると以下のようになります。</p>
-<ul class="list astro-MVTKVVER">
-  <li class="item astro-MVTKVVER">
-      <div class="card astro-CNSZABAD">
-  <div class="title astro-CNSZABAD">delectus aut autem</div>
-  <div class="icon-wrap astro-CNSZABAD">
-  <div class="icon icon-danger astro-NZ7H5IA3">
+<ul class="list astro-36VCAZ5C">
+  <li class="item astro-36VCAZ5C">
+      <div class="card astro-L2MC2W5U">
+  <div class="title astro-L2MC2W5U">delectus aut autem</div>
+  <div class="icon-wrap astro-L2MC2W5U">
+  <div class="icon icon-danger astro-XOPDS64T">
   IN PROGRESS
 </div>
 
   </div>
 </div>
 
-    </li><li class="item astro-MVTKVVER">
-      <div class="card astro-CNSZABAD">
-  <div class="title astro-CNSZABAD">quis ut nam facilis et officia qui</div>
-  <div class="icon-wrap astro-CNSZABAD">
-  <div class="icon icon-danger astro-NZ7H5IA3">
+    </li><li class="item astro-36VCAZ5C">
+      <div class="card astro-L2MC2W5U">
+  <div class="title astro-L2MC2W5U">quis ut nam facilis et officia qui</div>
+  <div class="icon-wrap astro-L2MC2W5U">
+  <div class="icon icon-danger astro-XOPDS64T">
   IN PROGRESS
 </div>
 
   </div>
 </div>
 
-    </li><li class="item astro-MVTKVVER">
-      <div class="card astro-CNSZABAD">
-  <div class="title astro-CNSZABAD">fugiat veniam minus</div>
-  <div class="icon-wrap astro-CNSZABAD">
-  <div class="icon icon-danger astro-NZ7H5IA3">
+    </li><li class="item astro-36VCAZ5C">
+      <div class="card astro-L2MC2W5U">
+  <div class="title astro-L2MC2W5U">fugiat veniam minus</div>
+  <div class="icon-wrap astro-L2MC2W5U">
+  <div class="icon icon-danger astro-XOPDS64T">
   IN PROGRESS
 </div>
 
   </div>
 </div>
 
-    </li><li class="item astro-MVTKVVER">
-      <div class="card astro-CNSZABAD">
-  <div class="title astro-CNSZABAD">et porro tempora</div>
-  <div class="icon-wrap astro-CNSZABAD">
-  <div class="icon icon-success astro-NZ7H5IA3">
+    </li><li class="item astro-36VCAZ5C">
+      <div class="card astro-L2MC2W5U">
+  <div class="title astro-L2MC2W5U">et porro tempora</div>
+  <div class="icon-wrap astro-L2MC2W5U">
+  <div class="icon icon-success astro-XOPDS64T">
   COMPLETE
 </div>
 
   </div>
 </div>
 
-    </li><li class="item astro-MVTKVVER">
-      <div class="card astro-CNSZABAD">
-  <div class="title astro-CNSZABAD">laboriosam mollitia et enim quasi adipisci quia provident illum</div>
-  <div class="icon-wrap astro-CNSZABAD">
-  <div class="icon icon-danger astro-NZ7H5IA3">
+    </li><li class="item astro-36VCAZ5C">
+      <div class="card astro-L2MC2W5U">
+  <div class="title astro-L2MC2W5U">laboriosam mollitia et enim quasi adipisci quia provident illum</div>
+  <div class="icon-wrap astro-L2MC2W5U">
+  <div class="icon icon-danger astro-XOPDS64T">
   IN PROGRESS
 </div>
 
