@@ -526,7 +526,7 @@ __metadata:
   dependencies:
     "@astrojs/mdx": ^0.10.0
     "@astrojs/preact": ^0.3.1
-    astro: ^1.5.0
+    astro: ^1.5.2
     plop: ^3.1.1
     preact: ^10.7.3
   languageName: unknown
@@ -1181,9 +1181,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"astro@npm:^1.5.0":
-  version: 1.5.0
-  resolution: "astro@npm:1.5.0"
+"astro@npm:^1.5.2":
+  version: 1.5.2
+  resolution: "astro@npm:1.5.2"
   dependencies:
     "@astrojs/compiler": ^0.27.1
     "@astrojs/language-server": ^0.26.2
@@ -1248,7 +1248,7 @@ __metadata:
     zod: ^3.17.3
   bin:
     astro: astro.js
-  checksum: daf999583459769e0f7f64791ce209c11be9baa84bbba2eccf5d60ecdb920aa6ef2becd76c39dbc2ec478e902e578dedc3989b5853c30e60b8b24ed64f1b2eeb
+  checksum: 0893ee9880203ce0ff577c3ee66647912c56487ecfceb01d16dab857a023d14ddf39c2d0dd32fddd9ed2b0d1afa09291033ec13a028cea7ee9cba3476b806f23
   languageName: node
   linkType: hard
 
