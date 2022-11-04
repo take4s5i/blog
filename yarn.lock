@@ -22,10 +22,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@astrojs/compiler@npm:^0.27.1":
-  version: 0.27.1
-  resolution: "@astrojs/compiler@npm:0.27.1"
-  checksum: 66a15bd5a858c37b25b869fab99f27bcd7acf3b715f1de5b9943ae3d97494b65d5490e2cb798cad832569dbca4ed60100a7209bb2483123363e43cd395a3a6ea
+"@astrojs/compiler@npm:^0.29.5":
+  version: 0.29.9
+  resolution: "@astrojs/compiler@npm:0.29.9"
+  checksum: 53030b0afd284ec1acc0083c39219ae457b43f380729a53669d6a6e0df97afc76e1eac670c5dbc9d08c982a7cb682117d3c6822d2b4a53808d037e7a3e85eb47
   languageName: node
   linkType: hard
 
@@ -160,13 +160,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@astrojs/webapi@npm:^1.1.0":
-  version: 1.1.0
-  resolution: "@astrojs/webapi@npm:1.1.0"
+"@astrojs/webapi@npm:^1.1.1":
+  version: 1.1.1
+  resolution: "@astrojs/webapi@npm:1.1.1"
   dependencies:
     global-agent: ^3.0.0
     node-fetch: ^3.2.5
-  checksum: 12f82c603622ac84513262de0408fff06652df7c0c9e6972cee3086e414e5079a8aa47525f2338d1862a22e5fddca8ef521021d350be4387fc462d6d12fb79f1
+  checksum: 28639022452e784bb5415075a15223bc0b476401ac7bf956495529e2c9736dfaaffd619968811db91d57b7c97a8306b59b77159e5cc874d5c8ffaa081699fb80
   languageName: node
   linkType: hard
 
@@ -526,7 +526,7 @@ __metadata:
   dependencies:
     "@astrojs/mdx": ^0.10.0
     "@astrojs/preact": ^0.3.1
-    astro: ^1.5.0
+    astro: ^1.6.3
     plop: ^3.1.1
     preact: ^10.7.3
   languageName: unknown
@@ -1181,15 +1181,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"astro@npm:^1.5.0":
-  version: 1.5.0
-  resolution: "astro@npm:1.5.0"
+"astro@npm:^1.6.3":
+  version: 1.6.3
+  resolution: "astro@npm:1.6.3"
   dependencies:
-    "@astrojs/compiler": ^0.27.1
+    "@astrojs/compiler": ^0.29.5
     "@astrojs/language-server": ^0.26.2
     "@astrojs/markdown-remark": ^1.1.3
     "@astrojs/telemetry": ^1.0.1
-    "@astrojs/webapi": ^1.1.0
+    "@astrojs/webapi": ^1.1.1
     "@babel/core": ^7.18.2
     "@babel/generator": ^7.18.2
     "@babel/parser": ^7.18.4
@@ -1231,7 +1231,7 @@ __metadata:
     recast: ^0.20.5
     rehype: ^12.0.1
     resolve: ^1.22.0
-    rollup: ~2.78.0
+    rollup: ^2.79.1
     semver: ^7.3.7
     shiki: ^0.11.1
     sirv: ^2.0.2
@@ -1243,12 +1243,13 @@ __metadata:
     typescript: "*"
     unist-util-visit: ^4.1.0
     vfile: ^5.3.2
-    vite: ~3.1.3
+    vite: ~3.2.1
+    vitefu: ^0.1.0
     yargs-parser: ^21.0.1
     zod: ^3.17.3
   bin:
     astro: astro.js
-  checksum: daf999583459769e0f7f64791ce209c11be9baa84bbba2eccf5d60ecdb920aa6ef2becd76c39dbc2ec478e902e578dedc3989b5853c30e60b8b24ed64f1b2eeb
+  checksum: 205fbffb8003bfecf2c74d296a626feb00b9724f4eb4541ce78e3277fc6bc3f8ee8b6ea5589657477e46664e62a67d41e4e6f432c4c8b83d5a91ad1598e3d6ff
   languageName: node
   linkType: hard
 
@@ -5376,14 +5377,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"postcss@npm:^8.4.16":
-  version: 8.4.16
-  resolution: "postcss@npm:8.4.16"
+"postcss@npm:^8.4.18":
+  version: 8.4.18
+  resolution: "postcss@npm:8.4.18"
   dependencies:
     nanoid: ^3.3.4
     picocolors: ^1.0.0
     source-map-js: ^1.0.2
-  checksum: 10eee25efd77868036403858577da0cefaf2e0905feeaba5770d5438ccdddba3d01cba8063e96b8aac4c6daa0ed413dd5ae0554a433a3c4db38df1d134cffc1f
+  checksum: 9349fd99849b2e3d2e134ff949b7770ecb12375f352723ce2bcc06167eba3850ea7844c1b191a85cd915d6a396b4e8ee9a5267e6cc5d8d003d0cbc7a97555d39
   languageName: node
   linkType: hard
 
@@ -5788,9 +5789,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"rollup@npm:~2.78.0":
-  version: 2.78.1
-  resolution: "rollup@npm:2.78.1"
+"rollup@npm:^2.79.1":
+  version: 2.79.1
+  resolution: "rollup@npm:2.79.1"
   dependencies:
     fsevents: ~2.3.2
   dependenciesMeta:
@@ -5798,7 +5799,7 @@ __metadata:
       optional: true
   bin:
     rollup: dist/bin/rollup
-  checksum: 9034814383ca5bdb4bea6d499270aeb31cdb0bb884f81b0c6a1d19c63cc973f040e6ee09b7af8a7169dd231c090f4b44ef8b99c4bfdf884aceeb3dcefb8cfa14
+  checksum: 6a2bf167b3587d4df709b37d149ad0300692cc5deb510f89ac7bdc77c8738c9546ae3de9322b0968e1ed2b0e984571f5f55aae28fa7de4cfcb1bc5402a4e2be6
   languageName: node
   linkType: hard
 
@@ -6683,19 +6684,20 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vite@npm:~3.1.3":
-  version: 3.1.8
-  resolution: "vite@npm:3.1.8"
+"vite@npm:~3.2.1":
+  version: 3.2.2
+  resolution: "vite@npm:3.2.2"
   dependencies:
     esbuild: ^0.15.9
     fsevents: ~2.3.2
-    postcss: ^8.4.16
+    postcss: ^8.4.18
     resolve: ^1.22.1
-    rollup: ~2.78.0
+    rollup: ^2.79.1
   peerDependencies:
     less: "*"
     sass: "*"
     stylus: "*"
+    sugarss: "*"
     terser: ^5.4.0
   dependenciesMeta:
     fsevents:
@@ -6707,11 +6709,25 @@ __metadata:
       optional: true
     stylus:
       optional: true
+    sugarss:
+      optional: true
     terser:
       optional: true
   bin:
     vite: bin/vite.js
-  checksum: 982696ad134577dd9915c4c3548ad36ddcf5dc6d341058548a670a13d860e4cdaaf2b320a59221f178018df089d148b9980e9a344316bef12b698a1c1abc7390
+  checksum: 7197ac91c612dda922367a95afa1b210353d6168d41845c186e2217bda1328d17b021b93d8089e336f9533b94645ae5dca18bb10937759f559c87006dd957fcd
+  languageName: node
+  linkType: hard
+
+"vitefu@npm:^0.1.0":
+  version: 0.1.1
+  resolution: "vitefu@npm:0.1.1"
+  peerDependencies:
+    vite: ^3.0.0
+  peerDependenciesMeta:
+    vite:
+      optional: true
+  checksum: f6be61a04437b2cc3bd42f39a4bae1c6246f7b0f99cfad649deb9059975147e3450ca8ba8a253a3fcb4c73aeeda4cb1b6bc1604d31869323d5e1adeeb38a1ca3
   languageName: node
   linkType: hard
 
