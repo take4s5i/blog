@@ -18,7 +18,7 @@ jobs:
 
     steps:
       - name: Check out your repository using git
-        uses: actions/checkout@v3.1.0
+        uses: actions/checkout@v3.3.0
 
       - name: Use Node.js 16
         uses: actions/setup-node@v2
