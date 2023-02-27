@@ -528,7 +528,7 @@ __metadata:
     "@astrojs/preact": ^0.3.1
     astro: ^1.5.0
     plop: ^3.1.1
-    preact: ^10.7.3
+    preact: ^10.13.0
   languageName: unknown
   linkType: soft
 
@@ -5398,10 +5398,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"preact@npm:^10.7.3":
-  version: 10.9.0
-  resolution: "preact@npm:10.9.0"
-  checksum: 752109823affeb531fd1a97a62a08015f93aef4f46e876cdbc4db5a11023269aa24728a61916f965adc7d864e5d43b6a25c00dee49051ace6b6e95db7b0f77f5
+"preact@npm:^10.13.0":
+  version: 10.13.0
+  resolution: "preact@npm:10.13.0"
+  checksum: d1629e52c01f25b83c8993bc2ae739ba338534015bd62456c21e19c1a2a4369643c93f709443028d9fabc1997bdc0aee7b9b2f4ac4dedc9529a6dbcc059fb762
   languageName: node
   linkType: hard
 
